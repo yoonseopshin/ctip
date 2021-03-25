@@ -45,7 +45,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
-          tool_name: 'Lint dog'
+          tool_name: 'Lint'
 
       - name: Unit Test
         run: ./gradlew test
