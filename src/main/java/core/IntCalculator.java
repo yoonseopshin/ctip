@@ -1,4 +1,6 @@
-class IntCalculator implements Calculator<Integer> {
+package core;
+
+public class IntCalculator implements Calculator<Integer> {
 
     @Override
     public Integer add(Integer t1, Integer t2) {

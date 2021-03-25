@@ -1,3 +1,5 @@
+package core;
+
 public interface Calculator<T> {
     T add(T t1, T t2);
 
