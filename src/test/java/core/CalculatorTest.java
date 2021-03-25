@@ -21,8 +21,8 @@ public class CalculatorTest {
 
     @Test
     public void testDifference() {
-        int result = calculator.subtract(10, 4);
-        Assert.assertEquals(6, result);
+        int result = calculator.subtract(100, 4);
+        Assert.assertEquals(96, result);
     }
 
     @Test
