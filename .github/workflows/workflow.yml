@@ -74,9 +74,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run Spotbugs
-        run: ./gradlew check
-
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
