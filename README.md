@@ -28,6 +28,7 @@ Continuous Test & Integration Platform for Java application with Intellij IDEA.
 ### Static Code Analysis
 - SonarQube([SonarCloud](https://sonarcloud.io/dashboard?id=sys09270883_ctip))
 - Checkstyle([Google Style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml))
+- PMD
 
 ### System Testing
 
