@@ -76,6 +76,13 @@ jobs:
 
       - name: Run PMD
         run: ./gradlew pmdMain pmdTest
+        
+      - name: Publish PMD Report
+        uses: mikepenz/action-junit-report@v2
+        if: ${{ always() }}
+        with:
+          report_paths: '**/build/reports/pmd/*.xml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
