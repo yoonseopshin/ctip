@@ -1,11 +1,11 @@
 package core;
 
 public interface Calculator<T> {
-    T add(T t1, T t2);
+    T add(final T t1, final T t2);
 
-    T subtract(T t1, T t2);
+    T subtract(final T t1, final T t2);
 
-    T multiply(T t1, T t2);
+    T multiply(final T t1, final T t2);
 
-    T divide(T t1, T t2);
+    T divide(final T t1, final T t2);
 }

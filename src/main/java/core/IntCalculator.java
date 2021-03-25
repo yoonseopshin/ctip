@@ -1,24 +1,24 @@
 package core;
 
-public class IntCalculator implements Calculator<Integer> {
+public final class IntCalculator implements Calculator<Integer> {
 
     @Override
-    public Integer add(Integer t1, Integer t2) {
+    public Integer add(final Integer t1, final Integer t2) {
         return t1 + t2;
     }
 
     @Override
-    public Integer subtract(Integer t1, Integer t2) {
+    public Integer subtract(final Integer t1, final Integer t2) {
         return t1 - t2;
     }
 
     @Override
-    public Integer multiply(Integer t1, Integer t2) {
+    public Integer multiply(final Integer t1, final Integer t2) {
         return t1 * t2;
     }
 
     @Override
-    public Integer divide(Integer t1, Integer t2) {
+    public Integer divide(final Integer t1, final Integer t2) {
         return t1 / t2;
     }
 }
