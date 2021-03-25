@@ -17,10 +17,10 @@ Continuous Test & Integration Platform for Java application with Intellij IDEA.
 - Slack
 
 ### Unit testing
-- JUnit
+- JUnit 4.13.2
 
 ### Automatic Build
-- Gradle
+- Gradle 6.8.3
 
 ### IDE
 - IntelliJ IDEA
