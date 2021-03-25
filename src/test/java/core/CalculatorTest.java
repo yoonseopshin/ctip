@@ -6,7 +6,8 @@ import org.junit.Test;
 
 public class CalculatorTest {
 
-  private transient Calculator<Integer> calculator;
+//  private transient Calculator<Integer> calculator;
+  private Calculator<Integer> calculator;
 
   @Before
   public void init() {
