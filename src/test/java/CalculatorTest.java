@@ -32,5 +32,6 @@ public class CalculatorTest {
     @Test(expected = ArithmeticException.class)
     public void testDivision() {
         calculator.divide(201511271, 0);
+        Assert.fail("It doesn't occur.");
     }
 }
