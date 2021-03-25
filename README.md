@@ -30,3 +30,6 @@ Continuous Test & Integration Platform for Java application with Intellij IDEA.
 - Checkstyle([Google Style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml))
 
 ### System Testing
+
+### Dependency Management
+- Dependabot
