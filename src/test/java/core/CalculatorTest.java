@@ -31,9 +31,16 @@ public class CalculatorTest {
         Assert.assertEquals(14229, result);
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void testDivision() {
+        int result = calculator.divide(9, 3);
+        Assert.assertEquals(3, result);
+    }
+
+    @Test
+    public void testWrongDivision() {
         calculator.divide(201511271, 0);
         Assert.fail("It doesn't occur.");
     }
+
 }
