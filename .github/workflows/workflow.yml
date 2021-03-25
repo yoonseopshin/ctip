@@ -40,13 +40,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run check style
-        uses: nikitasavinov/checkstyle-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: 'github-pr-check'
-          tool_name: 'Lint'
-
       - name: Unit Test
         run: ./gradlew test
 
@@ -70,6 +63,13 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 11
+
+      - name: Run check style
+        uses: nikitasavinov/checkstyle-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: 'github-pr-check'
+          tool_name: 'Lint'
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
