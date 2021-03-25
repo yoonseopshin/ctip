@@ -1,5 +1,5 @@
 # CTIP
-Continuous Test & Integration Platform
+Continuous Test & Integration Platform for Java application
 
 ---
 
@@ -26,6 +26,6 @@ Continuous Test & Integration Platform
 - IntelliJ
 
 ### Static Code Analysis
-- SonarQube
+- SonarQube([SonarCloud](https://sonarcloud.io/dashboard?id=sys09270883_ctip))
 
 ### System Testing
