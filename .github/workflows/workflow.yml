@@ -24,7 +24,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build -x test
+        run: ./gradlew build -x test -x check
 
   Test:
     runs-on: ubuntu-latest
@@ -64,12 +64,15 @@ jobs:
         with:
           java-version: 11
 
-      - name: Run check style
+      - name: Run Checkstyle
         uses: nikitasavinov/checkstyle-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
           tool_name: 'Lint'
+
+      - name: Run Spotbugs
+        run: ./gradlew check
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
