@@ -1,6 +1,5 @@
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CalculatorTest {
@@ -28,5 +27,10 @@ public class CalculatorTest {
     public void testProduct() {
         int result = calculator.multiply(27, 527);
         Assert.assertEquals(14229, result);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void testDivision() {
+        calculator.divide(201511271, 0);
     }
 }
