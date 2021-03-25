@@ -1,6 +1,7 @@
 plugins {
-    id 'java'
+    id "java"
     id "org.sonarqube" version "3.1.1"
+    id "pmd"
 }
 
 group 'org.example'
@@ -13,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation(group: 'junit', name: 'junit', version: '4.13.2')
+    testImplementation(group: "junit", name: "junit", version: "4.13.2")
 }
 
 sonarqube {
