@@ -48,7 +48,10 @@ jobs:
       - store_test_results:
           path: build/test-results
 
-      - run: gradle PMD
+      - run: gradle pmdMain pmdTest
+
+      - store_artifacts:
+          path: build/reports/pmd
 
 
 
