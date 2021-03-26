@@ -31,19 +31,24 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: gradlew dependencies
+      - run: gradle dependencies
 
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # Unit test
-      - run: gradlew test
+      # Build
+      - run: gradle build -x test -x check
 
-      # Upload Unit test
+      # Unit test
+      - run: gradle test
+
+      # Upload Unit test report & artifacts
       - store_artifacts:
           path: build/test-results
 
       - store_test_results:
           path: build/test-results
+
+
