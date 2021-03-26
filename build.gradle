@@ -2,7 +2,6 @@ plugins {
     id "java"
     id "org.sonarqube" version "3.1.1"
     id "pmd"
-    id "jacoco"
 }
 
 group 'org.example'
@@ -24,12 +23,4 @@ sonarqube {
         property "sonar.organization", "sys09270883"
         property "sonar.host.url", "https://sonarcloud.io"
     }
-}
-
-jacoco {
-    toolVersion '0.8.0'
-}
-
-test {
-    useJUnitPlatform()
 }
