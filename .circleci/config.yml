@@ -38,10 +38,8 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      - name: Build Application
       - run: gradle build -x test -x check
 
-      - name: Unit Test
       - run: gradle test
 
       - store_artifacts:
@@ -50,7 +48,6 @@ jobs:
       - store_test_results:
           path: build/test-results
 
-      - name: PMD
       - run: gradle PMD
 
 
