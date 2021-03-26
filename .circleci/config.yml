@@ -53,5 +53,8 @@ jobs:
       - store_artifacts:
           path: build/reports/pmd
 
+      - run: gradle testCoverage
 
+      - store_artifacts:
+          path: build/reports/jacoco
 
