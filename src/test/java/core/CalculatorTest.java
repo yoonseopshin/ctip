@@ -43,4 +43,9 @@ public class CalculatorTest {
     Assert.fail("It doesn't occur.");
   }
 
+  @Test
+  public void wrongTest() {
+    Assert.fail("It is wrong test.");
+  }
+
 }
