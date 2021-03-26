@@ -42,7 +42,9 @@ jobs:
           name: Build Application
           command: gradle build -x test -x check
 
-      - run: gradle test
+      - run:
+          name: Unit Test
+          command: gradle test
 
       - store_artifacts:
           path: build/reports/tests/test
