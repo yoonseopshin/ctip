@@ -50,6 +50,18 @@ jobs:
           report_paths: '**/build/test-results/test/TEST-*.xml'
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Run Coverage
+        run: ./gradlew testCoverage
+
+      - name: Publish Coverage Report
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.1
+        with:
+          path: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 40
+          min-coverage-changed-files: 60
+
 
   Analysis:
     name: Static Analysis
@@ -74,9 +86,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run PMD
-        run: ./gradlew pmdMain pmdTest
-
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
@@ -96,3 +105,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonarqube --info
+
+      - name: Run PMD
+        run: ./gradlew pmdMain pmdTest
