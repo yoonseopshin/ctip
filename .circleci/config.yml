@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk:11-jdk
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -38,9 +38,13 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      - run: gradle build -x test -x check
+      - run:
+          name: Build Application
+          command: gradle build -x test -x check
 
-      - run: gradle test
+      - run:
+          name: Unit Test
+          command: gradle test
 
       - store_artifacts:
           path: build/reports/tests/test
@@ -48,13 +52,20 @@ jobs:
       - store_test_results:
           path: build/test-results
 
-      - run: gradle pmdMain pmdTest
+      - run:
+          name: Run PMD
+          command: gradle pmdMain pmdTest
 
       - store_artifacts:
           path: build/reports/pmd
 
-      - run: gradle testCoverage
+      - run:
+          name: Run Coverage Test
+          command: gradle testCoverage
 
       - store_artifacts:
           path: build/reports/jacoco
 
+      - run:
+          name: Analyze on SonarCloud
+          command: gradle build sonarqube
