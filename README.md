@@ -13,23 +13,27 @@ Continuous Test & Integration Platform for Java application with Intellij IDEA.
 - Github Projects
 - Github Issues
 
-### Team Communication 
-- Slack
-
-### Unit testing
-- JUnit 4.13.2
+### IDE
+- IntelliJ IDEA
 
 ### Automatic Build
 - Gradle 6.8.3
 
-### IDE
-- IntelliJ IDEA
+### Unit testing
+- JUnit 4.13.2
+
+### Code Coverage
+- JaCoCo
 
 ### Static Code Analysis
 - SonarQube([SonarCloud](https://sonarcloud.io/dashboard?id=sys09270883_ctip))
 - Checkstyle([Google Style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml))
+- PMD
 
 ### System Testing
 
 ### Dependency Management
 - Dependabot
+
+### Team Communication 
+- Slack
