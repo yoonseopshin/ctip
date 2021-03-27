@@ -26,15 +26,33 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build -x test -x check
-      - name: Unit Test
-        run: ./gradlew test
 
-      - name: Publish Test Report
+      - name: Unit Test
+        run: ./gradlew test -x jacocoTestReport
+
+      - name: Publish Test Report Summary
         uses: mikepenz/action-junit-report@v2
         if: ${{ always() }}
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy Test Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/tests/test
+          destination_dir: junit
+
+      - name: Test Code Coverage
+        run: ./gradlew jacocoTestReport jacocoTestCoverageVerification
+
+      - name: Deploy Code Coverage Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/jacoco/test/html
+          destination_dir: jacoco
 
 
   Analysis:
@@ -60,9 +78,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run PMD
-        run: ./gradlew pmdMain pmdTest
-
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
@@ -82,3 +97,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonarqube --info
+
+      - name: Run PMD
+        run: ./gradlew pmdMain pmdTest
