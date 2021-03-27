@@ -21,7 +21,7 @@ Reports: https://sys09270883.github.io/ctip/
 ### Automatic Build
 - Gradle 6.8.3
 
-### Unit testing
+### Unit Testing
 - JUnit 4.13.2
 
 ### Code Coverage
