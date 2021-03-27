@@ -42,7 +42,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/reports/tests/test
-          destination_dir: test
+          destination_dir: junit
 
       - name: Test Code Coverage
         run: ./gradlew jacocoTestReport
