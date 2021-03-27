@@ -1,6 +1,8 @@
 # CTIP
 Continuous Test & Integration Platform for Java application with Intellij IDEA.
 
+Reports: https://sys09270883.github.io/ctip/
+
 ---
 
 ### CI
