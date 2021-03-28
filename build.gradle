@@ -46,6 +46,8 @@ jacocoTestCoverageVerification {
                 minimum = 0.8
             }
         }
+
+        excludes = ['*.Main.*']
     }
 }
 
