@@ -57,3 +57,16 @@ test {
         classDumpDir = file("$buildDir/jacoco/classpathdumps")
     }
 }
+
+jar {
+    manifest {
+        attributes 'Title': 'CTIP App', 'Version': '0.1.0', 'Main-Class': 'core.Main'
+    }
+    archiveName 'CTIP.jar'
+    dependsOn configurations.runtime
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
