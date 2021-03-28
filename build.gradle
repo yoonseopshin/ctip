@@ -60,7 +60,7 @@ test {
 
 jar {
     manifest {
-        attributes 'Title': 'CTIP App', 'Version': '0.1.0', 'Main-Class': 'core.Main'
+        attributes 'Title': 'app-result', 'Version': '0.1.0', 'Main-Class': 'core.Main'
     }
     archiveName 'app.jar'
     dependsOn configurations.runtime
