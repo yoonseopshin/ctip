@@ -28,7 +28,7 @@ jobs:
         run: ./gradlew build -x test -x check
 
       - name: Make Batch File
-        run: echo 'java -jar "%~dp0\app.jar"' > build/libs/app.bat
+        run: echo 'java -jar "%~dp0app.jar"' > build/libs/app.bat
 
       - name: Deploy Excutable JAR
         uses: actions/upload-artifact@v2
