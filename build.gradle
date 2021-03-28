@@ -31,6 +31,12 @@ jacoco {
 }
 
 jacocoTestReport {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: '**/core/Main.*')
+        }))
+    }
+
     dependsOn test
 
     reports {
@@ -42,11 +48,9 @@ jacocoTestReport {
 
 jacocoTestCoverageVerification {
     afterEvaluate {
-        getClassDirectories().setFrom(classDirectories.files.collect {
-            fileTree(dir: it, exclude: [
-                    'core/Main.*'
-            ])
-        })
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: '**/core/Main.*')
+        }))
     }
 
     violationRules {
@@ -64,6 +68,7 @@ test {
     jacoco {
         destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
         classDumpDir = file("$buildDir/jacoco/classpathdumps")
+        excludes += ['**/core/Main.*']
     }
 }
 
