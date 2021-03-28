@@ -46,8 +46,6 @@ jacocoTestCoverageVerification {
                 minimum = 0.8
             }
         }
-
-        excludes = ['*.Main.*']
     }
 }
 
@@ -57,6 +55,7 @@ test {
     jacoco {
         destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
         classDumpDir = file("$buildDir/jacoco/classpathdumps")
+        excludes = ['core/Main.java']
     }
 }
 
