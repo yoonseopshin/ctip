@@ -36,10 +36,19 @@ jacocoTestReport {
     reports {
         xml.enabled false
         csv.enabled false
+        html.enabled true
     }
 }
 
 jacocoTestCoverageVerification {
+    afterEvaluate {
+        getClassDirectories().setFrom(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    'core/Main.*'
+            ])
+        })
+    }
+
     violationRules {
         rule {
             limit {
@@ -55,7 +64,6 @@ test {
     jacoco {
         destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
         classDumpDir = file("$buildDir/jacoco/classpathdumps")
-        excludes = ['core/Main.java']
     }
 }
 
