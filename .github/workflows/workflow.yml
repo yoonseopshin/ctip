@@ -27,11 +27,14 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build -x test -x check
 
+      - name: Make Batch File
+        run: echo 'java -jar $(pwd)/build/libs/*.jar' > CTIP.bat
+
       - name: Deploy Excutable JAR
         uses: actions/upload-artifact@v2
         with:
           name: CTIP App
-          path: '**/build/libs'
+          path: '**/build/libs/*.*'
 
       - name: Unit Test
         run: ./gradlew test -x jacocoTestReport
