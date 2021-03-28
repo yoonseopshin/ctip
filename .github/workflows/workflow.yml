@@ -33,7 +33,7 @@ jobs:
       - name: Deploy Excutable JAR
         uses: actions/upload-artifact@v2
         with:
-          name: CTIP App
+          name: ctip-app
           path: '**/build/libs/*.*'
 
       - name: Unit Test
