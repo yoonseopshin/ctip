@@ -1,11 +1,11 @@
-name: Java CI with Gradle
+name: Java CI/CD with Gradle
 
 on:
   push:
     branches:
       - main
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [ opened, synchronize, reopened ]
 
 
 jobs:
