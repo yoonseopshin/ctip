@@ -6,7 +6,7 @@ import javax.swing.SwingConstants;
 
 public class Main {
 
-  /*
+  /**
    * Application start.
    */
   public static void main(String[] args) {
