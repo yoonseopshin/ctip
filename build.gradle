@@ -84,3 +84,7 @@ jar {
         }
     }
 }
+
+pmd {
+    ignoreFailures = true
+}
