@@ -3,6 +3,7 @@ plugins {
     id "org.sonarqube" version "3.1.1"
     id "pmd"
     id "jacoco"
+    id "com.github.spotbugs" version "4.7.0"
 }
 
 group 'org.example'
@@ -87,4 +88,20 @@ jar {
 
 pmd {
     ignoreFailures = true
+}
+
+spotbugsMain {
+    ignoreFailures = true
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+spotbugsTest {
+    ignoreFailures = true
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
 }
