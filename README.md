@@ -31,6 +31,7 @@ Reports: https://sys09270883.github.io/ctip/
 - SonarQube([SonarCloud](https://sonarcloud.io/dashboard?id=sys09270883_ctip))
 - Checkstyle([Google Style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml))
 - PMD
+- Spotbugs
 
 ### System Testing
 
