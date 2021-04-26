@@ -16,6 +16,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Get short SHA
+        id: s_sha
+        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
+      - name: Notify slack starting build
+        if: success()
+        id: slack_build # IMPORTANT: reference this step ID value in future Slack steps
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: 깃허브
+          status: BUILD STARTING commit:${{ steps.s_sha.outputs.sha8 }}
+          color: warning
+
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1.4.3
         with:
@@ -25,7 +40,32 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
+        id: build_gradle
         run: ./gradlew build -x test -x check
+
+      - name: Notify slack build success
+        if: ${{ always() && steps.build_gradle.outcome=='success' }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack_build.outputs.message_id }}
+          channel: 깃허브
+          status: BUILD SUCCESS commit:${{steps.s_sha.outputs.sha8}}
+          color: good
+
+      - name: Notify slack build failed
+        if: ${{ always() && steps.build_gradle.outcome=='failure' }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack_build.outputs.message_id }}
+          channel: 깃허브
+          status: BUILD FAILED commit:${{ steps.s_sha.outputs.sha8 }}
+          color: danger
 
       - name: Make Batch File
         run: echo 'java -jar "%~dp0app.jar"' > build/libs/app.bat
@@ -36,8 +76,44 @@ jobs:
           name: ctip-app
           path: '**/build/libs/*.*'
 
+      - name: Notify slack starting test
+        if: success()
+        id: slack_test # IMPORTANT: reference this step ID value in future Slack steps
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: 깃허브
+          status: UNIT TEST STARTING commit:${{steps.s_sha.outputs.sha8}}
+          color: warning
+
       - name: Unit Test
+        id: unit_test
         run: ./gradlew test -x jacocoTestReport
+
+      - name: Notify slack test success
+        if: ${{ always() && steps.unit_test.outcome=='success' }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack_test.outputs.message_id }}
+          channel: 깃허브
+          status: UNIT TEST SUCCESS commit:${{steps.s_sha.outputs.sha8}}
+          color: good
+
+      - name: Notify slack test failed
+        if: ${{always() && steps.unit_test.outcome=='failure'}}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack_test.outputs.message_id }}
+          channel: 깃허브
+          status: UNIT TEST FAILED commit:${{ steps.s_sha.outputs.sha8 }}
+          color: danger
 
       - name: Publish Test Report Summary
         uses: mikepenz/action-junit-report@v2
@@ -54,6 +130,7 @@ jobs:
           destination_dir: junit
 
       - name: Test Code Coverage
+        id: code_coverage
         run: ./gradlew jacocoTestReport jacocoTestCoverageVerification
 
       - name: Deploy Code Coverage Report
