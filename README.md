@@ -12,8 +12,7 @@ Reports: https://sys09270883.github.io/ctip/
 - Git
 
 ### Requirements Management & Bug Tracking
-- Github Projects
-- Github Issues
+- Jira
 
 ### IDE
 - IntelliJ IDEA
@@ -34,9 +33,7 @@ Reports: https://sys09270883.github.io/ctip/
 - Spotbugs
 
 ### System Testing
-
-### Dependency Management
-- Dependabot
+- TestQuality
 
 ### Team Communication 
 - Slack
