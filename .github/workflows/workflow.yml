@@ -44,7 +44,7 @@ jobs:
         run: ./gradlew build -x test -x check
 
       - name: Notify slack build success
-        if: ${{ always() && steps.build_gradle.outcome=='success' }}
+        if: ${{ always() && steps.build_gradle.outcome == 'success' }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
@@ -52,11 +52,11 @@ jobs:
           # Updates existing message from the first step
           message_id: ${{ steps.slack_build.outputs.message_id }}
           channel: 깃허브
-          status: BUILD SUCCESS commit:${{steps.s_sha.outputs.sha8}}
+          status: BUILD SUCCESS commit:${{ steps.s_sha.outputs.sha8 }}
           color: good
 
       - name: Notify slack build failed
-        if: ${{ always() && steps.build_gradle.outcome=='failure' }}
+        if: ${{ always() && steps.build_gradle.outcome == 'failure' }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
@@ -84,7 +84,7 @@ jobs:
         uses: voxmedia/github-action-slack-notify-build@v1
         with:
           channel: 깃허브
-          status: UNIT TEST STARTING commit:${{steps.s_sha.outputs.sha8}}
+          status: UNIT TEST STARTING commit:${{ steps.s_sha.outputs.sha8 }}
           color: warning
 
       - name: Unit Test
@@ -92,7 +92,7 @@ jobs:
         run: ./gradlew test -x jacocoTestReport
 
       - name: Notify slack test success
-        if: ${{ always() && steps.unit_test.outcome=='success' }}
+        if: ${{ always() && steps.unit_test.outcome == 'success' }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
@@ -100,11 +100,11 @@ jobs:
           # Updates existing message from the first step
           message_id: ${{ steps.slack_test.outputs.message_id }}
           channel: 깃허브
-          status: UNIT TEST SUCCESS commit:${{steps.s_sha.outputs.sha8}}
+          status: UNIT TEST SUCCESS commit:${{ steps.s_sha.outputs.sha8 }}
           color: good
 
       - name: Notify slack test failed
-        if: ${{always() && steps.unit_test.outcome=='failure'}}
+        if: ${{always() && steps.unit_test.outcome == 'failure'}}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
