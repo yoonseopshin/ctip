@@ -162,21 +162,6 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 11
-          
-               
-      - name: Get short SHA
-        id: s_sha_static
-        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
-        
-      - name: Notify slack static analysis done
-        if: ${{ always()}}
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: 깃허브
-          status: STATIC ANALYSIS DONE commit:${{ steps.s_sha_static.outputs.sha8 }}
-          color: good
 
       - name: Run Checkstyle
         uses: nikitasavinov/checkstyle-action@master
@@ -227,6 +212,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/reports/spotbugs
           destination_dir: spotbugs
-
-
+          
+      - name: Get short SHA
+        id: s_sha_static
+        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+        
+      - name: Notify slack static analysis done
+        if: ${{ always()}}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: 깃허브
+          status: STATIC ANALYSIS DONE commit:${{ steps.s_sha_static.outputs.sha8 }}
+          color: good
  
