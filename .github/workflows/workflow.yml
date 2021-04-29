@@ -123,6 +123,7 @@ jobs:
 
       - name: Deploy Test Report
         uses: peaceiris/actions-gh-pages@v3
+        if: ${{ always() }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/reports/tests/test
