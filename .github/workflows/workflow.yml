@@ -191,7 +191,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
 
-       - name: Notify sonarqube analysis start
+      - name: Notify sonarqube analysis start
         if: success()
         id: slack_sonar # IMPORTANT: reference this step ID value in future Slack steps
         env:
