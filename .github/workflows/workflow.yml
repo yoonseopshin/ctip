@@ -3,7 +3,7 @@ name: Java CI/CD with Gradle
 on:
   push:
     branches:
-      - main
+      - slack_alarm
   pull_request:
     types: [ opened, synchronize, reopened ]
 
@@ -26,7 +26,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
         with:
-          channel: 깃허브
+          channel: 깃액션예시
           status: BUILD STARTING commit:${{ steps.s_sha.outputs.sha8 }}
           color: warning
 
@@ -50,7 +50,7 @@ jobs:
         with:
           # Updates existing message from the first step
           message_id: ${{ steps.slack_build.outputs.message_id }}
-          channel: 깃허브
+          channel: 깃액션예시
           status: BUILD SUCCESS commit:${{ steps.s_sha.outputs.sha8 }}
           color: good
 
@@ -62,7 +62,7 @@ jobs:
         with:
           # Updates existing message from the first step
           message_id: ${{ steps.slack_build.outputs.message_id }}
-          channel: 깃허브
+          channel: 깃액션예시
           status: BUILD FAILED commit:${{ steps.s_sha.outputs.sha8 }}
           color: danger
 
@@ -82,7 +82,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
         with:
-          channel: 깃허브
+          channel: 깃액션예시
           status: UNIT TEST STARTING commit:${{ steps.s_sha.outputs.sha8 }}
           color: warning
 
@@ -98,7 +98,7 @@ jobs:
         with:
           # Updates existing message from the first step
           message_id: ${{ steps.slack_test.outputs.message_id }}
-          channel: 깃허브
+          channel: 깃액션예시
           status: UNIT TEST SUCCESS commit:${{ steps.s_sha.outputs.sha8 }}
           color: good
 
@@ -110,7 +110,7 @@ jobs:
         with:
           # Updates existing message from the first step
           message_id: ${{ steps.slack_test.outputs.message_id }}
-          channel: 깃허브
+          channel: 깃액션예시
           status: UNIT TEST FAILED commit:${{ steps.s_sha.outputs.sha8 }}
           color: danger
 
@@ -138,6 +138,16 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/reports/jacoco/test/html
           destination_dir: jacoco
+      
+      - name: Notify slack code coverage report done
+        if: ${{ always()}}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: 깃액션예시
+          status: CODE COVERAGE REPORT DONE commit:${{ steps.s_sha.outputs.sha8 }}
+          color: good
 
 
   Analysis:
@@ -202,3 +212,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/reports/spotbugs
           destination_dir: spotbugs
+          
+      - name: Get short SHA
+        id: s_sha_static
+        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+        
+      - name: Notify slack static analysis done
+        if: ${{ always()}}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: 깃액션예시
+          status: STATIC ANALYSIS DONE commit:${{ steps.s_sha_static.outputs.sha8 }}
+          color: good
+          
