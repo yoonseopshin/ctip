@@ -163,6 +163,10 @@ jobs:
         with:
           java-version: 11
 
+      - name: Get short SHA
+        id: s_sha_static
+        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+
       - name: Run Checkstyle
         uses: nikitasavinov/checkstyle-action@master
         with:
@@ -187,11 +191,47 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
 
+       - name: Notify sonarqube analysis start
+        if: success()
+        id: slack_sonar # IMPORTANT: reference this step ID value in future Slack steps
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: 깃액션예시
+          status: SONARQUBE STARTING commit:${{ steps.s_sha.outputs.sha8 }}
+          color: warning
+
       - name: Analyze
+        id: sonar_analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonarqube --info
+
+      - name: Notify sonarqube success
+        if: ${{ always() && steps.sonar_analyze.outcome == 'success' }}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack_sonar.outputs.message_id }}
+          channel: 깃액션예시
+          status: SONARQUBE SUCCESS commit:${{ steps.s_sha.outputs.sha8 }}
+          color: good
+
+      - name: Notify sonarqube failed
+        if: ${{always() && steps.sonar_analyze.outcome == 'failure'}}
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          # Updates existing message from the first step
+          message_id: ${{ steps.slack_sonar.outputs.message_id }}
+          channel: 깃액션예시
+          status: SONARQUBE FAILED commit:${{ steps.s_sha.outputs.sha8 }}
+          color: danger
 
       - name: Run PMD
         run: ./gradlew pmdMain pmdTest
@@ -212,13 +252,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/reports/spotbugs
           destination_dir: spotbugs
-          
-      - name: Get short SHA
-        id: s_sha_static
-        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
         
       - name: Notify slack static analysis done
-        if: ${{ always()}}
+        if: success()
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
