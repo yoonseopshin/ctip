@@ -18,8 +18,8 @@ public class Main {
     frame.getContentPane().add(label);
 
     // Dirty code test.
-    // Object arr[] = {"3", 16L};
-    // System.out.println(arr[0].toString() + arr[1]);;
+    Object arr[] = {"3", 16L};;;;;;;
+    System.out.println(arr[0].toString() + arr[1]);;
 
     // Dirty code test 2: integer overflow.
     // 0x7fffffff = Integer.MAX_VALUE
