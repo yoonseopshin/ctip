@@ -16,6 +16,11 @@ public class Main {
     frame.setVisible(true);
     JLabel label = new JLabel("Hello world!", SwingConstants.CENTER);
     frame.getContentPane().add(label);
+
+    // Dirty code test.
+    int zxcvzxcvzxvczxcvzcxvzxcvzxczvzxcvzxcvzxcv = 3;;;
+    Long bb = 16L;;;;
+    System.out.println(Integer.toString(zxcvzxcvzxvczxcvzcxvzxcvzxczvzxcvzxcvzxcv) + bb);;
   }
 
 }
