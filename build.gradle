@@ -95,8 +95,18 @@ pmd {
 
 spotbugsMain {
     ignoreFailures = true
+    effort = "max"
+    reportLevel = "low"
 }
 
 spotbugsTest {
     ignoreFailures = true
+    effort = "max"
+    reportLevel = "low"
+}
+
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+    reports {
+        xml.withMessage true
+    }
 }
