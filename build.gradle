@@ -104,9 +104,3 @@ spotbugsTest {
     effort = "max"
     reportLevel = "low"
 }
-
-tasks.withType(com.github.spotbugs.SpotBugsTask) {
-    reports {
-        xml.withMessage true
-    }
-}
