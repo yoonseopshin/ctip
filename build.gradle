@@ -94,18 +94,14 @@ spotbugsMain {
     ignoreFailures = true
     effort = "max"
     reportLevel = "low"
-    reports {
-        xml.enabled false
-        html.enabled true
-    }
+    reports.xml.enabled = false
+    reports.html.enabled = true
 }
 
 spotbugsTest {
     ignoreFailures = true
     effort = "max"
     reportLevel = "low"
-    reports {
-        xml.enabled false
-        html.enabled true
-    }
+    reports.xml.enabled = false
+    reports.html.enabled = true
 }
