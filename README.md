@@ -10,6 +10,7 @@ Reports: https://sys09270883.github.io/ctip/
 
 ### Code Configuration Management
 - Git
+- Git Flow
 
 ### Requirements Management & Bug Tracking
 - Jira
@@ -24,16 +25,16 @@ Reports: https://sys09270883.github.io/ctip/
 - JUnit 4.13.2
 
 ### Code Coverage
-- JaCoCo
+- JaCoCo 0.8.6
 
 ### Static Code Analysis
-- SonarQube([SonarCloud](https://sonarcloud.io/dashboard?id=sys09270883_ctip))
+- SonarQube 3.1.1([SonarCloud](https://sonarcloud.io/dashboard?id=sys09270883_ctip))
 - Checkstyle([Google Style](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml))
 - PMD
-- Spotbugs
+- Spotbugs 4.7.1
 
 ### System Testing
-- TestQuality
+- QAlity
 
 ### Team Communication 
 - Slack
