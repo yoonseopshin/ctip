@@ -24,9 +24,6 @@ sonarqube {
         property "sonar.projectKey", "sys09270883_ctip"
         property "sonar.organization", "sys09270883"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.java.spotbugs.reportPaths", "build/reports/spotbugs"
-        property "sonar.java.pmd.reportPaths", "build/reports/pmd"
-        property "sonar.coverage.jacoco.xmlReportPaths", ""
     }
 }
 

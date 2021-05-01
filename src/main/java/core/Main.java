@@ -17,22 +17,6 @@ public class Main {
     frame.setVisible(true);
     JLabel label = new JLabel("Hello world!", SwingConstants.CENTER);
     frame.getContentPane().add(label);
-
-    // Dirty code.
-    Integer a = 3;
-    double b = 3f;
-    if (a == b) {
-      foo();
-    } else {
-      bar();
-    }
-
-  }
-
-  static void foo() {
-  }
-
-  static void bar() {
   }
 
 }
