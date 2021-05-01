@@ -41,7 +41,7 @@ jacocoTestReport {
     dependsOn test
 
     reports {
-        xml.enabled false
+        xml.enabled true
         csv.enabled false
         html.enabled true
     }
@@ -92,6 +92,8 @@ pmd {
 
 spotbugsMain {
     ignoreFailures = true
+    effort = "max"
+    reportLevel = "low"
     reports {
         xml.enabled = false
         html.enabled = true
@@ -100,6 +102,8 @@ spotbugsMain {
 
 spotbugsTest {
     ignoreFailures = true
+    effort = "max"
+    reportLevel = "low"
     reports {
         xml.enabled = false
         html.enabled = true
