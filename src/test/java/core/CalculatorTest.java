@@ -38,9 +38,10 @@ public class CalculatorTest {
   }
 
   @Test(expected = ArithmeticException.class)
+  @SuppressWarnings("CheckReturnValue")
   public void testWrongDivision() {
-    calculator.divide(201511271, 0);
-    Assert.fail("It doesn't occur.");
+    int divisor = 0;
+    calculator.divide(201511271, divisor);
   }
 
 }
