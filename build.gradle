@@ -24,6 +24,9 @@ sonarqube {
         property "sonar.projectKey", "sys09270883_ctip"
         property "sonar.organization", "sys09270883"
         property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.java.spotbugs.reportPaths", "build/reports/spotbugs"
+        property "sonar.java.pmd.reportPaths", "build/reports/pmd"
+        property "sonar.coverage.jacoco.xmlReportPaths", ""
     }
 }
 
@@ -41,7 +44,7 @@ jacocoTestReport {
     dependsOn test
 
     reports {
-        xml.enabled false
+        xml.enabled true
         csv.enabled false
         html.enabled true
     }
@@ -92,16 +95,8 @@ pmd {
 
 spotbugsMain {
     ignoreFailures = true
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
 }
 
 spotbugsTest {
     ignoreFailures = true
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
 }

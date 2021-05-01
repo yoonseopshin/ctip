@@ -163,6 +163,26 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Run PMD
+        run: ./gradlew pmdMain pmdTest
+
+      - name: Deploy PMD Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/pmd
+          destination_dir: pmd
+
+      - name: Run Spotbugs
+        run: ./gradlew spotbugsMain spotbugsTest --stacktrace
+
+      - name: Deploy Spotbugs Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/spotbugs
+          destination_dir: spotbugs
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
@@ -183,22 +203,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonarqube --info
 
-      - name: Run PMD
-        run: ./gradlew pmdMain pmdTest
 
-      - name: Deploy PMD Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/pmd
-          destination_dir: pmd
-
-      - name: Run Spotbugs
-        run: ./gradlew spotbugsMain spotbugsTest --stacktrace
-
-      - name: Deploy Spotbugs Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/spotbugs
-          destination_dir: spotbugs
