@@ -30,10 +30,10 @@ jobs:
           status: BUILD STARTING commit:${{ steps.s_sha.outputs.sha8 }}
           color: warning
 
-      - name: Set up JDK 1.8
+      - name: Set up JDK 11  # Minimum JDK version for SonarQube
         uses: actions/setup-java@v1.4.3
         with:
-          java-version: 1.8
+          java-version: 11
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -121,23 +121,23 @@ jobs:
           report_paths: '**/build/test-results/test/TEST-*.xml'
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy Test Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/tests/test
-          destination_dir: junit
+#      - name: Deploy Test Report
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: build/reports/tests/test
+#          destination_dir: junit
 
       - name: Test Code Coverage
         id: code_coverage
         run: ./gradlew jacocoTestReport jacocoTestCoverageVerification
 
-      - name: Deploy Code Coverage Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/jacoco/test/html
-          destination_dir: jacoco
+#      - name: Deploy Code Coverage Report
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: build/reports/jacoco/test/html
+#          destination_dir: jacoco
       
       - name: Notify slack code coverage report done
         if: ${{ always()}}
@@ -149,24 +149,6 @@ jobs:
           status: CODE COVERAGE REPORT DONE commit:${{ steps.s_sha.outputs.sha8 }}
           color: good
 
-
-  Analysis:
-    name: Static Analysis
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-
-      - name: Set up JDK 11  # Minimum JDK version for SonarQube
-        uses: actions/setup-java@v1.4.3
-        with:
-          java-version: 11
-
-      - name: Get short SHA
-        id: s_sha_static
-        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
-
       - name: Run Checkstyle
         uses: nikitasavinov/checkstyle-action@master
         with:
@@ -174,28 +156,25 @@ jobs:
           reporter: 'github-pr-check'
           tool_name: 'Lint'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
       - name: Run PMD
         run: ./gradlew pmdMain pmdTest
 
-      - name: Deploy PMD Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/pmd
-          destination_dir: pmd
+#      - name: Deploy PMD Report
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: build/reports/pmd
+#          destination_dir: pmd
 
       - name: Run Spotbugs
         run: ./gradlew spotbugsMain spotbugsTest --stacktrace
 
-      - name: Deploy Spotbugs Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/spotbugs
-          destination_dir: spotbugs
+#      - name: Deploy Spotbugs Report
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: build/reports/spotbugs
+#          destination_dir: spotbugs
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
@@ -227,20 +206,18 @@ jobs:
           status: STATIC ANALYSIS DONE commit:${{ steps.s_sha_static.outputs.sha8 }}
           color: good
 
-  Deploy:
-    runs-on: ubuntu-latest
-    needs: [Build, Analysis]
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.81.0'
           # extended: true
+
+      - uses: actions/cache@v2
+        with:
+          path: /tmp/hugo_cache
+          key: ${{ runner.os }}-hugomod-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-hugomod-
 
       - name: Build
         run: hugo --minify
