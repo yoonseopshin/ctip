@@ -167,15 +167,25 @@ jobs:
         id: s_sha_static
         run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
       - name: Run Checkstyle
+        run: ./gradlew checkstyleMain checkstyleTest --stacktrace
+
+      - name: Deploy Checkstyle Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/checkstyle
+          destination_dir: checkstyle
+
+      - name: Publish Checkstyle Report Summary
         uses: nikitasavinov/checkstyle-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: 'github-pr-check'
           tool_name: 'Lint'
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
 
       - name: Run PMD
         run: ./gradlew pmdMain pmdTest

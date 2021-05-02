@@ -1,6 +1,7 @@
 plugins {
     id "java"
     id "org.sonarqube" version "3.1.1"
+    id "checkstyle"
     id "pmd"
     id "jacoco"
     id "com.github.spotbugs" version "4.7.1"
@@ -107,5 +108,25 @@ spotbugsTest {
     reports {
         xml.enabled = false
         html.enabled = true
+    }
+}
+
+checkstyle {
+    toolVersion = "8.41"
+    ignoreFailures = true
+    configFile = file("config/checkstyle/checkstyle.xml")
+}
+
+checkstyleMain {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}
+
+checkstyleTest {
+    reports {
+        xml.enabled false
+        html.enabled true
     }
 }
