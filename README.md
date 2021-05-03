@@ -3,6 +3,13 @@ Continuous Test & Integration Platform for Java application with Intellij IDEA.
 
 Reports: https://sys09270883.github.io/ctip/
 
+## Tutorial
+- [ ] [인텔리제이 및 플러그인 설정]()
+- [ ] [GitHub 저장소 클론]()
+- [ ] [유닛 테스트 작성 방법]()
+- [ ] [Git Flow]()
+- [x] [Pull Request 및 GitHub Pages Report](https://github.com/sys09270883/ctip/blob/main/tutorial/PR_Reports.md)
+
 ---
 
 ### CI
