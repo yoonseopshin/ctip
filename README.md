@@ -5,8 +5,8 @@ Reports: https://sys09270883.github.io/ctip/
 
 ## Tutorial
 - [x] [인텔리제이 및 플러그인 설정](https://github.com/sys09270883/ctip/blob/main/tutorial/IntelliJ.md)
-- [x] [GitHub 저장소 클론](https://github.com/sys09270883/ctip/blob/main/tutorial/GitHub_Clone%26Branch)
-- [ ] [유닛 테스트 작성 방법]()
+- [x] [GitHub 저장소 클론](https://github.com/sys09270883/ctip/blob/main/tutorial/GitHub_Clone%26Branch.md)
+- [x] [유닛 테스트 작성 방법](https://github.com/sys09270883/ctip/blob/main/tutorial/junit4.md)
 - [x] [Git Flow](https://github.com/sys09270883/ctip/blob/main/tutorial/gitflow.md)
 - [x] [Pull Request 및 GitHub Pages Report](https://github.com/sys09270883/ctip/blob/main/tutorial/PR_Reports.md)
 
