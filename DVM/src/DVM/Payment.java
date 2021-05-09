@@ -17,6 +17,7 @@ public class Payment {
 
 
     public void CardPay() {
+
         System.out.println("결제하실 금액은 "+t.Price+"원 입니다.");
         if(Prepay) { // 선결제시
             //pay_confirm = Credit(t.price);   //외부의 카드결제 시스템 진행
@@ -33,6 +34,7 @@ public class Payment {
     }
 
     public void SmartPay() {
+
         System.out.println("결제하실 금액은 "+t.Price+"원 입니다.");
         if(Prepay) { // 선결제시
             //pay_confirm = Smart(t.price);   //외부의 간편결제 시스템 진행
@@ -47,6 +49,5 @@ public class Payment {
         }
 
     }
-
 
 }
