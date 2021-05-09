@@ -13,7 +13,7 @@ public class Payment {
 
 
     public Message_Queue referto;
-    //얜 뭔지 잘 모르게써여,,
+    //얜 뭔지 잘 모르게써여,,,
 
 
     public void CardPay() {
