@@ -1,7 +1,7 @@
 package DVM;
 
 import java.util.*;
-
+//ì´ê±°í˜¹ì‹œë³´ì˜€ìœ¼ë©´.........
 /**
  * 
  */
@@ -23,7 +23,7 @@ public class C_Number {
 
 	@Override
 	public String toString() {
-		return "C_Number [À½·á¸í :"+ti.Name + ", ÀÚÆÇ±â id=" + DvmID + ", ÀÎÁõ¹øÈ£=" + C_Number_t
+		return "C_Number [ï¿½ï¿½ï¿½ï¿½ï¿½ :"+ti.Name + ", ï¿½ï¿½ï¿½Ç±ï¿½ id=" + DvmID + ", ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£=" + C_Number_t
 				+ "]";
 	}
 
