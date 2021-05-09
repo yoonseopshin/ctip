@@ -1,55 +1,52 @@
-package DVM;
+ppackage DVM;
 
 import java.util.*;
 
 public class Payment {
 
-	Title t;
-	DVM dvm;
-	String Error_log;
-	boolean pay_confirm;
-	boolean Prepay;
-	C_NumberManager CM = new C_NumberManager();
-	
-   
+    Title t;
+    DVM dvm;
+    String Error_log;
+    boolean pay_confirm;
+    boolean Prepay;
+    C_NumberManager CM = new C_NumberManager();
+
+
     public Message_Queue referto;
-    //¾ë ¹ºÁö Àß ¸ğ¸£°Ô½á¿©,,
+    //ì–œ ë­”ì§€ ì˜ ëª¨ë¥´ê²Œì¨ì—¬,,
 
 
     public void CardPay() {
-    	if(Prepay) { // ¼±°áÁ¦½Ã
-    	  //pay_confirm = Credit();   //¿ÜºÎÀÇ Ä«µå°áÁ¦ ½Ã½ºÅÛ ÁøÇà
-          pay_confirm = true; //Ä«µå°áÁ¦ ¼º°ø
-          CM.CreateCnumber(t, dvm.ID); //ÀÎÁõ¹øÈ£ »ı¼º
-          CM.toString();  //ÀÎÁõ¹øÈ£ Ãâ·Â
-    	}
-    	else {
-    		//pay_confirm = Credit();   //¿ÜºÎÀÇ Ä«µå°áÁ¦ ½Ã½ºÅÛ ÁøÇà
-            pay_confirm = true; //Ä«µå°áÁ¦ ¼º°ø
-            
-    	}
-    	
+        System.out.println("ê²°ì œí•˜ì‹¤ ê¸ˆì•¡ì€ "+t.Price+"ì› ì…ë‹ˆë‹¤.");
+        if(Prepay) { // ì„ ê²°ì œì‹œ
+            //pay_confirm = Credit(t.price);   //ì™¸ë¶€ì˜ ì¹´ë“œê²°ì œ ì‹œìŠ¤í…œ ì§„í–‰
+            pay_confirm = true; //ì¹´ë“œê²°ì œ ì„±ê³µ
+            CM.CreateCnumber(t, dvm.ID); //ì¸ì¦ë²ˆí˜¸ ìƒì„±
+            CM.toString();  //ì¸ì¦ë²ˆí˜¸ ì¶œë ¥
+        }
+        else {
+            //pay_confirm = Credit(t.price);  //ì™¸ë¶€ì˜ ì¹´ë“œê²°ì œ ì‹œìŠ¤í…œ ì§„í–‰
+            pay_confirm = true; //ì¹´ë“œê²°ì œ ì„±ê³µ
+
+        }
+
     }
 
     public void SmartPay() {
-    	if(Prepay) { // ¼±°áÁ¦½Ã
-      	  //pay_confirm = Smart();   //¿ÜºÎÀÇ °£Æí°áÁ¦ ½Ã½ºÅÛ ÁøÇà
-            pay_confirm = true; //°£Æí°áÁ¦ ¼º°ø
-            CM.CreateCnumber(t, dvm.ID); //ÀÎÁõ¹øÈ£ »ı¼º
-            CM.toString();  //ÀÎÁõ¹øÈ£ Ãâ·Â
-      	}
-      	else {
-      		//pay_confirm = Credit();   //¿ÜºÎÀÇ °£Æí°áÁ¦ ½Ã½ºÅÛ ÁøÇà
-              pay_confirm = true; //°£Æí°áÁ¦ ¼º°ø
-              
-      	}
-      	
+        System.out.println("ê²°ì œí•˜ì‹¤ ê¸ˆì•¡ì€ "+t.Price+"ì› ì…ë‹ˆë‹¤.");
+        if(Prepay) { // ì„ ê²°ì œì‹œ
+            //pay_confirm = Smart(t.price);   //ì™¸ë¶€ì˜ ê°„í¸ê²°ì œ ì‹œìŠ¤í…œ ì§„í–‰
+            pay_confirm = true; //ê°„í¸ê²°ì œ ì„±ê³µ
+            CM.CreateCnumber(t, dvm.ID); //ì¸ì¦ë²ˆí˜¸ ìƒì„±
+            CM.toString();  //ì¸ì¦ë²ˆí˜¸ ì¶œë ¥
+        }
+        else {
+            //pay_confirm = Smart(t.price);   //ì™¸ë¶€ì˜ ê°„í¸ê²°ì œ ì‹œìŠ¤í…œ ì§„í–‰
+            pay_confirm = true; //ê°„í¸ê²°ì œ ì„±ê³µ
+
+        }
+
     }
 
- 
-    public void init() {
-    	//ÀÌ°Å ±×³É °áÁ¦ Ãë¼Ò
-        // TODO implement here
-    }
 
 }
