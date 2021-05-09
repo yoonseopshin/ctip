@@ -9,29 +9,30 @@ public class C_NumberManager extends C_Number {
 	}
 	public C_NumberManager() {
 	}
-	
-	
-	//ÀÎÁõ¹øÈ£¿Í C_number(title°ú dvmID¸¦ °¡Áö°í ÀÖÀ½)¸¦ ÇØ½¬¸ÊÀ¸·Î ¿¬°á
+
+
+	//ì¸ì¦ë²ˆí˜¸ì™€ C_number(titleê³¼ dvmIDë¥¼ ê°€ì§€ê³  ìˆìŒ)ë¥¼ í•´ì‰¬ë§µìœ¼ë¡œ ì—°ê²°
 	HashMap<Integer, C_Number> C_List = new HashMap<Integer, C_Number>();
-    
-    public void CreateCnumber(Title ti, int DvmID) {
-        // TODO implement here
-    	C_Number_t =(int)(Math.random()*100000 + 1);  //ÀÎÁõ¹øÈ£ »ı¼º
-    	C_Number cn = new C_Number(ti, DvmID);
-    	C_List.put(C_Number_t, cn);
-    	//sendMessage()
-    	
-    }
 
-    public void PopCnumber(int C_Number_t) {
-        C_List.remove(C_Number_t); // key°ª C_Number_tÀÎ °ª Á¦°Å
-    }
+	public void CreateCnumber(Title ti, int DvmID) {
+		// TODO implement here
+		C_Number_t =(int)(Math.random()*100000 + 1);  //ì¸ì¦ë²ˆí˜¸ ìƒì„±
+		C_Number cn = new C_Number(ti, DvmID);
+		C_List.put(C_Number_t, cn);
+		//sendMessage()
 
-   
-    public boolean CheckCnumber(int C_Number_t) {
-       return C_List.containsKey(C_Number_t); //°ª Á¸Àç½Ã true¹İÈ¯
-    }
-    
-    
+	}
+
+	public void PopCnumber(int C_Number_t) {
+		C_List.remove(C_Number_t); // keyê°’ C_Number_tì¸ ê°’ ì œê±°
+	}
+
+
+	public boolean CheckCnumber(int C_Number_t) {
+		return C_List.containsKey(C_Number_t); //ê°’ ì¡´ì¬ì‹œ trueë°˜í™˜
+	}
+
+
 
 }
+

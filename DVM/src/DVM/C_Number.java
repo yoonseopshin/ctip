@@ -23,7 +23,7 @@ public class C_Number {
 
 	@Override
 	public String toString() {
-		return "C_Number [À½·á¸í :"+ti.Name + ", ÀÚÆÇ±â id=" + DvmID + ", ÀÎÁõ¹øÈ£=" + C_Number_t
+		return "C_Number [ìŒë£Œëª… :"+ti.Name + ", ìíŒê¸° id=" + DvmID + ", ì¸ì¦ë²ˆí˜¸=" + C_Number_t
 				+ "]";
 	}
 
