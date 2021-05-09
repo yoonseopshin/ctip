@@ -23,7 +23,7 @@ public class C_Number {
 
 	@Override
 	public String toString() {
-		return "C_Number [음료명 :"+ti.Name + ", 자판기 id=" + DvmID + ", 인증번호=" + C_Number_t
+		return "C_Number [음료명 :"+ti.Name + ", 자판기 id =" + DvmID + ", 인증번호=" + C_Number_t
 				+ "]";
 	}
 
