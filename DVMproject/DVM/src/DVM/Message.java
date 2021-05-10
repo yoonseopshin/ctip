@@ -1,46 +1,26 @@
 package DVM;
 
-import java.util.*;
+class Message
+{
+    int ID = -1;
+    int Type = -1;
+    int intData = -1;
+    boolean boolData = false;
 
-/**
- * 
- */
-public class Message {
-
-    /**
-     * Default constructor
-     */
-    public Message() {
+    Message(int ID, int Type)
+    {
+        this.ID = ID;
+        this.Type = Type;
     }
 
-    /**
-     * 
-     */
-    public Integer ID;
-
-    /**
-     * 
-     */
-    public integer Msg_Type;
-
-    /**
-     * 
-     */
-    public integer Msg_data;
-
-
-    /**
-     * 
-     */
-    public DVM 1..*;
-
-    /**
-     * @param ID 
-     * @param Type 
-     * @param Data
-     */
-    public void Message(void ID, void Type, void Data) {
-        // TODO implement here
+    void intInput(int input)
+    {
+        this.intData = input;
     }
 
+    void boolInput(boolean input)
+    {
+        this.boolData = input;
+    }
 }
+
