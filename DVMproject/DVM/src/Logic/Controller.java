@@ -17,12 +17,12 @@ public class Controller {
     public Payment Payment;
     public Title basket;
     public Stack DVMStack;
-    public C_NumberManager C_man;
 
     public Controller() {
-    	k=new JFrame();
+    	this.k=new JFrame();
+    	this.basket=null;
+    	this.Payment = new Payment();
     	Title_List=new ArrayList<Title>();
-    	C_man=new C_NumberManager();
     	Title_List.add(new Title("코카콜라",700));
     	Title_List.add(new Title("나랑드사이다",700));
     	Title_List.add(new Title("솔의눈",700));
@@ -43,7 +43,6 @@ public class Controller {
     	Title_List.add(new Title("몬스터",700));
     	Title_List.add(new Title("핫식스",700));
     	Title_List.add(new Title("레드불",700));
-        
     }
 
     public static void main(String[] args) {
@@ -63,8 +62,9 @@ public class Controller {
     				while(true) {
     					c.ShowInputLine();
     					delimiter=c.InputCnumber();
-    					if(delimiter==1)
+    					if(delimiter==1)//저장되지 않은 값을 입력한 경우
     						continue;
+    					//매니저 메뉴 출력
     					if(delimiter==2) {
     						while(true) {
     							c.ManShowTitle();
@@ -73,7 +73,7 @@ public class Controller {
     	    						while(true) {
     	    							int del2;
     	    							c.ManShowItem(delimiter);
-    	    							del2=c.ManSelectItem();
+    	    							del2=c.ManEditItem();
     	    							if(del2==0||del2==-2) {
     	    								if(del2==-2)
     	    									delimiter=-2;
@@ -202,7 +202,7 @@ public class Controller {
         k.setVisible(false);
         k=new ManItemMenu(Title_List.get(TitleID-1));
 	}
-	public int ManSelectItem() {
+	public int ManEditItem() {
     	int del=-1;
     	while(del==-1) {
     		System.out.print("");

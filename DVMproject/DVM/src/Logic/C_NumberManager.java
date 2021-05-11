@@ -24,7 +24,7 @@ public class C_NumberManager extends C_Number {
 		}while(numStr.equals("000000") || numStr.equals("111111"));
 		super.C_Number_t = Integer.parseInt(numStr);
 		C_Number cn = new C_Number(ti, DvmID);
-		C_List.put(super.C_Number_t, cn);
+		C_List.put(C_Number_t, cn);
 		//sendMessage()
 
 	}
@@ -44,15 +44,15 @@ public class C_NumberManager extends C_Number {
 	}
 
 
-	public void PopCnumber(int num) {
-		C_List.remove(num); // key값 C_Number_t인 값 제거
+	public void PopCnumber(int C_Number_t) {
+		C_List.remove(C_Number_t); // key값 C_Number_t인 값 제거
 	}
 
 
-	public int CheckCnumber(int num) {
-		if(super.M_Number == num) {
+	public int CheckCnumber(int C_Number_t) {
+		if(super.M_Number == C_Number_t) {
 			return 0;
-		}else if(C_List.containsKey(num)) { //존재하는 인증번호 true반환
+		}else if(C_List.containsKey(C_Number_t)) { //존재하는 인증번호 true반환
 			return 1;
 		}else {
 			return 2;
@@ -62,7 +62,7 @@ public class C_NumberManager extends C_Number {
 
 	@Override
 	public String toString() {
-		return "C_Number [음료명 :"+super.ti.Name + ", 자판기 id=" + super.DvmID + ", 인증번호=" + super.C_Number_t
+		return "C_Number [음료명 :"+super.ti.Name() + ", 자판기 id=" + super.DvmID + ", 인증번호=" + super.C_Number_t
 				+ "]";
 	}
 
