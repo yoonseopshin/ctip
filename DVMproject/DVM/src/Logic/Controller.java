@@ -73,7 +73,7 @@ public class Controller {
     	    						while(true) {
     	    							int del2;
     	    							c.ManShowItem(delimiter);
-    	    							del2=c.ManEditItem();
+    	    							del2=c.ManEditItem(delimiter);
     	    							if(del2==0||del2==-2) {
     	    								if(del2==-2)
     	    									delimiter=-2;
@@ -199,13 +199,36 @@ public class Controller {
         k.setVisible(false);
         k=new ManItemMenu(Title_List.get(TitleID-1));
 	}
-	public int ManEditItem() {
+	public int ManEditItem(int TitleID) {
     	int del=-1;
     	while(del==-1) {
     		System.out.print("");
-    		del=((ManTitleMenu)k).return_value;
+    		del=((ManItemMenu)k).return_value;
     	}
-    	return del;
+    	if(del==1){ //AddItem
+			k.setVisible(false);
+			k=new AddItemMenu();
+			{
+				int del2 = -1;
+				while (del2 == -1) {
+					System.out.print("");
+					del2 = ((AddItemMenu) k).return_value;
+				}
+				if (del2 == 0)
+					return del;
+				if (del2 == 1) {
+					Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).return_date));
+					return del;
+				}
+			}
+		}
+    	if(del==2){//delete item
+			Title_List.get(TitleID - 1).DeleteItem(((ManItemMenu)k).return_itemlist);
+			return del;
+		}
+    	if(del==0)
+    		return del;
+    	return -1;
 	}
 
     public void InfoCnumberError() {

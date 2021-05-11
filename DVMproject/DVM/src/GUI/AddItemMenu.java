@@ -110,13 +110,12 @@ public class AddItemMenu extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==add) {
-			return_value=0;
 			String y=(String)Yearselect.getSelectedItem();
 			String m=(String)Monthselect.getSelectedItem();
 			String d=(String)Dayselect.getSelectedItem();
 			return_date=Integer.parseInt(y.concat(m).concat(d));
-			System.out.println(return_date);
-			
+
+			return_value=1;
 		}
 		if(e.getSource()==cancel) {
 			return_value=0;

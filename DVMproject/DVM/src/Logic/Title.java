@@ -19,6 +19,7 @@ public class Title {
     public String Name(){
         return this.Name;
     }
+
     public int Price(){
         return this.Price;
     }
@@ -44,7 +45,7 @@ public class Title {
     	this.Item_List.add(item);
     }
     
-    public void DeleteItem(ArrayList<Item> ilist) {
+    public void DeleteItem(ArrayList<Integer> ilist) {
     	for(int i=0;i<ilist.size();i++){
     	    Item_List.remove(ilist.get(i));
         }
