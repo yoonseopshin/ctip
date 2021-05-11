@@ -265,7 +265,7 @@ public class Controller {
     	}
     	return -1;
     }
-	public void ReturnItem(Title t,int IfHold) {
+	public void ReturnItem(Title t,boolean IfHold) {
 		int del=-1;
     	k.setVisible(false);
 		k=new InfoReturnItemUI(t.Name());
@@ -273,6 +273,7 @@ public class Controller {
 			System.out.print("");
 			del=((InfoReturnItemUI)k).return_value;
 		}
+		t.UpdateStock(2,IfHold);
 	}
 
 
