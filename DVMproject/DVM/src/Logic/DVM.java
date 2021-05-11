@@ -2,15 +2,28 @@ package Logic;
 
 public class DVM
 {
-    public DVM(int ID, double Address)
-    {
-        this.ID =  ID;
-        this.Address =  ID;
-    }
-
     int ID; // 메세지 보낼 타겟 아이디
 
-    double Address; // 실제 주소
+    private double Address_X; // 실제 주소
+    private double Address_Y;
+    private boolean available = false; // 요청이 왔을때 재고 존재 여부
 
-    boolean available = false; // 요청이 왔을때 재고 존재 여부
+    public DVM(int ID, double X,double Y)
+    {
+        this.ID =  ID;
+        this.Address_X = X;
+        this.Address_Y = Y;
+    }
+    public int ID(){
+        return this.ID;
+    }
+    public double getX(){
+        return this.Address_X;
+    }
+    public double getY(){
+        return this.Address_Y;
+    }
+
+
+
 }

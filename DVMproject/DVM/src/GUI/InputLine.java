@@ -17,10 +17,11 @@ import java.awt.event.ActionListener;
 
 
 public class InputLine extends JFrame implements ActionListener{
-	public Timer timer = new Timer(60000, new ActionListener() {
+	public Timer timer = new Timer(180000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			return_value = -2;
+			timer.stop();
 		}
 	});
 
@@ -99,22 +100,22 @@ public class InputLine extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<num.length;i++) {
 			if(e.getSource()==num[i]) {
+				timer.restart();
 				if(txt.getText().length()<6)
 					txt.setText(txt.getText()+e.getActionCommand());
-				timer.restart();
-						
 			}
 		}
 		if(e.getSource()==Delete) {
+			timer.restart();
 			String before=txt.getText();
 			int k=before.length();
 			if(k>0) {
 			String after=before.substring(0, k-1);
 			txt.setText(after);
 			}
-			timer.restart();
 		}
 		if(e.getSource()==Enter) {
+			timer.stop();
 			if(txt.getText().length()<6) {
 				return_value=666;
 			}
@@ -125,11 +126,10 @@ public class InputLine extends JFrame implements ActionListener{
 				else
 					return_value=input;
 			}
-			timer.stop();
 		}
 		if(e.getSource()==Cancel) {
-			return_value = 0;
 			timer.stop();
+			return_value = 0;
 		}
 	}
 }
