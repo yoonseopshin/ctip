@@ -259,9 +259,18 @@ public class Controller {
     		return 0;
     	if(del>0) {
     		//payment=new payment(어쩌구);->reqcardpay/reqsmartpay 말고 생성자 넣는게 좋을듯..
-    		if(del==1)
-    			return 1;
-    		if(del==2)
+    		if(del==1){
+				//카드페이
+				System.out.print("카드페이 진행");
+				//여기는 test용
+				int n = Payment.CardPay();
+				if(n == 1){
+					ReturnItem(Title_List.get(0), false);
+				}
+				return 1;
+			}
+
+    		if(del==2)   // 스마트페이
     			return 2;
     	}
     	return -1;
@@ -274,6 +283,7 @@ public class Controller {
 			System.out.print("");
 			del=((InfoReturnItemUI)k).return_value;
 		}
+		System.out.println(t.Name()+"가 나왔습니다. 찾아가주세요");
 		t.UpdateStock(2,IfHold);
 	}
 

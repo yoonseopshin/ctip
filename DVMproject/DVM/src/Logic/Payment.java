@@ -15,35 +15,60 @@ public class Payment {
     public Message_Queue referto;
 
 
-    public void CardPay() {
+    public int CardPay() {
         if(DVMid>0) { // 선결제시
             //pay_confirm = Credit(t.price);   //외부의 카드결제 시스템 진행
             pay_confirm = true; //카드결제 성공
-            CM.CreateCnumber(title_id, DVMid); //인증번호 생성
-            CM.toString();  //인증번호 출력
+            if(pay_confirm){ //test용으로 성공이라 가정
+                System.out.println("카드결제 성공");
+                CM.CreateCnumber(title_id, DVMid); //인증번호 생성
+                CM.toString();  //인증번호 출력
+                return 1;
+            }else {
+                System.out.println("카드결제 실패");
+                return 0;
+            }
     	}
     	else {
             //pay_confirm = Credit(t.price);  //외부의 카드결제 시스템 진행
             pay_confirm = true; //카드결제 성공
-
+            if(pay_confirm){
+                System.out.println("카드결제 성공"); //test용으로 성공이라 가정
+                return 1;
+            }else {
+                System.out.println("카드결제 실패");
+                return 0;
+            }
     	}
 
     }
 
-    public void SmartPay() {
-    	if(DVMid>0) { // 선결제시
-            //pay_confirm = Smart(t.price);   //외부의 간편결제 시스템 진행
-            pay_confirm = true; //간편결제 성공
-            CM.CreateCnumber(title_id, DVMid); //인증번호 생성
-            CM.toString();  //인증번호 출력
-      	}
-      	else {
-            //pay_confirm = Smart(t.price);   //외부의 간편결제 시스템 진행
-            pay_confirm = true; //간편결제 성공
-
-
+    public int SmartPay() {
+        if(DVMid>0) { // 선결제시
+            //pay_confirm = Credit(t.price);   //외부의 카드결제 시스템 진행
+            pay_confirm = true; //카드결제 성공
+            if(pay_confirm){ //test용으로 성공이라 가정
+                System.out.println("카드결제 성공");
+                CM.CreateCnumber(title_id, DVMid); //인증번호 생성
+                CM.toString();  //인증번호 출력
+                return 1;
+            }else {
+                System.out.println("카드결제 실패");
+                return 0;
+            }
         }
-      	
+        else {
+            //pay_confirm = Credit(t.price);  //외부의 카드결제 시스템 진행
+            pay_confirm = true; //카드결제 성공
+            if(pay_confirm){
+                System.out.println("카드결제 성공"); //test용으로 성공이라 가정
+                return 1;
+            }else {
+                System.out.println("카드결제 실패");
+                return 0;
+            }
+        }
+
     }
 
  
