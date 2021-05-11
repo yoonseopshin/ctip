@@ -249,7 +249,7 @@ public class Controller {
     
     public int SelectPayment() {
     	int del=-1;
-    	while(del==-1) {
+    	while(del==-1) {  // gui와 main 연결
     		System.out.print("");
     		del=((PaymentMenu)k).return_value;
     	}

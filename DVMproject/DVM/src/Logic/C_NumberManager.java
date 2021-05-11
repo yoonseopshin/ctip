@@ -62,7 +62,7 @@ public class C_NumberManager extends C_Number {
 
 	@Override
 	public String toString() {
-		return "C_Number [음료명 :"+title_id+1 + ", 자판기 id=" + super.DvmID + ", 인증번호=" + super.C_Number_t
+		return "C_Number ["+title_id+1+"번째 음료" + ", 자판기 id=" + super.DvmID + ", 인증번호=" + super.C_Number_t
 				+ "]";
 	}
 
