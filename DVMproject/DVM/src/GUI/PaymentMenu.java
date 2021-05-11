@@ -18,6 +18,7 @@ public class PaymentMenu extends JFrame implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			return_value = -2;
+			timer.stop();
 		}
 	});
 

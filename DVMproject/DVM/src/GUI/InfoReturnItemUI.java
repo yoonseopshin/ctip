@@ -9,8 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import Logic.Title;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -56,8 +54,8 @@ public class InfoReturnItemUI extends JFrame{
 		public void actionPerformed (ActionEvent e) {
 			label.setText(s+"초 후 메인화면으로 돌아갑니다.");
 			if(s==0) {
-				timer.stop();
 				return_value=0;
+				timer.stop();
 			}
 			s--;
 		}

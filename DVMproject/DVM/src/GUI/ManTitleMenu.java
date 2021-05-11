@@ -19,6 +19,7 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			return_value = -2;
+			timer.stop();
 		}
 	});
 
@@ -85,7 +86,6 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 			if(e.getSource()==Title_list[i]) {
 				timer.stop();
 				return_value=i+1;
-				System.out.println(return_value);
 			}
 		}
 		if(e.getSource()==exit) {

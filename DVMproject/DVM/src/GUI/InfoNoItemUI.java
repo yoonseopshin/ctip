@@ -6,20 +6,26 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import Logic.*;
 
 public class InfoNoItemUI extends JFrame implements ActionListener{
+	public Timer timer = new Timer(180000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			return_value = -2;
+			timer.stop();
+		}
+	});
 	private JButton find;
 	private JButton cancel;
 	
 	public int return_value= -1;
 	
 	public InfoNoItemUI(Title t) {
+		timer.start();
+
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
 		
@@ -64,9 +70,11 @@ public class InfoNoItemUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==find) {
+			timer.stop();
 			return_value=1;
 		}
 		if(e.getSource()==cancel) {
+			timer.stop();
 			return_value=0;
 		}
 		

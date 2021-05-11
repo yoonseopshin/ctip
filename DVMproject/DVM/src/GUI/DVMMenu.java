@@ -7,20 +7,26 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Stack;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import Logic.*;
 
 public class DVMMenu extends JFrame implements ActionListener{
+	public Timer timer = new Timer(180000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			return_value = -2;
+			timer.stop();
+		}
+	});
+
 	private JButton[] DVM;
 	private JButton cancel;
 	private Stack<DVM> stk;
 	public int return_value= -1;
 	
 	public DVMMenu(Stack<DVM> DVM_stack) {
+		timer.start();
 		stk=DVM_stack;
 		
 		this.setPreferredSize(new Dimension(600,800));

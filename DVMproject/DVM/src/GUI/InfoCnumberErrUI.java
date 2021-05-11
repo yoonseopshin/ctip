@@ -67,8 +67,8 @@ public class InfoCnumberErrUI extends JFrame implements ActionListener{
 		}
 		label.setText(s+"초 후 이전화면으로 돌아갑니다.");
 		if(s==0) {
-			timer.stop();
 			return_value=0;
+			timer.stop();
 		}
 		s--;
 	}
