@@ -83,14 +83,16 @@ public class DVMMenu extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<stk.size();i++) {
 			if(e.getSource()==DVM[i]) {
+				timer.stop();
 				return_value=stk.get(i).ID();
 				System.out.println(return_value);
-				this.setVisible(false);
+				//this.setVisible(false);
 			}
 		}
 		if(e.getSource()==cancel) {
+			timer.stop();
 			return_value=0;
-			this.setVisible(false);
+			//this.setVisible(false);
 		}
 			
 	}

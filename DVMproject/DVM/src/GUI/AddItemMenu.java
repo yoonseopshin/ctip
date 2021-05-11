@@ -7,13 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class AddItemMenu extends JFrame implements ActionListener{
+	public Timer timer = new Timer(180000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			return_value = -2;
+			timer.stop();
+		}
+	});
 	
 	private JComboBox<String> Yearselect; 
 	private JComboBox<String> Monthselect;
@@ -26,6 +29,8 @@ public class AddItemMenu extends JFrame implements ActionListener{
 	public int return_date;
 	
 	public AddItemMenu(){
+		timer.start();
+
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
 		
@@ -72,6 +77,9 @@ public class AddItemMenu extends JFrame implements ActionListener{
 		Yearselect.setFont(Yearselect.getFont().deriveFont(20.0f));
 		Monthselect.setFont(Monthselect.getFont().deriveFont(20.0f));
 		Dayselect.setFont(Dayselect.getFont().deriveFont(20.0f));
+		Yearselect.addActionListener(this);
+		Monthselect.addActionListener(this);
+		Dayselect.addActionListener(this);
 		expdatepanel.add(Yearselect);
 		expdatepanel.add(y);
 		expdatepanel.add(Monthselect);
@@ -109,15 +117,18 @@ public class AddItemMenu extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource()==Yearselect||e.getSource()==Monthselect||e.getSource()==Dayselect)
+			timer.restart();
 		if(e.getSource()==add) {
 			String y=(String)Yearselect.getSelectedItem();
 			String m=(String)Monthselect.getSelectedItem();
 			String d=(String)Dayselect.getSelectedItem();
 			return_date=Integer.parseInt(y.concat(m).concat(d));
-
+			timer.stop();
 			return_value=1;
 		}
 		if(e.getSource()==cancel) {
+			timer.stop();
 			return_value=0;
 		}
 	}
