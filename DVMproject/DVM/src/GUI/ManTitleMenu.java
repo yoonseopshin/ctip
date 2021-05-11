@@ -84,7 +84,7 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 		for(int i=0;i<temp.size();i++) {
 			if(e.getSource()==Title_list[i]) {
 				timer.stop();
-				return_value=i;
+				return_value=i+1;
 				System.out.println(return_value);
 			}
 		}
