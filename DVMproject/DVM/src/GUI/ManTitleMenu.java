@@ -1,7 +1,6 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import javax.swing.Timer;
 import Logic.*;
 
 public class ManTitleMenu extends JFrame implements ActionListener{
-	public Timer timer = new Timer(3000, new ActionListener() {
+	public Timer timer = new Timer(180000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			return_value = -2;
@@ -44,29 +43,17 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 		label.setFont(label.getFont().deriveFont(15.0f));
 		labelpanel.add(label);
 
-		JPanel titlelistpanel = new JPanel();
+		JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(),1));
 		JScrollPane titlepanel = new JScrollPane(titlelistpanel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		titlelistpanel.setPreferredSize(new Dimension(600,76*tlist.size()));
+		titlelistpanel.setPreferredSize(new Dimension(600,70*tlist.size()));
 		Title_list=new JButton[tlist.size()];
 		for(int i=0;i<tlist.size();i++) {
-			Title_list[i]=new JButton("<html><center><strong>" + tlist.get(i).Name+ "</strong><br>재고수량 : " + 
-		tlist.get(i).Item_List.size()+"</center></html>");
-			Title_list[i].setPreferredSize(new Dimension(600,70));
+			Title_list[i]=new JButton("<html><center><strong>" + tlist.get(i).Name()+ "</strong><br>재고수량 : " +
+		tlist.get(i).Item_List().size()+"</center></html>");
+			//Title_list[i].setPreferredSize(new Dimension(600,70));
 			Title_list[i].addActionListener(this);
 			titlelistpanel.add(Title_list[i]);
 		}
-		/*
-		JPanel titlepanel = new JPanel(new GridLayout(10,1));
-		titlepanel.setPreferredSize(new Dimension(600,700));
-		
-		
-		Title_list=new JButton[Title_List.size()];
-		for(int i=0;i<temp.size();i++) {
-			Title_list[i]=new JButton(" "+temp.get(i).name + "     재고수량: " + temp.get(i).stock);
-			Title_list[i].addActionListener(this);
-			titlepanel.add(Title_list[i]);
-		}
-		*/
 		
 		//취소패널
 		JPanel exitpanel = new JPanel();
@@ -96,17 +83,17 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		for(int i=0;i<temp.size();i++) {
 			if(e.getSource()==Title_list[i]) {
-				return_value=temp.get(i).ID;
+				timer.stop();
+				return_value=i;
 				System.out.println(return_value);
-				this.setVisible(false);
 			}
 		}
 		if(e.getSource()==exit) {
+			timer.stop();
 			return_value=0;
 			this.setVisible(false);
 		}
 
-		
 	}
 
 }

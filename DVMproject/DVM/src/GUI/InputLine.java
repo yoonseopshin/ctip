@@ -49,7 +49,7 @@ public class InputLine extends JFrame implements ActionListener{
 		inputpanel.setPreferredSize(new Dimension(600,100));
 		txt = new JTextField("", SwingConstants.CENTER);
 		txt.setHorizontalAlignment(JTextField.CENTER);
-		txt.setPreferredSize(new Dimension(450,100));
+		txt.setPreferredSize(new Dimension(400,100));
 		txt.setFont(txt.getFont().deriveFont(40.0f));
 		Delete = new JButton("지우기");
 		Delete.setPreferredSize(new Dimension(130,100));
@@ -99,7 +99,7 @@ public class InputLine extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<num.length;i++) {
 			if(e.getSource()==num[i]) {
-				if(txt.getText().length()<8)
+				if(txt.getText().length()<6)
 					txt.setText(txt.getText()+e.getActionCommand());
 				timer.restart();
 						
@@ -115,7 +115,7 @@ public class InputLine extends JFrame implements ActionListener{
 			timer.restart();
 		}
 		if(e.getSource()==Enter) {
-			if(txt.getText().length()<8) {
+			if(txt.getText().length()<6) {
 				return_value=666;
 			}
 			else {

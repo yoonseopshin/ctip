@@ -5,23 +5,32 @@ import java.util.*;
 
 public class Title {
 
-    public String Name;
-    public Integer ID;
-    public Float Price;
-    public ArrayList<Item> Item_List;
-    public Integer Hold;
+    private String Name;
+    private int Price;
+    private ArrayList<Item> Item_List;
+    private Integer Hold;
 	
-    public Title(String Name, Integer ID, Float Price) {
+    public Title(String Name, int price) {
     	this.Name = Name;
-    	this.ID = ID;
     	this.Price = Price;
     	this.Hold = 0;
     	this.Item_List = new ArrayList<>();
     }
+    public String Name(){
+        return this.Name();
+    }
+    public int Price(){
+        return this.Price();
+    }
+    public ArrayList<Item> Item_List(){
+        return this.Item_List;
+    }
     
-    public void UpdateStock(boolean IfHold) {
-    	if(IfHold)
-    		this.Hold ++;
+    public void UpdateStock(int i, boolean IfHold) {
+    	if(IfHold) {
+            this.Hold++;
+            this.Item_List.remove(0);
+        }
     }
     
     public boolean CheckStock() {
@@ -35,7 +44,9 @@ public class Title {
     	this.Item_List.add(item);
     }
     
-    public void DeleteItem(Integer index) {
-    	Item_List.remove(index);
+    public void DeleteItem(ArrayList<Item> ilist) {
+    	for(int i=0;i<ilist.size();i++){
+    	    Item_List.remove(ilist.get(i));
+        }
     }
 }

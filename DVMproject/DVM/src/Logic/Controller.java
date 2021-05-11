@@ -3,7 +3,6 @@ package Logic;
 
 import java.util.*;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.util.ArrayList;
 
@@ -24,26 +23,26 @@ public class Controller {
     	k=new JFrame();
     	Title_List=new ArrayList<Title>();
     	C_man=new C_NumberManager();
-    	Title_List.add(new Title("코카콜라",1,(float)700));
-    	Title_List.add(new Title("나랑드사이다",2,(float)700));
-    	Title_List.add(new Title("솔의눈",3,(float)700));
-    	Title_List.add(new Title("게토레이",4,(float)700));
-    	Title_List.add(new Title("스프라이트",5,(float)700));
-    	Title_List.add(new Title("포카리 스웨트",6,(float)700));
-    	Title_List.add(new Title("닥터페퍼",7,(float)700));
-    	Title_List.add(new Title("맥콜",8,(float)700));
-    	Title_List.add(new Title("제티",9,(float)700));
-    	Title_List.add(new Title("제주삼다수",10,(float)700));
-    	Title_List.add(new Title("데자와",11,(float)700));
-    	Title_List.add(new Title("아침햇살",12,(float)700));
-    	Title_List.add(new Title("밀키스",13,(float)700));
-    	Title_List.add(new Title("레쓰비",14,(float)700));
-    	Title_List.add(new Title("조지아",15,(float)700));
-    	Title_List.add(new Title("칠성사이다",16,(float)700));
-    	Title_List.add(new Title("티오피",17,(float)700));
-    	Title_List.add(new Title("몬스터",18,(float)700));
-    	Title_List.add(new Title("핫식스",19,(float)700));
-    	Title_List.add(new Title("레드불",20,(float)700));
+    	Title_List.add(new Title("코카콜라",700));
+    	Title_List.add(new Title("나랑드사이다",700));
+    	Title_List.add(new Title("솔의눈",700));
+    	Title_List.add(new Title("게토레이",700));
+    	Title_List.add(new Title("스프라이트",700));
+    	Title_List.add(new Title("포카리 스웨트",700));
+    	Title_List.add(new Title("닥터페퍼",700));
+    	Title_List.add(new Title("맥콜",700));
+    	Title_List.add(new Title("제티",700));
+    	Title_List.add(new Title("제주삼다수",700));
+    	Title_List.add(new Title("데자와",700));
+    	Title_List.add(new Title("아침햇살",700));
+    	Title_List.add(new Title("밀키스",700));
+    	Title_List.add(new Title("레쓰비",700));
+    	Title_List.add(new Title("조지아",700));
+    	Title_List.add(new Title("칠성사이다",700));
+    	Title_List.add(new Title("티오피",700));
+    	Title_List.add(new Title("몬스터",700));
+    	Title_List.add(new Title("핫식스",700));
+    	Title_List.add(new Title("레드불",700));
         
     }
 
@@ -142,11 +141,10 @@ public class Controller {
     	if(del==0)
     		return 0;
     	if(del>0) {
-			for(int i=0;i<Title_List.size();i++) {
-				if(Title_List.get(i).ID==del) {
-					basket=Title_List.get(i);
-				}
-			}
+    		if(del<Title_List.size())
+    			basket=Title_List.get(del);
+    		else
+    			return -1;
 			if(basket.CheckStock())
 				return 1;
 			else 
@@ -172,7 +170,7 @@ public class Controller {
     		return 0;
 
     	else if(del>0) {
-			if(!C_man.CheckCnumber(del)) {
+			if(C_man.CheckCnumber(del)==-1) {
 				InfoCnumberError();
 				return 1;
 			}
@@ -203,7 +201,6 @@ public class Controller {
 	public void ManShowItem(int TitleID) {
         k.setVisible(false);
         k=new ManItemMenu(Title_List.get(TitleID-1));
-		
 	}
 	public int ManSelectItem() {
     	int del=-1;
@@ -212,8 +209,8 @@ public class Controller {
     		del=((ManTitleMenu)k).return_value;
     	}
     	return del;
-		
 	}
+
     public void InfoCnumberError() {
     	int del=-1;
         k.setVisible(false);
