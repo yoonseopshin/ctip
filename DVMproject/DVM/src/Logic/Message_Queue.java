@@ -18,7 +18,7 @@ public class Message_Queue
     private int Data = -1;
     private int thisDVMID = -1;
 
-    initDVMID(int id)
+    public void initDVMID(int id)
     {
         this.thisDVMID = id;
     }
@@ -98,7 +98,7 @@ public class Message_Queue
 
         channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
         String queueName = channel.queueDeclare().getQueue();
-        String key = "DVM"+thisDVMID;
+        String key[] = {"thisDVMID"};
         for(String bindingKey : key)
         {
             channel.queueBind(queueName,EXCHANGE_NAME,bindingKey);
