@@ -13,7 +13,7 @@ public class Message_Queue
 {
     private final static String QUEUE_NAME = "DVM_Network";
     private static final String EXCHANGE_NAME = "direct_logs";
-    Connection connection
+    Connection connection;
 
     ConnectionFactory factory = new ConnectionFactory();
 
