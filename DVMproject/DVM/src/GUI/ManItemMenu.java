@@ -113,7 +113,6 @@ public class ManItemMenu extends JFrame implements ActionListener{
 			for(int i=0;i<temp.size();i++) {
 				if(Item_list[i].isSelected()) {
 					return_itemlist.add(i);
-					System.out.print(i);
 				}
 			}
 			return_value=2;

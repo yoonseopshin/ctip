@@ -10,7 +10,7 @@ public class Title {
     private ArrayList<Item> Item_List;
     private Integer Hold;
 	
-    public Title(String Name, int price) {
+    public Title(String Name, int Price) {
     	this.Name = Name;
     	this.Price = Price;
     	this.Hold = 0;

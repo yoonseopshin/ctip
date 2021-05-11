@@ -76,7 +76,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		for(int i=0;i<menu.length;i++) {
 			if(e.getSource()==menu[i]) {
 				timer.stop();
-				return_value = i;
+				return_value = i+1;
 
 			}
 		}

@@ -141,8 +141,8 @@ public class Controller {
     	if(del==0)
     		return 0;
     	if(del>0) {
-    		if(del<Title_List.size())
-    			basket=Title_List.get(del);
+    		if(del<=Title_List.size())
+    			basket=Title_List.get(del-1);
     		else
     			return -1;
 			if(basket.CheckStock())
@@ -243,6 +243,7 @@ public class Controller {
     
     public void PrintSelectPay() {
         k.setVisible(false);
+        System.out.print(basket.Price());
         k=new PaymentMenu(basket);
     }
     
@@ -359,7 +360,7 @@ public class Controller {
      */
     public void init() {
         basket=null;
-        Payment=null;
+        Payment=new Payment();
     }
     
 
