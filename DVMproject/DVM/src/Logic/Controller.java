@@ -75,21 +75,17 @@ public class Controller {
     	    							c.ManShowItem(delimiter);
     	    							del2=c.ManEditItem(delimiter);
     	    							if(del2==0||del2==-2) {
-    	    								if(del2==-2)
-    	    									delimiter=-2;
+    	    								if(del2==-2) delimiter=-2;
     	    								break;
     	    							}
     	    						}
     	    					}
-    	    					if(delimiter==0||delimiter==-2)
-    	    						break;
+    	    					if(delimiter==0||delimiter==-2) break;
     						}
     					}
-    					if(delimiter==0||delimiter==-2)
-    						break;
+    					if(delimiter==0||delimiter==-2) break;
     				}
-    				if(delimiter==0)
-    					continue;
+    				if(delimiter==0) continue;
     			}
     			//재고가 있는 음료 선택
     			else if(delimiter==1) {
@@ -106,8 +102,10 @@ public class Controller {
     				c.ReqFindDVM();
     			}
     			//입력시간초과
-    			if(delimiter==-2)
-    				break;
+    			if(delimiter==-2) {
+    				c.init();
+					break;
+				}
     			
     		}
     	}
@@ -177,6 +175,7 @@ public class Controller {
 			}
 			else if(check==1){
 				//ReturnItem();
+				//return 0;
 			}
 			else if(check==0)
 				return 2;
@@ -263,7 +262,6 @@ public class Controller {
     			return 1;
     		if(del==2)
     			return 2;
-    		
     	}
     	return -1;
     }
@@ -271,15 +269,14 @@ public class Controller {
     public void InfoNoItem() {
         k.setVisible(false);
         k=new InfoNoItemUI(basket);
-    } 
+    }
+
     public void ReqFindDVM() {
 		int del=-1;
 		while(del==-1) {
 			System.out.print("");
 			del=((InfoNoItemUI)k).return_value;
 		}
-		// TODO Auto-generated method stub
-		
 	}
 
     /**
