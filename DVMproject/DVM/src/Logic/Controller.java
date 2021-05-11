@@ -264,8 +264,11 @@ public class Controller {
 				System.out.print("카드페이 진행");
 				//여기는 test용
 				int n = Payment.CardPay();
-				if(n == 1){
+				if(n == 1){ // 그냥 결제 성공
 					ReturnItem(Title_List.get(0), false);
+				}else if(n == 2){ // 선결제 성공
+
+				}else { //n==0 결제 실패
 				}
 				return 1;
 			}

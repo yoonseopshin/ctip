@@ -23,7 +23,7 @@ public class Payment {
                 System.out.println("카드결제 성공");
                 CM.CreateCnumber(title_id, DVMid); //인증번호 생성
                 CM.toString();  //인증번호 출력
-                return 1;
+                return 2; //선결제 성공
             }else {
                 System.out.println("카드결제 실패");
                 return 0;
@@ -51,7 +51,7 @@ public class Payment {
                 System.out.println("카드결제 성공");
                 CM.CreateCnumber(title_id, DVMid); //인증번호 생성
                 CM.toString();  //인증번호 출력
-                return 1;
+                return 2;
             }else {
                 System.out.println("카드결제 실패");
                 return 0;
