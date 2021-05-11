@@ -15,10 +15,20 @@ import javax.swing.Timer;
 import Logic.Title;
 
 public class InfoCnumberErrUI extends JFrame implements ActionListener{
-	public Timer timer = new Timer(1000, this);
+	private int s=5;
+	private Timer timer = new Timer(1000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			label.setText(s+"초 후 이전화면으로 돌아갑니다.");
+			if(s==0) {
+				return_value=0;
+				timer.stop();
+			}
+			s--;
+		}
+	});
 	private JButton confirm;
 	private JLabel label;
-	private int s=5;
 	public int return_value= -1;
 	
 	public InfoCnumberErrUI() {
@@ -64,13 +74,7 @@ public class InfoCnumberErrUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==confirm) {
 			return_value=0;
-		}
-		label.setText(s+"초 후 이전화면으로 돌아갑니다.");
-		if(s==0) {
-			return_value=0;
 			timer.stop();
 		}
-		s--;
 	}
-
 }

@@ -50,7 +50,7 @@ public class InfoReturnItemUI extends JFrame{
 		new InfoReturnItemUI("코카콜라");
 
 	}
-	public Timer timer = new Timer(1000, new ActionListener(){   
+	private Timer timer = new Timer(1000, new ActionListener(){
 		public void actionPerformed (ActionEvent e) {
 			label.setText(s+"초 후 메인화면으로 돌아갑니다.");
 			if(s==0) {

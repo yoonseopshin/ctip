@@ -15,7 +15,7 @@ import javax.swing.Timer;
 import Logic.*;
 
 public class ManTitleMenu extends JFrame implements ActionListener{
-	public Timer timer = new Timer(180000, new ActionListener() {
+	private Timer timer = new Timer(180000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			return_value = -2;

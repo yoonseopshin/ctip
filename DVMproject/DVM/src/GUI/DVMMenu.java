@@ -12,7 +12,7 @@ import javax.swing.*;
 import Logic.*;
 
 public class DVMMenu extends JFrame implements ActionListener{
-	public Timer timer = new Timer(180000, new ActionListener() {
+	private Timer timer = new Timer(180000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			return_value = -2;

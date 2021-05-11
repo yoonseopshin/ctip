@@ -1,24 +1,23 @@
 package Logic;
 
 
-import java.util.*;
-
-import javax.swing.JFrame;
-import java.util.ArrayList;
-
 import GUI.*;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * 
  */
-public class Controller {
+public class Controller2 {
 	private JFrame k;
-    public ArrayList<Title> Title_List;
+    private ArrayList<Title> Title_List;
     private Payment Payment;
     private Title basket;
     private Stack DVMStack;
 
-    public Controller() {
+    public Controller2() {
     	this.k=new JFrame();
     	this.basket=null;
     	this.Payment = new Payment();
@@ -47,9 +46,10 @@ public class Controller {
 
     public static void main(String[] args) {
     	//선언
-    	Controller c= new Controller();
+    	Controller2 c= new Controller2();
     	c.Title_List.get(0).AddItem(new Item(20200101));
-    	
+
+    	c.ReqMainMenu();
     	//시스템
 		/*
     	int delimiter;
@@ -115,13 +115,13 @@ public class Controller {
     				c.init();
 					break;
 				}
-    			
+
     		}
     	}
 
 		 */
     }
-/*
+
 	public void ReqMainMenu() {
     	int del=-1;
     	k.setVisible(false);
@@ -130,91 +130,137 @@ public class Controller {
     		System.out.print("");
     		del=((Sleep)k).return_value;
     	}
+    	ShowMainMenu();
+    	return;
     }
     
     public void ShowMainMenu() {
     	k.setVisible(false);
     	k=new MainMenu(Title_List);
+		InputSelect();
     }
     
-    public int InputSelect() {
+    public void InputSelect() {
     	int del=-1;
     	while(del==-1) {
     		System.out.print("");
     		del=((MainMenu)k).return_value;
     	}
-    	if(del==-2)
-    		return -2;
-    	if(del==0)
-    		return 0;
-    	if(del>0) {
+    	if(del==-2) {
+			ReqMainMenu();return;
+		}
+    	else if(del==0) {
+			ShowInputLine();return;
+		}
+    	else if(del>0) {
     		if(del<=Title_List.size())
     			basket=Title_List.get(del-1);
-    		else
-    			return -1;
-			if(basket.CheckStock())
-				return 1;
-			else 
-				return 2;
+    		else {
+    			//error
+			}
+			if(basket.CheckStock()) {
+				PrintSelectPay();return;
+			}
+			else {
+				InfoNoItem();return;
+			}
     	}
-    	return -1;
+    	else {
+    	//	error
+    	}
     }
     
     public void ShowInputLine() {
     	k.setVisible(false);
     	k=new InputLine();
+    	InputCnumber();
+    	return;
     }
     
-    public int InputCnumber() {
+    public void InputCnumber() {
     	int del=-1;
     	while(del==-1) {
     		System.out.print("");
     		del=((InputLine)k).return_value;
     	}
-    	if(del==-2)
-    		return -2;
-    	if(del==0)
-    		return 0;
-
+    	if(del==-2) {
+			ReqMainMenu();return;
+		}
+    	else if(del==0) {
+			ShowMainMenu();return;
+		}
     	else if(del>0) {
     		int check=Payment.CM.CheckCnumber(del);
 			if(check==-1) {
 				InfoCnumberError();
-				return 1;
+				ShowInputLine();
+				return;
 			}
 			else if(check==1){
 				int t = Payment.CM.C_List.get(del).getTitle_id();
 				ReturnItem(Title_List.get(t-1),true);
-				return 0;
+				return;
 			}
-			else if(check==0)
-				return 2;
+			else if(check==0) {
+				ManShowTitle();return;
+			}
     	}
-    	return -1;
+    	else{
+    		//error
+		}
     }
+
+    public void InfoCnumberError() {
+		int del=-1;
+		k.setVisible(false);
+		k=new InfoCnumberErrUI();
+		while(del==-1) {
+			System.out.print("");
+			del=((InfoCnumberErrUI)k).return_value;
+		}
+	}
+
 	public void ManShowTitle() {
         k.setVisible(false);
         k=new ManTitleMenu(Title_List);
+		ManSelectTitle();
+		return;
 	}
-	public int ManSelectTitle() {
+	public void ManSelectTitle() {
     	int del=-1;
     	while(del==-1) {
     		System.out.print("");
     		del=((ManTitleMenu)k).return_value;
     	}
-		return del;
+		if(del==-2) {
+			ReqMainMenu();return;
+		}
+		else if(del==0) {
+			ShowMainMenu();return;
+		}
+		else if(del>0) {
+			ManShowItem(del);return;
+		}
 	}
 	public void ManShowItem(int TitleID) {
         k.setVisible(false);
         k=new ManItemMenu(Title_List.get(TitleID-1));
+		ManEditItem(TitleID);
+		return;
 	}
-	public int ManEditItem(int TitleID) {
+	public void ManEditItem(int TitleID) {
     	int del=-1;
     	while(del==-1) {
     		System.out.print("");
     		del=((ManItemMenu)k).return_value;
     	}
-    	if(del==1){ //AddItem
+    	if(del==-2){
+    		ReqMainMenu();return;
+    	}
+    	else if(del==0) {
+			ManShowTitle();return;
+		}
+    	else if(del==1){ //AddItem
 			k.setVisible(false);
 			k=new AddItemMenu();
 			{
@@ -223,38 +269,40 @@ public class Controller {
 					System.out.print("");
 					del2 = ((AddItemMenu) k).return_value;
 				}
-				if (del2 == 0)
-					return del;
+				if (del2 == -2) {
+					ReqMainMenu();return;
+				}
+				if (del2==0) {
+					ManShowItem(TitleID);return;
+				}
 				if (del2 == 1) {
 					Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).return_date));
-					return del;
+					ManShowItem(TitleID);
+					return;
 				}
 			}
 		}
     	if(del==2){//delete item
 			Title_List.get(TitleID - 1).DeleteItem(((ManItemMenu)k).return_itemlist);
-			return del;
+			ManShowItem(TitleID);
+			return;
 		}
-    	if(del==0)
-    		return del;
-    	return -1;
+    	else{
+    		//error
+		}
 	}
-
-    public void InfoCnumberError() {
-    	int del=-1;
-        k.setVisible(false);
-        k=new InfoCnumberErrUI();
-    	while(del==-1) {
-    		System.out.print("");
-    		del=((InfoCnumberErrUI)k).return_value;
-    	}
-    }
     
     public void PrintSelectPay() {
         k.setVisible(false);
         k=new PaymentMenu(basket);
+        SelectPayment();
+        return;
     }
-    
+	public void CancelItem() {
+		init();
+		ShowMainMenu();
+		return;
+	}
     public int SelectPayment() {
     	int del=-1;
     	while(del==-1) {
@@ -262,15 +310,15 @@ public class Controller {
     		del=((PaymentMenu)k).return_value;
     	}
     	if(del==-2)
-    		return -2;
+    		ReqMainMenu();
     	if(del==0)
-    		return 0;
+    		CancelItem();
     	if(del>0) {
     		//payment=new payment(어쩌구);->reqcardpay/reqsmartpay 말고 생성자 넣는게 좋을듯..
     		if(del==1)
-    			return 1;
+    			ShowCardPay();
     		if(del==2)
-    			return 2;
+    			ShowSmartPay();
     	}
     	return -1;
     }
@@ -300,6 +348,7 @@ public class Controller {
 			del=((InfoReturnItemUI)k).return_value;
 		}
 		t.UpdateStock(2,IfHold);
+		ShowMainMenu();
 	}
 
 	public void InfoNoItem() {
@@ -314,7 +363,6 @@ public class Controller {
 			del=((InfoNoItemUI)k).return_value;
 		}
 	}
- */
     /**
      * 
      */
@@ -333,9 +381,7 @@ public class Controller {
     /**
      * 
      */
-    public void CancelItem() {
-        // TODO implement here
-    }
+
 
 
     /**
