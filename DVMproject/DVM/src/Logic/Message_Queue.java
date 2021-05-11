@@ -115,6 +115,7 @@ public class Message_Queue
             }
         };
         channel.basicConsume(queueName,true,consumer);
+        return "임시로 넣어논 리턴값";
     }
 
    /* //메세지 생성 및 전송
