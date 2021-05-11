@@ -13,37 +13,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.Timer;
-
-import Logic.*;
 
 public class ManItemMenu extends JFrame implements ActionListener{
-	public Timer timer = new Timer(60000, new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			return_value = -2;
-		}
-	});
-
 	private JCheckBox[] Item_list;
 	private JButton exit;
 	private JButton add;
 	private JButton delete;
-	private ArrayList<Item> temp;
+	private static tempTitle3 Title;
+	ArrayList<tempItem> temp;
 	
-	public int return_value= -1;
-	public ArrayList<Integer> return_itemlist;
+	private static int return_value= -1;
+	ArrayList<tempItem> return_itemlist;
 	
 	
-	public ManItemMenu(Title t) {
+	public ManItemMenu(tempTitle3 t) {
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
-		temp= t.Item_List;
+		Title=t;
+		temp= t.item_list;
 
 		//라벨 패널
 		JPanel labelpanel = new JPanel();
 		labelpanel.setPreferredSize(new Dimension(600,30));
-		JLabel label = new JLabel("음료: "+t.Name+"     변경할 재고를 선택하세요");
+		JLabel label = new JLabel("음료: "+t.name+"     변경할 재고를 선택하세요");
 		label.setFont(label.getFont().deriveFont(15.0f));
 		labelpanel.add(label);
 		//아이템패널
@@ -52,9 +44,7 @@ public class ManItemMenu extends JFrame implements ActionListener{
 		itemlistpanel.setPreferredSize(new Dimension(600,56*temp.size()));
 		Item_list=new JCheckBox[30];
 		for(int i=0;i<temp.size();i++) {
-			String expdate=Integer.toString(temp.get(i).Expiration_Date);
-			Item_list[i]=new JCheckBox("ID: "+(i+1) + "     유통기한: " + expdate.substring(0, 4)+"-"+
-			expdate.substring(4, 6)+"-"+expdate.substring(6, 8));
+			Item_list[i]=new JCheckBox("ID: "+temp.get(i).ID + "     유통기한: " + temp.get(i).expdate);
 			Item_list[i].setPreferredSize(new Dimension(600,50));
 			itemlistpanel.add(Item_list[i]);
 		}
@@ -81,48 +71,57 @@ public class ManItemMenu extends JFrame implements ActionListener{
 		setVisible(true);
 	}
 	//test
-	/*
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Controller c=new Controller();
-    	c.Title_List.get(0).AddItem(new Item(20200101));
-    	c.Title_List.get(0).AddItem(new Item(20200102));
-    	c.Title_List.get(0).AddItem(new Item(20200103));
-    	c.Title_List.get(0).AddItem(new Item(20200104));
-    	c.Title_List.get(0).AddItem(new Item(20200105));
-    	c.Title_List.get(0).AddItem(new Item(20200106));
-    	c.Title_List.get(0).AddItem(new Item(20200107));
-    	c.Title_List.get(0).AddItem(new Item(20200108));
-    	c.Title_List.get(0).AddItem(new Item(20200109));
-    	new ManItemMenu(c.Title_List.get(0));
+		ArrayList<tempItem> i=new ArrayList<tempItem>();
+		for(int j=0;j<30;j++) {
+			i.add(new tempItem(j+1,"2020-01-01"));
+		}
+		
+		tempTitle3 t=new tempTitle3("코카콜라",i);
+		new ManItemMenu(t);
+		
 		
 
 	}
-	*/
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		return_itemlist=new ArrayList<Integer>();
+		return_itemlist=new ArrayList<tempItem>();
 		if(e.getSource()==add) {
-			timer.stop();
 			return_value=1;
 		}
 		if(e.getSource()==delete) {
-			timer.stop();
 			return_value=2;
 			for(int i=0;i<temp.size();i++) {
 				if(Item_list[i].isSelected()) {
-					return_itemlist.add(i);
-					System.out.print(i);
+				return_itemlist.add(temp.get(i));
+				System.out.println(return_itemlist.get(return_itemlist.size()-1).ID);
 				}
 			}
 		}
 		if(e.getSource()==exit) {
-			timer.stop();
 			return_value=0;
+			this.setVisible(false);
 		}
 		
 	}
 }
 
+class tempTitle3{
+	String name;
+	ArrayList<tempItem> item_list;
+	tempTitle3(String name,ArrayList<tempItem> i){
+		this.item_list=i;
+		this.name=name;
+	}
+}
+class tempItem{
+	int ID;
+	String expdate;
+	tempItem(int ID,String s){
+		this.ID=ID;
+		this.expdate=s;
+	}
+}

@@ -15,15 +15,15 @@ import javax.swing.JPanel;
 
 public class AddItemMenu extends JFrame implements ActionListener{
 	
-	private JComboBox<String> Yearselect; 
-	private JComboBox<String> Monthselect;
-	private JComboBox<String> Dayselect;
+	private JComboBox Yearselect; 
+	private JComboBox Monthselect;
+	private JComboBox Dayselect;
 
 	private JButton cancel;
 	private JButton add;
 	
-	public int return_value= -1;
-	public int return_date;
+	private static int return_value= -1;
+	private static String return_date;
 	
 	public AddItemMenu(){
 		this.setPreferredSize(new Dimension(600,800));
@@ -48,27 +48,21 @@ public class AddItemMenu extends JFrame implements ActionListener{
 		//선택창
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
-		String[] year_list=new String[50];
-		String[] month_list=new String[12];
-		String[] day_list=new String[31];
+		Integer[] year_list=new Integer[50];
+		Integer[] month_list=new Integer[12];
+		Integer[] day_list=new Integer[31];
 		for(int i=0;i<year_list.length;i++) {
-			year_list[i]=Integer.toString(year+i);
+			year_list[i]=year+i;
 		}
 		for(int i=0;i<month_list.length;i++) {
-			if(i+1<10)
-				month_list[i]="0".concat(Integer.toString(i+1));
-			else
-				month_list[i]=Integer.toString(i+1);
+			month_list[i]=i+1;
 		}
 		for(int i=0;i<day_list.length;i++) {
-			if(i+1<10)
-				day_list[i]="0".concat(Integer.toString(i+1));
-			else
-				day_list[i]=Integer.toString(i+1);
+			day_list[i]=i+1;
 		}
-		Yearselect= new JComboBox<String>(year_list);
-		Monthselect= new JComboBox<String>(month_list);
-		Dayselect= new JComboBox<String>(day_list);
+		Yearselect= new JComboBox(year_list);
+		Monthselect= new JComboBox(month_list);
+		Dayselect= new JComboBox(day_list);
 		Yearselect.setFont(Yearselect.getFont().deriveFont(20.0f));
 		Monthselect.setFont(Monthselect.getFont().deriveFont(20.0f));
 		Dayselect.setFont(Dayselect.getFont().deriveFont(20.0f));
@@ -111,10 +105,10 @@ public class AddItemMenu extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==add) {
 			return_value=0;
-			String y=(String)Yearselect.getSelectedItem();
-			String m=(String)Monthselect.getSelectedItem();
-			String d=(String)Dayselect.getSelectedItem();
-			return_date=Integer.parseInt(y.concat(m).concat(d));
+			String y=Yearselect.getSelectedItem().toString();
+			String m=Monthselect.getSelectedItem().toString();
+			String d=Dayselect.getSelectedItem().toString();
+			return_date=y.concat("-").concat(m).concat("-").concat(d);
 			System.out.println(return_date);
 			
 		}

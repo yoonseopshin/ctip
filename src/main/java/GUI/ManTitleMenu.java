@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,32 +11,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.Timer;
-
-import Logic.*;
 
 public class ManTitleMenu extends JFrame implements ActionListener{
-	public Timer timer = new Timer(3000, new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			return_value = -2;
-		}
-	});
-
 	private JButton[] Title_list;
 	private JButton exit;
-	private ArrayList<Title> temp;
+	private static Controller controller;
+	ArrayList<tempTitle2> temp= controller.return_stock();
 	
-	public int return_value= -1;
+	private static int return_value= -1;
 	
-	public ManTitleMenu(ArrayList<Title> tlist) {
-		timer.start();
-
+	public ManTitleMenu() {
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
-		
-		temp=tlist;
 
 		//라벨 패널
 		JPanel labelpanel = new JPanel();
@@ -43,30 +30,17 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 		JLabel label = new JLabel("재고를 변경할 음료를 선택하세요");
 		label.setFont(label.getFont().deriveFont(15.0f));
 		labelpanel.add(label);
-
-		JPanel titlelistpanel = new JPanel();
-		JScrollPane titlepanel = new JScrollPane(titlelistpanel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		titlelistpanel.setPreferredSize(new Dimension(600,76*tlist.size()));
-		Title_list=new JButton[tlist.size()];
-		for(int i=0;i<tlist.size();i++) {
-			Title_list[i]=new JButton("<html><center><strong>" + tlist.get(i).Name+ "</strong><br>재고수량 : " + 
-		tlist.get(i).Item_List.size()+"</center></html>");
-			Title_list[i].setPreferredSize(new Dimension(600,70));
-			Title_list[i].addActionListener(this);
-			titlelistpanel.add(Title_list[i]);
-		}
-		/*
+		//타이틀패널
 		JPanel titlepanel = new JPanel(new GridLayout(10,1));
 		titlepanel.setPreferredSize(new Dimension(600,700));
 		
 		
-		Title_list=new JButton[Title_List.size()];
+		Title_list=new JButton[10];
 		for(int i=0;i<temp.size();i++) {
 			Title_list[i]=new JButton(" "+temp.get(i).name + "     재고수량: " + temp.get(i).stock);
 			Title_list[i].addActionListener(this);
 			titlepanel.add(Title_list[i]);
 		}
-		*/
 		
 		//취소패널
 		JPanel exitpanel = new JPanel();
@@ -85,9 +59,20 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 	}
 //테스트용
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<tempTitle2> Title_list = new ArrayList<tempTitle2>();
+		tempTitle2 a= new tempTitle2("A",9,1);
+		tempTitle2 b= new tempTitle2("B",3,2);
+		tempTitle2 c= new tempTitle2("C",0,3);
+		tempTitle2 d= new tempTitle2("D",2,4);
+		tempTitle2 e= new tempTitle2("E",4,5);
 		
-		Controller c= new Controller();
-		new ManTitleMenu(c.Title_List);
+		Title_list.add(a); Title_list.add(b); Title_list.add(c); Title_list.add(d); Title_list.add(e);
+		
+		controller=new Controller(Title_list);
+		
+		new ManTitleMenu();
+		
 
 	}
 
@@ -111,3 +96,26 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 
 }
 
+class tempTitle2{
+	String name;
+	int stock;
+	int ID;
+	
+	tempTitle2(String name,int stock,int ID){
+		this.name=name;
+		this.stock=stock;
+		this.ID = ID;
+	}
+
+
+
+}
+class Controller{
+	ArrayList<tempTitle2> Title_list;
+	Controller(ArrayList<tempTitle2> t){
+		this.Title_list=t;
+	}
+	ArrayList<tempTitle2> return_stock(){
+		return this.Title_list;
+	}
+}

@@ -17,7 +17,7 @@ public class DVMMenu extends JFrame implements ActionListener{
 	private JButton[] DVM;
 	private JButton cancel;
 	private ArrayList<DVM> arr;
-	public int return_value= -1;
+	private static int return_value= -1;
 	
 	public DVMMenu(ArrayList<DVM> DVM_list) {
 		arr=DVM_list;

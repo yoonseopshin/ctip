@@ -9,27 +9,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.Timer;
-
-import Logic.Title;
 
 public class PaymentMenu extends JFrame implements ActionListener{
-	public Timer timer = new Timer(60000, new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			return_value = -2;
-		}
-	});
-
+	
 	private JButton cardpay;
 	private JButton smartpay;
 	private JButton cancel;
 	
-	public int return_value=-1;
+	private static int return_value=-1;
 
 	public PaymentMenu(Title title) {
-		timer.start();
-		
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
 		
@@ -43,8 +32,8 @@ public class PaymentMenu extends JFrame implements ActionListener{
 		//결제수단 패널
 		JPanel paymentpanel = new JPanel();
 		paymentpanel.setPreferredSize(new Dimension(600,350));
-		JLabel bev = new JLabel("<html><center>선택한 음료 : <strong>"+title.Name+
-				"</strong><br>가격 : <strong>"+title.Price+ "원</strong></center></html>");
+		JLabel bev = new JLabel("<html><center>선택한 음료 : <strong>"+title.name+
+				"</strong><br>가격 : <strong>"+title.price+ "원</strong></center></html>");
 		bev.setPreferredSize(new Dimension(600,50));
 		bev.setHorizontalAlignment(JLabel.CENTER);
 		bev.setFont(label.getFont().deriveFont(15.0f));
@@ -77,29 +66,40 @@ public class PaymentMenu extends JFrame implements ActionListener{
 		setVisible(true);
 		
 	}
-	//테스트용
-	/*
+	
 	public static void main(String[] args) {
-		Title a=new Title("코카콜라",1,(float)1);
+		Title a= new Title("코카콜라",1,700);
 		new PaymentMenu(a);
 		
 
 	}
-	*/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==cardpay) {
-			timer.stop();
 			return_value = 1;
+			this.setVisible(false);
 		}
 		if(e.getSource()==smartpay) {
-			timer.stop();
 			return_value = 2;
+			this.setVisible(false);
 		}
 		if(e.getSource()==cancel) {
-			timer.stop();
 			return_value = 0;
+			this.setVisible(false);
 		}
 	}
+
+
 }
 
+class Title{
+	String name;
+	int ID;
+	int price;
+	Title(String name,int ID,int price){
+		this.name=name;
+		this.ID =ID;
+		this.price=price;
+	}
+
+}

@@ -1,0 +1,349 @@
+package Logic;
+
+
+import java.util.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.util.ArrayList;
+
+import GUI.*;
+
+/**
+ * 
+ */
+public class Controller {
+	private JFrame k;
+    public ArrayList<Title> Title_List;
+    public Payment Payment;
+    public Title basket;
+    public Stack DVMStack;
+    public C_NumberManager C_man;
+
+    public Controller() {
+    	k=new JFrame();
+    	Title_List=new ArrayList<Title>();
+    	C_man=new C_NumberManager();
+    	Title_List.add(new Title("코카콜라",1,(float)700));
+    	Title_List.add(new Title("나랑드사이다",2,(float)700));
+    	Title_List.add(new Title("솔의눈",3,(float)700));
+    	Title_List.add(new Title("게토레이",4,(float)700));
+    	Title_List.add(new Title("스프라이트",5,(float)700));
+    	Title_List.add(new Title("포카리 스웨트",6,(float)700));
+    	Title_List.add(new Title("닥터페퍼",7,(float)700));
+    	Title_List.add(new Title("맥콜",8,(float)700));
+    	Title_List.add(new Title("제티",9,(float)700));
+    	Title_List.add(new Title("제주삼다수",10,(float)700));
+    	Title_List.add(new Title("데자와",11,(float)700));
+    	Title_List.add(new Title("아침햇살",12,(float)700));
+    	Title_List.add(new Title("밀키스",13,(float)700));
+    	Title_List.add(new Title("레쓰비",14,(float)700));
+    	Title_List.add(new Title("조지아",15,(float)700));
+    	Title_List.add(new Title("칠성사이다",16,(float)700));
+    	Title_List.add(new Title("티오피",17,(float)700));
+    	Title_List.add(new Title("몬스터",18,(float)700));
+    	Title_List.add(new Title("핫식스",19,(float)700));
+    	Title_List.add(new Title("레드불",20,(float)700));
+        
+    }
+
+    public static void main(String[] args) {
+    	//선언
+    	Controller c= new Controller();
+    	c.Title_List.get(0).AddItem(new Item(20200101));
+    	
+    	//시스템
+    	int delimiter;
+    	while(true){
+    	c.ReqMainMenu();
+    		while(true) {
+    			c.ShowMainMenu();
+    			delimiter=c.InputSelect();
+    			//인증번호 입력
+    			if(delimiter==0) {
+    				while(true) {
+    					c.ShowInputLine();
+    					delimiter=c.InputCnumber();
+    					if(delimiter==1)
+    						continue;
+    					if(delimiter==2) {
+    						while(true) {
+    							c.ManShowTitle();
+    							delimiter = c.ManSelectTitle();
+    	    					if(delimiter>0) {
+    	    						while(true) {
+    	    							int del2;
+    	    							c.ManShowItem(delimiter);
+    	    							del2=c.ManSelectItem();
+    	    							if(del2==0||del2==-2) {
+    	    								if(del2==-2)
+    	    									delimiter=-2;
+    	    								break;
+    	    							}
+    	    						}
+    	    					}
+    	    					if(delimiter==0||delimiter==-2)
+    	    						break;
+    						}
+    					}
+    					if(delimiter==0||delimiter==-2)
+    						break;
+    				}
+    				if(delimiter==0)
+    					continue;
+    			}
+    			//재고가 있는 음료 선택
+    			else if(delimiter==1) {
+    				c.PrintSelectPay();
+    				delimiter=c.SelectPayment();
+    				if(delimiter==0) {
+    					c.init();
+    					continue;
+    				}
+    			}
+    			//재고가 없는 음료 선택
+    			else if(delimiter==2) {
+    				c.InfoNoItem();
+    				c.ReqFindDVM();
+    			}
+    			//입력시간초과
+    			if(delimiter==-2)
+    				break;
+    			
+    		}
+    	}
+    }
+
+
+
+	public void ReqMainMenu() {
+    	int del=-1;
+    	k.setVisible(false);
+    	k=new Sleep();
+    	while(del==-1) {
+    		System.out.print("");
+    		del=((Sleep)k).return_value;
+    	}
+    }
+    
+    public void ShowMainMenu() {
+    	k.setVisible(false);
+    	k=new MainMenu(Title_List);
+    }
+    
+    public int InputSelect() {
+    	int del=-1;
+    	while(del==-1) {
+    		System.out.print("");
+    		del=((MainMenu)k).return_value;
+    	}
+    	if(del==-2)
+    		return -2;
+    	if(del==0)
+    		return 0;
+    	if(del>0) {
+			for(int i=0;i<Title_List.size();i++) {
+				if(Title_List.get(i).ID==del) {
+					basket=Title_List.get(i);
+				}
+			}
+			if(basket.CheckStock())
+				return 1;
+			else 
+				return 2;
+    	}
+    	return -1;
+    }
+    
+    public void ShowInputLine() {
+    	k.setVisible(false);
+    	k=new InputLine();
+    }
+    
+    public int InputCnumber() {
+    	int del=-1;
+    	while(del==-1) {
+    		System.out.print("");
+    		del=((InputLine)k).return_value;
+    	}
+    	if(del==-2)
+    		return -2;
+    	if(del==0)
+    		return 0;
+
+    	else if(del>0) {
+			if(!C_man.CheckCnumber(del)) {
+				InfoCnumberError();
+				return 1;
+			}
+			else{
+				/*
+				 * if(C_man.CheckCnumber(del)==mnumber)
+				 * return 2
+				 * if(C_man.CheckCnumber(del)==cnumber)
+				 * returnitem();
+				 * return 0;
+				 */
+			}
+    	}
+    	return -1;
+    }
+	public void ManShowTitle() {
+        k.setVisible(false);
+        k=new ManTitleMenu(Title_List);
+	}
+	public int ManSelectTitle() {
+    	int del=-1;
+    	while(del==-1) {
+    		System.out.print("");
+    		del=((ManTitleMenu)k).return_value;
+    	}
+		return del;
+	}
+	public void ManShowItem(int TitleID) {
+        k.setVisible(false);
+        k=new ManItemMenu(Title_List.get(TitleID-1));
+		
+	}
+	public int ManSelectItem() {
+    	int del=-1;
+    	while(del==-1) {
+    		System.out.print("");
+    		del=((ManTitleMenu)k).return_value;
+    	}
+    	return del;
+		
+	}
+    public void InfoCnumberError() {
+    	int del=-1;
+        k.setVisible(false);
+        k=new InfoCnumberErrUI();
+    	while(del==-1) {
+    		System.out.print("");
+    		del=((InfoCnumberErrUI)k).return_value;
+    	}
+    }
+    
+    public void PrintSelectPay() {
+        k.setVisible(false);
+        k=new PaymentMenu(basket);
+    }
+    
+    public int SelectPayment() {
+    	int del=-1;
+    	while(del==-1) {
+    		System.out.print("");
+    		del=((PaymentMenu)k).return_value;
+    	}
+    	if(del==-2)
+    		return -2;
+    	if(del==0)
+    		return 0;
+    	if(del>0) {
+    		//payment=new payment(어쩌구);->reqcardpay/reqsmartpay 말고 생성자 넣는게 좋을듯..
+    		if(del==1)
+    			return 1;
+    		if(del==2)
+    			return 2;
+    		
+    	}
+    	return -1;
+    }
+    
+    public void InfoNoItem() {
+        k.setVisible(false);
+        k=new InfoNoItemUI(basket);
+    } 
+    public void ReqFindDVM() {
+		int del=-1;
+		while(del==-1) {
+			System.out.print("");
+			del=((InfoNoItemUI)k).return_value;
+		}
+		// TODO Auto-generated method stub
+		
+	}
+
+    /**
+     * 
+     */
+
+
+    /**
+     * @param Title.ID
+     */
+
+
+    /**
+     * 
+     */
+
+
+    /**
+     * 
+     */
+    public void CancelItem() {
+        // TODO implement here
+    }
+
+
+    /**
+     * 
+     */
+
+
+    /**
+     * 
+     */
+
+
+    /**
+     * @param Title
+     */
+    public void ReturnItem(Title t) {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void ShowMangerMenu() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+
+
+    /**
+     * 
+     */
+    public void ShowSmartPay() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void ShowCardPay() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void SelectDVM() {
+        // TODO implement here
+    }
+
+    /**
+     * 
+     */
+    public void init() {
+        basket=null;
+        Payment=null;
+    }
+    
+
+}

@@ -10,19 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.Timer;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 public class InputLine extends JFrame implements ActionListener{
-	public Timer timer = new Timer(60000, new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			return_value = -2;
-		}
-	});
 
 	private JTextField txt;
 	private JButton[] num;
@@ -30,11 +22,9 @@ public class InputLine extends JFrame implements ActionListener{
 	private JButton Enter;
 	private JButton Cancel;
 	
-	public int return_value= -1;
+	private static int return_value= -1;
 	
 	public InputLine() {
-		timer.start();
-		
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
 		//라벨 패널
@@ -101,7 +91,6 @@ public class InputLine extends JFrame implements ActionListener{
 			if(e.getSource()==num[i]) {
 				if(txt.getText().length()<8)
 					txt.setText(txt.getText()+e.getActionCommand());
-				timer.restart();
 						
 			}
 		}
@@ -112,24 +101,16 @@ public class InputLine extends JFrame implements ActionListener{
 			String after=before.substring(0, k-1);
 			txt.setText(after);
 			}
-			timer.restart();
 		}
 		if(e.getSource()==Enter) {
-			if(txt.getText().length()<8) {
-				return_value=666;
-			}
-			else {
-				int input=Integer.parseInt(txt.getText());
-				if(input==0)
-					return_value=666;
-				else
-					return_value=input;
-			}
-			timer.stop();
+			return_value=Integer.parseInt(txt.getText());
+			this.setVisible(false);
 		}
+		
 		if(e.getSource()==Cancel) {
 			return_value = 0;
-			timer.stop();
+			this.setVisible(false);
 		}
 	}
+
 }
