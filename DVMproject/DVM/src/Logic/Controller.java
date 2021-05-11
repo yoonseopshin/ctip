@@ -329,9 +329,7 @@ public class Controller {
     /**
      * 
      */
-    public void ShowMangerMenu() {
-        // TODO implement here
-    }
+
 
     /**
      * 
