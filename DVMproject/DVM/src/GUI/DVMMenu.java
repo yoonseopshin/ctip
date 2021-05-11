@@ -5,22 +5,23 @@ import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
-import java.util.ArrayList;
+import java.util.Stack;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Logic.*;
+
 public class DVMMenu extends JFrame implements ActionListener{
 	private JButton[] DVM;
 	private JButton cancel;
-	private ArrayList<DVM> arr;
+	private Stack<DVM> stk;
 	public int return_value= -1;
 	
-	public DVMMenu(ArrayList<DVM> DVM_list) {
-		arr=DVM_list;
+	public DVMMenu(Stack<DVM> DVM_stack) {
+		stk=DVM_stack;
 		
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
@@ -35,9 +36,9 @@ public class DVMMenu extends JFrame implements ActionListener{
 		DVMpanel.setPreferredSize(new Dimension(600,700));
 		
 		DVM=new JButton[10];
-		for(int i=0;i<DVM_list.size();i++) {
-			DVM[i]=new JButton("DVM ID : "+DVM_list.get(i).ID+"      위치 : "+
-		DVM_list.get(i).X+", "+DVM_list.get(i).Y);
+		for(int i=0;i<stk.size();i++) {
+			DVM[i]=new JButton("DVM ID : "+stk.get(i).ID()+"      위치 : "+
+		DVM_stack.get(i).getX()+", "+DVM_stack.get(i).getY());
 			DVM[i].addActionListener(this);
 			DVMpanel.add(DVM[i]);
 		}
@@ -58,24 +59,25 @@ public class DVMMenu extends JFrame implements ActionListener{
 		setVisible(true);
 		
 	}
+	//테스트용
 	public static void main(String[] args) {
 		DVM a=new DVM(1,1.0,1.0);
 		DVM b=new DVM(2,2.0,2.0);
 		DVM c=new DVM(3,3.0,3.0);
 		DVM d=new DVM(4,4.0,4.0);
-		ArrayList<DVM> darr=new ArrayList<DVM>();
-		darr.add(a);darr.add(b);darr.add(c);darr.add(d);
+		Stack<DVM> darr=new Stack<DVM>();
+		darr.push(a);darr.push(b);darr.push(c);darr.push(d);
 		
 		new DVMMenu(darr);
 		
 
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		for(int i=0;i<arr.size();i++) {
+		for(int i=0;i<stk.size();i++) {
 			if(e.getSource()==DVM[i]) {
-				return_value=arr.get(i).ID;
+				return_value=stk.get(i).ID();
 				System.out.println(return_value);
 				this.setVisible(false);
 			}
@@ -88,14 +90,4 @@ public class DVMMenu extends JFrame implements ActionListener{
 	}
 
 }
-class DVM{
-	int ID;
-	double X;
-	double Y;
-	DVM(int id, double x, double y){
-		this.ID=id;
-		this.X=x;
-		this.Y=y;
-		
-	}
-}
+
