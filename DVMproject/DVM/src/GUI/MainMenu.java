@@ -1,7 +1,7 @@
 package GUI;
 import javax.swing.*;
 
-import Logic.Title;
+import Logic.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -40,7 +40,7 @@ public class MainMenu extends JFrame implements ActionListener{
 
 		menu = new JButton[Title_List.size()];
 		for(int i=0;i<menu.length;i++) {
-			menu[i]=new JButton(Title_List.get(i).Name);
+			menu[i]=new JButton(Title_List.get(i).Name());
 			menupanel.add(menu[i]);
 			menu[i].addActionListener(this);
 		}
@@ -75,14 +75,14 @@ public class MainMenu extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<menu.length;i++) {
 			if(e.getSource()==menu[i]) {
-				return_value = i+1;
 				timer.stop();
+				return_value = i;
 
 			}
 		}
 		if(e.getSource()==CnumberInput) {
-			return_value = 0;
 			timer.stop();
+			return_value = 0;
 		}
 	}
 

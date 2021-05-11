@@ -38,21 +38,21 @@ public class ManItemMenu extends JFrame implements ActionListener{
 	public ManItemMenu(Title t) {
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
-		temp= t.Item_List;
+		temp= t.Item_List();
 
 		//라벨 패널
 		JPanel labelpanel = new JPanel();
 		labelpanel.setPreferredSize(new Dimension(600,30));
-		JLabel label = new JLabel("음료: "+t.Name+"     변경할 재고를 선택하세요");
+		JLabel label = new JLabel("음료: "+t.Name()+"     변경할 재고를 선택하세요");
 		label.setFont(label.getFont().deriveFont(15.0f));
 		labelpanel.add(label);
 		//아이템패널
-		JPanel itemlistpanel = new JPanel();
+		JPanel itemlistpanel = new JPanel(new GridLayout());
 		JScrollPane itempanel = new JScrollPane(itemlistpanel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		itemlistpanel.setPreferredSize(new Dimension(600,56*temp.size()));
 		Item_list=new JCheckBox[30];
 		for(int i=0;i<temp.size();i++) {
-			String expdate=Integer.toString(temp.get(i).Expiration_Date);
+			String expdate=Integer.toString(temp.get(i).Expiration_Date());
 			Item_list[i]=new JCheckBox("ID: "+(i+1) + "     유통기한: " + expdate.substring(0, 4)+"-"+
 			expdate.substring(4, 6)+"-"+expdate.substring(6, 8));
 			Item_list[i].setPreferredSize(new Dimension(600,50));
