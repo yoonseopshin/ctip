@@ -255,6 +255,11 @@ public class Controller {
         k=new InfoNoItemUI(basket);
     } 
     public void ReqFindDVM() {
+		int del=-1;
+		while(del==-1) {
+			System.out.print("");
+			del=((InfoNoItemUI)k).return_value;
+		}
 		// TODO Auto-generated method stub
 		
 	}

@@ -13,10 +13,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.Timer;
 
 import Logic.*;
 
 public class ManItemMenu extends JFrame implements ActionListener{
+	public Timer timer = new Timer(60000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			return_value = -2;
+		}
+	});
+
 	private JCheckBox[] Item_list;
 	private JButton exit;
 	private JButton add;
@@ -97,9 +105,11 @@ public class ManItemMenu extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		return_itemlist=new ArrayList<Integer>();
 		if(e.getSource()==add) {
+			timer.stop();
 			return_value=1;
 		}
 		if(e.getSource()==delete) {
+			timer.stop();
 			return_value=2;
 			for(int i=0;i<temp.size();i++) {
 				if(Item_list[i].isSelected()) {
@@ -109,8 +119,8 @@ public class ManItemMenu extends JFrame implements ActionListener{
 			}
 		}
 		if(e.getSource()==exit) {
+			timer.stop();
 			return_value=0;
-			this.setVisible(false);
 		}
 		
 	}

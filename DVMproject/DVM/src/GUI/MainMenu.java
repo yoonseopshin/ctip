@@ -10,8 +10,13 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 public class MainMenu extends JFrame implements ActionListener{
-	public Timer timer = new Timer(60000, this);
-	
+	public Timer timer = new Timer(60000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			return_value = -2;
+		}
+	});
+
 	private JButton[] menu;
 	private JButton CnumberInput;
 
@@ -71,13 +76,14 @@ public class MainMenu extends JFrame implements ActionListener{
 		for(int i=0;i<menu.length;i++) {
 			if(e.getSource()==menu[i]) {
 				return_value = i+1;
+				timer.stop();
+
 			}
 		}
 		if(e.getSource()==CnumberInput) {
 			return_value = 0;
+			timer.stop();
 		}
-		timer.stop();
-		return_value = -2;
 	}
 
 }

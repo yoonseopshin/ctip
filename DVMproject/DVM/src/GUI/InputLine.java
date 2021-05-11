@@ -17,7 +17,12 @@ import java.awt.event.ActionListener;
 
 
 public class InputLine extends JFrame implements ActionListener{
-	public Timer timer = new Timer(60000, this);
+	public Timer timer = new Timer(60000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			return_value = -2;
+		}
+	});
 
 	private JTextField txt;
 	private JButton[] num;
@@ -84,18 +89,19 @@ public class InputLine extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-/*
+
 	public static void main(String[] args) {
 		new InputLine();
 
 	}
-*/
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<num.length;i++) {
 			if(e.getSource()==num[i]) {
 				if(txt.getText().length()<8)
 					txt.setText(txt.getText()+e.getActionCommand());
+				timer.restart();
 						
 			}
 		}
@@ -106,6 +112,7 @@ public class InputLine extends JFrame implements ActionListener{
 			String after=before.substring(0, k-1);
 			txt.setText(after);
 			}
+			timer.restart();
 		}
 		if(e.getSource()==Enter) {
 			if(txt.getText().length()<8) {
@@ -118,13 +125,11 @@ public class InputLine extends JFrame implements ActionListener{
 				else
 					return_value=input;
 			}
+			timer.stop();
 		}
-		
 		if(e.getSource()==Cancel) {
 			return_value = 0;
+			timer.stop();
 		}
-		timer.stop();
-		return_value = -2;
 	}
-
 }

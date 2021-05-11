@@ -2,21 +2,27 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.Timer;
 
 import Logic.*;
 
 public class ManTitleMenu extends JFrame implements ActionListener{
+	public Timer timer = new Timer(3000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			return_value = -2;
+		}
+	});
+
 	private JButton[] Title_list;
 	private JButton exit;
 	private ArrayList<Title> temp;
@@ -24,6 +30,8 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 	public int return_value= -1;
 	
 	public ManTitleMenu(ArrayList<Title> tlist) {
+		timer.start();
+
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
 		

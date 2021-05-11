@@ -14,8 +14,13 @@ import javax.swing.Timer;
 import Logic.Title;
 
 public class PaymentMenu extends JFrame implements ActionListener{
-	private Timer timer = new Timer(60000, this);
-	
+	public Timer timer = new Timer(60000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			return_value = -2;
+		}
+	});
+
 	private JButton cardpay;
 	private JButton smartpay;
 	private JButton cancel;
@@ -84,18 +89,17 @@ public class PaymentMenu extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==cardpay) {
+			timer.stop();
 			return_value = 1;
 		}
 		if(e.getSource()==smartpay) {
+			timer.stop();
 			return_value = 2;
 		}
 		if(e.getSource()==cancel) {
+			timer.stop();
 			return_value = 0;
 		}
-		timer.stop();
-		return_value = -2;
 	}
-
-
 }
 
