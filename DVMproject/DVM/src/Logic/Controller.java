@@ -170,19 +170,16 @@ public class Controller {
     		return 0;
 
     	else if(del>0) {
-			if(Payment.CM.CheckCnumber(del)==-1) {
+    		int check=Payment.CM.CheckCnumber(del);
+			if(check==-1) {
 				InfoCnumberError();
 				return 1;
 			}
-			else{
-				/*
-				 * if(C_man.CheckCnumber(del)==mnumber)
-				 * return 2
-				 * if(C_man.CheckCnumber(del)==cnumber)
-				 * returnitem();
-				 * return 0;
-				 */
+			else if(check==1){
+				//ReturnItem();
 			}
+			else if(check==0)
+				return 2;
     	}
     	return -1;
     }

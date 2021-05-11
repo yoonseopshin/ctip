@@ -9,7 +9,7 @@ public class C_Number {
 
 	Title ti;
     int DvmID;
-    int M_Number;
+    int M_Number=111111;
     int C_Number_t;
     
     public C_Number() {
