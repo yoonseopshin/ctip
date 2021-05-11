@@ -174,7 +174,13 @@ public class Controller {
 				return 1;
 			}
 			else if(check==1){
-				Title t = Payment.CM.C_List.get(del).getTi();
+				int t = Payment.CM.C_List.get(del).getTitle_id();
+				int index = 0;
+				for(int i = 0; i<Title_List.size(); i++){
+					if(i == t)
+						index = i;
+				}
+				ReturnItem(Title_List.get(index),true);
 				//return 0;
 			}
 			else if(check==0)
@@ -276,7 +282,6 @@ public class Controller {
 		t.UpdateStock(2,IfHold);
 	}
 
-
 	public void InfoNoItem() {
         k.setVisible(false);
         k=new InfoNoItemUI(basket);
@@ -325,11 +330,16 @@ public class Controller {
 
     /**
      */
+    public void ReturnItem(Title t) {
+        // TODO implement here
+    }
 
     /**
      * 
      */
-
+    public void ShowMangerMenu() {
+        // TODO implement here
+    }
 
     /**
      * 

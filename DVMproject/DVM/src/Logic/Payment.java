@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Payment {
 
-	Title t;
+	int title_id;
 	int DVMid;
 	String Error_log;
 	boolean pay_confirm;
@@ -20,7 +20,7 @@ public class Payment {
     	if(DVMid>0) { // ��������
     	  //pay_confirm = Credit();   //�ܺ��� ī����� �ý��� ����
           pay_confirm = true; //ī����� ����
-          CM.CreateCnumber(t, DVMid); //������ȣ ����
+          CM.CreateCnumber(title_id, DVMid); //������ȣ ����
           CM.toString();  //������ȣ ���
     	}
     	else {
@@ -35,7 +35,7 @@ public class Payment {
     	if(DVMid>0) { // ��������
       	  //pay_confirm = Smart();   //�ܺ��� ������� �ý��� ����
             pay_confirm = true; //������� ����
-            CM.CreateCnumber(t, DVMid); //������ȣ ����
+            CM.CreateCnumber(title_id, DVMid); //������ȣ ����
             CM.toString();  //������ȣ ���
       	}
       	else {

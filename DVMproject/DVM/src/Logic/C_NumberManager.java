@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class C_NumberManager extends C_Number {
 
-	public C_NumberManager(Title ti, int id) {
-		super(ti, id);
+	public C_NumberManager(int title_id, int id) {
+		super(title_id, id);
 	}
 	public C_NumberManager() {
 	}
@@ -16,14 +16,14 @@ public class C_NumberManager extends C_Number {
 	//인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
 	HashMap<Integer, C_Number> C_List = new HashMap<Integer, C_Number>();
 
-	public void CreateCnumber(Title ti, int DvmID) {
+	public void CreateCnumber(int title_id, int DvmID) {
 		// TODO implement here
 		String numStr = "";
 		do {
 			numStr = randnumber();
 		}while(numStr.equals("000000") || numStr.equals("111111"));
 		super.C_Number_t = Integer.parseInt(numStr);
-		C_Number cn = new C_Number(ti, DvmID);
+		C_Number cn = new C_Number(title_id, DvmID);
 		C_List.put(super.C_Number_t, cn);
 		//sendMessage()
 
@@ -62,7 +62,7 @@ public class C_NumberManager extends C_Number {
 
 	@Override
 	public String toString() {
-		return "C_Number [음료명 :"+super.ti.Name() + ", 자판기 id=" + super.DvmID + ", 인증번호=" + super.C_Number_t
+		return "C_Number [음료명 :"+title_id+1 + ", 자판기 id=" + super.DvmID + ", 인증번호=" + super.C_Number_t
 				+ "]";
 	}
 
