@@ -26,7 +26,7 @@ public class InfoNoItemUI extends JFrame implements ActionListener{
 		//라벨패널
 		JPanel labelpanel = new JPanel();
 		labelpanel.setPreferredSize(new Dimension(600,300));
-		JLabel label = new JLabel("선택한 음료: "+t.Name);
+		JLabel label = new JLabel("선택한 음료: "+t.Name());
 		label.setFont(label.getFont().deriveFont(15.0f));
 		labelpanel.add(label);
 		//안내패널
@@ -56,7 +56,7 @@ public class InfoNoItemUI extends JFrame implements ActionListener{
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Title t=new Title("가나다",1,(float)1);
+		Title t=new Title("가나다",1);
 		new InfoNoItemUI(t);
 
 	}

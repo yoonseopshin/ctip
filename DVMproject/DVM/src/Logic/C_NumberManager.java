@@ -24,7 +24,7 @@ public class C_NumberManager extends C_Number {
 		}while(numStr.equals("000000") || numStr.equals("111111"));
 		super.C_Number_t = Integer.parseInt(numStr);
 		C_Number cn = new C_Number(ti, DvmID);
-		C_List.put(C_Number_t, cn);
+		C_List.put(super.C_Number_t, cn);
 		//sendMessage()
 
 	}
@@ -55,7 +55,7 @@ public class C_NumberManager extends C_Number {
 		}else if(C_List.containsKey(C_Number_t)) { //존재하는 인증번호 true반환
 			return 1;
 		}else {
-			return 2;
+			return -1;
 		}
 
 	}
