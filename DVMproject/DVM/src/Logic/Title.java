@@ -17,10 +17,10 @@ public class Title {
     	this.Item_List = new ArrayList<>();
     }
     public String Name(){
-        return this.Name();
+        return this.Name;
     }
     public int Price(){
-        return this.Price();
+        return this.Price;
     }
     public ArrayList<Item> Item_List(){
         return this.Item_List;

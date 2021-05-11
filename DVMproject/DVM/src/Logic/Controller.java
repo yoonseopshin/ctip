@@ -170,7 +170,7 @@ public class Controller {
     		return 0;
 
     	else if(del>0) {
-			if(C_man.CheckCnumber(del)==-1) {
+			if(Payment.CM.CheckCnumber(del)==-1) {
 				InfoCnumberError();
 				return 1;
 			}

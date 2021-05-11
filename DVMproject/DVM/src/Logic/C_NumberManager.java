@@ -55,7 +55,7 @@ public class C_NumberManager extends C_Number {
 		}else if(C_List.containsKey(C_Number_t)) { //존재하는 인증번호 true반환
 			return 1;
 		}else {
-			return 2;
+			return -1;
 		}
 
 	}
