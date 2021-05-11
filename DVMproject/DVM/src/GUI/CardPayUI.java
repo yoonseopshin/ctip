@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class CardPayUI extends JFrame implements ActionListener{
     private int s=23;
+    private Scanner sc;
     private Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -20,6 +21,7 @@ public class CardPayUI extends JFrame implements ActionListener{
                         s+"초 후 메인화면으로 돌아갑니다.</center></html>");
                 if(s==0){
                     return_value=0;
+                    sc.close();
                     timer.stop();
                 }
             }
@@ -38,26 +40,6 @@ public class CardPayUI extends JFrame implements ActionListener{
     public CardPayUI(){
         timer.start();
 
-        this.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyChar()=='c'){
-                    int money;
-                    Scanner s=new Scanner(System.in);
-                    money= s.nextInt();
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        });
         this.setPreferredSize(new Dimension(600,800));
         this.setTitle("DVM");
 
@@ -87,6 +69,17 @@ public class CardPayUI extends JFrame implements ActionListener{
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+
+        if(return_value==-1) {
+            int ID;
+            sc = new Scanner(System.in);
+            ID = sc.nextInt();
+            sc.close();
+            if (ID == 1)
+                return_value=ID;
+            else
+                return_value=-3;
+        }
     }
     public static void main(String[] args) {
         // TODO Auto-generated method stub
@@ -98,6 +91,8 @@ public class CardPayUI extends JFrame implements ActionListener{
         if(e.getSource()==cancel) {
             return_value = 0;
             timer.stop();
+            sc.close();
+            this.setVisible(false);
         }
     }
 }

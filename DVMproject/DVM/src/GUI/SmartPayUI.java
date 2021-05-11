@@ -4,9 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 public class SmartPayUI extends JFrame implements ActionListener{
     private int s=23;
+    private Scanner sc;
     private Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -63,6 +65,17 @@ public class SmartPayUI extends JFrame implements ActionListener{
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+
+        if(return_value==-1) {
+            int ID;
+            sc = new Scanner(System.in);
+            ID = sc.nextInt();
+            sc.close();
+            if (ID == 1)
+                return_value=ID;
+            else
+                return_value=-2;
+        }
     }
     public static void main(String[] args) {
         // TODO Auto-generated method stub

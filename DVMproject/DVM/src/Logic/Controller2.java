@@ -159,7 +159,7 @@ public class Controller2 {
     			//error
 			}
 			if(basket.CheckStock()) {
-				PrintSelectPay();return;
+				PrintSelectPay(false);return;
 			}
 			else {
 				InfoNoItem();return;
@@ -292,51 +292,105 @@ public class Controller2 {
 		}
 	}
     
-    public void PrintSelectPay() {
+    public void PrintSelectPay(boolean prepay) {
         k.setVisible(false);
         k=new PaymentMenu(basket);
-        SelectPayment();
+        SelectPayment(prepay);
         return;
     }
-	public void CancelItem() {
-		init();
-		ShowMainMenu();
-		return;
-	}
-    public int SelectPayment() {
+
+    public void SelectPayment(boolean prepay) {
     	int del=-1;
     	while(del==-1) {
     		System.out.print("");
     		del=((PaymentMenu)k).return_value;
     	}
-    	if(del==-2)
-    		ReqMainMenu();
-    	if(del==0)
-    		CancelItem();
-    	if(del>0) {
+    	if(del==-2) {
+			ReqMainMenu();return;
+		}
+    	else if(del==0) {
+			CancelItem();return;
+		}
+    	else if(del>0) {
     		//payment=new payment(어쩌구);->reqcardpay/reqsmartpay 말고 생성자 넣는게 좋을듯..
-    		if(del==1)
-    			ShowCardPay();
-    		if(del==2)
-    			ShowSmartPay();
+    		if(del==1) {
+				ShowCardPay();return;
+			}
+    		if(del==2) {
+				ShowSmartPay();return;
+			}
     	}
-    	return -1;
+    	else{
+    		//error
+		}
     }
+
+	public void CancelItem() {
+		init();
+		ShowMainMenu();
+		return;
+	}
 
 	public void ShowCardPay() {
 		k.setVisible(false);
 		k=new CardPayUI();
+		CardPay();
+		return;
+	}
+
+	public void CardPay(){
+    	int del=-1;
+    	while(del==-1){
+    		System.out.print("");
+    		del=((CardPayUI)k).return_value;
+		}
+    	if(del==-3){//결제실패
+    		//k.setVisible(false);
+    		//k=new PayErrUI(payment에러로그참조)
+			//init();
+			//payment.init();
+			//ShowMainMenu();
+		}
+    	if(del==0){//결제취소
+    		CancelPay();return;
+		}
+    	if(del==1){//결제성공
+    		//payment참조..리턴 아이템 혹은 인증번호 출력
+		}
 	}
 
 	public void ShowSmartPay() {
     	k.setVisible(false);
     	k=new SmartPayUI();
+    	SmartPay();
+    	return;
 	}
 
-	private int CancelPay(int paytype) {
-		int del=-1;
-    	//if()
-		return -1;
+	public void SmartPay() {
+    	int del=-1;
+		while(del==-1){
+			System.out.print("");
+			del=((SmartPayUI)k).return_value;
+		}
+		if(del==-3){//결제실패
+			//k.setVisible(false);
+			//k=new PayErrUI(payment에러로그참조)
+			//init();
+			//payment.init();
+			//ShowMainMenu();
+		}
+		if(del==0){//결제취소
+			CancelPay();return;
+		}
+		if(del==1){//결제성공
+			//payment참조..return하거나 다른거
+		}
+	}
+
+	private void CancelPay() {
+		init();
+		//Payment.init();
+		ShowMainMenu();
 	}
 
 	public void ReturnItem(Title t,boolean IfHold) {
@@ -349,11 +403,14 @@ public class Controller2 {
 		}
 		t.UpdateStock(2,IfHold);
 		ShowMainMenu();
+		return;
 	}
 
 	public void InfoNoItem() {
         k.setVisible(false);
         k=new InfoNoItemUI(basket);
+        ReqFindDVM();
+        return;
     }
 
     public void ReqFindDVM() {
@@ -362,71 +419,41 @@ public class Controller2 {
 			System.out.print("");
 			del=((InfoNoItemUI)k).return_value;
 		}
+		if(del==-2){
+			ReqMainMenu();return;
+		}
+		else if(del==0){
+			init();
+			ShowMainMenu();
+			return;
+		}
+		else if(del==1){
+			//메시지의 송수신
+			ShowUsableDVM();
+		}
 	}
-    /**
-     * 
-     */
+	public void ShowUsableDVM() {
+		k.setVisible(false);
+		k=new DVMMenu(DVMStack);
+		SelectDVM();
+	}
 
-
-    /**
-     * @param Title.ID
-     */
-
-
-    /**
-     * 
-     */
-
-
-    /**
-     * 
-     */
-
-
-
-    /**
-     * 
-     */
-
-
-    /**
-     * 
-     */
-
-
-    /**
-     */
-    public void ReturnItem(Title t) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void ShowMangerMenu() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-
-
-    /**
-     * 
-     */
-
-
-    /**
-     * 
-     */
-
-
-    /**
-     * 
-     */
     public void SelectDVM() {
-        // TODO implement here
+        int del=-1;
+        while(del==-1){
+			System.out.print("");
+			del=((DVMMenu)k).return_value;
+		}
+        if(del==-2){
+        	ReqMainMenu();return;
+		}
+        else if(del==0){
+        	init();
+        	ShowMainMenu();
+		}
+        else if(del>0){
+        	//PrintSelectPay()
+		}
     }
 
     /**
@@ -434,6 +461,7 @@ public class Controller2 {
      */
     public void init() {
         basket=null;
+        DVMStack=null;
     }
     
 
