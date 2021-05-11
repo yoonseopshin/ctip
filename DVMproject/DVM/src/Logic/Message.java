@@ -1,48 +1,27 @@
 package Logic;
 
+class Message
+{
+    private int ID = -1;
+    private int Type = -1;
+    private int intData = -1;
+    private boolean boolData = false;
 
-
-import java.util.*;
-
-/**
- * 
- */
-public class Message {
-
-    /**
-     * Default constructor
-     */
-    public Message() {
+    Message(int ID, int Type)
+    {
+        this.ID = ID;
+        this.Type = Type;
     }
 
-    /**
-     * 
-     */
-    public Integer ID;
-
-    /**
-     * 
-     */
-    public Integer Msg_Type;
-
-    /**
-     * 
-     */
-    public Integer Msg_data;
-
-
-    /**
-     * 
-     */
-   // public DVM 1..*;
-
-    /**
-     * @param ID 
-     * @param Type 
-     * @param Data
-     */
-    public void Message(int ID, int Type, String Data) {
-        // TODO implement here
+    void intInput(int input)
+    {
+        this.intData = input;
     }
 
+    void boolInput(boolean input)
+    {
+        this.boolData = input;
+    }
 }
+
+
