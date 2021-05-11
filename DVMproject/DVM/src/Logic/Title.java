@@ -27,10 +27,20 @@ public class Title {
         return this.Item_List;
     }
     
-    public void UpdateStock(int i, boolean IfHold) {
-    	if(IfHold) {
+    public void UpdateStock(int id, boolean IfHold) {
+    	if(id==1) {
             this.Hold++;
             this.Item_List.remove(0);
+        }
+    	else if(id==0){
+    	    if(IfHold){
+    	        if(Hold<=0) {
+    	            //error
+                }
+                this.Hold--;
+            }
+    	    else
+                this.Item_List.remove(0);
         }
     }
     

@@ -265,8 +265,13 @@ public class Controller {
     	}
     	return -1;
     }
-    
-    public void InfoNoItem() {
+	public void ReturnItem(Title t) {
+		k.setVisible(false);
+		k=new InfoReturnItemUI(t);
+	}
+
+
+	public void InfoNoItem() {
         k.setVisible(false);
         k=new InfoNoItemUI(basket);
     }
@@ -314,9 +319,6 @@ public class Controller {
 
     /**
      */
-    public void ReturnItem(Title t) {
-        // TODO implement here
-    }
 
     /**
      * 
