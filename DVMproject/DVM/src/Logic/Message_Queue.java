@@ -98,7 +98,7 @@ public class Message_Queue
 
         channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
         String queueName = channel.queueDeclare().getQueue();
-        String key = "DVM"+thisDVMID;
+        String[] key = "DVM"+thisDVMID;
         for(String bindingKey : key)
         {
             channel.queueBind(queueName,EXCHANGE_NAME,bindingKey);
