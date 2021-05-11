@@ -265,9 +265,14 @@ public class Controller {
     	}
     	return -1;
     }
-	public void ReturnItem(Title t) {
-		k.setVisible(false);
-		k=new InfoReturnItemUI(t);
+	public void ReturnItem(Title t,int IfHold) {
+		int del=-1;
+    	k.setVisible(false);
+		k=new InfoReturnItemUI(t.Name());
+		while(del==-1){
+			System.out.print("");
+			del=((InfoReturnItemUI)k).return_value;
+		}
 	}
 
 
