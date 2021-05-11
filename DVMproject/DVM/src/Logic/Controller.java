@@ -175,12 +175,7 @@ public class Controller {
 			}
 			else if(check==1){
 				int t = Payment.CM.C_List.get(del).getTitle_id();
-				int index = 0;
-				for(int i = 0; i<Title_List.size(); i++){
-					if(i == t)
-						index = i;
-				}
-				ReturnItem(Title_List.get(index),true);
+				ReturnItem(Title_List.get(t-1),true);
 				//return 0;
 			}
 			else if(check==0)
