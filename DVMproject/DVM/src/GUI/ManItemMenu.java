@@ -47,9 +47,9 @@ public class ManItemMenu extends JFrame implements ActionListener{
 		label.setFont(label.getFont().deriveFont(15.0f));
 		labelpanel.add(label);
 		//아이템패널
-		JPanel itemlistpanel = new JPanel(new GridLayout());
+		JPanel itemlistpanel = new JPanel();
 		JScrollPane itempanel = new JScrollPane(itemlistpanel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		itemlistpanel.setPreferredSize(new Dimension(600,56*temp.size()));
+		itemlistpanel.setPreferredSize(new Dimension(600,50*temp.size()));
 		Item_list=new JCheckBox[30];
 		for(int i=0;i<temp.size();i++) {
 			String expdate=Integer.toString(temp.get(i).Expiration_Date());
@@ -81,7 +81,7 @@ public class ManItemMenu extends JFrame implements ActionListener{
 		setVisible(true);
 	}
 	//test
-	/*
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Controller c=new Controller();
@@ -98,7 +98,7 @@ public class ManItemMenu extends JFrame implements ActionListener{
 		
 
 	}
-	*/
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -110,13 +110,13 @@ public class ManItemMenu extends JFrame implements ActionListener{
 		}
 		if(e.getSource()==delete) {
 			timer.stop();
-			return_value=2;
 			for(int i=0;i<temp.size();i++) {
 				if(Item_list[i].isSelected()) {
 					return_itemlist.add(i);
 					System.out.print(i);
 				}
 			}
+			return_value=2;
 		}
 		if(e.getSource()==exit) {
 			timer.stop();
