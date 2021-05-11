@@ -174,7 +174,7 @@ public class Controller {
 				return 1;
 			}
 			else if(check==1){
-				//ReturnItem();
+				Title t = Payment.CM.C_List.get(del).getTi();
 				//return 0;
 			}
 			else if(check==0)
@@ -313,7 +313,6 @@ public class Controller {
 
 
     /**
-     * @param Title
      */
     public void ReturnItem(Title t) {
         // TODO implement here
