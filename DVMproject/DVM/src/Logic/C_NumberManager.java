@@ -1,6 +1,7 @@
 package Logic;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class C_NumberManager extends C_Number {
 

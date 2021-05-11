@@ -24,7 +24,7 @@ public class Controller {
     	k=new JFrame();
     	Title_List=new ArrayList<Title>();
     	C_man=new C_NumberManager();
-    	Title_List.add(new Title("코카콜라",1,(float)700));
+    	Title_List.add(new Title("코카콜라",1,(int)700));
     	Title_List.add(new Title("나랑드사이다",2,(float)700));
     	Title_List.add(new Title("솔의눈",3,(float)700));
     	Title_List.add(new Title("게토레이",4,(float)700));

@@ -2,10 +2,10 @@ package Logic;
 
 class Message
 {
-    int ID = -1;
-    int Type = -1;
-    int intData = -1;
-    boolean boolData = false;
+    private int ID = -1;
+    private int Type = -1;
+    private int intData = -1;
+    private boolean boolData = false;
 
     Message(int ID, int Type)
     {
