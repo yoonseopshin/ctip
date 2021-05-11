@@ -10,40 +10,40 @@ import java.util.ArrayList;
 import GUI.*;
 
 /**
- * 
- */
-public class Controller {
-	private JFrame k;
-    public ArrayList<Title> Title_List;
-    public Payment Payment;
-    public Title basket;
-    public Stack DVMStack;
-    public C_NumberManager C_man;
+				*
+				*/
+		public class Controller {
+			private JFrame k;
+			public ArrayList<Title> Title_List;
+			public Payment Payment;
+			public Title basket;
+			public Stack DVMStack;
+			public C_NumberManager C_man;
 
-    public Controller() {
-    	k=new JFrame();
-    	Title_List=new ArrayList<Title>();
-    	C_man=new C_NumberManager();
-    	Title_List.add(new Title("코카콜라",1,(float)700));
-    	Title_List.add(new Title("나랑드사이다",2,(float)700));
-    	Title_List.add(new Title("솔의눈",3,(float)700));
-    	Title_List.add(new Title("게토레이",4,(float)700));
-    	Title_List.add(new Title("스프라이트",5,(float)700));
-    	Title_List.add(new Title("포카리 스웨트",6,(float)700));
-    	Title_List.add(new Title("닥터페퍼",7,(float)700));
-    	Title_List.add(new Title("맥콜",8,(float)700));
-    	Title_List.add(new Title("제티",9,(float)700));
-    	Title_List.add(new Title("제주삼다수",10,(float)700));
-    	Title_List.add(new Title("데자와",11,(float)700));
-    	Title_List.add(new Title("아침햇살",12,(float)700));
-    	Title_List.add(new Title("밀키스",13,(float)700));
-    	Title_List.add(new Title("레쓰비",14,(float)700));
-    	Title_List.add(new Title("조지아",15,(float)700));
-    	Title_List.add(new Title("칠성사이다",16,(float)700));
-    	Title_List.add(new Title("티오피",17,(float)700));
-    	Title_List.add(new Title("몬스터",18,(float)700));
-    	Title_List.add(new Title("핫식스",19,(float)700));
-    	Title_List.add(new Title("레드불",20,(float)700));
+			public Controller() {
+				k=new JFrame();
+				Title_List=new ArrayList<Title>();
+				C_man=new C_NumberManager();
+				Title_List.add(new Title("코카콜라",1,(float)700));
+				Title_List.add(new Title("나랑드사이다",2,(float)700));
+				Title_List.add(new Title("솔의눈",3,(float)700));
+				Title_List.add(new Title("게토레이",4,(float)700));
+				Title_List.add(new Title("스프라이트",5,(float)700));
+				Title_List.add(new Title("포카리 스웨트",6,(float)700));
+				Title_List.add(new Title("닥터페퍼",7,(float)700));
+				Title_List.add(new Title("맥콜",8,(float)700));
+				Title_List.add(new Title("제티",9,(float)700));
+				Title_List.add(new Title("제주삼다수",10,(float)700));
+				Title_List.add(new Title("데자와",11,(float)700));
+				Title_List.add(new Title("아침햇살",12,(float)700));
+				Title_List.add(new Title("밀키스",13,(float)700));
+				Title_List.add(new Title("레쓰비",14,(float)700));
+				Title_List.add(new Title("조지아",15,(float)700));
+				Title_List.add(new Title("칠성사이다",16,(float)700));
+				Title_List.add(new Title("티오피",17,(float)700));
+				Title_List.add(new Title("몬스터",18,(float)700));
+				Title_List.add(new Title("핫식스",19,(float)700));
+				Title_List.add(new Title("레드불",20,(float)700));
         
     }
 

@@ -22,19 +22,19 @@ public class Message_Queue
         factory.setUsername("hello");
         factory.setPassword("hello");
         //어플리케이션간의 커넥션을 생성하고 브로커와 어플리케이션간의 TCP연결을 시도함.
+
         //channerl == 데이터 통로
         try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel())
         {
-            for (int i = 0; i <= 100000; i++)
+            do
             {
                 //채널에 큐 생성
                 channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-                String message = "Hello World!" + (int) (Math.random() * 100);
+                String message = ID+" "+Type+" "+data;
                 //메세지 전송
-                channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
-                System.out.println(" [x] Set '" + message + "'");
+                channel.basicPublish("", QUEUE_NAME,null, message.getBytes());
                 Thread.sleep(10);
-            }
+            }while(ID == 0);
         }
         catch (TimeoutException e)
         {

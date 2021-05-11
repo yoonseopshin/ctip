@@ -1,6 +1,7 @@
 <component name="libraryTable">
-  <library name="Rabbitmq">
+  <library name="RabbitMq">
     <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/amqp-client-5.12.0.jar!/" />
       <root url="file://$PROJECT_DIR$/lib" />
     </CLASSES>
     <JAVADOC />
