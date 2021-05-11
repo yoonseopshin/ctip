@@ -18,7 +18,7 @@ public class DVM {
     /**
      * 
      */
-    public integer ID;
+    public Integer ID;
 
     /**
      * 

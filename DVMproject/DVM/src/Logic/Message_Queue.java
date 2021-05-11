@@ -18,7 +18,7 @@ public class Message_Queue {
     /**
      * 
      */
-    public array<Message> Queue;
+    public ArrayList<Message> Queue;
 
 
 
@@ -27,14 +27,14 @@ public class Message_Queue {
     /**
      * @param Message
      */
-    public void SendMsg(void Message) {
+    public void SendMsg(Message m) {
         // TODO implement here
     }
 
     /**
      * @param Message
      */
-    public void Dequeue(void Message) {
+    public void Dequeue(Message m) {
         // TODO implement here
     }
 

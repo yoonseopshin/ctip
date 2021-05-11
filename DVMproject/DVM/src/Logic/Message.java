@@ -23,25 +23,25 @@ public class Message {
     /**
      * 
      */
-    public integer Msg_Type;
+    public Integer Msg_Type;
 
     /**
      * 
      */
-    public integer Msg_data;
+    public Integer Msg_data;
 
 
     /**
      * 
      */
-    public DVM 1..*;
+   // public DVM 1..*;
 
     /**
      * @param ID 
      * @param Type 
      * @param Data
      */
-    public void Message(void ID, void Type, void Data) {
+    public void Message(int ID, int Type, String Data) {
         // TODO implement here
     }
 
