@@ -46,8 +46,10 @@ public class Title {
     }
     
     public void DeleteItem(ArrayList<Integer> ilist) {
+        ArrayList<Item> rm = new ArrayList<Item>();
     	for(int i=0;i<ilist.size();i++){
-    	    Item_List.remove(ilist.get(i));
+    	    rm.add(Item_List.get(ilist.get(i)));
         }
+    	Item_List.removeAll(rm);
     }
 }
