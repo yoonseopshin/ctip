@@ -49,7 +49,7 @@ public class Payment {
     public int SmartPay(boolean Pay_confirm) {
         if(DVMid>0) {//카드결제 성공
             if(Pay_confirm){ //test용으로 성공이라 가정
-                System.out.println("카드결제 선결제 성공");
+                System.out.println("간편결제 선결제 성공");
                 C_Number Cnumber= new C_Number(title_id, DVMid);
                 int CN=Cnumber.CreateCnumber(title_id, DVMid);
 
@@ -59,16 +59,16 @@ public class Payment {
                 Message_Queue.recivMsg();
                 return CN;
             }else {
-                this.Error_log="카드결제 선결제 실패";
+                this.Error_log="간편결제 선결제 실패";
                 return -3;
             }
         }
         else {
             if(Pay_confirm){
-                System.out.println("카드결제 성공"); //test용으로 성공이라 가정
+                System.out.println("간편결제 성공"); //test용으로 성공이라 가정
                 return 0;
             }else {
-                this.Error_log="카드결제 실패";
+                this.Error_log="간편결제 실패";
                 return -3;
             }
         }
