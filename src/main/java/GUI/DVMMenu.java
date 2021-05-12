@@ -6,9 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Stack;
-
 import javax.swing.*;
-
 import Logic.*;
 
 public class DVMMenu extends JFrame implements ActionListener{
@@ -65,7 +63,7 @@ public class DVMMenu extends JFrame implements ActionListener{
 		setVisible(true);
 		
 	}
-	//테스트용
+	/*test
 	public static void main(String[] args) {
 		DVM a=new DVM(1,1.0,1.0);
 		DVM b=new DVM(2,2.0,2.0);
@@ -78,7 +76,7 @@ public class DVMMenu extends JFrame implements ActionListener{
 		
 
 	}
-
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<stk.size();i++) {

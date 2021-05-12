@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-
 import javax.swing.*;
 
 public class AddItemMenu extends JFrame implements ActionListener{
@@ -108,15 +107,13 @@ public class AddItemMenu extends JFrame implements ActionListener{
 		
 		
 	}
+	/*test
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new AddItemMenu();
-
 	}
-
+*/
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if(e.getSource()==Yearselect||e.getSource()==Monthselect||e.getSource()==Dayselect)
 			timer.restart();
 		if(e.getSource()==add) {

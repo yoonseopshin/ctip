@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
 import Logic.*;
@@ -60,15 +59,16 @@ public class InfoNoItemUI extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);		
 	}
+	/*
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Title t=new Title("가나다",1);
 		new InfoNoItemUI(t);
 
 	}
+
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if(e.getSource()==find) {
 			timer.stop();
 			return_value=1;

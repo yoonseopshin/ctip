@@ -1,13 +1,13 @@
 package GUI;
+
 import javax.swing.*;
-
-import Logic.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
+
+import Logic.*;
 
 public class MainMenu extends JFrame implements ActionListener{
 	private Timer timer = new Timer(180000, new ActionListener() {
@@ -71,8 +71,7 @@ public class MainMenu extends JFrame implements ActionListener{
 
 	}
 */
-	@Override 
-
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<menu.length;i++) {
 			if(e.getSource()==menu[i]) {

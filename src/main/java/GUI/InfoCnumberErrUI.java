@@ -2,17 +2,14 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import Logic.Title;
 
 public class InfoCnumberErrUI extends JFrame implements ActionListener{
 	private int s=5;
@@ -65,11 +62,12 @@ public class InfoCnumberErrUI extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);		
 	}
+	/*test
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new InfoCnumberErrUI();
 
 	}
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==confirm) {

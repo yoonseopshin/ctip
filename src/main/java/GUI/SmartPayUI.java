@@ -77,11 +77,13 @@ public class SmartPayUI extends JFrame implements ActionListener{
                 return_value=-2;
         }
     }
+    /*test
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         new SmartPayUI();
 
     }
+
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==cancel) {

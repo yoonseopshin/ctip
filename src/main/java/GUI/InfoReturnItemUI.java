@@ -2,13 +2,10 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -45,11 +42,13 @@ public class InfoReturnItemUI extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);		
 	}
+	/*test
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new InfoReturnItemUI("코카콜라");
 
 	}
+
+	 */
 	private Timer timer = new Timer(1000, new ActionListener(){
 		public void actionPerformed (ActionEvent e) {
 			label.setText(s+"초 후 메인화면으로 돌아갑니다.");
