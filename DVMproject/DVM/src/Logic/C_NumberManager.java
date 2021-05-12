@@ -16,7 +16,6 @@ public class C_NumberManager extends C_Number {
 	//인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
 	HashMap<Integer, C_Number> C_List = new HashMap<Integer, C_Number>();
 
-
 	public void PopCnumber(int C_Number_t) {
 		C_List.remove(C_Number_t); // key값 C_Number_t인 값 제거
 	}

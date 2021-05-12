@@ -17,6 +17,7 @@ public class Controller2 {
     private Title basket;
     private Stack DVMStack;
     private int del;
+	private C_NumberManager CM;
 
     public Controller2() {
     	this.k=new JFrame();

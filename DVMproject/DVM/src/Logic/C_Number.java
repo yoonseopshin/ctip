@@ -46,7 +46,6 @@ public class C_Number {
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "C_Number [����� :"+title_id+1 + ", ���Ǳ� id=" + DvmID + ", ������ȣ=" + C_Number_t

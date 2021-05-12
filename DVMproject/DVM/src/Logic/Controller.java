@@ -17,7 +17,7 @@ public class Controller {
     private Payment Payment;
     private Title basket;
     private Stack DVMStack;
-    private C_NumberManager CM;
+
 
     public Controller() {
     	this.k=new JFrame();
