@@ -15,6 +15,7 @@ public class InfoNoItemUI extends JFrame implements ActionListener{
 			timer.stop();
 		}
 	});
+
 	private JButton find;
 	private JButton cancel;
 	
