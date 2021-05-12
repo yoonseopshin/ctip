@@ -40,7 +40,7 @@ public class Message_Queue
                 case 6:
                     //나한테 인증번호 음료 판매했는지 대답해주는것
                     Message msg6 = new Message(2);
-                    msg6.setmsg(message.myID, 7, message.Title, true);
+                    msg6.setmsg(message.myID, 7, message.Title, false);
                     msgQueue.offer(msg6);
                 case 7:
                     //저쪽에 음료 판매했는지 말해주는것
@@ -49,10 +49,26 @@ public class Message_Queue
         msgQueue.offer(message);
     }
 
-    public static Message dequeue()
+    public static Queue dequeue(int type)
     {
-        Message message = msgQueue.poll();
-        return message;
-    }
+        Queue<Message> temp1 = new LinkedList<>();
+        Queue<Message> temp2 = new LinkedList<>();
+        Message message = new Message(-1);
 
+        while(msgQueue.isEmpty())
+        {
+            message = msgQueue.poll();
+            if(message.Type == type)
+            {
+                temp1.offer(message);
+            }
+            else
+                temp2.offer(message);
+        }
+        while(temp2.isEmpty())
+        {
+            msgQueue.offer(temp2.poll());
+        }
+        return temp1;
+    }
 }
