@@ -24,6 +24,9 @@ public class Controller {
     public Controller() {
     	this.k=new JFrame();
     	this.basket=null;
+    	this.Payment=null;
+    	this.DVMStack =new Stack<DVM>();
+    	this.CM=new C_NumberManager();
     	Title_List=new ArrayList<Title>();
     	Title_List.add(new Title("코카콜라",700));
     	Title_List.add(new Title("나랑드사이다",700));
@@ -502,7 +505,7 @@ public class Controller {
      */
     public void init() {
         basket=null;
-        DVMStack=null;
+        DVMStack.clear();
         Payment=null;
 		return;
     }
