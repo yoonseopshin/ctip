@@ -1,5 +1,5 @@
 package Logic;
-//
+
 public class Message
 {
     int ID = -1;

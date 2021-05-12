@@ -2,7 +2,7 @@ package Logic;
 
 import java.util.Queue;
 import java.util.LinkedList;
-//
+
 public class Message_Queue
 {
     Queue<Message> msgQueue = new LinkedList<>();
