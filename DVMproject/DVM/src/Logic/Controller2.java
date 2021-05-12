@@ -321,6 +321,7 @@ public class Controller2 {
     		System.out.print("");
     		del=((CardPayUI)k).return_value;
 		}
+
     	if(del==-3){//결제실패
     		int del2=-1;
     		k.setVisible(false);
