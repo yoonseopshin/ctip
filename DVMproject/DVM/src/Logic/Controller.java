@@ -17,14 +17,14 @@ public class Controller {
 	private JFrame k;
     private ArrayList<Title> Title_List;
     private Payment Payment;
-    private Title basket;
+    private int basket;
     private Stack DVMStack;
     private int del;
 	private C_NumberManager CM;
 
     public Controller() {
     	this.k=new JFrame();
-    	this.basket=null;
+    	this.basket=-666;
     	this.Payment=null;
     	this.DVMStack =new Stack<DVM>();
     	this.CM=new C_NumberManager();
@@ -101,12 +101,12 @@ public class Controller {
 		}
     	else if(del>0) {
     		if(del<=Title_List.size())
-    			basket=Title_List.get(del-1);
+    			basket=del;
     		else {
     			//error
 				return -1;
 			}
-			if(basket.CheckStock()) {
+			if(Title_List.get(basket-1).CheckStock()) {
 				PrintSelectPay(0);
 			}
 			else {
@@ -272,7 +272,7 @@ public class Controller {
 
     public void PrintSelectPay(int DVMid) {
         k.setVisible(false);
-        k=new PaymentMenu(basket);
+        k=new PaymentMenu(Title_List.get(basket-1));
         del=SelectPayment(DVMid);
         return;
     }
@@ -291,7 +291,7 @@ public class Controller {
 			return 0;
 		}
     	else if(del>0) {
-    		Payment=new Payment(Title_List.indexOf(basket),DVMid);
+    		Payment=new Payment(basket,DVMid);
     		if(del==1) {
 				ShowCardPay();
 				return 0;
@@ -349,9 +349,9 @@ public class Controller {
 		else if(del==1){//결제성공
 			int p=Payment.CardPay(true);
 			if(p == 0)
-				ReturnItem(basket,false);
+				ReturnItem(Title_List.get(basket-1),false);
 			if(p>0){
-				PrintCnumber(basket,Payment.DVMid,p);
+				PrintCnumber(Title_List.get(basket-1),Payment.DVMid,p);
 			}
 			return 0;
 		}
@@ -396,9 +396,9 @@ public class Controller {
 		else if(del==1){//결제성공
 			int p=Payment.SmartPay(true);
 			if(p == 0)
-				ReturnItem(basket,false);
+				ReturnItem(Title_List.get(basket-1),false);
 			if(p>0){
-				PrintCnumber(basket,Payment.DVMid,p);
+				PrintCnumber(Title_List.get(basket-1),Payment.DVMid,p);
 			}
 			return 0;
 		}
@@ -422,7 +422,7 @@ public class Controller {
 			System.out.print("");
 			del2=((InfoReturnItemUI)k).return_value;
 		}
-		t.UpdateStock(2,IfHold);
+		t.UpdateStock(0,IfHold);
 		Payment.init();
 		init();
 		return;
@@ -442,7 +442,7 @@ public class Controller {
 
 	public void InfoNoItem() {
         k.setVisible(false);
-        k=new InfoNoItemUI(basket);
+        k=new InfoNoItemUI(Title_List.get(basket-1));
         del=ReqFindDVM();
         return;
     }
@@ -499,7 +499,7 @@ public class Controller {
 	public void InfoNoUsableDVM(){
     	int del2=-1;
 		k.setVisible(false);
-		k=new InfoNoDVMUI(basket.Name());
+		k=new InfoNoDVMUI(Title_List.get(basket-1).Name());
 		while(del2==-1){
 			System.out.print("");
 			del2=((InfoNoDVMUI)k).return_value;
@@ -536,7 +536,7 @@ public class Controller {
      *
      */
     public void init() {
-        basket=null;
+        basket=-666;
         DVMStack.clear();
         Payment=null;
 		return;
