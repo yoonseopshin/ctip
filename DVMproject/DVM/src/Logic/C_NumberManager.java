@@ -17,9 +17,9 @@ public class C_NumberManager extends C_Number {
 	HashMap<Integer, C_Number> C_List = new HashMap<Integer, C_Number>();
 
 	public int PopCnumber(int C_Number_t) {
-
+		int r = C_List.get(C_Number_t).getTitle_id();
 		C_List.remove(C_Number_t); // key값 C_Number_t인 값 제거
-		return C_Number_t;
+		return r;
 	}
 
 
