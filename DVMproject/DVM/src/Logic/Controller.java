@@ -404,8 +404,8 @@ public class Controller {
 	}
 
 	private void CancelPay() {
-		init();
 		Payment.init();
+		init();
 		return;
 	}
 
