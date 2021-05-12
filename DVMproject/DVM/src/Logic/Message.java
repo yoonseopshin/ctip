@@ -47,5 +47,5 @@ public class Message
             xAdress = data2;
         }
     }
-
 }
+

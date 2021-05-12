@@ -4,11 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Scanner;
 
 public class CardPayUI extends JFrame implements ActionListener{
-    private int s=23;
-    private Scanner sc;
+    private int s=22;
     private Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -19,7 +20,7 @@ public class CardPayUI extends JFrame implements ActionListener{
                         s+"초 후 메인화면으로 돌아갑니다.</center></html>");
                 if(s==0){
                     return_value=0;
-                    sc.close();
+                    //sc.close();
                     timer.stop();
                 }
             }
@@ -36,6 +37,25 @@ public class CardPayUI extends JFrame implements ActionListener{
     public int return_value= -1;
 
     public CardPayUI(){
+        this.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyChar()=='s')
+                    return_value=1;
+                else if(e.getKeyChar()=='f')
+                    return_value=-3;
+            }
+        });
         timer.start();
 
         this.setPreferredSize(new Dimension(600,800));
@@ -44,7 +64,7 @@ public class CardPayUI extends JFrame implements ActionListener{
         //라벨패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600,300));
-        label = new JLabel();
+        label = new JLabel("남은 시간: 20");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
         //안내패널
@@ -58,6 +78,7 @@ public class CardPayUI extends JFrame implements ActionListener{
         cancel =new JButton("취소");
         cancel.setPreferredSize(new Dimension(300,70));
         cancel.addActionListener(this);
+        cancel.setFocusable(false);
         buttonpanel.add(cancel);
 
         add(labelpanel,BorderLayout.NORTH);
@@ -68,30 +89,19 @@ public class CardPayUI extends JFrame implements ActionListener{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
-        if(return_value==-1) {
-            int ID;
-            sc = new Scanner(System.in);
-            ID = sc.nextInt();
-            sc.close();
-            if (ID == 1)
-                return_value=ID;
-            else
-                return_value=-3;
-        }
     }
-    /*test
+/*
     public static void main(String[] args) {
         new CardPayUI();
     }
 
-     */
+ */
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==cancel) {
-            return_value = 0;
             timer.stop();
-            sc.close();
-            this.setVisible(false);
+            return_value = 0;
         }
     }
 }
