@@ -350,7 +350,7 @@ public class Controller {
 			if(p == 0)
 				ReturnItem(basket,false);
 			if(p>0){
-				//PrintCnumber(basket,p);
+				PrintCnumber(basket,Payment.DVMid,p);
 			}
 			return 0;
 		}
@@ -397,7 +397,7 @@ public class Controller {
 			if(p == 0)
 				ReturnItem(basket,false);
 			if(p>0){
-				//PrintCnumber(basket,p);
+				PrintCnumber(basket,Payment.DVMid,p);
 			}
 			return 0;
 		}
@@ -422,6 +422,18 @@ public class Controller {
 			del2=((InfoReturnItemUI)k).return_value;
 		}
 		t.UpdateStock(2,IfHold);
+		Payment.init();
+		init();
+		return;
+	}
+	public void PrintCnumber(Title t, int DVMid, int Cnumber){
+		int del2=-1;
+    	k.setVisible(false);
+    	k=new PrintCnumberUI(t,DVMid,Cnumber);
+		while(del2==-1){
+			System.out.print("");
+			del2=((PrintCnumberUI)k).return_value;
+		}
 		Payment.init();
 		init();
 		return;
@@ -461,6 +473,11 @@ public class Controller {
 				DVM dvm = new DVM(message.myID, message.xAdress, message.yAdress);
 				DVMStack.push(dvm);
 			}
+			if(DVMStack.isEmpty()) {
+				InfoNoUsableDVM();
+				init();
+				return 0;
+			}
 			ShowUsableDVM();
 			if(del==-2)
 				return -2;
@@ -475,6 +492,17 @@ public class Controller {
 		k.setVisible(false);
 		k=new DVMMenu(DVMStack);
 		del=SelectDVM();
+		return;
+	}
+
+	public void InfoNoUsableDVM(){
+    	int del2=-1;
+		k.setVisible(false);
+		k=new InfoNoDVMUI(basket.Name());
+		while(del2==-1){
+			System.out.print("");
+			del2=((InfoNoDVMUI)k).return_value;
+		}
 		return;
 	}
 
