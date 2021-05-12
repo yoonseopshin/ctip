@@ -51,6 +51,9 @@ public class Payment {
                 System.out.println("카드결제 성공");
                 CM.CreateCnumber(title_id, DVMid); //인증번호 생성
                 CM.toString();  //인증번호 출력
+                Message message = new Message(1);
+                message.setmsg(DVMid, 3, title_id, CM.C_Number_t);
+                Message_Queue.sendMsg(message);
                 return 2;
             }else {
                 System.out.println("카드결제 실패");
@@ -62,6 +65,9 @@ public class Payment {
             pay_confirm = true; //카드결제 성공
             if(pay_confirm){
                 System.out.println("카드결제 성공"); //test용으로 성공이라 가정
+                Message message = new Message(1);
+                message.setmsg(DVMid, 3, title_id, CM.C_Number_t);
+                Message_Queue.sendMsg(message);
                 return 1;
             }else {
                 System.out.println("카드결제 실패");

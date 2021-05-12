@@ -49,6 +49,7 @@ public class Controller2 {
     public static void main(String[] args) {
     	//선언
     	Controller2 c= new Controller2();
+    	Message_Queue  queue = new Message_Queue();
     	c.Title_List.get(0).AddItem(new Item(20200101));
     	//start
     	c.ReqMainMenu();
@@ -428,6 +429,13 @@ public class Controller2 {
 		}
 		else if(del==1){
 			//메시지의 송수신
+			Message message = new Message(1);
+			message.setmsg(0, 4,-1);
+			Message_Queue.sendMsg(message);
+			Message_Queue.recivMsg();
+			message = Message_Queue.dequeue();
+			DVM dvm =new DVM(message.myID, message.xAdress, message.yAdress);
+			DVMStack.push(dvm);
 			ShowUsableDVM();
 			if(del==-2)
 				return -2;

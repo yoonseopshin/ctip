@@ -6,7 +6,6 @@ public class DVM
 
     private double Address_X; // 실제 주소
     private double Address_Y;
-    private boolean available = false; // 요청이 왔을때 재고 존재 여부
 
     public DVM(int ID, double X,double Y)
     {
