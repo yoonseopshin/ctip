@@ -26,6 +26,12 @@ public class Message_Queue
                     Message msg1 = new Message(2);
                     msg1.setmsg(message.myID, 2, message.Title, true);
                     msgQueue.offer(msg1);
+                    Message msg11 = new Message(3);
+                    msg11.setmsg(message.myID, 2, message.Title, true);
+                    msgQueue.offer(msg11);
+                    Message msg12 = new Message(4);
+                    msg12.setmsg(message.myID, 2, message.Title, true);
+                    msgQueue.offer(msg12);
                 case 2:
                     //상대방에게 재고응답해주는 부분
                 case 3:
@@ -33,8 +39,14 @@ public class Message_Queue
                 case 4:
                     //주소 정보 가져오는것
                     Message msg4 = new Message(2);
-                    msg4.setmsg(message.myID, 5, 3754169, 12707881);
+                    msg4.setmsg(message.myID, 5, 37.54169, 127.07881);
                     msgQueue.offer(msg4);
+                    Message msg41 = new Message(3);
+                    msg41.setmsg(message.myID, 5, 37.54180, 127.0788);
+                    msgQueue.offer(msg41);
+                    Message msg42 = new Message(4);
+                    msg42.setmsg(message.myID, 5, 37.54112, 127.0788);
+                    msgQueue.offer(msg42);
                 case 5:
                     //상대방한테 주소 응답해준거 다시 올 필요 없음
                 case 6:

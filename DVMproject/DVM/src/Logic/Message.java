@@ -6,8 +6,8 @@ public class Message
     int myID = -1;
     int targetID = -1;
     int Type = -1;
-    int xAdress = -1;
-    int yAdress = -1;
+    double xAdress = -1;
+    double yAdress = -1;
     int Title = -1;
     int C_Number = -1;
 
@@ -43,16 +43,18 @@ public class Message
     {
         targetID = id;
         Type = type;
-        if(Type == 3)
-        {
-            Title = data1;
-            C_Number = data2;
-        }
-        else if(Type == 5)
-        {
-            xAdress = data1;
-            xAdress = data2;
-        }
+        Title = data1;
+        C_Number = data2;
+
+
+
+    }
+    void setmsg(int id, int type, double data1, double data2)
+    {
+        targetID = id;
+        Type = type;
+        xAdress = data1;
+        yAdress = data2;
     }
 }
 
