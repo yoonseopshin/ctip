@@ -5,6 +5,8 @@ import GUI.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -445,9 +447,14 @@ public class Controller {
 			message.setmsg(0, 4,-1);
 			Message_Queue.sendMsg(message);
 			Message_Queue.recivMsg();
-			message = Message_Queue.dequeue();
-			DVM dvm =new DVM(message.myID, message.xAdress, message.yAdress);
-			DVMStack.push(dvm);
+			Queue<Message> temp = new LinkedList();
+			temp = Message_Queue.dequeue(5);
+			while(temp.isEmpty())
+			{
+				message = temp.poll();
+				DVM dvm = new DVM(message.myID, message.xAdress, message.yAdress);
+				DVMStack.push(dvm);
+			}
 			ShowUsableDVM();
 			if(del==-2)
 				return -2;
