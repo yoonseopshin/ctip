@@ -49,78 +49,9 @@ public class Controller2 {
     	//선언
     	Controller2 c= new Controller2();
     	c.Title_List.get(0).AddItem(new Item(20200101));
-
+    	//start
     	c.ReqMainMenu();
-    	//시스템
-		/*
-    	int delimiter;
-    	while(true){
-    	c.ReqMainMenu();
-    		while(true) {
-    			c.ShowMainMenu();
-    			delimiter=c.InputSelect();
-    			//인증번호 입력
-    			if(delimiter==0) {
-    				while(true) {
-    					c.ShowInputLine();
-    					delimiter=c.InputCnumber();
-    					if(delimiter==1)//저장되지 않은 값을 입력한 경우
-    						continue;
-    					//매니저 메뉴 출력
-    					if(delimiter==2) {
-    						while(true) {
-    							c.ManShowTitle();
-    							delimiter = c.ManSelectTitle();
-    	    					if(delimiter>0) {
-    	    						while(true) {
-    	    							int del2;
-    	    							c.ManShowItem(delimiter);
-    	    							del2=c.ManEditItem(delimiter);
-    	    							if(del2==0||del2==-2) {
-    	    								if(del2==-2) delimiter=-2;
-    	    								break;
-    	    							}
-    	    						}
-    	    					}
-    	    					if(delimiter==0||delimiter==-2) break;
-    						}
-    					}
-    					if(delimiter==0||delimiter==-2) break;
-    				}
-    				if(delimiter==0) continue;
-    			}
-    			//재고가 있는 음료 선택
-    			else if(delimiter==1) {
-    				c.PrintSelectPay();
-    				delimiter=c.SelectPayment();
-					if(delimiter==1) {
-						c.ShowCardPay();
-						c.CancelPay(1);
-					}
-					if(delimiter==2) {
-						c.ShowSmartPay();
-						c.CancelPay(2);
-					}
-    				if(delimiter==0) {
-    					c.init();
-    					continue;
-    				}
-    			}
-    			//재고가 없는 음료 선택
-    			else if(delimiter==2) {
-    				c.InfoNoItem();
-    				c.ReqFindDVM();
-    			}
-    			//입력시간초과
-    			if(delimiter==-2) {
-    				c.init();
-					break;
-				}
 
-    		}
-    	}
-
-		 */
     }
 
 	public void ReqMainMenu() {
@@ -353,7 +284,7 @@ public class Controller2 {
 			return 0;
 		}
     	else if(del>0) {
-    		//payment=new payment(어쩌구);->reqcardpay/reqsmartpay 말고 생성자 넣는게 좋을듯..
+    		//Payment=new payment(어쩌구);->reqcardpay/reqsmartpay 말고 생성자 넣는게 좋을듯..
     		if(del==1) {
 				ShowCardPay();
 				return 0;
@@ -531,7 +462,7 @@ public class Controller2 {
      */
     public void init() {
         basket=null;
-        Payment=null;
+        //Payment=new Payment();
     }
     
 
