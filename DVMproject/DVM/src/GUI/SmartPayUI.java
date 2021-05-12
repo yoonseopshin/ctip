@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 import java.util.Scanner;
 
 public class SmartPayUI extends JFrame implements ActionListener{
-    private int s=23;
+    private int s=22;
     private Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -62,7 +62,7 @@ public class SmartPayUI extends JFrame implements ActionListener{
         //라벨패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600,300));
-        label = new JLabel();
+        label = new JLabel("남은 시간: 20");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
         //안내패널
