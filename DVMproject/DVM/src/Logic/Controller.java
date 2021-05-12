@@ -449,7 +449,7 @@ public class Controller {
 			Message_Queue.recivMsg();
 			Queue<Message> temp = new LinkedList();
 			temp = Message_Queue.dequeue(5);
-			while(temp.isEmpty())
+			while(!temp.isEmpty())
 			{
 				message = temp.poll();
 				DVM dvm = new DVM(message.myID, message.xAdress, message.yAdress);

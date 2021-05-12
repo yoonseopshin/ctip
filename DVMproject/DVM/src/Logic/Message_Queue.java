@@ -55,7 +55,7 @@ public class Message_Queue
         Queue<Message> temp2 = new LinkedList<>();
         Message message = new Message(-1);
 
-        while(msgQueue.isEmpty())
+        while(!msgQueue.isEmpty())
         {
             message = msgQueue.poll();
             if(message.Type == type)
@@ -65,7 +65,7 @@ public class Message_Queue
             else
                 temp2.offer(message);
         }
-        while(temp2.isEmpty())
+        while(!temp2.isEmpty())
         {
             msgQueue.offer(temp2.poll());
         }
