@@ -322,9 +322,14 @@ public class Controller2 {
     		del=((CardPayUI)k).return_value;
 		}
     	if(del==-3){//결제실패
-    		//k.setVisible(false);
-    		//k=new PayErrUI(payment에러로그참조)
-			//init();
+    		int del2=-1;
+    		k.setVisible(false);
+    		k=new PayErrUI("payment에러로그참조");
+    		while(del2==-1){
+    			System.out.print("");
+    			del2=((PayErrUI)k).return_value;
+			}
+			init();
 			//payment.init();
 			return 0;
 		}
@@ -355,10 +360,15 @@ public class Controller2 {
 			System.out.print("");
 			del=((SmartPayUI)k).return_value;
 		}
-		if(del==-3){//결제실패
-			//k.setVisible(false);
-			//k=new PayErrUI(payment에러로그참조)
-			//init();
+		if(del==-3){
+			int del2=-1;
+			k.setVisible(false);
+			k=new PayErrUI("payment에러로그참조");
+			while(del2==-1){
+				System.out.print("");
+				del2=((PayErrUI)k).return_value;
+			}
+			init();
 			//payment.init();
 			return 0;
 		}
@@ -379,6 +389,7 @@ public class Controller2 {
 	private void CancelPay() {
 		init();
 		//Payment.init();
+		return;
 	}
 
 	public void ReturnItem(Title t,boolean IfHold) {
@@ -462,7 +473,9 @@ public class Controller2 {
      */
     public void init() {
         basket=null;
+        DVMStack=null;
         //Payment=new Payment();
+		return;
     }
     
 
