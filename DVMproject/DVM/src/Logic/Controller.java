@@ -337,8 +337,8 @@ public class Controller {
 				System.out.print("");
 				del2=((PayErrUI)k).return_value;
 			}
-			init();
 			Payment.init();
+			init();
 			return 0;
 		}
 		else if(del==0){//결제취소
@@ -383,8 +383,9 @@ public class Controller {
 				System.out.print("");
 				del2=((PayErrUI)k).return_value;
 			}
-			init();
 			Payment.init();
+			init();
+
 			return 0;
 		}
 		else if(del==0){//결제취소
