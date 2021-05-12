@@ -3,18 +3,25 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 public class InputLine extends JFrame implements ActionListener{
+	private Timer timer = new Timer(180000, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			return_value = -2;
+			timer.stop();
+		}
+	});
 
 	private JTextField txt;
 	private JButton[] num;
@@ -22,9 +29,11 @@ public class InputLine extends JFrame implements ActionListener{
 	private JButton Enter;
 	private JButton Cancel;
 	
-	private static int return_value= -1;
+	public int return_value= -1;
 	
 	public InputLine() {
+		timer.start();
+		
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
 		//라벨 패널
@@ -39,7 +48,7 @@ public class InputLine extends JFrame implements ActionListener{
 		inputpanel.setPreferredSize(new Dimension(600,100));
 		txt = new JTextField("", SwingConstants.CENTER);
 		txt.setHorizontalAlignment(JTextField.CENTER);
-		txt.setPreferredSize(new Dimension(450,100));
+		txt.setPreferredSize(new Dimension(400,100));
 		txt.setFont(txt.getFont().deriveFont(40.0f));
 		Delete = new JButton("지우기");
 		Delete.setPreferredSize(new Dimension(130,100));
@@ -79,22 +88,25 @@ public class InputLine extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-
+/*test
 	public static void main(String[] args) {
 		new InputLine();
 
 	}
 
+ */
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int i=0;i<num.length;i++) {
 			if(e.getSource()==num[i]) {
-				if(txt.getText().length()<8)
+				timer.restart();
+				if(txt.getText().length()<6)
 					txt.setText(txt.getText()+e.getActionCommand());
-						
 			}
 		}
 		if(e.getSource()==Delete) {
+			timer.restart();
 			String before=txt.getText();
 			int k=before.length();
 			if(k>0) {
@@ -103,14 +115,21 @@ public class InputLine extends JFrame implements ActionListener{
 			}
 		}
 		if(e.getSource()==Enter) {
-			return_value=Integer.parseInt(txt.getText());
-			this.setVisible(false);
+			timer.stop();
+			if(txt.getText().length()<6) {
+				return_value=666;
+			}
+			else {
+				int input=Integer.parseInt(txt.getText());
+				if(input==0)
+					return_value=666;
+				else
+					return_value=input;
+			}
 		}
-		
 		if(e.getSource()==Cancel) {
+			timer.stop();
 			return_value = 0;
-			this.setVisible(false);
 		}
 	}
-
 }

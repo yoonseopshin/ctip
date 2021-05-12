@@ -14,9 +14,9 @@ import GUI.*;
 public class Controller {
 	private JFrame k;
     public ArrayList<Title> Title_List;
-    public Payment Payment;
-    public Title basket;
-    public Stack DVMStack;
+    private Payment Payment;
+    private Title basket;
+    private Stack DVMStack;
 
     public Controller() {
     	this.k=new JFrame();
@@ -51,6 +51,7 @@ public class Controller {
     	c.Title_List.get(0).AddItem(new Item(20200101));
     	
     	//시스템
+		/*
     	int delimiter;
     	while(true){
     	c.ReqMainMenu();
@@ -91,6 +92,14 @@ public class Controller {
     			else if(delimiter==1) {
     				c.PrintSelectPay();
     				delimiter=c.SelectPayment();
+					if(delimiter==1) {
+						c.ShowCardPay();
+						c.CancelPay(1);
+					}
+					if(delimiter==2) {
+						c.ShowSmartPay();
+						c.CancelPay(2);
+					}
     				if(delimiter==0) {
     					c.init();
     					continue;
@@ -109,10 +118,10 @@ public class Controller {
     			
     		}
     	}
+
+		 */
     }
-
-
-
+/*
 	public void ReqMainMenu() {
     	int del=-1;
     	k.setVisible(false);
@@ -176,7 +185,7 @@ public class Controller {
 			else if(check==1){
 				int t = Payment.CM.C_List.get(del).getTitle_id();
 				ReturnItem(Title_List.get(t-1),true);
-				//return 0;
+				return 0;
 			}
 			else if(check==0)
 				return 2;
@@ -243,7 +252,6 @@ public class Controller {
     
     public void PrintSelectPay() {
         k.setVisible(false);
-        System.out.print(basket.Price());
         k=new PaymentMenu(basket);
     }
     
@@ -278,6 +286,23 @@ public class Controller {
     	}
     	return -1;
     }
+
+	public void ShowCardPay() {
+		k.setVisible(false);
+		k=new CardPayUI();
+	}
+
+	public void ShowSmartPay() {
+    	k.setVisible(false);
+    	k=new SmartPayUI();
+	}
+
+	private int CancelPay(int paytype) {
+		int del=-1;
+    	//if()
+		return -1;
+	}
+
 	public void ReturnItem(Title t,boolean IfHold) {
 		int del=-1;
     	k.setVisible(false);
@@ -302,7 +327,7 @@ public class Controller {
 			del=((InfoNoItemUI)k).return_value;
 		}
 	}
-
+ */
     /**
      * 
      */
@@ -357,16 +382,12 @@ public class Controller {
     /**
      * 
      */
-    public void ShowSmartPay() {
-        // TODO implement here
-    }
+
 
     /**
      * 
      */
-    public void ShowCardPay() {
-        // TODO implement here
-    }
+
 
     /**
      * 
@@ -380,7 +401,6 @@ public class Controller {
      */
     public void init() {
         basket=null;
-        Payment=new Payment();
     }
     
 

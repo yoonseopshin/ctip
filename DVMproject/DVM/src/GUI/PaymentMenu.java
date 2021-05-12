@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +13,7 @@ import javax.swing.Timer;
 import Logic.*;
 
 public class PaymentMenu extends JFrame implements ActionListener{
-	public Timer timer = new Timer(180000, new ActionListener() {
+	private Timer timer = new Timer(180000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			return_value = -2;

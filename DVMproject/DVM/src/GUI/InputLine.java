@@ -3,7 +3,6 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,13 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 public class InputLine extends JFrame implements ActionListener{
-	public Timer timer = new Timer(180000, new ActionListener() {
+	private Timer timer = new Timer(180000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			return_value = -2;
@@ -90,11 +88,13 @@ public class InputLine extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-
+/*test
 	public static void main(String[] args) {
 		new InputLine();
 
 	}
+
+ */
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

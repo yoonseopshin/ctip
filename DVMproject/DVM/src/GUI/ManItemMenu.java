@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -18,7 +17,7 @@ import javax.swing.Timer;
 import Logic.*;
 
 public class ManItemMenu extends JFrame implements ActionListener{
-	public Timer timer = new Timer(180000, new ActionListener() {
+	private Timer timer = new Timer(180000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			return_value = -2;
@@ -37,6 +36,7 @@ public class ManItemMenu extends JFrame implements ActionListener{
 	
 	
 	public ManItemMenu(Title t) {
+		timer.start();
 		this.setPreferredSize(new Dimension(600,800));
 		this.setTitle("DVM");
 		temp= t.Item_List();
@@ -57,6 +57,7 @@ public class ManItemMenu extends JFrame implements ActionListener{
 			Item_list[i]=new JCheckBox("ID: "+(i+1) + "     유통기한: " + expdate.substring(0, 4)+"-"+
 			expdate.substring(4, 6)+"-"+expdate.substring(6, 8));
 			Item_list[i].setPreferredSize(new Dimension(600,50));
+			Item_list[i].addActionListener(this);
 			itemlistpanel.add(Item_list[i]);
 		}
 		
@@ -81,10 +82,9 @@ public class ManItemMenu extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	//test
+	/*test
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Controller c=new Controller();
     	c.Title_List.get(0).AddItem(new Item(20200101));
     	c.Title_List.get(0).AddItem(new Item(20200102));
@@ -96,15 +96,18 @@ public class ManItemMenu extends JFrame implements ActionListener{
     	c.Title_List.get(0).AddItem(new Item(20200108));
     	c.Title_List.get(0).AddItem(new Item(20200109));
     	new ManItemMenu(c.Title_List.get(0));
-		
 
 	}
+	 */
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		return_itemlist=new ArrayList<Integer>();
+		for(int i=0;i<temp.size();i++){
+			if(e.getSource()==Item_list[i])
+				timer.restart();
+		}
 		if(e.getSource()==add) {
 			timer.stop();
 			return_value=1;
