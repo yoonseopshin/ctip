@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -83,10 +82,9 @@ public class ManItemMenu extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	//test
+	/*test
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Controller c=new Controller();
     	c.Title_List.get(0).AddItem(new Item(20200101));
     	c.Title_List.get(0).AddItem(new Item(20200102));
@@ -98,14 +96,13 @@ public class ManItemMenu extends JFrame implements ActionListener{
     	c.Title_List.get(0).AddItem(new Item(20200108));
     	c.Title_List.get(0).AddItem(new Item(20200109));
     	new ManItemMenu(c.Title_List.get(0));
-		
 
 	}
+	 */
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		return_itemlist=new ArrayList<Integer>();
 		for(int i=0;i<temp.size();i++){
 			if(e.getSource()==Item_list[i])

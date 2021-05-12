@@ -37,11 +37,12 @@ public class PayErrUI extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
+    /*test
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         new PayErrUI("결제오류!!!");
 
     }
+     */
     private Timer timer = new Timer(1000, new ActionListener(){
         public void actionPerformed (ActionEvent e) {
             label.setText(s+"초 후 메인화면으로 돌아갑니다.");

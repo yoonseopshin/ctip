@@ -531,7 +531,7 @@ public class Controller2 {
      */
     public void init() {
         basket=null;
-        DVMStack=null;
+        Payment=null;
     }
     
 

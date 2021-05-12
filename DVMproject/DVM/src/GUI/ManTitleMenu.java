@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -71,7 +70,7 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-//테스트용
+/*test
 	public static void main(String[] args) {
 		
 		Controller c= new Controller();
@@ -79,9 +78,10 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 
 	}
 
+ */
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		for(int i=0;i<temp.size();i++) {
 			if(e.getSource()==Title_list[i]) {
 				timer.stop();
