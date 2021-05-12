@@ -422,6 +422,8 @@ public class Controller {
 			del2=((InfoReturnItemUI)k).return_value;
 		}
 		t.UpdateStock(2,IfHold);
+		Payment.init();
+		init();
 		return;
 	}
 
