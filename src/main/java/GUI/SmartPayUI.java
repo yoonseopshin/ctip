@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class SmartPayUI extends JFrame implements ActionListener{
     private int s=23;
-    private Scanner sc;
     private Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -35,6 +35,25 @@ public class SmartPayUI extends JFrame implements ActionListener{
     public int return_value= -1;
 
     public SmartPayUI(){
+        this.addKeyListener(new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            if(e.getKeyChar()=='s')
+                return_value=1;
+            else if(e.getKeyChar()=='f')
+                return_value=-3;
+        }
+    });
         timer.start();
         this.setPreferredSize(new Dimension(600,800));
         this.setTitle("DVM");
@@ -56,6 +75,7 @@ public class SmartPayUI extends JFrame implements ActionListener{
         cancel =new JButton("취소");
         cancel.setPreferredSize(new Dimension(300,70));
         cancel.addActionListener(this);
+        cancel.setFocusable(false);
         buttonpanel.add(cancel);
 
         add(labelpanel,BorderLayout.NORTH);
@@ -66,16 +86,6 @@ public class SmartPayUI extends JFrame implements ActionListener{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
-        if(return_value==-1) {
-            int ID;
-            sc = new Scanner(System.in);
-            ID = sc.nextInt();
-            sc.close();
-            if (ID == 1)
-                return_value=ID;
-            else
-                return_value=-2;
-        }
     }
     /*test
     public static void main(String[] args) {

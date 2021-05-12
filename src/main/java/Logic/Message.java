@@ -1,27 +1,51 @@
 package Logic;
 
-class Message
+public class Message
 {
-    private int ID = -1;
-    private int Type = -1;
-    private int intData = -1;
-    private boolean boolData = false;
+    int ID = -1;
+    int Type = -1;
+    int xAdress = -1;
+    int yAdress = -1;
+    int Title = -1;
+    int C_Number = -1;
 
-    Message(int ID, int Type)
+    boolean boolData = false;
+
+    void setmsg(int id, int type, int data)
     {
-        this.ID = ID;
-        this.Type = Type;
+        ID = id;
+        Type = type;
+        if(Type == 1 ||Type == 6)
+            Title = data;
     }
-
-    void intInput(int input)
+    void setmsg(int id, int type, boolean data)
     {
-        this.intData = input;
+        ID = id;
+        Type = type;
+        if(Type == 2 ||Type == 7)
+            boolData = data;
     }
-
-    void boolInput(boolean input)
+    void setmsg(int id, int type, int intdata, boolean booldata)
     {
-        this.boolData = input;
+        ID = id;
+        Type = type;
+        Title = intdata;
+        boolData = booldata;
+    }
+    void setmsg(int id, int type, int data1, int data2)
+    {
+        ID = id;
+        Type = type;
+        if(Type == 3)
+        {
+            Title = data1;
+            C_Number = data2;
+        }
+        else if(Type == 5)
+        {
+            xAdress = data1;
+            xAdress = data2;
+        }
     }
 }
-
 

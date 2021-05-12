@@ -1,13 +1,12 @@
 package GUI;
 
+import Logic.Title;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.Timer;
-
-import Logic.*;
 
 public class MainMenu extends JFrame implements ActionListener{
 	private Timer timer = new Timer(180000, new ActionListener() {

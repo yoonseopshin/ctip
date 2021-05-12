@@ -1,6 +1,6 @@
 package Logic;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  * 
@@ -20,6 +20,31 @@ public class C_Number {
     	this.title_id = title_id;
     	this.DvmID =id;
     }
+
+
+	public void CreateCnumber(int title_id, int DvmID) {
+		// TODO implement here
+		String numStr = "";
+		do {
+			numStr = randnumber();
+		}while(numStr.equals("000000") || numStr.equals("111111"));
+		C_Number_t = Integer.parseInt(numStr);
+
+	}
+	public String randnumber() {
+
+		Random rand = new Random();
+		int len = 6;
+		String numStr = ""; //난수가 저장될 변수
+		for(int i=0;i<len;i++) {
+			//0~9 까지 난수 생성
+			String ran = Integer.toString(rand.nextInt(10));
+			numStr += ran;
+		}
+
+		return numStr;
+	}
+
 
 	@Override
 	public String toString() {
