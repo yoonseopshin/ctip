@@ -16,7 +16,7 @@ public class C_NumberManagerTest {
         int num = C_Number.CreateCnumber(5, 0);
         C_NumberManager.C_List.put(0, C_Number);
         int expectedResult = C_Number.title_id;
-        int actualResult = C_NumberManager.PopCnumber(num);
+        int actualResult = C_NumberManager.title_id;
         Assert.assertEquals(expectedResult, actualResult);
     }
 
