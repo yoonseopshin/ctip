@@ -14,7 +14,8 @@ public class Message_QueueTest {
     @Test
     public void sendMsg() {
         message = new Message(1);
-        //message.setmsg(1);
+        message.setmsg(1, 1, 1);
+
     }
 
     @Test
