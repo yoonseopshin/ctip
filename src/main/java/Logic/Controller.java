@@ -1,7 +1,7 @@
-package main.java.Logic;
+package Logic;
 
 
-import main.java.GUI.*;
+import GUI.*;
 
 import javax.swing.*;
 import java.util.ArrayList;

@@ -1,11 +1,11 @@
-package main.java.GUI;
+package GUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.java.Logic.*;
+import Logic.*;
 
 public class PrintCnumberUI extends JFrame{
 

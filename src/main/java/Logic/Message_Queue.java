@@ -1,4 +1,4 @@
-package main.java.Logic;
+package Logic;
 
 import java.util.Queue;
 import java.util.LinkedList;

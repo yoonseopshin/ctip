@@ -1,4 +1,4 @@
-package main.java.GUI;
+package GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +7,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Stack;
 import javax.swing.*;
-import main.java.Logic.*;
+import Logic.*;
 
 public class DVMMenu extends JFrame implements ActionListener{
 	private Timer timer = new Timer(180000, new ActionListener() {
