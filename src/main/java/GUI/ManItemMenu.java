@@ -1,4 +1,4 @@
-package main.java.GUI;
+package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 
-import main.java.Logic.*;
+import Logic.*;
 
 public class ManItemMenu extends JFrame implements ActionListener{
 	private Timer timer = new Timer(180000, new ActionListener() {

@@ -1,4 +1,4 @@
-package main.java.GUI;
+package GUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
 
-import main.java.Logic.*;
+import Logic.*;
 
 public class MainMenu extends JFrame implements ActionListener{
 	private Timer timer = new Timer(180000, new ActionListener() {
