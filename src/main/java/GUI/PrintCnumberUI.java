@@ -5,13 +5,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PayErrUI extends JFrame{
+import main.java.Logic.*;
+
+public class PrintCnumberUI extends JFrame{
 
     private JLabel label;
-    private int s=2;
+    private int s=4;
     public int return_value= -1;
 
-    public PayErrUI(String Msg) {
+    public PrintCnumberUI(Title t,int DVMid, int Cnumber) {
         timer.start();
 
         this.setPreferredSize(new Dimension(600,800));
@@ -20,14 +22,15 @@ public class PayErrUI extends JFrame{
         //라벨패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600,300));
-        label = new JLabel("3초 후 메인화면으로 돌아갑니다.");
+        label = new JLabel("5초 후 메인화면으로 돌아갑니다.");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
         //안내패널
         JPanel informpanel = new JPanel();
         //informpanel.setPreferredSize(new Dimension(600,300));
-        JLabel infolabel = new JLabel(Msg);
-        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
+        JLabel infolabel = new JLabel("<html><center>제품: "+t.Name()+"   DVM ID: "+DVMid+
+                "<br>인증번호:"+Cnumber+"</center></html>");
+        infolabel.setFont(infolabel.getFont().deriveFont(30.0f));
         informpanel.add(infolabel);
 
         add(labelpanel,BorderLayout.NORTH);
@@ -37,12 +40,13 @@ public class PayErrUI extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
-    /*test
+/*
     public static void main(String[] args) {
-        new PayErrUI("결제오류!!!");
+        new PrintCnumberUI(new Title("appke",1), 1,111111);
 
     }
-     */
+*/
+
     private Timer timer = new Timer(1000, new ActionListener(){
         public void actionPerformed (ActionEvent e) {
             label.setText(s+"초 후 메인화면으로 돌아갑니다.");

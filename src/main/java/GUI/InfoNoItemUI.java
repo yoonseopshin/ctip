@@ -1,11 +1,13 @@
-package GUI;
+package main.java.GUI;
 
-import Logic.Title;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
+
+import main.java.Logic.*;
 
 public class InfoNoItemUI extends JFrame implements ActionListener{
 	private Timer timer = new Timer(180000, new ActionListener() {
@@ -15,7 +17,6 @@ public class InfoNoItemUI extends JFrame implements ActionListener{
 			timer.stop();
 		}
 	});
-
 	private JButton find;
 	private JButton cancel;
 	

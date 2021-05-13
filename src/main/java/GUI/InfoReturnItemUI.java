@@ -1,14 +1,18 @@
-package GUI;
+package main.java.GUI;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InfoReturnItemUI extends JFrame{
 
 	private JLabel label;
-	private int s=4;
+	private int s=2;
 	public int return_value= -1;
 	
 	public InfoReturnItemUI(String name) {
@@ -20,7 +24,7 @@ public class InfoReturnItemUI extends JFrame{
 		//라벨패널
 		JPanel labelpanel = new JPanel();
 		labelpanel.setPreferredSize(new Dimension(600,300));
-		label = new JLabel();
+		label = new JLabel("3초 후 메인화면으로 돌아갑니다.");
 		label.setFont(label.getFont().deriveFont(15.0f));
 		labelpanel.add(label);
 		//안내패널

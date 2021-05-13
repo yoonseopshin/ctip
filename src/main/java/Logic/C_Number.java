@@ -1,6 +1,6 @@
-package Logic;
+package main.java.Logic;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  * 
@@ -22,13 +22,14 @@ public class C_Number {
     }
 
 
-	public void CreateCnumber(int title_id, int DvmID) {
-		// TODO implement here
+	public int CreateCnumber(int title_id, int DvmID) {
 		String numStr = "";
 		do {
 			numStr = randnumber();
 		}while(numStr.equals("000000") || numStr.equals("111111"));
 		C_Number_t = Integer.parseInt(numStr);
+
+		return C_Number_t;
 
 	}
 	public String randnumber() {

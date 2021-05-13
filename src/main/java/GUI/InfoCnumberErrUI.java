@@ -1,13 +1,18 @@
-package GUI;
+package main.java.GUI;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 
 public class InfoCnumberErrUI extends JFrame implements ActionListener{
-	private int s=5;
+	private int s=2;
 	private Timer timer = new Timer(1000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -32,7 +37,7 @@ public class InfoCnumberErrUI extends JFrame implements ActionListener{
 		//라벨패널
 		JPanel labelpanel = new JPanel();
 		labelpanel.setPreferredSize(new Dimension(600,300));
-		label = new JLabel();
+		label = new JLabel("3초 후 이전화면으로 돌아갑니다.");
 		label.setFont(label.getFont().deriveFont(15.0f));
 		labelpanel.add(label);
 		//안내패널

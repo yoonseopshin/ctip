@@ -1,78 +1,84 @@
-package Logic;
+package main.java.Logic;
 
+
+import java.util.*;
 
 public class Payment {
 
 	int title_id;
 	int DVMid;
 	String Error_log;
-	boolean pay_confirm;
-	C_NumberManager CM = new C_NumberManager();
-	
-   
-    public Message_Queue referto;
 
-
-    public int CardPay() {
-        if(DVMid>0) { // 선결제시
-            //pay_confirm = Credit(t.price);   //외부의 카드결제 시스템 진행
-            pay_confirm = true; //카드결제 성공
-            if(pay_confirm){ //test용으로 성공이라 가정
-                System.out.println("카드결제 성공");
-                CM.CreateCnumber(title_id, DVMid); //인증번호 생성
-                CM.toString();  //인증번호 출력
-                return 2; //선결제 성공
-            }else {
-                System.out.println("카드결제 실패");
-                return 0;
-            }
-    	}
-    	else {
-            //pay_confirm = Credit(t.price);  //외부의 카드결제 시스템 진행
-            pay_confirm = true; //카드결제 성공
-            if(pay_confirm){
-                System.out.println("카드결제 성공"); //test용으로 성공이라 가정
-                return 1;
-            }else {
-                System.out.println("카드결제 실패");
-                return 0;
-            }
-    	}
-
+	Payment(int title_id, int DVMid){
+	    this.title_id =title_id;
+	    this.DVMid=DVMid;
     }
 
-    public int SmartPay() {
-        if(DVMid>0) { // 선결제시
-            //pay_confirm = Credit(t.price);   //외부의 카드결제 시스템 진행
-            pay_confirm = true; //카드결제 성공
-            if(pay_confirm){ //test용으로 성공이라 가정
-                System.out.println("카드결제 성공");
-                CM.CreateCnumber(title_id, DVMid); //인증번호 생성
-                CM.toString();  //인증번호 출력
-                return 2;
+    public String Error_log(){
+	    return this.Error_log;
+    }
+
+    public int CardPay(boolean Pay_confirm) {
+        if(DVMid>0) {//카드결제 성공
+            if(Pay_confirm){ //test용으로 성공이라 가정
+                System.out.println("카드결제 선결제 성공");
+                C_Number Cnumber= new C_Number(title_id, DVMid);
+                int CN=Cnumber.CreateCnumber(title_id, DVMid);
+
+                Message message = new Message(1);
+                message.setmsg(DVMid, 3, title_id, CN);
+                Message_Queue.sendMsg(message);
+                Message_Queue.recivMsg();
+                return CN;
             }else {
-                System.out.println("카드결제 실패");
-                return 0;
+                this.Error_log="카드결제 선결제 실패";
+                return -3;
             }
         }
         else {
-            //pay_confirm = Credit(t.price);  //외부의 카드결제 시스템 진행
-            pay_confirm = true; //카드결제 성공
-            if(pay_confirm){
+            if(Pay_confirm){
                 System.out.println("카드결제 성공"); //test용으로 성공이라 가정
-                return 1;
-            }else {
-                System.out.println("카드결제 실패");
                 return 0;
+            }else {
+                this.Error_log="카드결제 실패";
+                return -3;
             }
         }
+    }
 
+    public int SmartPay(boolean Pay_confirm) {
+        if(DVMid>0) {//카드결제 성공
+            if(Pay_confirm){ //test용으로 성공이라 가정
+                System.out.println("간편결제 선결제 성공");
+                C_Number Cnumber= new C_Number(title_id, DVMid);
+                int CN=Cnumber.CreateCnumber(title_id, DVMid);
+
+                Message message = new Message(1);
+                message.setmsg(DVMid, 3, title_id, CN);
+                Message_Queue.sendMsg(message);
+                Message_Queue.recivMsg();
+                return CN;
+            }else {
+                this.Error_log="간편결제 선결제 실패";
+                return -3;
+            }
+        }
+        else {
+            if(Pay_confirm){
+                System.out.println("간편결제 성공"); //test용으로 성공이라 가정
+                return 0;
+            }else {
+                this.Error_log="간편결제 실패";
+                return -3;
+            }
+        }
     }
 
  
     public void init() {
-    	//�̰� �׳� ���� ���
-        // TODO implement here
+        this.title_id=-1;
+        this.DVMid=-1;
+        this.Error_log=null;
     }
 
 }
