@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-14T02:36:30.152">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-14T02:55:34.979">
 <file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_NumberManagerTest.java">
-<violation beginline="8" endline="8" begincolumn="27" endcolumn="41" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="C_NumberManager" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<violation beginline="9" endline="9" begincolumn="27" endcolumn="41" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="C_NumberManager" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
-<violation beginline="9" endline="9" begincolumn="20" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="C_Number" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<violation beginline="10" endline="10" begincolumn="20" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="C_Number" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
-<violation beginline="15" endline="20" begincolumn="9" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" method="popCnumber" variable="num" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'num' (lines '15'-'20').
+<violation beginline="16" endline="21" begincolumn="9" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" method="popCnumber" variable="num" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'num' (lines '16'-'21').
 </violation>
 </file>
 <file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_NumberTest.java">
@@ -17,7 +17,7 @@ Found non-transient, non-static member. Please mark as transient or provide acce
 </violation>
 </file>
 <file name="/home/runner/work/ctip/ctip/src/test/java/Logic/ControllerTest.java">
-<violation beginline="10" endline="10" begincolumn="14" endcolumn="14" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="ControllerTest" variable="c" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<violation beginline="11" endline="11" begincolumn="14" endcolumn="14" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="ControllerTest" variable="c" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
