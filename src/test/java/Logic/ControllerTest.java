@@ -2,11 +2,18 @@ package Logic;
 
 import GUI.*;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ControllerTest {
 
-  Controller c = new Controller();
+  Controller c;
+
+  @Before
+  public void initController() {
+    c = new Controller();
+    c.setK();
+  }
 
   @Test
   public void inputSelect() {
@@ -24,7 +31,6 @@ public class ControllerTest {
     del = c.InputSelect();
     Assert.assertEquals(0, del);
     c.k.setVisible(false);
-
   }
 
   @Test

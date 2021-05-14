@@ -50,7 +50,7 @@ public class Controller {
     Title_List.add(new Title("레드불", 700));
   }
 
-  private void setK() {
+  public void setK() {
     this.k = new JFrame();
   }
 
