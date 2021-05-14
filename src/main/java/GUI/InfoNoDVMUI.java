@@ -1,21 +1,17 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class InfoReturnItemUI extends JFrame {
+public class InfoNoDVMUI extends JFrame {
 
   private JLabel label;
   private int s = 2;
   public int return_value = -1;
 
-  public InfoReturnItemUI(String name) {
+  public InfoNoDVMUI(String name) {
     timer.start();
 
     this.setPreferredSize(new Dimension(600, 800));
@@ -31,7 +27,7 @@ public class InfoReturnItemUI extends JFrame {
     JPanel informpanel = new JPanel();
     //informpanel.setPreferredSize(new Dimension(600,300));
     JLabel infolabel = new JLabel("<html><center><strong>" + name + "</strong>"
-        + "<br>음료가 나왔습니다.</center></html>");
+        + "<br>해당 음료의 재고가 있는 자판기가 없습니다.</center></html>");
     infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
     informpanel.add(infolabel);
 
@@ -43,13 +39,12 @@ public class InfoReturnItemUI extends JFrame {
     setVisible(true);
   }
 
-  /*test
-  public static void main(String[] args) {
-    new InfoReturnItemUI("코카콜라");
+  /*
+      public static void main(String[] args) {
+          new InfoNoDVMUI("코카콜라");
 
-  }
-
-   */
+      }
+  */
   private Timer timer = new Timer(1000, new ActionListener() {
     public void actionPerformed(ActionEvent e) {
       label.setText(s + "초 후 메인화면으로 돌아갑니다.");
