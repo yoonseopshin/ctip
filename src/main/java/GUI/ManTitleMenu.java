@@ -13,63 +13,66 @@ import javax.swing.Timer;
 
 import Logic.*;
 
-public class ManTitleMenu extends JFrame implements ActionListener{
-	private Timer timer = new Timer(180000, new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			return_value = -2;
-			timer.stop();
-		}
-	});
+public class ManTitleMenu extends JFrame implements ActionListener {
 
-	private JButton[] Title_list;
-	private JButton exit;
-	private ArrayList<Title> temp;
-	
-	public int return_value= -1;
-	
-	public ManTitleMenu(ArrayList<Title> tlist) {
-		timer.start();
+  private Timer timer = new Timer(180000, new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      return_value = -2;
+      timer.stop();
+    }
+  });
 
-		this.setPreferredSize(new Dimension(600,800));
-		this.setTitle("DVM");
-		
-		temp=tlist;
+  private JButton[] Title_list;
+  private JButton exit;
+  private ArrayList<Title> temp;
 
-		//라벨 패널
-		JPanel labelpanel = new JPanel();
-		labelpanel.setPreferredSize(new Dimension(600,30));
-		JLabel label = new JLabel("재고를 변경할 음료를 선택하세요");
-		label.setFont(label.getFont().deriveFont(15.0f));
-		labelpanel.add(label);
+  public int return_value = -1;
 
-		JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(),1));
-		JScrollPane titlepanel = new JScrollPane(titlelistpanel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		titlelistpanel.setPreferredSize(new Dimension(600,70*tlist.size()));
-		Title_list=new JButton[tlist.size()];
-		for(int i=0;i<tlist.size();i++) {
-			Title_list[i]=new JButton("<html><center><strong>" + tlist.get(i).Name()+ "</strong><br>재고수량 : " +
-		tlist.get(i).Item_List().size()+"</center></html>");
-			//Title_list[i].setPreferredSize(new Dimension(600,70));
-			Title_list[i].addActionListener(this);
-			titlelistpanel.add(Title_list[i]);
-		}
-		
-		//취소패널
-		JPanel exitpanel = new JPanel();
-		exit = new JButton("나가기");
-		exit.setPreferredSize(new Dimension(600,70));
-		exit.addActionListener(this);
-		exitpanel.add(exit,BorderLayout.SOUTH);
+  public ManTitleMenu(ArrayList<Title> tlist) {
+    timer.start();
 
-		add(labelpanel,BorderLayout.NORTH);
-		add(titlepanel,BorderLayout.CENTER);
-		add(exitpanel,BorderLayout.SOUTH);
-		
-		pack();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
-	}
+    this.setPreferredSize(new Dimension(600, 800));
+    this.setTitle("DVM");
+
+    temp = tlist;
+
+    //라벨 패널
+    JPanel labelpanel = new JPanel();
+    labelpanel.setPreferredSize(new Dimension(600, 30));
+    JLabel label = new JLabel("재고를 변경할 음료를 선택하세요");
+    label.setFont(label.getFont().deriveFont(15.0f));
+    labelpanel.add(label);
+
+    JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(), 1));
+    JScrollPane titlepanel = new JScrollPane(titlelistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+        JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    titlelistpanel.setPreferredSize(new Dimension(600, 70 * tlist.size()));
+    Title_list = new JButton[tlist.size()];
+    for (int i = 0; i < tlist.size(); i++) {
+      Title_list[i] = new JButton(
+          "<html><center><strong>" + tlist.get(i).Name() + "</strong><br>재고수량 : " +
+              tlist.get(i).Item_List().size() + "</center></html>");
+      //Title_list[i].setPreferredSize(new Dimension(600,70));
+      Title_list[i].addActionListener(this);
+      titlelistpanel.add(Title_list[i]);
+    }
+
+    //취소패널
+    JPanel exitpanel = new JPanel();
+    exit = new JButton("나가기");
+    exit.setPreferredSize(new Dimension(600, 70));
+    exit.addActionListener(this);
+    exitpanel.add(exit, BorderLayout.SOUTH);
+
+    add(labelpanel, BorderLayout.NORTH);
+    add(titlepanel, BorderLayout.CENTER);
+    add(exitpanel, BorderLayout.SOUTH);
+
+    pack();
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    setVisible(true);
+  }
 /*test
 	public static void main(String[] args) {
 		
@@ -80,21 +83,21 @@ public class ManTitleMenu extends JFrame implements ActionListener{
 
  */
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		for(int i=0;i<temp.size();i++) {
-			if(e.getSource()==Title_list[i]) {
-				timer.stop();
-				return_value=i+1;
-			}
-		}
-		if(e.getSource()==exit) {
-			timer.stop();
-			return_value=0;
-			this.setVisible(false);
-		}
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    for (int i = 0; i < temp.size(); i++) {
+      if (e.getSource() == Title_list[i]) {
+        timer.stop();
+        return_value = i + 1;
+      }
+    }
+    if (e.getSource() == exit) {
+      timer.stop();
+      return_value = 0;
+      this.setVisible(false);
+    }
 
-	}
+  }
 
 }
 
