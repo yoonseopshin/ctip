@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-14T02:13:06.985">
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_NumberManagerTest.java">
+<violation beginline="8" endline="8" begincolumn="27" endcolumn="41" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="C_NumberManager" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="9" endline="9" begincolumn="20" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="C_Number" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="15" endline="20" begincolumn="9" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" method="popCnumber" variable="num" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'num' (lines '15'-'20').
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_NumberTest.java">
+<violation beginline="7" endline="7" begincolumn="26" endcolumn="27" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberTest" variable="CN" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/ControllerTest.java">
+<violation beginline="9" endline="9" begincolumn="14" endcolumn="14" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="ControllerTest" variable="c" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/DVMTest.java">
+<violation beginline="9" endline="9" begincolumn="21" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="DVMTest" variable="dvm" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/ItemTest.java">
+<violation beginline="10" endline="10" begincolumn="8" endcolumn="11" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="ItemTest" variable="item" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/Message_QueueTest.java">
+<violation beginline="9" endline="9" begincolumn="19" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message_QueueTest" variable="message" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="10" endline="10" begincolumn="25" endcolumn="37" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message_QueueTest" variable="message_queue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/PaymentTest.java">
+<violation beginline="10" endline="10" begincolumn="11" endcolumn="17" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="PaymentTest" variable="payment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/TitleTest.java">
+<violation beginline="11" endline="11" begincolumn="23" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="TitleTest" variable="t" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+</pmd>
