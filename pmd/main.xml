@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-14T02:13:03.360">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-14T02:25:01.565">
 <file name="/home/runner/work/ctip/ctip/src/main/java/GUI/AddItemMenu.java">
 <violation beginline="11" endline="136" begincolumn="8" endcolumn="1" rule="MissingSerialVersionUID" ruleset="Error Prone" package="GUI" class="AddItemMenu" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingserialversionuid" priority="3">
 Classes implementing Serializable should set a serialVersionUID
@@ -391,43 +391,43 @@ Found non-transient, non-static member. Please mark as transient or provide acce
 <violation beginline="23" endline="23" begincolumn="19" endcolumn="20" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Controller" variable="CM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
-<violation beginline="28" endline="28" begincolumn="20" endcolumn="23" rule="NullAssignment" ruleset="Error Prone" package="Logic" class="Controller" method="Controller" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
+<violation beginline="27" endline="27" begincolumn="20" endcolumn="23" rule="NullAssignment" ruleset="Error Prone" package="Logic" class="Controller" method="Controller" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
 Assigning an Object to null is a code smell.  Consider refactoring.
 </violation>
-<violation beginline="57" endline="62" begincolumn="19" endcolumn="45" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Controller" method="main" variable="queue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'queue' (lines '57'-'62').
+<violation beginline="61" endline="66" begincolumn="19" endcolumn="45" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Controller" method="main" variable="queue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'queue' (lines '61'-'66').
 </violation>
-<violation beginline="150" endline="150" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="InputCnumber" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="154" endline="154" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="InputCnumber" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="234" endline="234" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ManEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="238" endline="238" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ManEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="247" endline="247" begincolumn="28" endcolumn="28" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ManEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="251" endline="251" begincolumn="28" endcolumn="28" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ManEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="255" endline="255" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ManEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="284" endline="284" begincolumn="18" endcolumn="18" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="SelectPayment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="259" endline="259" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ManEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
 <violation beginline="288" endline="288" begincolumn="18" endcolumn="18" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="SelectPayment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="334" endline="334" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="CardPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="292" endline="292" begincolumn="18" endcolumn="18" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="SelectPayment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="379" endline="379" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="SmartPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="338" endline="338" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="CardPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="445" endline="445" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ReqFindDVM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="383" endline="383" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="SmartPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="451" endline="452" begincolumn="7" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Controller" method="ReqFindDVM" variable="temp" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'temp' (lines '451'-'452').
+<violation beginline="449" endline="449" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ReqFindDVM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="521" endline="521" begincolumn="15" endcolumn="18" rule="NullAssignment" ruleset="Error Prone" package="Logic" class="Controller" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
+<violation beginline="455" endline="456" begincolumn="7" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Controller" method="ReqFindDVM" variable="temp" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'temp' (lines '455'-'456').
+</violation>
+<violation beginline="525" endline="525" begincolumn="15" endcolumn="18" rule="NullAssignment" ruleset="Error Prone" package="Logic" class="Controller" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
 Assigning an Object to null is a code smell.  Consider refactoring.
 </violation>
 </file>
