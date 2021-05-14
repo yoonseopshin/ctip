@@ -4,10 +4,6 @@ package Logic;
 import org.junit.Assert;
 import org.junit.Test;
 
-
-
-
-
 public class Message_QueueTest {
     private Message message;
     private Message_Queue message_queue;

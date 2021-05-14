@@ -14,13 +14,13 @@ import java.util.Stack;
  *
  */
 public class Controller {
-	private JFrame k;
-    private ArrayList<Title> Title_List;
-    private Payment Payment;
-    private int basket;
-    private Stack DVMStack;
-    private int del;
-	private C_NumberManager CM;
+	JFrame k;
+    ArrayList<Title> Title_List;
+    Payment Payment;
+    int basket;
+    Stack DVMStack;
+    int del;
+	C_NumberManager CM;
 
     public Controller() {
     	this.k=new JFrame();
