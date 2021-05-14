@@ -23,7 +23,6 @@ public class Controller {
   C_NumberManager CM;
 
   public Controller() {
-    this.k = new JFrame();
     this.basket = -666;
     this.Payment = null;
     this.DVMStack = new Stack<DVM>();
@@ -51,9 +50,14 @@ public class Controller {
     Title_List.add(new Title("레드불", 700));
   }
 
+  private void setK() {
+    this.k = new JFrame();
+  }
+
   public static void main(String[] args) {
     //선언
     Controller c = new Controller();
+    c.setK();
     Message_Queue queue = new Message_Queue();
     c.Title_List.get(0).AddItem(new Item(20200101));
     //start
