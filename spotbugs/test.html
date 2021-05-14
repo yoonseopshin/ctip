@@ -1,0 +1,261 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>SpotBugs Report</title>
+      <style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+				color: red;
+				font-weight: bold;
+		}
+		.priority-2 {
+				color: orange;
+				font-weight: bold;
+		}
+		.priority-3 {
+				color: green;
+				font-weight: bold;
+		}
+		.priority-4 {
+				color: blue;
+				font-weight: bold;
+		}
+		</style>
+      <script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+   </head>
+   <body>
+      <h1>
+         <a href="https://spotbugs.github.io/">SpotBugs</a> Report</h1>
+      <h2>Project Information</h2>
+      <p>Project: 
+		JavaCTIP (spotbugsTest)</p>
+      <p>SpotBugs version: 4.2.2</p>
+      <p>Code analyzed:</p>
+      <ul>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/ControllerTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/TitleTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_NumberTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_NumberManagerTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/DVMTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/ItemTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Message_QueueTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/PaymentTest.class</li>
+      </ul>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>Metrics</h2>
+      <p>292 lines of code analyzed,
+	in 8 classes, 
+	in 1 packages.</p>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Metric</th>
+            <th align="right">Total</th>
+            <th align="right">Density*</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>High Priority Warnings</td>
+            <td align="right"/>
+            <td align="right">0.00</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>Medium Priority Warnings</td>
+            <td align="right">1</td>
+            <td align="right">3.42</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>Low Priority Warnings</td>
+            <td align="right">2</td>
+            <td align="right">6.85</td>
+         </tr>
+         <tr class="$totalClass">
+            <td>
+               <b>Total Warnings</b>
+            </td>
+            <td align="right">
+               <b>3</b>
+            </td>
+            <td align="right">
+               <b>10.27</b>
+            </td>
+         </tr>
+      </table>
+      <p>
+         <i>(* Defects per Thousand lines of non-commenting source statements)</i>
+      </p>
+      <p>
+         <br/>
+         <br/>
+      </p>
+      <h2>Contents</h2>
+      <ul>
+         <li>
+            <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+         </li>
+         <li>
+            <a href="#Details">Details</a>
+         </li>
+      </ul>
+      <h1>Summary</h1>
+      <table width="500" cellpadding="5" cellspacing="2">
+         <tr class="tableheader">
+            <th align="left">Warning Type</th>
+            <th align="right">Number</th>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+            </td>
+            <td align="right">2</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            </td>
+            <td align="right">1</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <b>Total</b>
+            </td>
+            <td align="right">
+               <b>3</b>
+            </td>
+         </tr>
+      </table>
+      <h1>Warnings</h1>
+      <p>Click on a warning row to see full context information.</p>
+      <h2>
+         <a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e36');">
+            <td>
+               <span class="priority-3">ISC</span>
+            </td>
+            <td>Logic.Message_QueueTest.dequeue() needlessly instantiates a class that only supplies static methods</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e36" style="display: none;">
+                  <a href="#ISC_INSTANTIATE_STATIC_CLASS">Bug type ISC_INSTANTIATE_STATIC_CLASS (click for details)</a>
+                  <br/>In class Logic.Message_QueueTest<br/>In method Logic.Message_QueueTest.dequeue()<br/>At Message_QueueTest.java:[line 24]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e48');">
+            <td>
+               <span class="priority-3">ISC</span>
+            </td>
+            <td>Logic.Message_QueueTest.sendMsg() needlessly instantiates a class that only supplies static methods</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e48" style="display: none;">
+                  <a href="#ISC_INSTANTIATE_STATIC_CLASS">Bug type ISC_INSTANTIATE_STATIC_CLASS (click for details)</a>
+                  <br/>In class Logic.Message_QueueTest<br/>In method Logic.Message_QueueTest.sendMsg()<br/>At Message_QueueTest.java:[line 15]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_STYLE">Dodgy code Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e18');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to num in Logic.C_NumberManagerTest.popCnumber()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e18" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class Logic.C_NumberManagerTest<br/>In method Logic.C_NumberManagerTest.popCnumber()<br/>Local variable named num<br/>At C_NumberManagerTest.java:[line 15]</p>
+            </td>
+         </tr>
+      </table>
+      <h1>
+         <a name="Details">Details</a>
+      </h1>
+      <h2>
+         <a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
+      </h2>
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because SpotBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    <h2>
+         <a name="ISC_INSTANTIATE_STATIC_CLASS">ISC_INSTANTIATE_STATIC_CLASS: Needless instantiation of class that only supplies static methods</a>
+      </h2>
+
+<p> This class allocates an object that is based on a class that only supplies static methods. This object
+does not need to be created, just access the static methods directly using the class name as a qualifier.</p>
+
+        </body>
+</html>
