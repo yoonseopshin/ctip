@@ -3,90 +3,89 @@
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class C_Number {
 
-	int title_id;
-    int DvmID;
-<span class="pc" id="L12">    int M_Number=111111;</span>
-    int C_Number_t;
-    
-<span class="nc" id="L15">    public C_Number() {</span>
-		
-<span class="nc" id="L17">	}</span>
+  int title_id;
+  int DvmID;
+<span class="fc" id="L12">  int M_Number = 111111;</span>
+  int C_Number_t;
 
-<span class="fc" id="L19">	public C_Number(int title_id, int id) {</span>
-<span class="fc" id="L20">    	this.title_id = title_id;</span>
-<span class="fc" id="L21">    	this.DvmID =id;</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L15">  public C_Number() {</span>
 
+<span class="fc" id="L17">  }</span>
 
-	public int CreateCnumber(int title_id, int DvmID) {
-<span class="fc" id="L26">		String numStr = &quot;&quot;;</span>
-		do {
-<span class="fc" id="L28">			numStr = randnumber();</span>
-<span class="pc bpc" id="L29" title="2 of 4 branches missed.">		}while(numStr.equals(&quot;000000&quot;) || numStr.equals(&quot;111111&quot;));</span>
-<span class="fc" id="L30">		C_Number_t = Integer.parseInt(numStr);</span>
-
-<span class="fc" id="L32">		return C_Number_t;</span>
-
-	}
-	public String randnumber() {
-
-<span class="fc" id="L37">		Random rand = new Random();</span>
-<span class="fc" id="L38">		int len = 6;</span>
-<span class="fc" id="L39">		String numStr = &quot;&quot;; //난수가 저장될 변수</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">		for(int i=0;i&lt;len;i++) {</span>
-			//0~9 까지 난수 생성
-<span class="fc" id="L42">			String ran = Integer.toString(rand.nextInt(10));</span>
-<span class="fc" id="L43">			numStr += ran;</span>
-		}
-
-<span class="fc" id="L46">		return numStr;</span>
-	}
+<span class="fc" id="L19">  public C_Number(int title_id, int id) {</span>
+<span class="fc" id="L20">    this.title_id = title_id;</span>
+<span class="fc" id="L21">    this.DvmID = id;</span>
+<span class="fc" id="L22">  }</span>
 
 
-	@Override
-	public String toString() {
-<span class="nc" id="L52">		return &quot;C_Number [����� :&quot;+title_id+1 + &quot;, ���Ǳ� id=&quot; + DvmID + &quot;, ������ȣ=&quot; + C_Number_t</span>
-				+ &quot;]&quot;;
-	}
+  public int CreateCnumber(int title_id, int DvmID) {
+<span class="fc" id="L26">    String numStr = &quot;&quot;;</span>
+    do {
+<span class="fc" id="L28">      numStr = randnumber();</span>
+<span class="pc bpc" id="L29" title="2 of 4 branches missed.">    } while (numStr.equals(&quot;000000&quot;) || numStr.equals(&quot;111111&quot;));</span>
+<span class="fc" id="L30">    C_Number_t = Integer.parseInt(numStr);</span>
 
-	public int getTitle_id() {
-<span class="nc" id="L57">		return title_id;</span>
-	}
+<span class="fc" id="L32">    return C_Number_t;</span>
 
-	public void setTitle_id(int title_id) {
-<span class="nc" id="L61">		this.title_id = title_id;</span>
-<span class="nc" id="L62">	}</span>
+  }
 
-	public int getDvmID() {
-<span class="nc" id="L65">		return DvmID;</span>
-	}
+  public String randnumber() {
 
-	public void setDvmID(int dvmID) {
-<span class="nc" id="L69">		DvmID = dvmID;</span>
-<span class="nc" id="L70">	}</span>
+<span class="fc" id="L38">    Random rand = new Random();</span>
+<span class="fc" id="L39">    int len = 6;</span>
+<span class="fc" id="L40">    String numStr = &quot;&quot;; //난수가 저장될 변수</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">    for (int i = 0; i &lt; len; i++) {</span>
+      //0~9 까지 난수 생성
+<span class="fc" id="L43">      String ran = Integer.toString(rand.nextInt(10));</span>
+<span class="fc" id="L44">      numStr += ran;</span>
+    }
 
-	public int getM_Number() {
-<span class="nc" id="L73">		return M_Number;</span>
-	}
-
-	public void setM_Number(int m_Number) {
-<span class="nc" id="L77">		M_Number = m_Number;</span>
-<span class="nc" id="L78">	}</span>
-
-	public int getC_Number_t() {
-<span class="fc" id="L81">		return C_Number_t;</span>
-	}
-
-	public void setC_Number_t(int c_Number_t) {
-<span class="nc" id="L85">		C_Number_t = c_Number_t;</span>
-<span class="nc" id="L86">	}</span>
+<span class="fc" id="L47">    return numStr;</span>
+  }
 
 
-    
+  @Override
+  public String toString() {
+<span class="nc" id="L53">    return &quot;C_Number [����� :&quot; + title_id + 1 + &quot;, ���Ǳ� id=&quot; + DvmID + &quot;, ������ȣ=&quot; + C_Number_t</span>
+        + &quot;]&quot;;
+  }
+
+  public int getTitle_id() {
+<span class="nc" id="L58">    return title_id;</span>
+  }
+
+  public void setTitle_id(int title_id) {
+<span class="nc" id="L62">    this.title_id = title_id;</span>
+<span class="nc" id="L63">  }</span>
+
+  public int getDvmID() {
+<span class="nc" id="L66">    return DvmID;</span>
+  }
+
+  public void setDvmID(int dvmID) {
+<span class="nc" id="L70">    DvmID = dvmID;</span>
+<span class="nc" id="L71">  }</span>
+
+  public int getM_Number() {
+<span class="nc" id="L74">    return M_Number;</span>
+  }
+
+  public void setM_Number(int m_Number) {
+<span class="nc" id="L78">    M_Number = m_Number;</span>
+<span class="nc" id="L79">  }</span>
+
+  public int getC_Number_t() {
+<span class="fc" id="L82">    return C_Number_t;</span>
+  }
+
+  public void setC_Number_t(int c_Number_t) {
+<span class="nc" id="L86">    C_Number_t = c_Number_t;</span>
+<span class="nc" id="L87">  }</span>
+
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

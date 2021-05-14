@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DVM.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JavaCTIP</a> &gt; <a href="index.source.html" class="el_package">Logic</a> &gt; <span class="el_source">DVM.java</span></div><h1>DVM.java</h1><pre class="source lang-java linenums">package Logic;
 
-public class DVM
-{
-    int ID; // 메세지 보낼 타겟 아이디
+public class DVM {
 
-    private double Address_X; // 실제 주소
-    private double Address_Y;
+  int ID; // 메세지 보낼 타겟 아이디
 
-    public DVM(int ID, double X,double Y)
-<span class="nc" id="L11">    {</span>
-<span class="nc" id="L12">        this.ID =  ID;</span>
-<span class="nc" id="L13">        this.Address_X = X;</span>
-<span class="nc" id="L14">        this.Address_Y = Y;</span>
-<span class="nc" id="L15">    }</span>
-    public int ID(){
-<span class="nc" id="L17">        return this.ID;</span>
-    }
-    public double getX(){
-<span class="nc" id="L20">        return this.Address_X;</span>
-    }
-    public double getY(){
-<span class="nc" id="L23">        return this.Address_Y;</span>
-    }
+  private double Address_X; // 실제 주소
+  private double Address_Y;
 
+<span class="fc" id="L10">  public DVM(int ID, double X, double Y) {</span>
+<span class="fc" id="L11">    this.ID = ID;</span>
+<span class="fc" id="L12">    this.Address_X = X;</span>
+<span class="fc" id="L13">    this.Address_Y = Y;</span>
+<span class="fc" id="L14">  }</span>
+
+  public int ID() {
+<span class="nc" id="L17">    return this.ID;</span>
+  }
+
+  public double getX() {
+<span class="fc" id="L21">    return this.Address_X;</span>
+  }
+
+  public double getY() {
+<span class="fc" id="L25">    return this.Address_Y;</span>
+  }
 
 
 }

@@ -5,53 +5,54 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PayErrUI extends JFrame{
+public class PayErrUI extends JFrame {
 
-    private JLabel label;
-<span class="nc" id="L11">    private int s=2;</span>
-<span class="nc" id="L12">    public int return_value= -1;</span>
+  private JLabel label;
+<span class="nc" id="L11">  private int s = 2;</span>
+<span class="nc" id="L12">  public int return_value = -1;</span>
 
-<span class="nc" id="L14">    public PayErrUI(String Msg) {</span>
-<span class="nc" id="L15">        timer.start();</span>
+<span class="nc" id="L14">  public PayErrUI(String Msg) {</span>
+<span class="nc" id="L15">    timer.start();</span>
 
-<span class="nc" id="L17">        this.setPreferredSize(new Dimension(600,800));</span>
-<span class="nc" id="L18">        this.setTitle(&quot;DVM&quot;);</span>
+<span class="nc" id="L17">    this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L18">    this.setTitle(&quot;DVM&quot;);</span>
 
-        //라벨패널
-<span class="nc" id="L21">        JPanel labelpanel = new JPanel();</span>
-<span class="nc" id="L22">        labelpanel.setPreferredSize(new Dimension(600,300));</span>
-<span class="nc" id="L23">        label = new JLabel(&quot;3초 후 메인화면으로 돌아갑니다.&quot;);</span>
-<span class="nc" id="L24">        label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L25">        labelpanel.add(label);</span>
-        //안내패널
-<span class="nc" id="L27">        JPanel informpanel = new JPanel();</span>
-        //informpanel.setPreferredSize(new Dimension(600,300));
-<span class="nc" id="L29">        JLabel infolabel = new JLabel(Msg);</span>
-<span class="nc" id="L30">        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L31">        informpanel.add(infolabel);</span>
+    //라벨패널
+<span class="nc" id="L21">    JPanel labelpanel = new JPanel();</span>
+<span class="nc" id="L22">    labelpanel.setPreferredSize(new Dimension(600, 300));</span>
+<span class="nc" id="L23">    label = new JLabel(&quot;3초 후 메인화면으로 돌아갑니다.&quot;);</span>
+<span class="nc" id="L24">    label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L25">    labelpanel.add(label);</span>
+    //안내패널
+<span class="nc" id="L27">    JPanel informpanel = new JPanel();</span>
+    //informpanel.setPreferredSize(new Dimension(600,300));
+<span class="nc" id="L29">    JLabel infolabel = new JLabel(Msg);</span>
+<span class="nc" id="L30">    infolabel.setFont(infolabel.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L31">    informpanel.add(infolabel);</span>
 
-<span class="nc" id="L33">        add(labelpanel,BorderLayout.NORTH);</span>
-<span class="nc" id="L34">        add(informpanel,BorderLayout.CENTER);</span>
+<span class="nc" id="L33">    add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L34">    add(informpanel, BorderLayout.CENTER);</span>
 
-<span class="nc" id="L36">        pack();</span>
-<span class="nc" id="L37">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L38">        setVisible(true);</span>
-<span class="nc" id="L39">    }</span>
-    /*test
-    public static void main(String[] args) {
-        new PayErrUI(&quot;결제오류!!!&quot;);
+<span class="nc" id="L36">    pack();</span>
+<span class="nc" id="L37">    setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L38">    setVisible(true);</span>
+<span class="nc" id="L39">  }</span>
 
-    }
-     */
-<span class="nc" id="L46">    private Timer timer = new Timer(1000, new ActionListener(){</span>
-        public void actionPerformed (ActionEvent e) {
-<span class="nc" id="L48">            label.setText(s+&quot;초 후 메인화면으로 돌아갑니다.&quot;);</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">            if(s==0) {</span>
-<span class="nc" id="L50">                return_value=0;</span>
-<span class="nc" id="L51">                timer.stop();</span>
-            }
-<span class="nc" id="L53">            s--;</span>
-<span class="nc" id="L54">        }</span>
-    });
+  /*test
+  public static void main(String[] args) {
+      new PayErrUI(&quot;결제오류!!!&quot;);
+
+  }
+   */
+<span class="nc" id="L47">  private Timer timer = new Timer(1000, new ActionListener() {</span>
+    public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L49">      label.setText(s + &quot;초 후 메인화면으로 돌아갑니다.&quot;);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">      if (s == 0) {</span>
+<span class="nc" id="L51">        return_value = 0;</span>
+<span class="nc" id="L52">        timer.stop();</span>
+      }
+<span class="nc" id="L54">      s--;</span>
+<span class="nc" id="L55">    }</span>
+  });
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

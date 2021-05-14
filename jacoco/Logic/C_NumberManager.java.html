@@ -6,39 +6,41 @@ import java.util.Random;
 
 public class C_NumberManager extends C_Number {
 
-	public C_NumberManager(int title_id, int id) {
-<span class="nc" id="L10">		super(title_id, id);</span>
-<span class="nc" id="L11">	}</span>
-<span class="nc" id="L12">	public C_NumberManager() {</span>
-<span class="nc" id="L13">	}</span>
+  public C_NumberManager(int title_id, int id) {
+<span class="nc" id="L10">    super(title_id, id);</span>
+<span class="nc" id="L11">  }</span>
+
+<span class="fc" id="L13">  public C_NumberManager() {</span>
+<span class="fc" id="L14">  }</span>
 
 
-	//인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
-<span class="nc" id="L17">	HashMap&lt;Integer, C_Number&gt; C_List = new HashMap&lt;Integer, C_Number&gt;();</span>
+  //인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
+<span class="pc" id="L18">  HashMap&lt;Integer, C_Number&gt; C_List = new HashMap&lt;Integer, C_Number&gt;();</span>
 
-	public int PopCnumber(int C_Number_t) {
-<span class="nc" id="L20">		int r = C_List.get(C_Number_t).getTitle_id();</span>
-<span class="nc" id="L21">		C_List.remove(C_Number_t); // key값 C_Number_t인 값 제거</span>
-<span class="nc" id="L22">		return r;</span>
-	}
+  public int PopCnumber(int C_Number_t) {
+<span class="nc" id="L21">    int r = C_List.get(C_Number_t).getTitle_id();</span>
+<span class="nc" id="L22">    C_List.remove(C_Number_t); // key값 C_Number_t인 값 제거</span>
+<span class="nc" id="L23">    return r;</span>
+  }
 
 
-	public int CheckCnumber(int C_Number_t) {
-<span class="nc bnc" id="L27" title="All 2 branches missed.">		if(super.M_Number == C_Number_t) {</span>
-<span class="nc" id="L28">			return 0;</span>
-<span class="nc bnc" id="L29" title="All 2 branches missed.">		}else if(C_List.containsKey(C_Number_t)) { //존재하는 인증번호 true반환</span>
-<span class="nc" id="L30">			return 1;</span>
-		}else {
-<span class="nc" id="L32">			return -1;</span>
-		}
+  public int CheckCnumber(int C_Number_t) {
+<span class="nc bnc" id="L28" title="All 2 branches missed.">    if (super.M_Number == C_Number_t) {</span>
+<span class="nc" id="L29">      return 0;</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">    } else if (C_List.containsKey(C_Number_t)) { //존재하는 인증번호 true반환</span>
+<span class="nc" id="L31">      return 1;</span>
+    } else {
+<span class="nc" id="L33">      return -1;</span>
+    }
 
-	}
+  }
 
-	@Override
-	public String toString() {
-<span class="nc" id="L39">		return &quot;C_Number [&quot;+title_id+1+&quot;번째 음료&quot; + &quot;, 자판기 id=&quot; + super.DvmID + &quot;, 인증번호=&quot; + super.C_Number_t</span>
-				+ &quot;]&quot;;
-	}
+  @Override
+  public String toString() {
+<span class="nc" id="L40">    return &quot;C_Number [&quot; + title_id + 1 + &quot;번째 음료&quot; + &quot;, 자판기 id=&quot; + super.DvmID + &quot;, 인증번호=&quot;</span>
+        + super.C_Number_t
+        + &quot;]&quot;;
+  }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

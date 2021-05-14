@@ -9,91 +9,93 @@ import java.util.Stack;
 import javax.swing.*;
 import Logic.*;
 
-public class DVMMenu extends JFrame implements ActionListener{
-<span class="nc" id="L13">	private Timer timer = new Timer(180000, new ActionListener() {</span>
-		@Override
-		public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L16">			return_value = -2;</span>
-<span class="nc" id="L17">			timer.stop();</span>
-<span class="nc" id="L18">		}</span>
-	});
+public class DVMMenu extends JFrame implements ActionListener {
 
-	private JButton[] DVM;
-	private JButton cancel;
-	private Stack&lt;DVM&gt; stk;
-<span class="nc" id="L24">	public int return_value= -1;</span>
-	
-<span class="nc" id="L26">	public DVMMenu(Stack&lt;DVM&gt; DVM_stack) {</span>
-<span class="nc" id="L27">		timer.start();</span>
-<span class="nc" id="L28">		stk=DVM_stack;</span>
-		
-<span class="nc" id="L30">		this.setPreferredSize(new Dimension(600,800));</span>
-<span class="nc" id="L31">		this.setTitle(&quot;DVM&quot;);</span>
-		//라벨패널
-<span class="nc" id="L33">		JPanel labelpanel = new JPanel();</span>
-<span class="nc" id="L34">		labelpanel.setPreferredSize(new Dimension(600,30));</span>
-<span class="nc" id="L35">		JLabel label = new JLabel(&quot;선결제할 자판기를 고르세요&quot;);</span>
-<span class="nc" id="L36">		label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L37">		labelpanel.add(label);</span>
-		//자판기패널
-<span class="nc" id="L39">		JPanel DVMpanel = new JPanel(new GridLayout(10,1));</span>
-<span class="nc" id="L40">		DVMpanel.setPreferredSize(new Dimension(600,700));</span>
-		
-<span class="nc" id="L42">		DVM=new JButton[10];</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">		for(int i=0;i&lt;stk.size();i++) {</span>
-<span class="nc" id="L44">			DVM[i]=new JButton(&quot;DVM ID : &quot;+stk.get(i).ID()+&quot;      위치 : &quot;+</span>
-<span class="nc" id="L45">		DVM_stack.get(i).getX()+&quot;, &quot;+DVM_stack.get(i).getY());</span>
-<span class="nc" id="L46">			DVM[i].addActionListener(this);</span>
-<span class="nc" id="L47">			DVMpanel.add(DVM[i]);</span>
-		}
-		
-		//취소패널
-<span class="nc" id="L51">		JPanel cancelpanel = new JPanel();</span>
-<span class="nc" id="L52">		cancel = new JButton(&quot;취소&quot;);</span>
-<span class="nc" id="L53">		cancel.setPreferredSize(new Dimension(600,70));</span>
-<span class="nc" id="L54">		cancel.addActionListener(this);</span>
-<span class="nc" id="L55">		cancelpanel.add(cancel,BorderLayout.SOUTH);</span>
-		
-<span class="nc" id="L57">		add(labelpanel,BorderLayout.NORTH);</span>
-<span class="nc" id="L58">		add(DVMpanel,BorderLayout.CENTER);</span>
-<span class="nc" id="L59">		add(cancelpanel,BorderLayout.SOUTH);</span>
-		
-<span class="nc" id="L61">		pack();</span>
-<span class="nc" id="L62">		setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L63">		setVisible(true);</span>
-		
-<span class="nc" id="L65">	}</span>
-	/*test
-	public static void main(String[] args) {
-		DVM a=new DVM(1,1.0,1.0);
-		DVM b=new DVM(2,2.0,2.0);
-		DVM c=new DVM(3,3.0,3.0);
-		DVM d=new DVM(4,4.0,4.0);
-		Stack&lt;DVM&gt; darr=new Stack&lt;DVM&gt;();
-		darr.push(a);darr.push(b);darr.push(c);darr.push(d);
-		
-		new DVMMenu(darr);
-		
+<span class="nc" id="L14">  private Timer timer = new Timer(180000, new ActionListener() {</span>
+    @Override
+    public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L17">      return_value = -2;</span>
+<span class="nc" id="L18">      timer.stop();</span>
+<span class="nc" id="L19">    }</span>
+  });
 
-	}
-	 */
-	@Override
-	public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L82" title="All 2 branches missed.">		for(int i=0;i&lt;stk.size();i++) {</span>
-<span class="nc bnc" id="L83" title="All 2 branches missed.">			if(e.getSource()==DVM[i]) {</span>
-<span class="nc" id="L84">				timer.stop();</span>
-<span class="nc" id="L85">				return_value=stk.get(i).ID();</span>
-<span class="nc" id="L86">				System.out.println(return_value);</span>
-				//this.setVisible(false);
-			}
-		}
-<span class="nc bnc" id="L90" title="All 2 branches missed.">		if(e.getSource()==cancel) {</span>
-<span class="nc" id="L91">			timer.stop();</span>
-<span class="nc" id="L92">			return_value=0;</span>
-			//this.setVisible(false);
-		}
-			
-<span class="nc" id="L96">	}</span>
+  private JButton[] DVM;
+  private JButton cancel;
+  private Stack&lt;DVM&gt; stk;
+<span class="nc" id="L25">  public int return_value = -1;</span>
+
+<span class="nc" id="L27">  public DVMMenu(Stack&lt;DVM&gt; DVM_stack) {</span>
+<span class="nc" id="L28">    timer.start();</span>
+<span class="nc" id="L29">    stk = DVM_stack;</span>
+
+<span class="nc" id="L31">    this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L32">    this.setTitle(&quot;DVM&quot;);</span>
+    //라벨패널
+<span class="nc" id="L34">    JPanel labelpanel = new JPanel();</span>
+<span class="nc" id="L35">    labelpanel.setPreferredSize(new Dimension(600, 30));</span>
+<span class="nc" id="L36">    JLabel label = new JLabel(&quot;선결제할 자판기를 고르세요&quot;);</span>
+<span class="nc" id="L37">    label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L38">    labelpanel.add(label);</span>
+    //자판기패널
+<span class="nc" id="L40">    JPanel DVMpanel = new JPanel(new GridLayout(10, 1));</span>
+<span class="nc" id="L41">    DVMpanel.setPreferredSize(new Dimension(600, 700));</span>
+
+<span class="nc" id="L43">    DVM = new JButton[10];</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">    for (int i = 0; i &lt; stk.size(); i++) {</span>
+<span class="nc" id="L45">      DVM[i] = new JButton(&quot;DVM ID : &quot; + stk.get(i).ID() + &quot;      위치 : &quot; +</span>
+<span class="nc" id="L46">          DVM_stack.get(i).getX() + &quot;, &quot; + DVM_stack.get(i).getY());</span>
+<span class="nc" id="L47">      DVM[i].addActionListener(this);</span>
+<span class="nc" id="L48">      DVMpanel.add(DVM[i]);</span>
+    }
+
+    //취소패널
+<span class="nc" id="L52">    JPanel cancelpanel = new JPanel();</span>
+<span class="nc" id="L53">    cancel = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L54">    cancel.setPreferredSize(new Dimension(600, 70));</span>
+<span class="nc" id="L55">    cancel.addActionListener(this);</span>
+<span class="nc" id="L56">    cancelpanel.add(cancel, BorderLayout.SOUTH);</span>
+
+<span class="nc" id="L58">    add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L59">    add(DVMpanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L60">    add(cancelpanel, BorderLayout.SOUTH);</span>
+
+<span class="nc" id="L62">    pack();</span>
+<span class="nc" id="L63">    setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L64">    setVisible(true);</span>
+
+<span class="nc" id="L66">  }</span>
+
+  /*test
+  public static void main(String[] args) {
+    DVM a=new DVM(1,1.0,1.0);
+    DVM b=new DVM(2,2.0,2.0);
+    DVM c=new DVM(3,3.0,3.0);
+    DVM d=new DVM(4,4.0,4.0);
+    Stack&lt;DVM&gt; darr=new Stack&lt;DVM&gt;();
+    darr.push(a);darr.push(b);darr.push(c);darr.push(d);
+
+    new DVMMenu(darr);
+
+
+  }
+   */
+  @Override
+  public void actionPerformed(ActionEvent e) {
+<span class="nc bnc" id="L84" title="All 2 branches missed.">    for (int i = 0; i &lt; stk.size(); i++) {</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">      if (e.getSource() == DVM[i]) {</span>
+<span class="nc" id="L86">        timer.stop();</span>
+<span class="nc" id="L87">        return_value = stk.get(i).ID();</span>
+<span class="nc" id="L88">        System.out.println(return_value);</span>
+        //this.setVisible(false);
+      }
+    }
+<span class="nc bnc" id="L92" title="All 2 branches missed.">    if (e.getSource() == cancel) {</span>
+<span class="nc" id="L93">      timer.stop();</span>
+<span class="nc" id="L94">      return_value = 0;</span>
+      //this.setVisible(false);
+    }
+
+<span class="nc" id="L98">  }</span>
 
 }
 

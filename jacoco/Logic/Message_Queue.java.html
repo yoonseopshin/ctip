@@ -3,85 +3,77 @@
 import java.util.Queue;
 import java.util.LinkedList;
 
-<span class="nc" id="L6">public class Message_Queue</span>
-{
-<span class="nc" id="L8">    static Queue&lt;Message&gt; msgQueue = new LinkedList&lt;&gt;();</span>
-<span class="nc" id="L9">    static Queue&lt;Message&gt; Connection = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L6">public class Message_Queue {</span>
 
+<span class="fc" id="L8">  static Queue&lt;Message&gt; msgQueue = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L9">  static Queue&lt;Message&gt; Connection = new LinkedList&lt;&gt;();</span>
 
+  public static void sendMsg(Message message) {
+<span class="fc" id="L12">    Connection.offer(message);</span>
+<span class="fc" id="L13">  }</span>
 
-    public static void sendMsg(Message message)
-    {
-<span class="nc" id="L15">        Connection.offer(message);</span>
-<span class="nc" id="L16">    }</span>
-
-    public static void recivMsg()
-    {
-<span class="nc" id="L20">        Message message = new Message(1);</span>
-<span class="nc" id="L21">        message = Connection.poll();</span>
-<span class="nc bnc" id="L22" title="All 2 branches missed.">        while(msgQueue.isEmpty()) {</span>
-<span class="nc bnc" id="L23" title="All 4 branches missed.">            switch (message.Type) {</span>
-                case 1:
-                    //재고 확인한거 응답온것
-<span class="nc" id="L26">                    Message msg1 = new Message(2);</span>
-<span class="nc" id="L27">                    msg1.setmsg(message.myID, 2, message.Title, true);</span>
-<span class="nc" id="L28">                    msgQueue.offer(msg1);</span>
-<span class="nc" id="L29">                    Message msg11 = new Message(3);</span>
-<span class="nc" id="L30">                    msg11.setmsg(message.myID, 2, message.Title, true);</span>
-<span class="nc" id="L31">                    msgQueue.offer(msg11);</span>
-<span class="nc" id="L32">                    Message msg12 = new Message(4);</span>
-<span class="nc" id="L33">                    msg12.setmsg(message.myID, 2, message.Title, true);</span>
-<span class="nc" id="L34">                    msgQueue.offer(msg12);</span>
-                case 2:
-                    //상대방에게 재고응답해주는 부분
-                case 3:
-                    //상대방한테 인증번호 줬음.
-                case 4:
-                    //주소 정보 가져오는것
-<span class="nc" id="L41">                    Message msg4 = new Message(2);</span>
-<span class="nc" id="L42">                    msg4.setmsg(message.myID, 5, 37.54169, 127.07881);</span>
-<span class="nc" id="L43">                    msgQueue.offer(msg4);</span>
-<span class="nc" id="L44">                    Message msg41 = new Message(3);</span>
-<span class="nc" id="L45">                    msg41.setmsg(message.myID, 5, 37.54180, 127.0788);</span>
-<span class="nc" id="L46">                    msgQueue.offer(msg41);</span>
-<span class="nc" id="L47">                    Message msg42 = new Message(4);</span>
-<span class="nc" id="L48">                    msg42.setmsg(message.myID, 5, 37.54112, 127.0788);</span>
-<span class="nc" id="L49">                    msgQueue.offer(msg42);</span>
-                case 5:
-                    //상대방한테 주소 응답해준거 다시 올 필요 없음
-                case 6:
-                    //나한테 인증번호 음료 판매했는지 대답해주는것
-<span class="nc" id="L54">                    Message msg6 = new Message(2);</span>
-<span class="nc" id="L55">                    msg6.setmsg(message.myID, 7, message.Title, false);</span>
-<span class="nc" id="L56">                    msgQueue.offer(msg6);</span>
-                case 7:
-                    //저쪽에 음료 판매했는지 말해주는것
-            }
-        }
-<span class="nc" id="L61">        msgQueue.offer(message);</span>
-<span class="nc" id="L62">    }</span>
-
-    public static Queue dequeue(int type)
-    {
-<span class="nc" id="L66">        Queue&lt;Message&gt; temp1 = new LinkedList&lt;&gt;();</span>
-<span class="nc" id="L67">        Queue&lt;Message&gt; temp2 = new LinkedList&lt;&gt;();</span>
-<span class="nc" id="L68">        Message message = new Message(-1);</span>
-
-<span class="nc bnc" id="L70" title="All 2 branches missed.">        while(!msgQueue.isEmpty())</span>
-        {
-<span class="nc" id="L72">            message = msgQueue.poll();</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">            if(message.Type == type)</span>
-            {
-<span class="nc" id="L75">                temp1.offer(message);</span>
-            }
-            else
-<span class="nc" id="L78">                temp2.offer(message);</span>
-        }
-<span class="nc bnc" id="L80" title="All 2 branches missed.">        while(!temp2.isEmpty())</span>
-        {
-<span class="nc" id="L82">            msgQueue.offer(temp2.poll());</span>
-        }
-<span class="nc" id="L84">        return temp1;</span>
+  public static void recivMsg() {
+<span class="fc" id="L16">    Message message = new Message(1);</span>
+<span class="fc" id="L17">    message = Connection.poll();</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">    while (msgQueue.isEmpty()) {</span>
+<span class="pc bpc" id="L19" title="3 of 4 branches missed.">      switch (message.Type) {</span>
+        case 1:
+          //재고 확인한거 응답온것
+<span class="fc" id="L22">          Message msg1 = new Message(2);</span>
+<span class="fc" id="L23">          msg1.setmsg(message.myID, 2, message.Title, true);</span>
+<span class="fc" id="L24">          msgQueue.offer(msg1);</span>
+<span class="fc" id="L25">          Message msg11 = new Message(3);</span>
+<span class="fc" id="L26">          msg11.setmsg(message.myID, 2, message.Title, true);</span>
+<span class="fc" id="L27">          msgQueue.offer(msg11);</span>
+<span class="fc" id="L28">          Message msg12 = new Message(4);</span>
+<span class="fc" id="L29">          msg12.setmsg(message.myID, 2, message.Title, true);</span>
+<span class="fc" id="L30">          msgQueue.offer(msg12);</span>
+        case 2:
+          //상대방에게 재고응답해주는 부분
+        case 3:
+          //상대방한테 인증번호 줬음.
+        case 4:
+          //주소 정보 가져오는것
+<span class="fc" id="L37">          Message msg4 = new Message(2);</span>
+<span class="fc" id="L38">          msg4.setmsg(message.myID, 5, 37.54169, 127.07881);</span>
+<span class="fc" id="L39">          msgQueue.offer(msg4);</span>
+<span class="fc" id="L40">          Message msg41 = new Message(3);</span>
+<span class="fc" id="L41">          msg41.setmsg(message.myID, 5, 37.54180, 127.0788);</span>
+<span class="fc" id="L42">          msgQueue.offer(msg41);</span>
+<span class="fc" id="L43">          Message msg42 = new Message(4);</span>
+<span class="fc" id="L44">          msg42.setmsg(message.myID, 5, 37.54112, 127.0788);</span>
+<span class="fc" id="L45">          msgQueue.offer(msg42);</span>
+        case 5:
+          //상대방한테 주소 응답해준거 다시 올 필요 없음
+        case 6:
+          //나한테 인증번호 음료 판매했는지 대답해주는것
+<span class="fc" id="L50">          Message msg6 = new Message(2);</span>
+<span class="fc" id="L51">          msg6.setmsg(message.myID, 7, message.Title, false);</span>
+<span class="fc" id="L52">          msgQueue.offer(msg6);</span>
+        case 7:
+          //저쪽에 음료 판매했는지 말해주는것
+      }
     }
+<span class="fc" id="L57">    msgQueue.offer(message);</span>
+<span class="fc" id="L58">  }</span>
+
+  public static Queue dequeue(int type) {
+<span class="fc" id="L61">    Queue&lt;Message&gt; temp1 = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L62">    Queue&lt;Message&gt; temp2 = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L63">    Message message = new Message(-1);</span>
+
+<span class="fc bfc" id="L65" title="All 2 branches covered.">    while (!msgQueue.isEmpty()) {</span>
+<span class="fc" id="L66">      message = msgQueue.poll();</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">      if (message.Type == type) {</span>
+<span class="fc" id="L68">        temp1.offer(message);</span>
+      } else {
+<span class="fc" id="L70">        temp2.offer(message);</span>
+      }
+    }
+<span class="fc bfc" id="L73" title="All 2 branches covered.">    while (!temp2.isEmpty()) {</span>
+<span class="fc" id="L74">      msgQueue.offer(temp2.poll());</span>
+    }
+<span class="fc" id="L76">    return temp1;</span>
+  }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
