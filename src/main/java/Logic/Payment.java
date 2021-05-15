@@ -45,12 +45,7 @@ public class Payment {
       if (Pay_confirm) { //test용으로 성공이라 가정
         System.out.println("카드결제 선결제 성공");
         C_Number Cnumber = new C_Number(title_id, DVMid);
-        int CN = Cnumber.CreateCnumber(title_id, DVMid);
-
-        Message message = new Message(1);
-        message.setmsg(DVMid, 3, title_id, CN);
-        Message_Queue.MsgSend(message);
-        return CN;
+        return Cnumber.CreateCnumber(title_id, DVMid);
       } else {
         this.Error_log = "카드결제 선결제 실패";
         return -3;
@@ -71,12 +66,7 @@ public class Payment {
       if (Pay_confirm) { //test용으로 성공이라 가정
         System.out.println("간편결제 선결제 성공");
         C_Number Cnumber = new C_Number(title_id, DVMid);
-        int CN = Cnumber.CreateCnumber(title_id, DVMid);
-
-        Message message = new Message(1);
-        message.setmsg(DVMid, 3, title_id, CN);
-        Message_Queue.MsgSend(message);
-        return CN;
+        return Cnumber.CreateCnumber(title_id, DVMid);
       } else {
         this.Error_log = "간편결제 선결제 실패";
         return -3;

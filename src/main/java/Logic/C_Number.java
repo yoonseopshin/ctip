@@ -1,7 +1,7 @@
 package Logic;
 
 import java.util.*;
-
+import static Logic.DVM.CurrentID;
 /**
  *
  */
@@ -27,7 +27,9 @@ public class C_Number {
       numStr = randnumber();
     } while (numStr.equals("000000") || numStr.equals("111111"));
     C_Number_t = Integer.parseInt(numStr);
-
+    Message message = new Message(1);
+    message.setmsg(DvmID, 4, title_id, C_Number_t);
+    Message_Queue.MsgSend(message);
     return C_Number_t;
 
   }
