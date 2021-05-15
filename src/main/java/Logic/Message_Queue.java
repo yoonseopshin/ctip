@@ -19,6 +19,7 @@ public class  Message_Queue extends Thread{
   static Queue<Message> LocmsgQueue = new LinkedList<>();
   /*static Queue<Message> Connection = new LinkedList<>();
 
+
   public static void sendMsg(Message message) {
     Connection.offer(message);
   }
