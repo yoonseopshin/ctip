@@ -5,10 +5,11 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.lang.*;
 
 import java.net.Socket;
 
-public class Message_Queue {
+public class  Message_Queue extends Thread{
 
   static Queue<Message> msgQueue = new LinkedList<>();
   /*static Queue<Message> Connection = new LinkedList<>();

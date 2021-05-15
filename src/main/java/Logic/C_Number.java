@@ -9,7 +9,6 @@ public class C_Number {
 
   int title_id;
   int DvmID;
-  int M_Number = 111111;
   int C_Number_t;
 
   public C_Number() {
@@ -68,14 +67,6 @@ public class C_Number {
 
   public void setDvmID(int dvmID) {
     DvmID = dvmID;
-  }
-
-  public int getM_Number() {
-    return M_Number;
-  }
-
-  public void setM_Number(int m_Number) {
-    M_Number = m_Number;
   }
 
   public int getC_Number_t() {
