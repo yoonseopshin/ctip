@@ -122,6 +122,7 @@ public class  Message_Queue extends Thread{
                 printWriter.write("1");
                 printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
+                break;
             }
         }catch(IOException | ClassNotFoundException e){System.out.println("서버 메세지수신 오류");}
     }
@@ -148,8 +149,9 @@ public class  Message_Queue extends Thread{
                 //객체 정리하는 부분
                 objectOutputStream.close();
                 socket.close();
-                if (returnMsg == "1")
-                    break;
+                break;
+                //if (returnMsg == "1")
+                 //   break;
             }
         } catch(IOException e) {System.err.println("서버 접속 오류, 오류 DVM :"+message.myID);}
     }
