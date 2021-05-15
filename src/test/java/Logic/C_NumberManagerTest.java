@@ -15,8 +15,8 @@ public class C_NumberManagerTest {
     C_Number = new C_Number();
     int num = C_Number.CreateCnumber(5, 0);
     C_NumberManager.C_List.put(0, C_Number);
-    int expectedResult = C_Number.title_id;
-    int actualResult = C_NumberManager.title_id;
+    int expectedResult = C_Number.getTitle_id();
+    int actualResult = C_NumberManager.getTitle_id();
     Assert.assertEquals(expectedResult, actualResult);
   }
 

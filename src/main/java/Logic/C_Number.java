@@ -37,9 +37,11 @@ public class C_Number {
     Random rand = new Random();
     int len = 6;
     String numStr = ""; //난수가 저장될 변수
-    for (int i = 0; i < len; i++) {
+    String ran = Integer.toString(rand.nextInt(9)+1);
+    numStr += ran;
+    for (int i = 0; i < len-1; i++) {
       //0~9 까지 난수 생성
-      String ran = Integer.toString(rand.nextInt(10));
+      ran = Integer.toString(rand.nextInt(10));
       numStr += ran;
     }
 
