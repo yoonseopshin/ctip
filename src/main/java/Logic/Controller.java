@@ -12,7 +12,7 @@ import java.util.Stack;
 /**
  *
  */
-public class Controller {
+public class Controller { 
 
   JFrame k;
   ArrayList<Title> Title_List;
