@@ -6,6 +6,39 @@ import java.util.*;
 public class Title {
 
   private String Name;
+
+  public String getName() {
+    return Name;
+  }
+
+  public void setName(String name) {
+    Name = name;
+  }
+
+  public int getPrice() {
+    return Price;
+  }
+
+  public void setPrice(int price) {
+    Price = price;
+  }
+
+  public ArrayList<Item> getItem_List() {
+    return Item_List;
+  }
+
+  public void setItem_List(ArrayList<Item> item_List) {
+    Item_List = item_List;
+  }
+
+  public Integer getHold() {
+    return Hold;
+  }
+
+  public void setHold(Integer hold) {
+    Hold = hold;
+  }
+
   private int Price;
   private ArrayList<Item> Item_List;
   private Integer Hold;

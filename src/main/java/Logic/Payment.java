@@ -7,6 +7,30 @@ public class Payment {
   int DVMid;
   String Error_log;
 
+  public int getTitle_id() {
+    return title_id;
+  }
+
+  public void setTitle_id(int title_id) {
+    this.title_id = title_id;
+  }
+
+  public int getDVMid() {
+    return DVMid;
+  }
+
+  public void setDVMid(int DVMid) {
+    this.DVMid = DVMid;
+  }
+
+  public String getError_log() {
+    return Error_log;
+  }
+
+  public void setError_log(String error_log) {
+    Error_log = error_log;
+  }
+
   Payment(int title_id, int DVMid) {
     this.title_id = title_id;
     this.DVMid = DVMid;
