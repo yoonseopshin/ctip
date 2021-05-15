@@ -1,11 +1,16 @@
 package Logic;
 
+import java.io.*;
+import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.util.Queue;
 import java.util.LinkedList;
 
+import java.net.Socket;
+
 public class Message_Queue {
 
-  static Queue<Message> msgQueue = new LinkedList<>();
+  /*static Queue<Message> msgQueue = new LinkedList<>();
   static Queue<Message> Connection = new LinkedList<>();
 
   public static void sendMsg(Message message) {
@@ -74,5 +79,75 @@ public class Message_Queue {
       msgQueue.offer(temp2.poll());
     }
     return temp1;
-  }
+  }*/
+
+    public String getIP()
+    {
+        InetAddress local = null;
+        String ip = "-1";
+        try
+        {
+            local = InetAddress.getLocalHost();
+            ip = local.getHostAddress();
+            return ip;
+        }
+        catch (Exception e) { System.out.println(e); return ip;}
+    }
+
+    public void msgReciv(int myid)
+    {
+        Socket socket = null;                //Client와 통신하기 위한 Socket
+        ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket
+        BufferedReader in = null;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
+        PrintWriter out = null;                //Client로 데이터를 내보내기 위한 출력 스트림
+        int port = myid + 20000;
+        ObjectInputStream objectInputStream; // 직렬화된 객체를 읽어올때 사용
+        PrintWriter printWriter; // 값을 전달할때 사용
+
+        try
+        {
+            server_socket = new ServerSocket(port); //서버 소캣 생성
+        }catch(IOException e) { System.out.println(port+"번 포트 사용 불가"); }
+        try
+        {
+            while(true)
+            {
+                socket = server_socket.accept();  //클라이언트 접속 대기.
+                printWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
+                objectInputStream = new ObjectInputStream(socket.getInputStream()); // Client 로부터 객체를 읽어오는 역활을 하는 객체를 생성
+                Message message = (Message)objectInputStream.readObject(); // readObject는 object 객체로 불러오기 때문에 형변환
+                printWriter.write("1");
+                printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
+                socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
+            }
+        }catch(IOException | ClassNotFoundException e){System.out.println("서버 메세지수신 오류");}
+    }
+
+    public void MsgSend(Message message)
+    {
+        Socket socket = null;            //Server와 통신하기 위한 Socket
+        BufferedReader in = null;        //Server로부터 데이터를 읽어들이기 위한 입력스트림
+        PrintWriter out = null;            //서버로 내보내기 위한 출력 스트림
+        InetAddress ia = null;
+        int port = message.targetID + 20000;
+        try
+        //서버로 접속하고 인풋스티림을 지정하는 부분
+        {
+            while(true)
+            {
+                ia = InetAddress.getByName(getIP());    //서버로 접속
+                socket = new Socket(ia, port);
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());//직렬화를 위한 객체 생성
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream())); //서버로부터 메시지를 받기위한 버퍼
+                objectOutputStream.writeObject(message); // 전송을 위한 객체 직렬화
+                objectOutputStream.flush(); //직렬화를 끝낸 메시지를 타겟 서버로 전송
+                String returnMsg = in.readLine();
+                //객체 정리하는 부분
+                objectOutputStream.close();
+                socket.close();
+                if (returnMsg == "1")
+                    break;
+            }
+        } catch(IOException e) {System.err.println("서버 접속 오류, 오류 DVM :"+message.myID);}
+    }
 }
