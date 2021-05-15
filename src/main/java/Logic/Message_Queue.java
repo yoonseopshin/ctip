@@ -131,7 +131,7 @@ public class Message_Queue {
         BufferedReader in = null;        //Server로부터 데이터를 읽어들이기 위한 입력스트림
         PrintWriter out = null;            //서버로 내보내기 위한 출력 스트림
         InetAddress ia = null;
-        int port = message.targetID + 20000;
+        int port = message.targetID + 50000;
         try
         //서버로 접속하고 인풋스티림을 지정하는 부분
         {
