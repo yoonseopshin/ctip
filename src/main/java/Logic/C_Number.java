@@ -9,7 +9,7 @@ public class C_Number {
 
   private int title_id;
   private int DvmID;
-  private int C_Number_t;
+  private String C_Number_t;
 
   public C_Number() {
 
@@ -21,27 +21,27 @@ public class C_Number {
   }
 
 
-  public int CreateCnumber(int title_id, int DvmID) {
+  public String CreateCnumber(int title_id, int DvmID) {
     String numStr = "";
     do {
-      numStr = randnumber();
+      numStr = randnumber(DvmID);
     } while (numStr.equals("000000") || numStr.equals("111111"));
-    C_Number_t = Integer.parseInt(numStr);
+    C_Number_t = numStr;
 
     return C_Number_t;
 
   }
 
-  public String randnumber() {
+  public String randnumber(int DvmID) {
 
     Random rand = new Random();
     int len = 6;
     String numStr = ""; //난수가 저장될 변수
-    String ran = Integer.toString(rand.nextInt(9)+1);
-    numStr += ran;
+    numStr += Integer.toString(DvmID);
+
     for (int i = 0; i < len-1; i++) {
       //0~9 까지 난수 생성
-      ran = Integer.toString(rand.nextInt(10));
+      String ran = Integer.toString(rand.nextInt(10));
       numStr += ran;
     }
 
@@ -71,11 +71,11 @@ public class C_Number {
     DvmID = dvmID;
   }
 
-  public int getC_Number_t() {
+  public String getC_Number_t() {
     return C_Number_t;
   }
 
-  public void setC_Number_t(int c_Number_t) {
+  public void setC_Number_t(String c_Number_t) {
     C_Number_t = c_Number_t;
   }
 

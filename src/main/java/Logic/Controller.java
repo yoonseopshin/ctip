@@ -449,7 +449,7 @@ public class Controller {
     } else if (del == 1) {
       //메시지의 송수신
       Message message = new Message(1);
-      message.setmsg(0, 4, -1);
+      message.setmsg(0, 4, "-1");
 
       if (DVMStack.isEmpty()) {
         InfoNoUsableDVM();

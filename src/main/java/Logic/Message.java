@@ -17,15 +17,15 @@ public class Message {
     myID = myid;
   }
 
-  void setmsg(int id, int type, int data) {
+  void setmsg(int DVMid, int id, int type, String data) {
     myID = id;
     Type = type;
     if (Type == 1 || Type == 6) {
-      Title = data;
+      Title = Integer.parseInt(data);
     }
   }
 
-  void setmsg(int id, int type, boolean data) {
+  void setmsg(int id, int type, String data) {
     targetID = id;
     Type = type;
     if (Type == 2 || Type == 7) {

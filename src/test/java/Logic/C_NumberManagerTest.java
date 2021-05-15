@@ -13,7 +13,7 @@ public class C_NumberManagerTest {
   public void popCnumber() {
     C_NumberManager = new C_NumberManager();
     C_Number = new C_Number();
-    int num = C_Number.CreateCnumber(5, 0);
+    String num = C_Number.CreateCnumber(5, 0);
     C_NumberManager.C_List.put(0, C_Number);
     int expectedResult = C_Number.getTitle_id();
     int actualResult = C_NumberManager.getTitle_id();
@@ -25,7 +25,7 @@ public class C_NumberManagerTest {
   public void checkCnumber() {
     C_NumberManager = new C_NumberManager();
     C_Number = new C_Number();
-    int num = C_Number.CreateCnumber(5, 0);
+    String num = C_Number.CreateCnumber(5, 0);
     C_NumberManager.C_List.put(0, C_Number);
     int expectedResult = 1;
     int actualResult = C_NumberManager.CheckCnumber(num);
