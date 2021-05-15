@@ -16,7 +16,7 @@ public class C_NumberManager extends C_Number {
 
   //인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
   HashMap<Integer, C_Number> C_List = new HashMap<Integer, C_Number>();
-  int M_Number = 111111;
+  private int M_Number = 111111;
 
   public int PopCnumber(int C_Number_t) {
     int r = C_List.get(C_Number_t).getTitle_id();
@@ -36,13 +36,14 @@ public class C_NumberManager extends C_Number {
 
   }
 
+  /*
   @Override
   public String toString() {
     return "C_Number [" + title_id + 1 + "번째 음료" + ", 자판기 id=" + super.DvmID + ", 인증번호="
         + super.C_Number_t
         + "]";
   }
-
+*/
 
   public int getM_Number() {
     return M_Number;
