@@ -24,8 +24,8 @@ public class Message implements Serializable {
     Type = type;
     if (Type == 1 ) {
       Title = data;
+      Message_Queue.MsgSend(this);
     }
-    Message_Queue.MsgSend(this);
   }
 
   void setmsg(int id, int type, boolean data) {
@@ -33,8 +33,8 @@ public class Message implements Serializable {
     Type = type;
     if (Type == 2) {
       boolData = data;
+      Message_Queue.MsgSend(this);
     }
-    Message_Queue.MsgSend(this);
   }
 
   void setmsg(int id, int type) {
