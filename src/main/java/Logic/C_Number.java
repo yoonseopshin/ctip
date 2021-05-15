@@ -24,7 +24,7 @@ public class C_Number {
   public int CreateCnumber(int title_id, int DvmID) {
     String numStr = "";
     do {
-      numStr = randnumber();
+      numStr = randnumber(DvmID);
     } while (numStr.equals("000000") || numStr.equals("111111"));
     C_Number_t = Integer.parseInt(numStr);
 
@@ -32,14 +32,15 @@ public class C_Number {
 
   }
 
-  public String randnumber() {
+  public String randnumber(int DvmID) {
 
     Random rand = new Random();
     int len = 6;
     String numStr = ""; //난수가 저장될 변수
-    String ran = Integer.toString(rand.nextInt(9)+1);
+    String ran = Integer.toString(rand.nextInt(9)+1);  //첫번째 숫자 0이 아님
     numStr += ran;
-    for (int i = 0; i < len-1; i++) {
+    numStr += Integer.toString(DvmID-1); // 두번째 자릿수 => DVMID
+    for (int i = 2; i < len; i++) {
       //0~9 까지 난수 생성
       ran = Integer.toString(rand.nextInt(10));
       numStr += ran;
