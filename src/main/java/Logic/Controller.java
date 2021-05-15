@@ -450,15 +450,7 @@ public class Controller {
       //메시지의 송수신
       Message message = new Message(1);
       message.setmsg(0, 4, -1);
-      Message_Queue.sendMsg(message);
-      Message_Queue.recivMsg();
-      Queue<Message> temp = new LinkedList();
-      temp = Message_Queue.dequeue(5);
-      while (!temp.isEmpty()) {
-        message = temp.poll();
-        DVM dvm = new DVM(message.myID, message.xAdress, message.yAdress);
-        DVMStack.push(dvm);
-      }
+
       if (DVMStack.isEmpty()) {
         InfoNoUsableDVM();
         init();

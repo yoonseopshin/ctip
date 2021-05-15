@@ -10,8 +10,8 @@ import java.net.Socket;
 
 public class Message_Queue {
 
-  /*static Queue<Message> msgQueue = new LinkedList<>();
-  static Queue<Message> Connection = new LinkedList<>();
+  static Queue<Message> msgQueue = new LinkedList<>();
+  /*static Queue<Message> Connection = new LinkedList<>();
 
   public static void sendMsg(Message message) {
     Connection.offer(message);
@@ -81,7 +81,7 @@ public class Message_Queue {
     return temp1;
   }*/
 
-    public String getIP()
+    public static String getIP()
     {
         InetAddress local = null;
         String ip = "-1";
@@ -94,15 +94,16 @@ public class Message_Queue {
         catch (Exception e) { System.out.println(e); return ip;}
     }
 
-    public void msgReciv(int myid)
+    public static void MsgReciv(int myid)
     {
         Socket socket = null;                //Client와 통신하기 위한 Socket
         ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket
         BufferedReader in = null;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
         PrintWriter out = null;                //Client로 데이터를 내보내기 위한 출력 스트림
-        int port = myid + 20000;
+        int port = myid + 50000;
         ObjectInputStream objectInputStream; // 직렬화된 객체를 읽어올때 사용
         PrintWriter printWriter; // 값을 전달할때 사용
+        Message message;
 
         try
         {
@@ -112,10 +113,11 @@ public class Message_Queue {
         {
             while(true)
             {
-                socket = server_socket.accept();  //클라이언트 접속 대기.
+                socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.
                 printWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
                 objectInputStream = new ObjectInputStream(socket.getInputStream()); // Client 로부터 객체를 읽어오는 역활을 하는 객체를 생성
-                Message message = (Message)objectInputStream.readObject(); // readObject는 object 객체로 불러오기 때문에 형변환
+                 message = (Message)objectInputStream.readObject(); // readObject는 object 객체로 불러오기 때문에 형변환
+                msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
                 printWriter.write("1");
                 printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
@@ -123,7 +125,7 @@ public class Message_Queue {
         }catch(IOException | ClassNotFoundException e){System.out.println("서버 메세지수신 오류");}
     }
 
-    public void MsgSend(Message message)
+    public static void MsgSend(Message message)
     {
         Socket socket = null;            //Server와 통신하기 위한 Socket
         BufferedReader in = null;        //Server로부터 데이터를 읽어들이기 위한 입력스트림
@@ -146,7 +148,6 @@ public class Message_Queue {
                 objectOutputStream.close();
                 socket.close();
                 if (returnMsg == "1")
-                    break;
             }
         } catch(IOException e) {System.err.println("서버 접속 오류, 오류 DVM :"+message.myID);}
     }
