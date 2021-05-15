@@ -7,9 +7,9 @@ import java.util.*;
  */
 public class C_Number {
 
-  int title_id;
-  int DvmID;
-  int C_Number_t;
+  private int title_id;
+  private int DvmID;
+  private int C_Number_t;
 
   public C_Number() {
 

@@ -26,4 +26,27 @@ public class DVM {
   }
 
 
+  public int getID() {
+    return ID;
+  }
+
+  public void setID(int ID) {
+    this.ID = ID;
+  }
+
+  public double getAddress_X() {
+    return Address_X;
+  }
+
+  public void setAddress_X(double address_X) {
+    Address_X = address_X;
+  }
+
+  public double getAddress_Y() {
+    return Address_Y;
+  }
+
+  public void setAddress_Y(double address_Y) {
+    Address_Y = address_Y;
+  }
 }

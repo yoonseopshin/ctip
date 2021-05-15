@@ -14,13 +14,13 @@ import java.util.Stack;
  */
 public class Controller { 
 
-  JFrame k;
-  ArrayList<Title> Title_List;
-  Payment Payment;
-  int basket;
-  Stack DVMStack;
-  int del;
-  C_NumberManager CM;
+  private JFrame k;
+  private ArrayList<Title> Title_List;
+  private Payment Payment;
+  private int basket;
+  private Stack DVMStack;
+  private int del;
+  private C_NumberManager CM;
 
   public Controller() {
     this.basket = -666;
@@ -516,6 +516,62 @@ public class Controller {
     DVMStack.clear();
     Payment = null;
     return;
+  }
+
+  public JFrame getK() {
+    return k;
+  }
+
+  public void setK(JFrame k) {
+    this.k = k;
+  }
+
+  public ArrayList<Title> getTitle_List() {
+    return Title_List;
+  }
+
+  public void setTitle_List(ArrayList<Title> title_List) {
+    Title_List = title_List;
+  }
+
+  public Logic.Payment getPayment() {
+    return Payment;
+  }
+
+  public void setPayment(Logic.Payment payment) {
+    Payment = payment;
+  }
+
+  public int getBasket() {
+    return basket;
+  }
+
+  public void setBasket(int basket) {
+    this.basket = basket;
+  }
+
+  public Stack getDVMStack() {
+    return DVMStack;
+  }
+
+  public void setDVMStack(Stack DVMStack) {
+    this.DVMStack = DVMStack;
+  }
+
+  public int getDel() {
+    return del;
+  }
+
+  public void setDel(int del) {
+    this.del = del;
+  }
+
+  public C_NumberManager getCM() {
+    return CM;
+  }
+
+  public void setCM(C_NumberManager CM) {
+    this.CM = CM;
   }
 
 
