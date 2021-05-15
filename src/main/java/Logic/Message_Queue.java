@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.lang.*;
-import static Logic.DVM.CurrentID;
+import static Logic.DVM.*;
 import static Logic.Controller.*;
 
 import java.net.Socket;
@@ -14,6 +14,8 @@ import java.net.Socket;
 public class  Message_Queue extends Thread{
 
   static Queue<Message> msgQueue = new LinkedList<>();
+  static Queue<Message> StkmsgQueue = new LinkedList<>();
+  static Queue<Message> LocmsgQueue = new LinkedList<>();
   /*static Queue<Message> Connection = new LinkedList<>();
 
   public static void sendMsg(Message message) {
@@ -125,7 +127,6 @@ public class  Message_Queue extends Thread{
                 objectInputStream = new ObjectInputStream(socket.getInputStream()); // Client 로부터 객체를 읽어오는 역활을 하는 객체를 생성
                 message = (Message)objectInputStream.readObject(); // readObject는 object 객체로 불러오기 때문에 형변환
                 msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
-                Dequeue();
                 printWriter.write("1");
                 printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
@@ -166,16 +167,21 @@ public class  Message_Queue extends Thread{
         for(int i=0;i<msgQueue.size();i++){
             Message rm=msgQueue.poll();
             if(rm.Type==1){
-                Message sm=new Message(CurrentID);
-                sm.setmsg(rm.myID,2,Title_List.get(rm.Title-1).CheckStock());
             }
             if(rm.Type==2){
                 Message sm=new Message(CurrentID);
                 if(rm.boolData==true) {
-
+                    sm.setmsg(rm.myID,3);
                 }
             }
-
+            if(rm.Type==3){
+                C_Number rc=new C_Number(rm.Title,rm.targetID);
+                rc.setC_Number_t(rm.C_Number);
+                CM.C_List.put(rm.C_Number,rc);
+            }
+            if(rm.Type==4){
+                DVMStack.push(new DVM(rm.myID,))
+            }
         }
     }
 }

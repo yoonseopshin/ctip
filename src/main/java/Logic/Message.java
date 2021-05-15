@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Message implements Serializable {
 
-  // 타입 1=재고확인요청 타입2 = 재고응답 타입3 = 주소 요청 타입4= 인증번호 전송 타입 5=주소응답
+  // 타입 1=재고확인요청, 타입2 = 재고응답, 타입3 = 주소 요청, 타입4= 인증번호 전송, 타입 5=주소응답
   int myID = -1;
   int targetID = -1;
   int Type = -1;

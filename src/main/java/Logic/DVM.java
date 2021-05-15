@@ -3,6 +3,8 @@ package Logic;
 public class DVM {
 
   static int CurrentID =1;
+  static double CurrentX =1.0;
+  static double CurrentY =1.0;
   int ID; // 메세지 보낼 타겟 아이디
   private double Address_X; // 실제 주소
   private double Address_Y;

@@ -29,7 +29,6 @@ public class C_Number {
     C_Number_t = Integer.parseInt(numStr);
     Message message = new Message(1);
     message.setmsg(DvmID, 4, title_id, C_Number_t);
-    Message_Queue.MsgSend(message);
     return C_Number_t;
 
   }

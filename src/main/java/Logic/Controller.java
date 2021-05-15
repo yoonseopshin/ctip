@@ -17,9 +17,9 @@ public class Controller {
   public static ArrayList<Title> Title_List;
   private Payment Payment;
   private int basket;
-  private Stack DVMStack;
+  public static Stack DVMStack;
   private int del;
-  private C_NumberManager CM;
+  public static C_NumberManager CM;
 
   public Controller() {
     this.basket = -666;
