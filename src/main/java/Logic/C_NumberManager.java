@@ -16,6 +16,7 @@ public class C_NumberManager extends C_Number {
 
   //인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
   HashMap<Integer, C_Number> C_List = new HashMap<Integer, C_Number>();
+  int M_Number = 111111;
 
   public int PopCnumber(int C_Number_t) {
     int r = C_List.get(C_Number_t).getTitle_id();
@@ -25,7 +26,7 @@ public class C_NumberManager extends C_Number {
 
 
   public int CheckCnumber(int C_Number_t) {
-    if (super.M_Number == C_Number_t) {
+    if (M_Number == C_Number_t) {
       return 0;
     } else if (C_List.containsKey(C_Number_t)) { //존재하는 인증번호 true반환
       return 1;
@@ -42,4 +43,16 @@ public class C_NumberManager extends C_Number {
         + "]";
   }
 
+
+  public int getM_Number() {
+    return M_Number;
+  }
+
+  public void setM_Number(int m_Number) {
+    M_Number = m_Number;
+  }
+
+
 }
+
+
