@@ -6,6 +6,8 @@ import java.net.ServerSocket;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.lang.*;
+import static Logic.DVM.CurrentID;
+import static Logic.Controller.*;
 
 import java.net.Socket;
 
@@ -81,6 +83,10 @@ public class  Message_Queue extends Thread{
     }
     return temp1;
   }*/
+    @Override
+    public void run(){
+        MsgReciv(CurrentID);
+    }
 
     public static String getIP()
     {
@@ -117,8 +123,9 @@ public class  Message_Queue extends Thread{
                 socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.
                 printWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
                 objectInputStream = new ObjectInputStream(socket.getInputStream()); // Client 로부터 객체를 읽어오는 역활을 하는 객체를 생성
-                 message = (Message)objectInputStream.readObject(); // readObject는 object 객체로 불러오기 때문에 형변환
+                message = (Message)objectInputStream.readObject(); // readObject는 object 객체로 불러오기 때문에 형변환
                 msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
+                Dequeue();
                 printWriter.write("1");
                 printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
@@ -154,5 +161,21 @@ public class  Message_Queue extends Thread{
                  //   break;
             }
         } catch(IOException e) {System.err.println("서버 접속 오류, 오류 DVM :"+message.myID);}
+    }
+    public static void Dequeue(){
+        for(int i=0;i<msgQueue.size();i++){
+            Message rm=msgQueue.poll();
+            if(rm.Type==1){
+                Message sm=new Message(CurrentID);
+                sm.setmsg(rm.myID,2,Title_List.get(rm.Title-1).CheckStock());
+            }
+            if(rm.Type==2){
+                Message sm=new Message(CurrentID);
+                if(rm.boolData==true) {
+
+                }
+            }
+
+        }
     }
 }

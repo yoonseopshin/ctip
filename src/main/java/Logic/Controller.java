@@ -15,7 +15,7 @@ import java.util.Stack;
 public class Controller { 
 
   private JFrame k;
-  private ArrayList<Title> Title_List;
+  public static ArrayList<Title> Title_List;
   private Payment Payment;
   private int basket;
   private Stack DVMStack;
@@ -50,19 +50,15 @@ public class Controller {
     Title_List.add(new Title("레드불", 700));
   }
 
-  public void setK() {
-    this.k = new JFrame();
-  }
-
   public static void main(String[] args) {
     //선언
     Controller c = new Controller();
-    c.setK();
-    Message_Queue queue = new Message_Queue();
+    c.setK(new JFrame());
+    Message_Queue mq = new Message_Queue();
     c.Title_List.get(0).AddItem(new Item(20200101));
     //start
     c.ReqMainMenu();
-
+    mq.start();
   }
 
   public void ReqMainMenu() {

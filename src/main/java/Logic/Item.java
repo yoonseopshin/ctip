@@ -2,17 +2,17 @@ package Logic;
 
 public class Item {
 
-  private Integer Expiration_Date;
+  private int Expiration_Date;
 
-  public Integer getExpiration_Date() {
+  public int getExpiration_Date() {
     return Expiration_Date;
   }
 
-  public void setExpiration_Date(Integer expiration_Date) {
+  public void setExpiration_Date(int expiration_Date) {
     Expiration_Date = expiration_Date;
   }
 
-  public Item(Integer Expiration_Date) {
+  public Item(int Expiration_Date) {
     this.Expiration_Date = Expiration_Date;
   }
 
