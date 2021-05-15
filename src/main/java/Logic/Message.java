@@ -9,7 +9,7 @@ public class Message {
   double xAdress = -1;
   double yAdress = -1;
   int Title = -1;
-  int C_Number = -1;
+  String C_Number = "-1";
 
   boolean boolData = false;
 
@@ -18,7 +18,7 @@ public class Message {
   }
 
   void setmsg(int id, int type, int data) {
-    myID = id;
+    targetID = id;
     Type = type;
     if (Type == 1 || Type == 6) {
       Title = data;
@@ -40,7 +40,7 @@ public class Message {
     boolData = booldata;
   }
 
-  void setmsg(int id, int type, int data1, int data2) {
+  void setmsg(int id, int type, int data1, String data2) {
     targetID = id;
     Type = type;
     Title = data1;
@@ -56,4 +56,3 @@ public class Message {
     yAdress = data2;
   }
 }
-

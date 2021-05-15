@@ -24,7 +24,7 @@ public class C_Number {
   public int CreateCnumber(int title_id, int DvmID) {
     String numStr = "";
     do {
-      numStr = randnumber(DvmID);
+      numStr = randnumber();
     } while (numStr.equals("000000") || numStr.equals("111111"));
     C_Number_t = Integer.parseInt(numStr);
 
@@ -32,7 +32,7 @@ public class C_Number {
 
   }
 
-  public String randnumber(int DvmID) {
+  public String randnumber() {
 
     Random rand = new Random();
     int len = 6;

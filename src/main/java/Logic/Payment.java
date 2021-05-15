@@ -76,7 +76,6 @@ public class Payment {
         Message message = new Message(1);
         message.setmsg(DVMid, 3, title_id, CN);
         Message_Queue.MsgSend(message);
-
         return CN;
       } else {
         this.Error_log = "간편결제 선결제 실패";
