@@ -148,6 +148,7 @@ public class Message_Queue {
                 objectOutputStream.close();
                 socket.close();
                 if (returnMsg == "1")
+                    break;
             }
         } catch(IOException e) {System.err.println("서버 접속 오류, 오류 DVM :"+message.myID);}
     }
