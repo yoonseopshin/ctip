@@ -38,8 +38,8 @@ public class C_NumberManagerTest {
     public void testAddCnumber() {
         Cn.setC_Number_t(971125);
         CM.AddCnumber(Cn);
-        int ExpectedResult=1;
-        int ActualResult=CM.getC_List().size();
+        int ExpectedResult = 1;
+        int ActualResult = CM.getC_List().size();
         Assert.assertEquals(ExpectedResult,ActualResult);
     }
 }

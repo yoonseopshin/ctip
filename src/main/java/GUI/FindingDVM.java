@@ -1,23 +1,23 @@
 package GUI;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
-public class FindingDVM extends JFrame implements ActionListener{
+public class FindingDVM extends JFrame implements ActionListener {
     private int s = 32;
     private Timer timer = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             if (s <= 3) {
                 label.setText("남은 시간: 0");
-                infolabel.setText("<html><center>자판기를 찾는 것에 실패하였습니다<br>" +
-                        s + "초 후 메인화면으로 돌아갑니다.</center></html>");
+                infolabel.setText("<html><center>자판기를 찾는 것에 실패하였습니다<br>"
+                        + s + "초 후 메인화면으로 돌아갑니다.</center></html>");
                 if (s == 0) {
                     return_value = 0;
                     timer.stop();
                 }
-            }else {
+            } else {
                 label.setText("남은 시간: " + (s - 3));
             }
             s--;
@@ -63,17 +63,19 @@ public class FindingDVM extends JFrame implements ActionListener{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
+
     /*
     public static void main(String[] args) {
       new FindingDVM("코카콜라");
 
     }
-*/
+    */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==cancel){
+        if (e.getSource() == cancel) {
             timer.stop();
-            return_value=0;
+            return_value = 0;
         }
     }
+
 }
