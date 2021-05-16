@@ -9,7 +9,7 @@ public class MessageTest {
     Message msg = new Message(1);
 
     @Test
-    public void testsetmsg1() {
+    public void testSetmsg1() {
         msg.setmsg(1, 1, 1);
         Assert.assertEquals(1, msg.getTargetID());
         Assert.assertEquals(1, msg.getType());
