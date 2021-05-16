@@ -31,4 +31,9 @@ public class DVMTest {
         Double ActualResult = dvm.getAddress_Y();
         Assert.assertEquals(ExpectedResult, ActualResult);
     }
+
+    public void testGetCurrentID() {
+        dvm.CurrentID=2;
+        Assert.assertEquals(2,dvm.CurrentID);
+    }
 }

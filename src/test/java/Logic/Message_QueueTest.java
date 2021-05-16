@@ -12,7 +12,7 @@ public class Message_QueueTest {
     private Message_Queue queue = new Message_Queue();
 
     @Test
-    public void msgSend() {
+    public void testMsgSend() {
         msg.setTargetID(1);
         msg.setType(2);
         msg.setBoolData(true);
@@ -22,7 +22,7 @@ public class Message_QueueTest {
     }
 
     @Test
-    public void dequeue() {
+    public void testDequeue() {
         Controller c = new Controller();
         c.getTitle_List().get(0).AddItem(new Item(20201125));
         msg.setTargetID(1);

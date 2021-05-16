@@ -12,7 +12,7 @@ public class TitleTest {
     private final Title t = new Title("코카콜라", 700);
 
     @Test
-    public void addItem() {
+    public void testAddItem() {
         t.AddItem(new Item(20201125));
         t.AddItem(new Item(20201125));
         t.AddItem(new Item(20201125));
@@ -24,7 +24,7 @@ public class TitleTest {
     }
 
     @Test
-    public void deleteItem() {
+    public void testDeleteItem() {
         t.AddItem(new Item(20201125));
         t.AddItem(new Item(20201125));
         t.AddItem(new Item(20201125));
@@ -41,7 +41,7 @@ public class TitleTest {
     }
 
     @Test
-    public void item_List() {
+    public void testItem_List() {
         t.AddItem(new Item(20201025));
         t.AddItem(new Item(20201125));
         t.AddItem(new Item(20201125));
@@ -53,7 +53,7 @@ public class TitleTest {
     }
 
     @Test
-    public void updateStock() {
+    public void testUpdateStock() {
         t.AddItem(new Item(20201025));
         t.AddItem(new Item(20201125));
         t.AddItem(new Item(20201125));
@@ -90,7 +90,7 @@ public class TitleTest {
     }
 
     @Test
-    public void checkStock() {
+    public void testCheckStock() {
         t.AddItem(new Item(20201025));
         assertTrue(t.CheckStock());
         t.UpdateStock(0, false);
