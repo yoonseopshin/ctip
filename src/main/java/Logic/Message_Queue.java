@@ -128,7 +128,7 @@ public class Message_Queue extends Thread {
                 LocmsgQueue.offer(rm);
             }
             if (rm.getType() == 5) {
-                C_Number rc = new C_Number(rm.getMyID(), rm.getTitle());
+                C_Number rc = new C_Number(rm.getTitle(),rm.getMyID());
                 rc.setC_Number_t(rm.getC_Number());
                 CM.AddCnumber(rc);
                 Title_List.get(rm.getTitle() - 1).UpdateStock(1, true);
