@@ -3,12 +3,10 @@ package Logic;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.net.InetAddress;
-
 public class Message_QueueTest {
     private Message msg = new Message(1);
     private Message_Queue queue = new Message_Queue();
-    /*
+
     @Test
     public void testMsgSend() {
         msg.setTargetID(1);
@@ -18,7 +16,7 @@ public class Message_QueueTest {
         msg.setType(3);
         Message_Queue.MsgSend(msg);
     }
-    */
+
     @Test
     public void testDequeue() {
         Controller c = new Controller();
@@ -29,5 +27,6 @@ public class Message_QueueTest {
         msg.setC_Number(971125);
         Message_Queue.msgQueue.offer(msg);
         Message_Queue.Dequeue();
+        Assert.assertEquals(1,c.getCM().CheckCnumber(971125));
     }
 }
