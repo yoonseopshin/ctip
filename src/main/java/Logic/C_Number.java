@@ -30,7 +30,7 @@ public class C_Number {
         } while (numStr.equals("000000") || numStr.equals("111111"));
         C_Number_t = Integer.parseInt(numStr);
         Message message = new Message(CurrentID);
-        message.setmsg(DvmID, 5, title_id, C_Number_t);
+        message.setmsg(this.DvmID, 5, title_id, C_Number_t);
         return C_Number_t;
 
     }
@@ -42,7 +42,7 @@ public class C_Number {
         String numStr = ""; //난수가 저장될 변수
         String ran = Integer.toString(rand.nextInt(9) + 1);  //첫번째 숫자 0이 아님
         numStr += ran;
-        numStr += Integer.toString(DvmID - 1); // 두번째 자릿수 => DVMID
+        numStr += Integer.toString(CurrentID - 1); // 두번째 자릿수 => DVMID
         for (int i = 2; i < len; i++) {
             //0~9 까지 난수 생성
             ran = Integer.toString(rand.nextInt(10));
