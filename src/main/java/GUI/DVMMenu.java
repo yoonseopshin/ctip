@@ -42,8 +42,8 @@ public class DVMMenu extends JFrame implements ActionListener {
 
     DVM = new JButton[10];
     for (int i = 0; i < stk.size(); i++) {
-      DVM[i] = new JButton("DVM ID : " + stk.get(i).ID() + "      위치 : " +
-          DVM_stack.get(i).getX() + ", " + DVM_stack.get(i).getY());
+      DVM[i] = new JButton("DVM ID : " + stk.get(i).getID() + "      위치 : " +
+          DVM_stack.get(i).getAddress_X() + ", " + DVM_stack.get(i).getAddress_Y());
       DVM[i].addActionListener(this);
       DVMpanel.add(DVM[i]);
     }
@@ -84,7 +84,7 @@ public class DVMMenu extends JFrame implements ActionListener {
     for (int i = 0; i < stk.size(); i++) {
       if (e.getSource() == DVM[i]) {
         timer.stop();
-        return_value = stk.get(i).ID();
+        return_value = stk.get(i).getID();
         System.out.println(return_value);
         //this.setVisible(false);
       }

@@ -28,7 +28,7 @@ public class PrintCnumberUI extends JFrame {
     //안내패널
     JPanel informpanel = new JPanel();
     //informpanel.setPreferredSize(new Dimension(600,300));
-    JLabel infolabel = new JLabel("<html><center>제품: " + t.Name() + "   DVM ID: " + DVMid +
+    JLabel infolabel = new JLabel("<html><center>제품: " + t.getName() + "   DVM ID: " + DVMid +
         "<br>인증번호:" + Cnumber + "</center></html>");
     infolabel.setFont(infolabel.getFont().deriveFont(30.0f));
     informpanel.add(infolabel);

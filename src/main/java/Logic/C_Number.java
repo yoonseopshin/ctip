@@ -27,8 +27,8 @@ public class C_Number {
       numStr = randnumber();
     } while (numStr.equals("000000") || numStr.equals("111111"));
     C_Number_t = Integer.parseInt(numStr);
-    Message message = new Message(1);
-    message.setmsg(DvmID, 4, title_id, C_Number_t);
+    Message message = new Message(CurrentID);
+    message.setmsg(DvmID, 5, title_id, C_Number_t);
     return C_Number_t;
 
   }
@@ -48,13 +48,6 @@ public class C_Number {
     }
 
     return numStr;
-  }
-
-
-  @Override
-  public String toString() {
-    return "C_Number [����� :" + title_id + 1 + ", ���Ǳ� id=" + DvmID + ", ������ȣ=" + C_Number_t
-        + "]";
   }
 
   public int getTitle_id() {
@@ -80,6 +73,5 @@ public class C_Number {
   public void setC_Number_t(int c_Number_t) {
     C_Number_t = c_Number_t;
   }
-
 
 }

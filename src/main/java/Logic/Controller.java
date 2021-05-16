@@ -1,32 +1,32 @@
 package Logic;
 
-
 import GUI.*;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
+import javax.swing.*;
+import static Logic.DVM.*;
+import static Logic.Message_Queue.*;
 /**
  *
  */
+
 public class Controller { 
 
   private JFrame k;
   public static ArrayList<Title> Title_List;
   private Payment Payment;
   private int basket;
-  public static Stack DVMStack;
+  public static Stack<DVM> DVMStack;
   private int del;
   public static C_NumberManager CM;
 
   public Controller() {
     this.basket = -666;
     this.Payment = null;
-    this.DVMStack = new Stack<DVM>();
-    this.CM = new C_NumberManager();
-    Title_List = new ArrayList<Title>();
+    DVMStack = new Stack<>();
+    CM = new C_NumberManager();
+    Title_List = new ArrayList<>();
     Title_List.add(new Title("코카콜라", 700));
     Title_List.add(new Title("나랑드사이다", 700));
     Title_List.add(new Title("솔의눈", 700));
@@ -51,13 +51,14 @@ public class Controller {
 
   public static void main(String[] args) {
     //선언
+
     Controller c = new Controller();
     c.setK(new JFrame());
     Message_Queue mq = new Message_Queue();
-    c.Title_List.get(0).AddItem(new Item(20200101));
     //start
-    c.ReqMainMenu();
     mq.start();
+    c.ReqMainMenu();
+
   }
 
   public void ReqMainMenu() {
@@ -147,7 +148,7 @@ public class Controller {
         InfoCnumberError();
         return 1;
       } else if (check == 1) {
-        int t = CM.C_List.get(del).getTitle_id();
+        int t = CM.PopCnumber(del);
         ReturnItem(Title_List.get(t - 1), true);
         return 0;
       } else if (check == 0) {
@@ -264,7 +265,6 @@ public class Controller {
     k.setVisible(false);
     k = new PaymentMenu(Title_List.get(basket - 1));
     del = SelectPayment(DVMid);
-    return;
   }
 
   public int SelectPayment(int DVMid) {
@@ -297,15 +297,13 @@ public class Controller {
   }
 
   public void CancelItem() {
-    init();
-    return;
+    ReturnMain();
   }
 
   public void ShowCardPay() {
     k.setVisible(false);
     k = new CardPayUI();
     del = CardPay();
-    return;
   }
 
   public int CardPay() {
@@ -319,7 +317,7 @@ public class Controller {
       int del2 = -1;
       Payment.CardPay(false);
       k.setVisible(false);
-      k = new PayErrUI(Payment.Error_log());
+      k = new PayErrUI(Payment.getError_log());
       while (del2 == -1) {
         System.out.print("");
         del2 = ((PayErrUI) k).return_value;
@@ -336,7 +334,7 @@ public class Controller {
         ReturnItem(Title_List.get(basket - 1), false);
       }
       if (p > 0) {
-        PrintCnumber(Title_List.get(basket - 1), Payment.DVMid, p);
+        PrintCnumber(Title_List.get(basket - 1), Payment.getDVMid(), p);
       }
       return 0;
     } else {
@@ -349,7 +347,6 @@ public class Controller {
     k.setVisible(false);
     k = new SmartPayUI();
     del = SmartPay();
-    return;
   }
 
   public int SmartPay() {
@@ -363,7 +360,7 @@ public class Controller {
       int del2 = -1;
       Payment.SmartPay(false);
       k.setVisible(false);
-      k = new PayErrUI(Payment.Error_log());
+      k = new PayErrUI(Payment.getError_log());
       while (del2 == -1) {
         System.out.print("");
         del2 = ((PayErrUI) k).return_value;
@@ -381,7 +378,7 @@ public class Controller {
         ReturnItem(Title_List.get(basket - 1), false);
       }
       if (p > 0) {
-        PrintCnumber(Title_List.get(basket - 1), Payment.DVMid, p);
+        PrintCnumber(Title_List.get(basket - 1), Payment.getDVMid(), p);
       }
       return 0;
     } else {
@@ -393,21 +390,23 @@ public class Controller {
   private void CancelPay() {
     Payment.init();
     init();
-    return;
+    ReturnMain();
   }
 
   public void ReturnItem(Title t, boolean IfHold) {
     int del2 = -1;
     k.setVisible(false);
-    k = new InfoReturnItemUI(t.Name());
+    k = new InfoReturnItemUI(t.getName());
     while (del2 == -1) {
       System.out.print("");
       del2 = ((InfoReturnItemUI) k).return_value;
     }
     t.UpdateStock(0, IfHold);
-    Payment.init();
+    if(!IfHold) {
+      Payment.init();
+    }
     init();
-    return;
+    ReturnMain();
   }
 
   public void PrintCnumber(Title t, int DVMid, int Cnumber) {
@@ -420,14 +419,12 @@ public class Controller {
     }
     Payment.init();
     init();
-    return;
   }
 
   public void InfoNoItem() {
     k.setVisible(false);
     k = new InfoNoItemUI(Title_List.get(basket - 1));
     del = ReqFindDVM();
-    return;
   }
 
   public int ReqFindDVM() {
@@ -441,16 +438,37 @@ public class Controller {
     } else if (del == 0) {
       init();
       return 0;
-    } else if (del == 1) {
-      //메시지의 송수신
-      Message message = new Message(1);
-      message.setmsg(0, 4, -1);
-
-      if (DVMStack.isEmpty()) {
+    } else if (del == 1) {//finding DVM....
+      k.setVisible(false);
+      k=new FindingDVM(Title_List.get(basket-1).getName());
+      int i=1;
+      while(true){
+        int del2;
+        System.out.print("");
+        int size=DVMStack.size();
+        if(size>0){
+          if(DVMStack.get(size-1).getID()==-1)
+            break;
+        }
+        del2=((FindingDVM)k).return_value;
+        if(del2==0) {//시간 초과or취소
+          stk=9;
+          loc=-1;
+          init();
+          return 0;
+        }
+        if (i<=10&&i!=CurrentID) {
+          Message sm = new Message(CurrentID);
+          sm.setmsg(i, 1, basket);
+        }
+        i++;
+      }
+      if (DVMStack.size()==1) {
         InfoNoUsableDVM();
         init();
         return 0;
       }
+      DVMStack.pop();
       ShowUsableDVM();
       if (del == -2) {
         return -2;
@@ -466,18 +484,16 @@ public class Controller {
     k.setVisible(false);
     k = new DVMMenu(DVMStack);
     del = SelectDVM();
-    return;
   }
 
   public void InfoNoUsableDVM() {
     int del2 = -1;
     k.setVisible(false);
-    k = new InfoNoDVMUI(Title_List.get(basket - 1).Name());
+    k = new InfoNoDVMUI(Title_List.get(basket - 1).getName());
     while (del2 == -1) {
       System.out.print("");
       del2 = ((InfoNoDVMUI) k).return_value;
     }
-    return;
   }
 
   public int SelectDVM() {
@@ -489,7 +505,7 @@ public class Controller {
     if (del == -2) {
       return -2;
     } else if (del == 0) {
-      init();
+      ReturnMain();
       return 0;
     } else if (del > 0) {
       PrintSelectPay(del);
@@ -503,14 +519,14 @@ public class Controller {
     }
   }
 
-  /**
-   *
-   */
   public void init() {
     basket = -666;
     DVMStack.clear();
     Payment = null;
-    return;
+  }
+
+  public void ReturnMain() {
+    init();
   }
 
   public JFrame getK() {
@@ -545,12 +561,12 @@ public class Controller {
     this.basket = basket;
   }
 
-  public Stack getDVMStack() {
+  public Stack<DVM> getDVMStack() {
     return DVMStack;
   }
 
-  public void setDVMStack(Stack DVMStack) {
-    this.DVMStack = DVMStack;
+  public void setDVMStack(Stack<DVM> dvmStack) {
+    DVMStack = dvmStack;
   }
 
   public int getDel() {
@@ -565,9 +581,8 @@ public class Controller {
     return CM;
   }
 
-  public void setCM(C_NumberManager CM) {
-    this.CM = CM;
+  public void setCM(C_NumberManager cm) {
+    CM = cm;
   }
-
 
 }

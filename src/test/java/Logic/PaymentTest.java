@@ -7,34 +7,50 @@ import static org.junit.Assert.*;
 
 public class PaymentTest {
 
-  Payment payment;
+  Payment payment = new Payment(1, 1);;
 
   @Test
-  public void cardPay() {
-    payment = new Payment(1, 1);
-    assertTrue(payment.CardPay(true) > 0);
-    Assert.assertEquals(-3, payment.CardPay(false));
+  public void testCardPay() {
+    int ActualResult=payment.CardPay(true);
+    Assert.assertTrue( ActualResult > 0);
+    int ExpectedResult=-3;
+    ActualResult=payment.CardPay(false);
+    Assert.assertEquals(ExpectedResult,ActualResult);
     payment = new Payment(1, 0);
-    Assert.assertEquals(0, payment.CardPay(true));
-    Assert.assertEquals(-3, payment.CardPay(false));
+    ExpectedResult = 0;
+    ActualResult = payment.CardPay(true);
+    Assert.assertEquals(ExpectedResult,ActualResult);
+    ExpectedResult = -3;
+    ActualResult = payment.CardPay(false);
+    Assert.assertEquals(ExpectedResult,ActualResult);
   }
 
   @Test
-  public void smartPay() {
-    payment = new Payment(1, 1);
-    assertTrue(payment.SmartPay(true) > 0);
-    Assert.assertEquals(-3, payment.SmartPay(false));
+  public void testSmartPay() {
+    int ActualResult=payment.SmartPay(true);
+    Assert.assertTrue( ActualResult > 0);
+    int ExpectedResult=-3;
+    ActualResult=payment.SmartPay(false);
+    Assert.assertEquals(ExpectedResult,ActualResult);
     payment = new Payment(1, 0);
-    Assert.assertEquals(0, payment.SmartPay(true));
-    Assert.assertEquals(-3, payment.SmartPay(false));
+    ExpectedResult = 0;
+    ActualResult = payment.SmartPay(true);
+    Assert.assertEquals(ExpectedResult,ActualResult);
+    ExpectedResult = -3;
+    ActualResult = payment.SmartPay(false);
+    Assert.assertEquals(ExpectedResult,ActualResult);
   }
 
   @Test
-  public void init() {
+  public void testInit() {
     payment = new Payment(1, 1);
     payment.init();
-    Assert.assertEquals(-1, payment.title_id);
-    Assert.assertEquals(-1, payment.DVMid);
-    assertNull(payment.Error_log());
+    int ExpectedResult=-1;
+    int ActualResult=payment.getTitle_id();
+    Assert.assertEquals(ActualResult,ExpectedResult);
+    ExpectedResult=-1;
+    ActualResult= payment.getDVMid();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+    assertNull(payment.getError_log());
   }
 }

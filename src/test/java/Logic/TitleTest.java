@@ -17,7 +17,9 @@ public class TitleTest {
     t.AddItem(new Item(20201125));
     t.AddItem(new Item(20201125));
     t.AddItem(new Item(20201125));
-    Assert.assertEquals(5, t.Item_List().size());
+    int ExpectedResult=5;
+    int ActualResult=t.getItem_List().size();
+    Assert.assertEquals(ExpectedResult,ActualResult);
   }
 
   @Test
@@ -32,7 +34,9 @@ public class TitleTest {
     delitemlist.add(1);
     delitemlist.add(2);
     t.DeleteItem(delitemlist);
-    Assert.assertEquals(2, t.Item_List().size());
+    int ExpectedResult=2;
+    int ActualResult=t.getItem_List().size();
+    Assert.assertEquals(ExpectedResult,ActualResult);
   }
 
   @Test
@@ -42,7 +46,9 @@ public class TitleTest {
     t.AddItem(new Item(20201125));
     t.AddItem(new Item(20201125));
     t.AddItem(new Item(20201125));
-    Assert.assertEquals(20201025, t.Item_List().get(0).Expiration_Date());
+    int ExpectedResult=20201025;
+    int ActualResult=t.getItem_List().get(0).getExpiration_Date();
+    Assert.assertEquals(ExpectedResult,ActualResult);
   }
 
   @Test
@@ -53,13 +59,33 @@ public class TitleTest {
     t.AddItem(new Item(20201125));
     t.AddItem(new Item(20201125));
     t.UpdateStock(1, true);
-    Assert.assertEquals(4, t.Item_List().size());
+    int ExpectedResult=1;
+    int ActualResult=t.getHold();
+    Assert.assertEquals(ExpectedResult,ActualResult);
+    ExpectedResult=4;
+    ActualResult=t.getItem_List().size();
+    Assert.assertEquals(ExpectedResult,ActualResult);
     t.UpdateStock(1, false);
-    Assert.assertEquals(3, t.Item_List().size());
+    ExpectedResult=1;
+    ActualResult=t.getHold();
+    Assert.assertEquals(ExpectedResult,ActualResult);
+    ExpectedResult=4;
+    ActualResult=t.getItem_List().size();
+    Assert.assertEquals(ExpectedResult,ActualResult);
     t.UpdateStock(0, true);
-    Assert.assertEquals(3, t.Item_List().size());
+    ExpectedResult=0;
+    ActualResult=t.getHold();
+    Assert.assertEquals(ExpectedResult,ActualResult);
+    ExpectedResult=4;
+    ActualResult=t.getItem_List().size();
+    Assert.assertEquals(ExpectedResult,ActualResult);
     t.UpdateStock(0, false);
-    Assert.assertEquals(2, t.Item_List().size());
+    ExpectedResult=0;
+    ActualResult=t.getHold();
+    Assert.assertEquals(ExpectedResult,ActualResult);
+    ExpectedResult=3;
+    ActualResult=t.getItem_List().size();
+    Assert.assertEquals(ExpectedResult,ActualResult);
   }
 
   @Test

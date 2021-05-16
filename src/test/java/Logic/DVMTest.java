@@ -1,20 +1,33 @@
 package Logic;
 
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class DVMTest {
+    private DVM dvm= new DVM(1,1.0,1.0);
+    @Test
+    public void testGetID() {
+        dvm.setID(7);
+        int ExpectedResult=7;
+        int ActualResult=dvm.getID();
+        Assert.assertEquals(ExpectedResult,ActualResult);
+    }
 
-  private final DVM dvm = new DVM(1, 0.5, 0.7);
+    @Test
+    public void testGetAddress_X() {
+        dvm.setAddress_X(1.23456);
+        Double ExpectedResult=1.23456;
+        Double ActualResult=dvm.getAddress_X();
+        Assert.assertEquals(ExpectedResult,ActualResult);
+    }
 
-  @Test
-  public void testGetX() {
-    Assert.assertEquals(Double.toString(0.5), Double.toString(dvm.getX()));
-  }
-
-  @Test
-  public void testGetY() {
-    Assert.assertEquals(Double.toString(0.7), Double.toString(dvm.getY()));
-  }
+    @Test
+    public void testGetAddress_Y() {
+        dvm.setAddress_Y(2.45678);
+        Double ExpectedResult=2.45678;
+        Double ActualResult=dvm.getAddress_Y();
+        Assert.assertEquals(ExpectedResult,ActualResult);
+    }
 }

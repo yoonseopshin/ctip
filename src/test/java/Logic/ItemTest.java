@@ -7,11 +7,13 @@ import static org.junit.Assert.*;
 
 public class ItemTest {
 
-  Item item;
+  Item item= new Item(20201125);;
 
   @Test
-  public void Testexpiration_Date() {
-    item = new Item(20201125);
-    Assert.assertEquals(20201125, item.Expiration_Date());
+  public void testGetExpiration_Date() {
+    item.setExpiration_Date(20211026);
+    int ExpectedResult=20211026;
+    int ActualResult=item.getExpiration_Date();
+    Assert.assertEquals(ExpectedResult, ActualResult);
   }
 }

@@ -9,7 +9,6 @@ import java.lang.*;
 import static Logic.DVM.*;
 import static Logic.Controller.*;
 
-
 import java.net.Socket;
 
 public class  Message_Queue extends Thread{
@@ -17,78 +16,11 @@ public class  Message_Queue extends Thread{
   static Queue<Message> msgQueue = new LinkedList<>();
   static Queue<Message> StkmsgQueue = new LinkedList<>();
   static Queue<Message> LocmsgQueue = new LinkedList<>();
-  /*static Queue<Message> Connection = new LinkedList<>();
+  public static int loc=-1;
+  public static int stk=9;
 
-
-  public static void sendMsg(Message message) {
-    Connection.offer(message);
-  }
-
-  public static void recivMsg() {
-    Message message = new Message(1);
-    message = Connection.poll();
-    while (msgQueue.isEmpty()) {
-      switch (message.Type) {
-        case 1:
-          //재고 확인한거 응답온것
-          Message msg1 = new Message(2);
-          msg1.setmsg(message.myID, 2, message.Title, true);
-          msgQueue.offer(msg1);
-          Message msg11 = new Message(3);
-          msg11.setmsg(message.myID, 2, message.Title, true);
-          msgQueue.offer(msg11);
-          Message msg12 = new Message(4);
-          msg12.setmsg(message.myID, 2, message.Title, true);
-          msgQueue.offer(msg12);
-        case 2:
-          //상대방에게 재고응답해주는 부분
-        case 3:
-          //상대방한테 인증번호 줬음.
-        case 4:
-          //주소 정보 가져오는것
-          Message msg4 = new Message(2);
-          msg4.setmsg(message.myID, 5, 37.54169, 127.07881);
-          msgQueue.offer(msg4);
-          Message msg41 = new Message(3);
-          msg41.setmsg(message.myID, 5, 37.54180, 127.0788);
-          msgQueue.offer(msg41);
-          Message msg42 = new Message(4);
-          msg42.setmsg(message.myID, 5, 37.54112, 127.0788);
-          msgQueue.offer(msg42);
-        case 5:
-          //상대방한테 주소 응답해준거 다시 올 필요 없음
-        case 6:
-          //나한테 인증번호 음료 판매했는지 대답해주는것
-          Message msg6 = new Message(2);
-          msg6.setmsg(message.myID, 7, message.Title, false);
-          msgQueue.offer(msg6);
-        case 7:
-          //저쪽에 음료 판매했는지 말해주는것
-      }
-    }
-    msgQueue.offer(message);
-  }
-
-  public static Queue dequeue(int type) {
-    Queue<Message> temp1 = new LinkedList<>();
-    Queue<Message> temp2 = new LinkedList<>();
-    Message message = new Message(-1);
-
-    while (!msgQueue.isEmpty()) {
-      message = msgQueue.poll();
-      if (message.Type == type) {
-        temp1.offer(message);
-      } else {
-        temp2.offer(message);
-      }
-    }
-    while (!temp2.isEmpty()) {
-      msgQueue.offer(temp2.poll());
-    }
-    return temp1;
-  }*/
     @Override
-    public void run(){
+    public void run() {
         MsgReciv(CurrentID);
     }
 
@@ -129,10 +61,15 @@ public class  Message_Queue extends Thread{
                 objectInputStream = new ObjectInputStream(socket.getInputStream()); // Client 로부터 객체를 읽어오는 역활을 하는 객체를 생성
                 message = (Message)objectInputStream.readObject(); // readObject는 object 객체로 불러오기 때문에 형변환
                 msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
+                if(message.getType()==1) System.out.print("재고요청메시지 수신됨\n");
+                if(message.getType()==2) System.out.print("재고응답메시지 수신됨\n");
+                if(message.getType()==3) System.out.print("위치요청메시지 수신됨\n");
+                if(message.getType()==4) System.out.print("위치응답메시지 수신됨\n");
+                if(message.getType()==5) System.out.print("인증번호메시지 수신됨\n");
                 printWriter.write("1");
                 printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
-                break;
+                Dequeue();
             }
         }catch(IOException | ClassNotFoundException e){System.out.println("서버 메세지수신 오류");}
     }
@@ -143,7 +80,7 @@ public class  Message_Queue extends Thread{
         BufferedReader in = null;        //Server로부터 데이터를 읽어들이기 위한 입력스트림
         PrintWriter out = null;            //서버로 내보내기 위한 출력 스트림
         InetAddress ia = null;
-        int port = message.targetID + 50000;
+        int port = message.getTargetID() + 50000;
         try
         //서버로 접속하고 인풋스티림을 지정하는 부분
         {
@@ -163,27 +100,65 @@ public class  Message_Queue extends Thread{
                 //if (returnMsg == "1")
                  //   break;
             }
-        } catch(IOException e) {System.err.println("서버 접속 오류, 오류 DVM :"+message.myID);}
+        } catch(IOException e) {
+            System.err.println("서버 접속 오류, 오류 DVM :"+message.getMyID());
+            if(message.getType()==1){
+                stk--;
+                Dequeue();
+            }
+        }
     }
     public static void Dequeue(){
-        for(int i=0;i<msgQueue.size();i++){
+        while(msgQueue.size()>0){
             Message rm=msgQueue.poll();
-            if(rm.Type==1){
-            }
-            if(rm.Type==2){
+            if(rm.getType()==1){
                 Message sm=new Message(CurrentID);
-                if(rm.boolData==true) {
-                    sm.setmsg(rm.myID,3);
+                sm.setmsg(rm.getMyID(),2,Title_List.get(rm.getTitle()-1).CheckStock());
+                System.out.print("재고요청응답완료\n");
+            }
+            if(rm.getType()==2){
+                StkmsgQueue.offer(rm);
+            }
+            if(rm.getType()==3){
+                Message sm=new Message(CurrentID);
+                sm.setmsg(rm.getMyID(),4,CurrentX,CurrentY);
+                System.out.print("위치 요청 메시지 응답 완료\n");
+            }
+            if(rm.getType()==4){
+                LocmsgQueue.offer(rm);
+            }
+            if(rm.getType()==5){
+                C_Number rc=new C_Number(rm.getMyID(),rm.getTitle());
+                rc.setC_Number_t(rm.getC_Number());
+                CM.AddCnumber(rc);
+                Title_List.get(rm.getTitle()-1).UpdateStock(1,true);
+            }
+        }
+        if (StkmsgQueue.size()==stk){
+            loc=0;
+            while(StkmsgQueue.size()>0){
+                Message stk=StkmsgQueue.poll();
+                if(stk.isBoolData()){
+                    Message sm=new Message(CurrentID);
+                    sm.setmsg(stk.getMyID(),3);
+                    loc++;
                 }
             }
-            if(rm.Type==3){
-                C_Number rc=new C_Number(rm.Title,rm.targetID);
-                rc.setC_Number_t(rm.C_Number);
-                CM.C_List.put(rm.C_Number,rc);
+            System.out.print("위치 요청 메시지 전송완료\n");
+            stk=9;
+        }
+        if(LocmsgQueue.size()==loc){
+            if (loc==0) {
+                DVMStack.push(new DVM(-1, 0.0, 0.0));
             }
-            if(rm.Type==4){
-                DVMStack.push(new DVM(rm.myID,))
+            else{
+                while(LocmsgQueue.size()>0){
+                    Message loc=LocmsgQueue.poll();
+                    DVMStack.push(new DVM(loc.getMyID(),loc.getxAdress(),loc.getyAdress()));
+                }
+                DVMStack.push(new DVM(-1,0.0,0.0));
             }
+            loc=-1;
         }
     }
 }

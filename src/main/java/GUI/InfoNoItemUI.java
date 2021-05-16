@@ -32,7 +32,7 @@ public class InfoNoItemUI extends JFrame implements ActionListener {
     //라벨패널
     JPanel labelpanel = new JPanel();
     labelpanel.setPreferredSize(new Dimension(600, 300));
-    JLabel label = new JLabel("선택한 음료: " + t.Name());
+    JLabel label = new JLabel("선택한 음료: " + t.getName());
     label.setFont(label.getFont().deriveFont(15.0f));
     labelpanel.add(label);
     //안내패널

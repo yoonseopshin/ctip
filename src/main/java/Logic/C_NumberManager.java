@@ -1,21 +1,13 @@
 package Logic;
 
 import java.util.HashMap;
-import java.util.Random;
 
-
-public class C_NumberManager extends C_Number {
-
-  public C_NumberManager(int title_id, int id) {
-    super(title_id, id);
-  }
+public class C_NumberManager {
 
   public C_NumberManager() {
   }
-
-
   //인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
-  HashMap<Integer, C_Number> C_List = new HashMap<Integer, C_Number>();
+  private HashMap<Integer, C_Number> C_List = new HashMap<Integer, C_Number>();
   private int M_Number = 111111;
 
   public int PopCnumber(int C_Number_t) {
@@ -23,7 +15,6 @@ public class C_NumberManager extends C_Number {
     C_List.remove(C_Number_t); // key값 C_Number_t인 값 제거
     return r;
   }
-
 
   public int CheckCnumber(int C_Number_t) {
     if (M_Number == C_Number_t) {
@@ -36,14 +27,9 @@ public class C_NumberManager extends C_Number {
 
   }
 
-  /*
-  @Override
-  public String toString() {
-    return "C_Number [" + title_id + 1 + "번째 음료" + ", 자판기 id=" + super.DvmID + ", 인증번호="
-        + super.C_Number_t
-        + "]";
+  public void AddCnumber(C_Number c_number){
+    C_List.put(c_number.getC_Number_t(),c_number);
   }
-*/
 
   public int getM_Number() {
     return M_Number;
@@ -53,7 +39,13 @@ public class C_NumberManager extends C_Number {
     M_Number = m_Number;
   }
 
+  public HashMap<Integer, C_Number> getC_List() {
+    return C_List;
+  }
 
+  public void setC_List(HashMap<Integer, C_Number> c_List) {
+    C_List = c_List;
+  }
 }
 
 
