@@ -44,8 +44,8 @@ public class PaymentMenu extends JFrame implements ActionListener {
     //결제수단 패널
     JPanel paymentpanel = new JPanel();
     paymentpanel.setPreferredSize(new Dimension(600, 350));
-    JLabel bev = new JLabel("<html><center>선택한 음료 : <strong>" + title.Name() +
-        "</strong><br>가격 : <strong>" + title.Price() + "원</strong></center></html>");
+    JLabel bev = new JLabel("<html><center>선택한 음료 : <strong>" + title.getName() +
+        "</strong><br>가격 : <strong>" + title.getPrice() + "원</strong></center></html>");
     bev.setPreferredSize(new Dimension(600, 50));
     bev.setHorizontalAlignment(JLabel.CENTER);
     bev.setFont(label.getFont().deriveFont(15.0f));
