@@ -1,13 +1,11 @@
 package Logic;
 
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.net.InetAddress;
 
 public class Message_QueueTest {
-
     private Message msg = new Message(1);
     private Message_Queue queue = new Message_Queue();
 

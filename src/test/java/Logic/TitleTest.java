@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class TitleTest {
-
     private final Title t = new Title("코카콜라", 700);
 
     @Test
