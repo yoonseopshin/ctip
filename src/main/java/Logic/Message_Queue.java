@@ -24,6 +24,7 @@ public class Message_Queue extends Thread {
     public void run() {
         System.out.print("메시지 수신 시작\n");
         MsgReciv(CurrentID);
+        System.out.print("메시지 수신 종료\n");
     }
 
     public static String getIP() {
@@ -39,7 +40,7 @@ public class Message_Queue extends Thread {
         }
     }
 
-    public static void MsgReciv(int myid) {
+    public void MsgReciv(int myid) {
         Socket socket = null;                //Client와 통신하기 위한 Socket
         ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket
         BufferedReader in = null;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
@@ -56,27 +57,24 @@ public class Message_Queue extends Thread {
         }
         try {
             while (true) {
+                if (this.isInterrupted()) break;
                 socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.
                 printWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
                 objectInputStream = new ObjectInputStream(socket.getInputStream()); // Client 로부터 객체를 읽어오는 역활을 하는 객체를 생성
                 message = (Message) objectInputStream.readObject(); // readObject는 object 객체로 불러오기 때문에 형변환
                 msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
-                if (message.getType() == 1) System.out.print("재고요청메시지 수신됨\n");
-                if (message.getType() == 2) System.out.print("재고응답메시지 수신됨\n");
-                if (message.getType() == 3) System.out.print("위치요청메시지 수신됨\n");
-                if (message.getType() == 4) System.out.print("위치응답메시지 수신됨\n");
-                if (message.getType() == 5) System.out.print("인증번호메시지 수신됨\n");
+                if (message.getType() == 1) System.out.println("재고요청메시지 수신됨");
+                if (message.getType() == 2) System.out.println("재고응답메시지 수신됨");
+                if (message.getType() == 3) System.out.println("위치요청메시지 수신됨");
+                if (message.getType() == 4) System.out.println("위치응답메시지 수신됨");
+                if (message.getType() == 5) System.out.println("인증번호메시지 수신됨");
                 printWriter.write("1");
                 printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
                 Dequeue();
-                if (Thread.interrupted()) {
-                    System.out.print("메시지 수신 종료");
-                    break;
-                }
             }
         } catch (IOException | ClassNotFoundException e) {
-            //System.out.println("서버 메세지수신 오류");
+            System.out.println("서버 메세지수신 오류");
         } finally {
             if (socket != null) {
                 try {
@@ -91,7 +89,7 @@ public class Message_Queue extends Thread {
                 }
                 ;
             }
-            System.out.print("서버종료함");
+            System.out.println("서버 종료");
         }
     }
 
@@ -116,8 +114,7 @@ public class Message_Queue extends Thread {
                 objectOutputStream.close();
                 socket.close();
                 //서버에서 확인메시지 리시브 및 완료시 브레이크
-                if(returnMsg.equals("1"))
-                    break;
+                if(returnMsg.equals("1")) break;
             }
         } catch (IOException e) {
             System.err.println("서버 접속 오류, 오류 DVM :" + message.getMyID());
@@ -142,7 +139,7 @@ public class Message_Queue extends Thread {
             if (rm.getType() == 1) {
                 Message sm = new Message(CurrentID);
                 sm.setmsg(rm.getMyID(), 2, Title_List.get(rm.getTitle() - 1).CheckStock());
-                System.out.print("재고요청응답완료\n");
+                System.out.println("재고요청응답완료");
             }
             if (rm.getType() == 2) {
                 StkmsgQueue.offer(rm);
@@ -150,7 +147,7 @@ public class Message_Queue extends Thread {
             if (rm.getType() == 3) {
                 Message sm = new Message(CurrentID);
                 sm.setmsg(rm.getMyID(), 4, CurrentX, CurrentY);
-                System.out.print("위치 요청 메시지 응답 완료\n");
+                System.out.println("위치 요청 메시지 응답 완료");
             }
             if (rm.getType() == 4) {
                 LocmsgQueue.offer(rm);
@@ -172,7 +169,7 @@ public class Message_Queue extends Thread {
                     loc++;
                 }
             }
-            System.out.print("위치 요청 메시지 전송완료\n");
+            System.out.println("위치 요청 메시지 전송완료");
             stk = 9;
         }
         if (LocmsgQueue.size() == loc) {

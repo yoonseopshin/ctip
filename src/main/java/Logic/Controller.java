@@ -22,12 +22,14 @@ public class Controller {
     public static Stack<DVM> DVMStack;
     private int del;
     public static C_NumberManager CM;
+    public static Message_Queue mq;
 
     public Controller() {
         this.basket = -666;
         this.Payment = null;
         DVMStack = new Stack<>();
         CM = new C_NumberManager();
+        mq = new Message_Queue();
         Title_List = new ArrayList<>();
         Title_List.add(new Title("코카콜라", 700));
         Title_List.add(new Title("나랑드사이다", 700));
@@ -53,14 +55,12 @@ public class Controller {
 
     public static void main(String[] args) {
         //선언
-
         Controller c = new Controller();
         c.setK(new JFrame());
-        Message_Queue mq = new Message_Queue();
         //start
         mq.start();
         c.ReqMainMenu();
-        mq.interrupt();
+
     }
 
     public void ReqMainMenu() {
