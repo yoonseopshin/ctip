@@ -52,6 +52,14 @@ public class Message_Queue extends Thread {
             server_socket = new ServerSocket(port); //서버 소캣 생성
         } catch (IOException e) {
             System.out.println(port + "번 포트 사용 불가");
+        } finally {
+            if (server_socket != null) {
+                try {
+                    server_socket.close();
+                } catch (IOException e) {
+                }
+                ;
+            }
         }
         try {
             while (true) {
@@ -69,9 +77,20 @@ public class Message_Queue extends Thread {
                 printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
                 Dequeue();
+                if (Thread.interrupted()) {
+                    break;
+                }
             }
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("서버 메세지수신 오류");
+            //System.out.println("서버 메세지수신 오류");
+        } finally {
+            if (socket != null) {
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                }
+                ;
+            }
         }
     }
 
@@ -96,14 +115,20 @@ public class Message_Queue extends Thread {
                 objectOutputStream.close();
                 socket.close();
                 break;
-                //if (returnMsg == "1")
-                //   break;
             }
         } catch (IOException e) {
             System.err.println("서버 접속 오류, 오류 DVM :" + message.getMyID());
             if (message.getType() == 1) {
                 stk--;
                 Dequeue();
+            }
+        } finally {
+            if (socket != null) {
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                }
+                ;
             }
         }
     }
