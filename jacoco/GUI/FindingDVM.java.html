@@ -43,40 +43,33 @@ public class FindingDVM extends JFrame implements ActionListener {
 <span class="nc" id="L43">        labelpanel.add(label);</span>
         //안내패널
 <span class="nc" id="L45">        JPanel informpanel = new JPanel();</span>
-        //informpanel.setPreferredSize(new Dimension(600,300));
-<span class="nc" id="L47">        infolabel = new JLabel(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + name + &quot;&lt;/strong&gt;&quot;</span>
+<span class="nc" id="L46">        infolabel = new JLabel(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + name + &quot;&lt;/strong&gt;&quot;</span>
                 + &quot;&lt;br&gt;해당 음료가 있는 자판기를 검색중입니다.&lt;/center&gt;&lt;/html&gt;&quot;);
-<span class="nc" id="L49">        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L50">        informpanel.add(infolabel);</span>
+<span class="nc" id="L48">        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L49">        informpanel.add(infolabel);</span>
         //버튼패널
-<span class="nc" id="L52">        JPanel buttonpanel = new JPanel();</span>
-<span class="nc" id="L53">        cancel = new JButton(&quot;취소&quot;);</span>
-<span class="nc" id="L54">        cancel.setPreferredSize(new Dimension(300, 70));</span>
-<span class="nc" id="L55">        cancel.addActionListener(this);</span>
-<span class="nc" id="L56">        buttonpanel.add(cancel);</span>
+<span class="nc" id="L51">        JPanel buttonpanel = new JPanel();</span>
+<span class="nc" id="L52">        cancel = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L53">        cancel.setPreferredSize(new Dimension(300, 70));</span>
+<span class="nc" id="L54">        cancel.addActionListener(this);</span>
+<span class="nc" id="L55">        buttonpanel.add(cancel);</span>
 
-<span class="nc" id="L58">        add(labelpanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L59">        add(informpanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L60">        add(buttonpanel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L57">        add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L58">        add(informpanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L59">        add(buttonpanel, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L62">        pack();</span>
-<span class="nc" id="L63">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L64">        setVisible(true);</span>
-<span class="nc" id="L65">    }</span>
+<span class="nc" id="L61">        pack();</span>
+<span class="nc" id="L62">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L63">        setVisible(true);</span>
+<span class="nc" id="L64">    }</span>
 
-    /*
-    public static void main(String[] args) {
-      new FindingDVM(&quot;코카콜라&quot;);
-
-    }
-    */
     @Override
     public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (e.getSource() == cancel) {</span>
-<span class="nc" id="L76">            timer.stop();</span>
-<span class="nc" id="L77">            return_value = 0;</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        if (e.getSource() == cancel) {</span>
+<span class="nc" id="L69">            timer.stop();</span>
+<span class="nc" id="L70">            return_value = 0;</span>
         }
-<span class="nc" id="L79">    }</span>
+<span class="nc" id="L72">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
