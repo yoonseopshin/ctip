@@ -48,7 +48,7 @@ public class Message_Queue extends Thread {
         int port = myid + 50000;
         ObjectInputStream objectInputStream; // 직렬화된 객체를 읽어올때 사용
         PrintWriter printWriter; // 값을 전달할때 사용
-        Message message;
+        Message message = new Message(-1);
 
         try {
             server_socket = new ServerSocket(port); //서버 소캣 생성
@@ -60,8 +60,10 @@ public class Message_Queue extends Thread {
                 if (this.isInterrupted()) break;
                 socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.
                 printWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
-                objectInputStream = new ObjectInputStream(socket.getInputStream()); // Client 로부터 객체를 읽어오는 역활을 하는 객체를 생성
-                message = (Message) objectInputStream.readObject(); // readObject는 object 객체로 불러오기 때문에 형변환
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                String msg = in.readLine();
+                String[] temp = msg.split(",");
+                message.translate(Integer.parseInt(temp[0]),Integer.parseInt(temp[1]),Integer.parseInt(temp[2]),Double.parseDouble(temp[3]),Double.parseDouble(temp[4]),Integer.parseInt(temp[5]),Integer.parseInt(temp[6]),Boolean.parseBoolean(temp[7]));
                 msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
                 if (message.getType() == 1) System.out.println("재고요청메시지 수신됨");
                 if (message.getType() == 2) System.out.println("재고응답메시지 수신됨");
@@ -73,7 +75,7 @@ public class Message_Queue extends Thread {
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
                 Dequeue();
             }
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("서버 메세지수신 오류");
         } finally {
             if (socket != null) {
@@ -106,13 +108,14 @@ public class Message_Queue extends Thread {
             while (true) {
                 ia = InetAddress.getByName(getIP());    //서버로 접속
                 socket = new Socket(ia, port);
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());//직렬화를 위한 객체 생성
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream())); //서버로부터 메시지를 받기위한 버퍼
-                objectOutputStream.writeObject(message); // 전송을 위한 객체 직렬화
-                objectOutputStream.flush(); //직렬화를 끝낸 메시지를 타겟 서버로 전송
+                out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
+                //메시지객체 스트링으로 전환
+                String msg = message.getMyID()+","+message.getTargetID()+","+message.getType()+","+message.getxAdress()+","+message.getyAdress()+","+ message.getTitle()+","+message.getC_Number()+","+message.isBoolData();
+                out.println(msg);                        //서버로 데이터 전송
+                out.flush();                      //서버로 데이터 전송
                 String returnMsg = in.readLine();
                 //객체 정리하는 부분
-                objectOutputStream.close();
                 socket.close();
                 //서버에서 확인메시지 리시브 및 완료시 브레이크
                 if (returnMsg.equals("1")) break;
