@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Logic.*;
+import static GUI.Sleep.*;
 
 public class PaymentMenu extends JFrame implements ActionListener {
 
@@ -32,7 +33,7 @@ public class PaymentMenu extends JFrame implements ActionListener {
         timer.start();
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM");
+        this.setTitle("DVM "+ CurrentID);
 
         //라벨 패널
         JPanel labelpanel = new JPanel();

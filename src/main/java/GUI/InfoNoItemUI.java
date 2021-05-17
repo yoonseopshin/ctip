@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Logic.*;
+import static GUI.Sleep.*;
 
 public class InfoNoItemUI extends JFrame implements ActionListener {
 
@@ -27,7 +28,7 @@ public class InfoNoItemUI extends JFrame implements ActionListener {
         timer.start();
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM");
+        this.setTitle("DVM "+ CurrentID);
 
         //라벨패널
         JPanel labelpanel = new JPanel();

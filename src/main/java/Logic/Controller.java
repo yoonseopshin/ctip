@@ -56,7 +56,6 @@ public class Controller {
         //start
         mq.start();
         c.ReqMainMenu();
-
     }
 
     public void ReqMainMenu() {

@@ -1,5 +1,7 @@
 package GUI;
 
+import Logic.DVM;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,10 +14,12 @@ import javax.swing.JPanel;
 public class Sleep extends JFrame implements MouseListener {
 
     public int return_value = -1;
+    public static DVM thisDVM = new DVM(1,1.0,1.0);
+    public static int CurrentID= thisDVM.getCurrentID();
 
     public Sleep() {
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM");
+        this.setTitle("DVM "+ CurrentID);
         this.addMouseListener(this);
         this.setBackground(new Color((float) 0.0, (float) 0.0, (float) 0.0));
 

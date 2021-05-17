@@ -2,17 +2,19 @@ package Logic;
 
 public class DVM {
 
-    static int CurrentID = 1;
-    static double CurrentX = 1.0;
-    static double CurrentY = 1.0;
+    public static int CurrentID = 1;
+    public static double CurrentX = 1.0;
+    public static double CurrentY = 1.0;
     private int ID; // 메세지 보낼 타겟 아이디
     private double Address_X; // 실제 주소
     private double Address_Y;
+    private int currentID;
 
     public DVM(int ID, double X, double Y) {
         this.ID = ID;
         this.Address_X = X;
         this.Address_Y = Y;
+        this.currentID=CurrentID;
     }
 
     public int getID() {
@@ -38,4 +40,9 @@ public class DVM {
     public void setAddress_Y(double address_Y) {
         Address_Y = address_Y;
     }
+
+    public int getCurrentID() { return currentID; }
+
+    public static void setCurrentID(int currentID) { CurrentID = currentID; }
+
 }

@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import static GUI.Sleep.*;
 
 public class SmartPayUI extends JFrame implements ActionListener {
 
@@ -58,7 +59,7 @@ public class SmartPayUI extends JFrame implements ActionListener {
         });
         timer.start();
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM");
+        this.setTitle("DVM "+ CurrentID);
 
         //라벨패널
         JPanel labelpanel = new JPanel();
