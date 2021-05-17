@@ -13,11 +13,25 @@ public class Message implements Serializable {
     private int C_Number = -1;
     private boolean boolData = false;
 
+
     Message(int myid) {
         myID = myid;
     }
 
     //type1
+
+    void translate(int myID,int targetID,int Type, double xAdress, double yAdress,int Title, int C_Number, boolean boolData)
+    {
+        this.myID = myID;
+        this.targetID = targetID;
+        this.Type = Type;
+        this.xAdress = xAdress;
+        this.yAdress = yAdress;
+        this.Title = Title;
+        this.C_Number = C_Number;
+        this.boolData = boolData;
+    }
+
     void setmsg(int id, int type, int data) {
         targetID = id;
         Type = type;
