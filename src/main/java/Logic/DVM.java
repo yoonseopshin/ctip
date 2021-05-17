@@ -8,13 +8,11 @@ public class DVM {
     private int ID; // 메세지 보낼 타겟 아이디
     private double Address_X; // 실제 주소
     private double Address_Y;
-    private int currentID;
 
     public DVM(int ID, double X, double Y) {
         this.ID = ID;
         this.Address_X = X;
         this.Address_Y = Y;
-        this.currentID=CurrentID;
     }
 
     public int getID() {
