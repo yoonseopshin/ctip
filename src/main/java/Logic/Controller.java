@@ -16,21 +16,17 @@ import static Logic.Message_Queue.*;
 public class Controller {
 
     private JFrame k;
-    public static ArrayList<Title> Title_List;
     private Payment Payment;
     private int basket;
-    public static Stack<DVM> DVMStack;
     private int del;
-    public static C_NumberManager CM;
-    public static Message_Queue mq;
+    public static ArrayList<Title> Title_List = new ArrayList<>();
+    public static Stack<DVM> DVMStack = new Stack<>();;
+    public static C_NumberManager CM = new C_NumberManager();;
+    public static Message_Queue mq = new Message_Queue();;
 
     public Controller() {
         this.basket = -666;
         this.Payment = null;
-        DVMStack = new Stack<>();
-        CM = new C_NumberManager();
-        mq = new Message_Queue();
-        Title_List = new ArrayList<>();
         Title_List.add(new Title("코카콜라", 700));
         Title_List.add(new Title("나랑드사이다", 700));
         Title_List.add(new Title("솔의눈", 700));

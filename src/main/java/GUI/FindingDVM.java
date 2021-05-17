@@ -43,7 +43,6 @@ public class FindingDVM extends JFrame implements ActionListener {
         labelpanel.add(label);
         //안내패널
         JPanel informpanel = new JPanel();
-        //informpanel.setPreferredSize(new Dimension(600,300));
         infolabel = new JLabel("<html><center><strong>" + name + "</strong>"
                 + "<br>해당 음료가 있는 자판기를 검색중입니다.</center></html>");
         infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
@@ -64,12 +63,6 @@ public class FindingDVM extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    /*
-    public static void main(String[] args) {
-      new FindingDVM("코카콜라");
-
-    }
-    */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cancel) {
