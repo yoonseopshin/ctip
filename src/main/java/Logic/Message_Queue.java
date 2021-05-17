@@ -14,9 +14,9 @@ import java.net.Socket;
 
 public class Message_Queue extends Thread {
 
-    static Queue<Message> msgQueue = new LinkedList<>();
-    static Queue<Message> StkmsgQueue = new LinkedList<>();
-    static Queue<Message> LocmsgQueue = new LinkedList<>();
+    public static Queue<Message> msgQueue = new LinkedList<>();
+    public static Queue<Message> StkmsgQueue = new LinkedList<>();
+    public static Queue<Message> LocmsgQueue = new LinkedList<>();
     public static int loc = -1;
     public static int stk = 9;
 
@@ -185,5 +185,20 @@ public class Message_Queue extends Thread {
             }
             loc = -1;
         }
+    }
+
+    public static int getLoc() {
+        return loc;
+    }
+
+    public static void setLoc(int loc) {
+        Message_Queue.loc = loc;
+    }
+    public static int getStk() {
+        return stk;
+    }
+
+    public static void setStk(int stk) {
+        Message_Queue.stk = stk;
     }
 }
