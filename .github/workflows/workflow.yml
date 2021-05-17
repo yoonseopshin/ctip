@@ -173,12 +173,12 @@ jobs:
       - name: Run Checkstyle
         run: ./gradlew checkstyleMain checkstyleTest --stacktrace
 
-      - name: Deploy Checkstyle Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/checkstyle
-          destination_dir: checkstyle
+#      - name: Deploy Checkstyle Report
+#        uses: peaceiris/actions-gh-pages@v3
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_dir: build/reports/checkstyle
+#          destination_dir: checkstyle
 
       - name: Publish Checkstyle Report Summary
         uses: nikitasavinov/checkstyle-action@master
