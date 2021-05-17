@@ -39,8 +39,12 @@ public class DVM {
         Address_Y = address_Y;
     }
 
-    public static int getCurrentID() { return CurrentID; }
+    public static int getCurrentID() {
+        return CurrentID;
+    }
 
-    public static void setCurrentID(int currentID) { CurrentID = currentID; }
+    public static void setCurrentID(int currentID) {
+        CurrentID = currentID;
+    }
 
 }

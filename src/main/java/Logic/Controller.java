@@ -7,7 +7,6 @@ import java.util.Stack;
 import javax.swing.*;
 
 import static Logic.DVM.*;
-import static Logic.Message_Queue.*;
 
 /**
  *
@@ -20,9 +19,12 @@ public class Controller {
     private int basket;
     private int del;
     public static ArrayList<Title> Title_List = new ArrayList<>();
-    public static Stack<DVM> DVMStack = new Stack<>();;
-    public static C_NumberManager CM = new C_NumberManager();;
-    public static Message_Queue mq = new Message_Queue();;
+    public static Stack<DVM> DVMStack = new Stack<>();
+    ;
+    public static C_NumberManager CM = new C_NumberManager();
+    ;
+    public static Message_Queue mq = new Message_Queue();
+    ;
 
     public Controller() {
         this.basket = -666;

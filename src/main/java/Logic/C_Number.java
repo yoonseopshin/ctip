@@ -13,9 +13,6 @@ public class C_Number {
     private int DvmID;
     private int C_Number_t;
 
-    public C_Number() {
-    }
-
     public C_Number(int title_id, int id) {
         this.title_id = title_id;
         this.DvmID = id;
