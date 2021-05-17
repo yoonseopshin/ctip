@@ -4,40 +4,41 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static GUI.Sleep.*;
 
 public class InfoNoDVMUI extends JFrame {
 
     private JLabel label;
-<span class="nc" id="L11">    private int s = 2;</span>
-<span class="nc" id="L12">    public int return_value = -1;</span>
+<span class="nc" id="L12">    private int s = 2;</span>
+<span class="nc" id="L13">    public int return_value = -1;</span>
 
-<span class="nc" id="L14">    public InfoNoDVMUI(String name) {</span>
-<span class="nc" id="L15">        timer.start();</span>
+<span class="nc" id="L15">    public InfoNoDVMUI(String name) {</span>
+<span class="nc" id="L16">        timer.start();</span>
 
-<span class="nc" id="L17">        this.setPreferredSize(new Dimension(600, 800));</span>
-<span class="nc" id="L18">        this.setTitle(&quot;DVM&quot;);</span>
+<span class="nc" id="L18">        this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L19">        this.setTitle(&quot;DVM &quot;+ CurrentID);</span>
 
         //라벨패널
-<span class="nc" id="L21">        JPanel labelpanel = new JPanel();</span>
-<span class="nc" id="L22">        labelpanel.setPreferredSize(new Dimension(600, 300));</span>
-<span class="nc" id="L23">        label = new JLabel(&quot;3초 후 메인화면으로 돌아갑니다.&quot;);</span>
-<span class="nc" id="L24">        label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L25">        labelpanel.add(label);</span>
+<span class="nc" id="L22">        JPanel labelpanel = new JPanel();</span>
+<span class="nc" id="L23">        labelpanel.setPreferredSize(new Dimension(600, 300));</span>
+<span class="nc" id="L24">        label = new JLabel(&quot;3초 후 메인화면으로 돌아갑니다.&quot;);</span>
+<span class="nc" id="L25">        label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L26">        labelpanel.add(label);</span>
         //안내패널
-<span class="nc" id="L27">        JPanel informpanel = new JPanel();</span>
+<span class="nc" id="L28">        JPanel informpanel = new JPanel();</span>
         //informpanel.setPreferredSize(new Dimension(600,300));
-<span class="nc" id="L29">        JLabel infolabel = new JLabel(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + name + &quot;&lt;/strong&gt;&quot;</span>
+<span class="nc" id="L30">        JLabel infolabel = new JLabel(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + name + &quot;&lt;/strong&gt;&quot;</span>
                 + &quot;&lt;br&gt;해당 음료의 재고가 있는 자판기가 없습니다.&lt;/center&gt;&lt;/html&gt;&quot;);
-<span class="nc" id="L31">        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L32">        informpanel.add(infolabel);</span>
+<span class="nc" id="L32">        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L33">        informpanel.add(infolabel);</span>
 
-<span class="nc" id="L34">        add(labelpanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L35">        add(informpanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L35">        add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L36">        add(informpanel, BorderLayout.CENTER);</span>
 
-<span class="nc" id="L37">        pack();</span>
-<span class="nc" id="L38">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L39">        setVisible(true);</span>
-<span class="nc" id="L40">    }</span>
+<span class="nc" id="L38">        pack();</span>
+<span class="nc" id="L39">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L40">        setVisible(true);</span>
+<span class="nc" id="L41">    }</span>
 
     /*
         public static void main(String[] args) {
@@ -45,15 +46,15 @@ public class InfoNoDVMUI extends JFrame {
 
         }
     */
-<span class="nc" id="L48">    private Timer timer = new Timer(1000, new ActionListener() {</span>
+<span class="nc" id="L49">    private Timer timer = new Timer(1000, new ActionListener() {</span>
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L50">            label.setText(s + &quot;초 후 메인화면으로 돌아갑니다.&quot;);</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (s == 0) {</span>
-<span class="nc" id="L52">                return_value = 0;</span>
-<span class="nc" id="L53">                timer.stop();</span>
+<span class="nc" id="L51">            label.setText(s + &quot;초 후 메인화면으로 돌아갑니다.&quot;);</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">            if (s == 0) {</span>
+<span class="nc" id="L53">                return_value = 0;</span>
+<span class="nc" id="L54">                timer.stop();</span>
             }
-<span class="nc" id="L55">            s--;</span>
-<span class="nc" id="L56">        }</span>
+<span class="nc" id="L56">            s--;</span>
+<span class="nc" id="L57">        }</span>
     });
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

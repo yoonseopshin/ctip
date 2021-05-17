@@ -12,67 +12,68 @@ import javax.swing.JScrollPane;
 import javax.swing.Timer;
 
 import Logic.*;
+import static GUI.Sleep.*;
 
 public class ManTitleMenu extends JFrame implements ActionListener {
 
-<span class="nc" id="L18">    private Timer timer = new Timer(180000, new ActionListener() {</span>
+<span class="nc" id="L19">    private Timer timer = new Timer(180000, new ActionListener() {</span>
         @Override
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L21">            return_value = -2;</span>
-<span class="nc" id="L22">            timer.stop();</span>
-<span class="nc" id="L23">        }</span>
+<span class="nc" id="L22">            return_value = -2;</span>
+<span class="nc" id="L23">            timer.stop();</span>
+<span class="nc" id="L24">        }</span>
     });
 
     private JButton[] Title_list;
     private JButton exit;
     private ArrayList&lt;Title&gt; temp;
 
-<span class="nc" id="L30">    public int return_value = -1;</span>
+<span class="nc" id="L31">    public int return_value = -1;</span>
 
-<span class="nc" id="L32">    public ManTitleMenu(ArrayList&lt;Title&gt; tlist) {</span>
-<span class="nc" id="L33">        timer.start();</span>
+<span class="nc" id="L33">    public ManTitleMenu(ArrayList&lt;Title&gt; tlist) {</span>
+<span class="nc" id="L34">        timer.start();</span>
 
-<span class="nc" id="L35">        this.setPreferredSize(new Dimension(600, 800));</span>
-<span class="nc" id="L36">        this.setTitle(&quot;DVM&quot;);</span>
+<span class="nc" id="L36">        this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L37">        this.setTitle(&quot;DVM &quot;+ CurrentID);</span>
 
-<span class="nc" id="L38">        temp = tlist;</span>
+<span class="nc" id="L39">        temp = tlist;</span>
 
         //라벨 패널
-<span class="nc" id="L41">        JPanel labelpanel = new JPanel();</span>
-<span class="nc" id="L42">        labelpanel.setPreferredSize(new Dimension(600, 30));</span>
-<span class="nc" id="L43">        JLabel label = new JLabel(&quot;재고를 변경할 음료를 선택하세요&quot;);</span>
-<span class="nc" id="L44">        label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L45">        labelpanel.add(label);</span>
+<span class="nc" id="L42">        JPanel labelpanel = new JPanel();</span>
+<span class="nc" id="L43">        labelpanel.setPreferredSize(new Dimension(600, 30));</span>
+<span class="nc" id="L44">        JLabel label = new JLabel(&quot;재고를 변경할 음료를 선택하세요&quot;);</span>
+<span class="nc" id="L45">        label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L46">        labelpanel.add(label);</span>
 
-<span class="nc" id="L47">        JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(), 1));</span>
-<span class="nc" id="L48">        JScrollPane titlepanel = new JScrollPane(titlelistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,</span>
+<span class="nc" id="L48">        JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(), 1));</span>
+<span class="nc" id="L49">        JScrollPane titlepanel = new JScrollPane(titlelistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,</span>
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-<span class="nc" id="L50">        titlelistpanel.setPreferredSize(new Dimension(600, 70 * tlist.size()));</span>
-<span class="nc" id="L51">        Title_list = new JButton[tlist.size()];</span>
-<span class="nc bnc" id="L52" title="All 2 branches missed.">        for (int i = 0; i &lt; tlist.size(); i++) {</span>
-<span class="nc" id="L53">            Title_list[i] = new JButton(</span>
-<span class="nc" id="L54">                    &quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + tlist.get(i).getName() + &quot;&lt;/strong&gt;&lt;br&gt;재고수량 : &quot; +</span>
-<span class="nc" id="L55">                            tlist.get(i).getItem_List().size() + &quot;&lt;/center&gt;&lt;/html&gt;&quot;);</span>
+<span class="nc" id="L51">        titlelistpanel.setPreferredSize(new Dimension(600, 70 * tlist.size()));</span>
+<span class="nc" id="L52">        Title_list = new JButton[tlist.size()];</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        for (int i = 0; i &lt; tlist.size(); i++) {</span>
+<span class="nc" id="L54">            Title_list[i] = new JButton(</span>
+<span class="nc" id="L55">                    &quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + tlist.get(i).getName() + &quot;&lt;/strong&gt;&lt;br&gt;재고수량 : &quot; +</span>
+<span class="nc" id="L56">                            tlist.get(i).getItem_List().size() + &quot;&lt;/center&gt;&lt;/html&gt;&quot;);</span>
             //Title_list[i].setPreferredSize(new Dimension(600,70));
-<span class="nc" id="L57">            Title_list[i].addActionListener(this);</span>
-<span class="nc" id="L58">            titlelistpanel.add(Title_list[i]);</span>
+<span class="nc" id="L58">            Title_list[i].addActionListener(this);</span>
+<span class="nc" id="L59">            titlelistpanel.add(Title_list[i]);</span>
         }
 
         //취소패널
-<span class="nc" id="L62">        JPanel exitpanel = new JPanel();</span>
-<span class="nc" id="L63">        exit = new JButton(&quot;나가기&quot;);</span>
-<span class="nc" id="L64">        exit.setPreferredSize(new Dimension(600, 70));</span>
-<span class="nc" id="L65">        exit.addActionListener(this);</span>
-<span class="nc" id="L66">        exitpanel.add(exit, BorderLayout.SOUTH);</span>
+<span class="nc" id="L63">        JPanel exitpanel = new JPanel();</span>
+<span class="nc" id="L64">        exit = new JButton(&quot;나가기&quot;);</span>
+<span class="nc" id="L65">        exit.setPreferredSize(new Dimension(600, 70));</span>
+<span class="nc" id="L66">        exit.addActionListener(this);</span>
+<span class="nc" id="L67">        exitpanel.add(exit, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L68">        add(labelpanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L69">        add(titlepanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L70">        add(exitpanel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L69">        add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L70">        add(titlepanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L71">        add(exitpanel, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L72">        pack();</span>
-<span class="nc" id="L73">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L74">        setVisible(true);</span>
-<span class="nc" id="L75">    }</span>
+<span class="nc" id="L73">        pack();</span>
+<span class="nc" id="L74">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L75">        setVisible(true);</span>
+<span class="nc" id="L76">    }</span>
 /*test
 	public static void main(String[] args) {
 		
@@ -85,19 +86,19 @@ public class ManTitleMenu extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L88" title="All 2 branches missed.">        for (int i = 0; i &lt; temp.size(); i++) {</span>
-<span class="nc bnc" id="L89" title="All 2 branches missed.">            if (e.getSource() == Title_list[i]) {</span>
-<span class="nc" id="L90">                timer.stop();</span>
-<span class="nc" id="L91">                return_value = i + 1;</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        for (int i = 0; i &lt; temp.size(); i++) {</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (e.getSource() == Title_list[i]) {</span>
+<span class="nc" id="L91">                timer.stop();</span>
+<span class="nc" id="L92">                return_value = i + 1;</span>
             }
         }
-<span class="nc bnc" id="L94" title="All 2 branches missed.">        if (e.getSource() == exit) {</span>
-<span class="nc" id="L95">            timer.stop();</span>
-<span class="nc" id="L96">            return_value = 0;</span>
-<span class="nc" id="L97">            this.setVisible(false);</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        if (e.getSource() == exit) {</span>
+<span class="nc" id="L96">            timer.stop();</span>
+<span class="nc" id="L97">            return_value = 0;</span>
+<span class="nc" id="L98">            this.setVisible(false);</span>
         }
 
-<span class="nc" id="L100">    }</span>
+<span class="nc" id="L101">    }</span>
 
 }
 
