@@ -3,13 +3,14 @@ package Logic;
 import java.util.HashMap;
 
 public class C_NumberManager {
+    //인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
+    private HashMap<Integer, C_Number> C_List;
+    private int M_Number;
 
     public C_NumberManager() {
+        this.C_List = new HashMap<Integer, C_Number>();
+        this.M_Number = 111111;
     }
-
-    //인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
-    private HashMap<Integer, C_Number> C_List = new HashMap<Integer, C_Number>();
-    private int M_Number = 111111;
 
     public int PopCnumber(int C_Number_t) {
         int r = C_List.get(C_Number_t).getTitle_id();

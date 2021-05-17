@@ -9,24 +9,29 @@ public class Message_QueueTest {
 
     @Test
     public void testMsgSend() {
+        Controller c = new Controller();
+        c.getTitle_List().get(0).AddItem(new Item(20201125));
+        queue.start();
         msg.setTargetID(1);
-        msg.setType(2);
-        msg.setBoolData(true);
+        msg.setType(5);
+        msg.setTitle(1);
+        msg.setC_Number(971125);
         Message_Queue.MsgSend(msg);
-        msg.setType(3);
-        Message_Queue.MsgSend(msg);
+        queue.interrupt();
+        while(queue.isAlive()){};
+        Assert.assertEquals(1, c.getCM().CheckCnumber(971125));
     }
 
     @Test
     public void testDequeue() {
         Controller c = new Controller();
-        c.getTitle_List().get(0).AddItem(new Item(20201125));
+        c.getTitle_List().get(1).AddItem(new Item(20201125));
         msg.setTargetID(1);
         msg.setType(5);
-        msg.setTitle(1);
-        msg.setC_Number(971125);
+        msg.setTitle(2);
+        msg.setC_Number(971026);
         Message_Queue.msgQueue.offer(msg);
         Message_Queue.Dequeue();
-        Assert.assertEquals(1, c.getCM().CheckCnumber(971125));
+        Assert.assertEquals(1, c.getCM().CheckCnumber(971026));
     }
 }
