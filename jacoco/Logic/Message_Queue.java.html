@@ -14,9 +14,9 @@ import java.net.Socket;
 
 <span class="fc" id="L15">public class Message_Queue extends Thread {</span>
 
-<span class="fc" id="L17">    static Queue&lt;Message&gt; msgQueue = new LinkedList&lt;&gt;();</span>
-<span class="fc" id="L18">    static Queue&lt;Message&gt; StkmsgQueue = new LinkedList&lt;&gt;();</span>
-<span class="fc" id="L19">    static Queue&lt;Message&gt; LocmsgQueue = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L17">    public static Queue&lt;Message&gt; msgQueue = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L18">    public static Queue&lt;Message&gt; StkmsgQueue = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L19">    public static Queue&lt;Message&gt; LocmsgQueue = new LinkedList&lt;&gt;();</span>
 <span class="fc" id="L20">    public static int loc = -1;</span>
 <span class="fc" id="L21">    public static int stk = 9;</span>
 
@@ -186,5 +186,20 @@ import java.net.Socket;
 <span class="nc" id="L186">            loc = -1;</span>
         }
 <span class="fc" id="L188">    }</span>
+
+    public static int getLoc() {
+<span class="nc" id="L191">        return loc;</span>
+    }
+
+    public static void setLoc(int loc) {
+<span class="nc" id="L195">        Message_Queue.loc = loc;</span>
+<span class="nc" id="L196">    }</span>
+    public static int getStk() {
+<span class="nc" id="L198">        return stk;</span>
+    }
+
+    public static void setStk(int stk) {
+<span class="nc" id="L202">        Message_Queue.stk = stk;</span>
+<span class="nc" id="L203">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
