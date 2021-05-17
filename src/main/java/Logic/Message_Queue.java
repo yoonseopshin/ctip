@@ -48,7 +48,6 @@ public class Message_Queue extends Thread {
         int port = myid + 50000;
         ObjectInputStream objectInputStream; // 직렬화된 객체를 읽어올때 사용
         PrintWriter printWriter; // 값을 전달할때 사용
-        Message message = new Message(-1);
 
         try {
             server_socket = new ServerSocket(port); //서버 소캣 생성
@@ -64,6 +63,7 @@ public class Message_Queue extends Thread {
                 String msg = in.readLine();
                 String[] temp = msg.split(",");
                 //메시지객체로 변환
+                Message message = new Message(-1);
                 message.translate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]),
                         Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),
                         Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));
@@ -123,14 +123,16 @@ public class Message_Queue extends Thread {
                 //객체 정리하는 부분
                 socket.close();
                 //서버에서 확인메시지 리시브 및 완료시 브레이크
-                //if (returnMsg.equals("1"))
+                if (returnMsg.equals("1"))
                     break;
             }
         } catch (IOException e) {
             System.err.println("서버 접속 오류, 오류 DVM :" + message.getMyID());
             if (message.getType() == 1) {
                 stk--;
-                Dequeue();
+                if (stk == StkmsgQueue.size()) {
+                    Dequeue();
+                }
             }
         } finally {
             if (socket != null) {
@@ -149,49 +151,47 @@ public class Message_Queue extends Thread {
             if (rm.getType() == 1) {
                 Message sm = new Message(CurrentID);
                 sm.setmsg(rm.getMyID(), 2, Title_List.get(rm.getTitle() - 1).CheckStock());
-                System.out.println("재고요청응답완료");
-            }
-            if (rm.getType() == 2) {
+                System.out.println("재고 요청 응답 완료");
+            } else if (rm.getType() == 2) {
                 StkmsgQueue.offer(rm);
-            }
-            if (rm.getType() == 3) {
+            } else if (rm.getType() == 3) {
                 Message sm = new Message(CurrentID);
                 sm.setmsg(rm.getMyID(), 4, CurrentX, CurrentY);
                 System.out.println("위치 요청 메시지 응답 완료");
-            }
-            if (rm.getType() == 4) {
+            } else if (rm.getType() == 4) {
                 LocmsgQueue.offer(rm);
-            }
-            if (rm.getType() == 5) {
+            } else if (rm.getType() == 5) {
                 C_Number rc = new C_Number(rm.getTitle(), rm.getMyID());
                 rc.setC_Number_t(rm.getC_Number());
                 CM.AddCnumber(rc);
                 Title_List.get(rm.getTitle() - 1).UpdateStock(1, true);
+            } else {
+                System.out.println("메시지 오류");
             }
         }
         if (StkmsgQueue.size() == stk) {
-            loc = 0;
+            int i = 0;
             while (StkmsgQueue.size() > 0) {
                 Message stk = StkmsgQueue.poll();
                 if (stk.isBoolData()) {
                     Message sm = new Message(CurrentID);
                     sm.setmsg(stk.getMyID(), 3);
-                    loc++;
+                    System.out.println("위치 요청 메시지 전송 완료");
+                    i++;
                 }
             }
-            System.out.println("위치 요청 메시지 전송완료");
+            loc = i;
             stk = 9;
         }
         if (LocmsgQueue.size() == loc) {
-            if (loc == 0) {
-                DVMStack.push(new DVM(-1, 0.0, 0.0));
-            } else {
+            if (loc != 0) {
                 while (LocmsgQueue.size() > 0) {
                     Message loc = LocmsgQueue.poll();
                     DVMStack.push(new DVM(loc.getMyID(), loc.getxAdress(), loc.getyAdress()));
+                    System.out.println("위치 응답 메시지 수신 완료");
                 }
-                DVMStack.push(new DVM(-1, 0.0, 0.0));
             }
+            DVMStack.push(new DVM(-1, 0.0, 0.0));
             loc = -1;
         }
     }
