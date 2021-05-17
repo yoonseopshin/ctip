@@ -2,29 +2,41 @@
 
 public class DVM {
 
-  int ID; // 메세지 보낼 타겟 아이디
+<span class="fc" id="L5">    static int CurrentID = 2;</span>
+<span class="fc" id="L6">    static double CurrentX = 1.0;</span>
+<span class="fc" id="L7">    static double CurrentY = 1.0;</span>
+    private int ID; // 메세지 보낼 타겟 아이디
+    private double Address_X; // 실제 주소
+    private double Address_Y;
 
-  private double Address_X; // 실제 주소
-  private double Address_Y;
+<span class="fc" id="L12">    public DVM(int ID, double X, double Y) {</span>
+<span class="fc" id="L13">        this.ID = ID;</span>
+<span class="fc" id="L14">        this.Address_X = X;</span>
+<span class="fc" id="L15">        this.Address_Y = Y;</span>
+<span class="fc" id="L16">    }</span>
 
-<span class="fc" id="L10">  public DVM(int ID, double X, double Y) {</span>
-<span class="fc" id="L11">    this.ID = ID;</span>
-<span class="fc" id="L12">    this.Address_X = X;</span>
-<span class="fc" id="L13">    this.Address_Y = Y;</span>
-<span class="fc" id="L14">  }</span>
+    public int getID() {
+<span class="fc" id="L19">        return ID;</span>
+    }
 
-  public int ID() {
-<span class="nc" id="L17">    return this.ID;</span>
-  }
+    public void setID(int ID) {
+<span class="fc" id="L23">        this.ID = ID;</span>
+<span class="fc" id="L24">    }</span>
 
-  public double getX() {
-<span class="fc" id="L21">    return this.Address_X;</span>
-  }
+    public double getAddress_X() {
+<span class="fc" id="L27">        return Address_X;</span>
+    }
 
-  public double getY() {
-<span class="fc" id="L25">    return this.Address_Y;</span>
-  }
+    public void setAddress_X(double address_X) {
+<span class="fc" id="L31">        Address_X = address_X;</span>
+<span class="fc" id="L32">    }</span>
 
+    public double getAddress_Y() {
+<span class="fc" id="L35">        return Address_Y;</span>
+    }
 
+    public void setAddress_Y(double address_Y) {
+<span class="fc" id="L39">        Address_Y = address_Y;</span>
+<span class="fc" id="L40">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
