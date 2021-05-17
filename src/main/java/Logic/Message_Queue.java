@@ -114,7 +114,9 @@ public class Message_Queue extends Thread {
                 //객체 정리하는 부분
                 objectOutputStream.close();
                 socket.close();
-                break;
+                //혹시 메세지가 전송이 제대로 안되면 걸리고 다시 시작함.
+                if(returnMsg == "1")
+                    break;
             }
         } catch (IOException e) {
             System.err.println("서버 접속 오류, 오류 DVM :" + message.getMyID());
