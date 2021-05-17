@@ -73,22 +73,23 @@
       <p>SpotBugs version: 4.2.2</p>
       <p>Code analyzed:</p>
       <ul>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/ControllerTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/TitleTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_NumberTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_NumberManagerTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/DVMTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/ItemTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Message_QueueTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/PaymentTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/DVM.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Title.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_Number.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Message_Queue.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Controller.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Payment.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_NumberManager.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Message.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Item.class</li>
       </ul>
       <p>
          <br/>
          <br/>
       </p>
       <h2>Metrics</h2>
-      <p>295 lines of code analyzed,
-	in 8 classes, 
+      <p>872 lines of code analyzed,
+	in 9 classes, 
 	in 1 packages.</p>
       <table width="500" cellpadding="5" cellspacing="2">
          <tr class="tableheader">
@@ -98,28 +99,28 @@
          </tr>
          <tr class="tablerow0">
             <td>High Priority Warnings</td>
-            <td align="right"/>
-            <td align="right">0.00</td>
+            <td align="right">8</td>
+            <td align="right">9.17</td>
          </tr>
          <tr class="tablerow1">
             <td>Medium Priority Warnings</td>
-            <td align="right">1</td>
-            <td align="right">3.39</td>
+            <td align="right">23</td>
+            <td align="right">26.38</td>
          </tr>
          <tr class="tablerow1">
             <td>Low Priority Warnings</td>
-            <td align="right">2</td>
-            <td align="right">6.78</td>
+            <td align="right">61</td>
+            <td align="right">69.95</td>
          </tr>
          <tr class="$totalClass">
             <td>
                <b>Total Warnings</b>
             </td>
             <td align="right">
-               <b>3</b>
+               <b>92</b>
             </td>
             <td align="right">
-               <b>10.17</b>
+               <b>105.50</b>
             </td>
          </tr>
       </table>
@@ -134,6 +135,15 @@
       <ul>
          <li>
             <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_I18N">Internationalization Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
          </li>
          <li>
             <a href="#Warnings_STYLE">Dodgy code Warnings</a>
@@ -152,20 +162,38 @@
             <td>
                <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
             </td>
-            <td align="right">2</td>
+            <td align="right">56</td>
          </tr>
          <tr class="tablerow1">
             <td>
-               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+               <a href="#Warnings_I18N">Internationalization Warnings</a>
+            </td>
+            <td align="right">2</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+            </td>
+            <td align="right">5</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
             </td>
             <td align="right">1</td>
          </tr>
          <tr class="tablerow0">
             <td>
+               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            </td>
+            <td align="right">28</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
                <b>Total</b>
             </td>
             <td align="right">
-               <b>3</b>
+               <b>92</b>
             </td>
          </tr>
       </table>
@@ -179,32 +207,927 @@
             <th align="left">Code</th>
             <th align="left">Warning</th>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e36');">
+         <tr class="tablerow1" onclick="toggleRow('d1e19');">
             <td>
-               <span class="priority-3">ISC</span>
+               <span class="priority-3">Nm</span>
             </td>
-            <td>Logic.Message_QueueTest.dequeue() needlessly instantiates a class that only supplies static methods</td>
+            <td>Confusing to have methods Logic.C_Number.getDvmID() and Logic.Payment.getDVMid()</td>
          </tr>
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e36" style="display: none;">
-                  <a href="#ISC_INSTANTIATE_STATIC_CLASS">Bug type ISC_INSTANTIATE_STATIC_CLASS (click for details)</a>
-                  <br/>In class Logic.Message_QueueTest<br/>In method Logic.Message_QueueTest.dequeue()<br/>At Message_QueueTest.java:[line 24]</p>
+               <p id="d1e19" style="display: none;">
+                  <a href="#NM_CONFUSING">Bug type NM_CONFUSING (click for details)</a>
+                  <br/>In class Logic.C_Number<br/>In method Logic.C_Number.getDvmID()<br/>In class Logic.Payment<br/>In method Logic.Payment.getDVMid()<br/>At C_Number.java:[line 64]</p>
             </td>
          </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e48');">
+         <tr class="tablerow0" onclick="toggleRow('d1e38');">
             <td>
-               <span class="priority-3">ISC</span>
+               <span class="priority-3">Nm</span>
             </td>
-            <td>Logic.Message_QueueTest.sendMsg() needlessly instantiates a class that only supplies static methods</td>
+            <td>Confusing to have methods Logic.C_Number.setDvmID(int) and Logic.Payment.setDVMid(int)</td>
          </tr>
          <tr class="detailrow0">
             <td/>
             <td>
-               <p id="d1e48" style="display: none;">
-                  <a href="#ISC_INSTANTIATE_STATIC_CLASS">Bug type ISC_INSTANTIATE_STATIC_CLASS (click for details)</a>
-                  <br/>In class Logic.Message_QueueTest<br/>In method Logic.Message_QueueTest.sendMsg()<br/>At Message_QueueTest.java:[line 15]</p>
+               <p id="d1e38" style="display: none;">
+                  <a href="#NM_CONFUSING">Bug type NM_CONFUSING (click for details)</a>
+                  <br/>In class Logic.C_Number<br/>In method Logic.C_Number.setDvmID(int)<br/>In class Logic.Payment<br/>In method Logic.Payment.setDVMid(int)<br/>At C_Number.java:[lines 68-69]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e57');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.C_Number.DvmID doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e57" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.C_Number<br/>Field Logic.C_Number.DvmID<br/>In C_Number.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e70');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.C_Number.CreateCnumber(int, int) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e70" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.C_Number<br/>In method Logic.C_Number.CreateCnumber(int, int)<br/>At C_Number.java:[lines 27-34]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e94');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.C_NumberManager.AddCnumber(C_Number) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e94" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.C_NumberManager<br/>In method Logic.C_NumberManager.AddCnumber(C_Number)<br/>At C_NumberManager.java:[lines 32-33]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e106');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.C_NumberManager.CheckCnumber(int) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e106" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.C_NumberManager<br/>In method Logic.C_NumberManager.CheckCnumber(int)<br/>At C_NumberManager.java:[lines 21-26]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e118');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.C_NumberManager.PopCnumber(int) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e118" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.C_NumberManager<br/>In method Logic.C_NumberManager.PopCnumber(int)<br/>At C_NumberManager.java:[lines 15-17]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e607');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.Controller.Payment doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e607" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>Field Logic.Controller.Payment<br/>In Controller.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e620');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.CancelItem() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e620" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.CancelItem()<br/>At Controller.java:[lines 302-303]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e632');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.CancelPay() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e632" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.CancelPay()<br/>At Controller.java:[lines 393-396]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e645');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.CardPay() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e645" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.CardPay()<br/>At Controller.java:[lines 312-344]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e657');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.InfoCnumberError() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e657" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.InfoCnumberError()<br/>At Controller.java:[lines 173-180]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e669');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.InfoNoItem() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e669" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.InfoNoItem()<br/>At Controller.java:[lines 427-430]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e681');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.InfoNoUsableDVM() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e681" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.InfoNoUsableDVM()<br/>At Controller.java:[lines 493-500]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e693');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.InputCnumber() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e693" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.InputCnumber()<br/>At Controller.java:[lines 138-168]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e705');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.InputSelect() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e705" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.InputSelect()<br/>At Controller.java:[lines 91-122]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e717');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ManEditItem(int) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e717" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ManEditItem(int)<br/>At Controller.java:[lines 227-262]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e729');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ManSelectTitle() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e729" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ManSelectTitle()<br/>At Controller.java:[lines 194-211]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e741');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ManShowItem(int) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e741" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ManShowItem(int)<br/>At Controller.java:[lines 217-224]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e753');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ManShowTitle() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e753" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ManShowTitle()<br/>At Controller.java:[lines 184-191]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e765');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.PrintCnumber(Title, int, int) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e765" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.PrintCnumber(Title, int, int)<br/>At Controller.java:[lines 415-424]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e778');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.PrintSelectPay(int) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e778" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.PrintSelectPay(int)<br/>At Controller.java:[lines 267-270]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e790');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ReqFindDVM() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e790" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReqFindDVM()<br/>At Controller.java:[lines 433-482]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e802');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ReqMainMenu() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e802" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReqMainMenu()<br/>At Controller.java:[lines 68-75]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e814');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ReturnItem(Title, boolean) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e814" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReturnItem(Title, boolean)<br/>At Controller.java:[lines 399-412]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e826');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ReturnMain() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e826" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReturnMain()<br/>At Controller.java:[lines 532-533]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e838');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.SelectDVM() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e838" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.SelectDVM()<br/>At Controller.java:[lines 503-521]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e850');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.SelectPayment(int) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e850" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.SelectPayment(int)<br/>At Controller.java:[lines 273-297]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e862');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ShowCardPay() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e862" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ShowCardPay()<br/>At Controller.java:[lines 306-309]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e874');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ShowInputLine() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e874" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ShowInputLine()<br/>At Controller.java:[lines 128-135]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e886');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ShowMainMenu() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e886" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ShowMainMenu()<br/>At Controller.java:[lines 81-88]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e898');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ShowSmartPay() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e898" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ShowSmartPay()<br/>At Controller.java:[lines 349-352]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e911');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.ShowUsableDVM() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e911" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ShowUsableDVM()<br/>At Controller.java:[lines 487-490]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e923');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The method name Logic.Controller.SmartPay() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e923" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.SmartPay()<br/>At Controller.java:[lines 355-388]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1063');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.DVM.CurrentID doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1063" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.DVM<br/>Field Logic.DVM.CurrentID<br/>In DVM.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1077');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.DVM.CurrentX doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1077" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.DVM<br/>Field Logic.DVM.CurrentX<br/>In DVM.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1090');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.DVM.CurrentY doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1090" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.DVM<br/>Field Logic.DVM.CurrentY<br/>In DVM.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1103');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.Message.Title doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1103" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Message<br/>Field Logic.Message.Title<br/>In Message.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1116');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.Message.Type doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1116" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Message<br/>Field Logic.Message.Type<br/>In Message.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1212');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.Message_Queue.LocmsgQueue doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1212" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>Field Logic.Message_Queue.LocmsgQueue<br/>In Message_Queue.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1226');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.Message_Queue.StkmsgQueue doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1226" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>Field Logic.Message_Queue.StkmsgQueue<br/>In Message_Queue.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1239');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.Message_Queue.Dequeue() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1239" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>In method Logic.Message_Queue.Dequeue()<br/>At Message_Queue.java:[lines 126-176]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1251');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.Message_Queue.MsgReciv(int) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1251" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>In method Logic.Message_Queue.MsgReciv(int)<br/>At Message_Queue.java:[lines 42-88]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1263');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.Message_Queue.MsgSend(Message) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1263" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>In method Logic.Message_Queue.MsgSend(Message)<br/>At Message_Queue.java:[lines 91-123]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1307');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.Payment.CardPay(boolean) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1307" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Payment<br/>In method Logic.Payment.CardPay(boolean)<br/>At Payment.java:[lines 17-32]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1319');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.Payment.SmartPay(boolean) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1319" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Payment<br/>In method Logic.Payment.SmartPay(boolean)<br/>At Payment.java:[lines 38-53]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1349');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.Title.Hold doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1349" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Title<br/>Field Logic.Title.Hold<br/>In Title.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1362');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.Title.Name doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1362" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Title<br/>Field Logic.Title.Name<br/>In Title.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1376');">
+            <td>
+               <span class="priority-3">Nm</span>
+            </td>
+            <td>The field name Logic.Title.Price doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1376" style="display: none;">
+                  <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Title<br/>Field Logic.Title.Price<br/>In Title.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1389');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.Title.AddItem(Item) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1389" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Title<br/>In method Logic.Title.AddItem(Item)<br/>At Title.java:[lines 51-52]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1401');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.Title.CheckStock() doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1401" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Title<br/>In method Logic.Title.CheckStock()<br/>At Title.java:[lines 43-46]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1413');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.Title.DeleteItem(ArrayList) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1413" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Title<br/>In method Logic.Title.DeleteItem(ArrayList)<br/>At Title.java:[lines 55-60]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1425');">
+            <td>
+               <span class="priority-2">Nm</span>
+            </td>
+            <td>The method name Logic.Title.UpdateStock(int, boolean) doesn't start with a lower case letter</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1425" style="display: none;">
+                  <a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class Logic.Title<br/>In method Logic.Title.UpdateStock(int, boolean)<br/>At Title.java:[lines 21-40]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1275');">
+            <td>
+               <span class="priority-3">RV</span>
+            </td>
+            <td>Exceptional return value of java.util.Queue.offer(Object) ignored in Logic.Message_Queue.Dequeue()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1275" style="display: none;">
+                  <a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>In method Logic.Message_Queue.Dequeue()<br/>Called method java.util.Queue.offer(Object)<br/>At Message_Queue.java:[line 134]<br/>Another occurrence at Message_Queue.java:[line 142]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1292');">
+            <td>
+               <span class="priority-3">RV</span>
+            </td>
+            <td>Exceptional return value of java.util.Queue.offer(Object) ignored in Logic.Message_Queue.MsgReciv(int)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1292" style="display: none;">
+                  <a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>In method Logic.Message_Queue.MsgReciv(int)<br/>Called method java.util.Queue.offer(Object)<br/>At Message_Queue.java:[line 64]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1129');">
+            <td>
+               <span class="priority-3">SnVI</span>
+            </td>
+            <td>Logic.Message is Serializable; consider declaring a serialVersionUID</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1129" style="display: none;">
+                  <a href="#SE_NO_SERIALVERSIONID">Bug type SE_NO_SERIALVERSIONID (click for details)</a>
+                  <br/>In class Logic.Message<br/>At Message.java:[lines 8-134]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_I18N">Internationalization Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1156');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in Logic.Message_Queue.MsgReciv(int): new java.io.OutputStreamWriter(OutputStream)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1156" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>In method Logic.Message_Queue.MsgReciv(int)<br/>Called method new java.io.OutputStreamWriter(OutputStream)<br/>At Message_Queue.java:[line 60]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1171');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in Logic.Message_Queue.MsgSend(Message): new java.io.InputStreamReader(InputStream)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1171" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>In method Logic.Message_Queue.MsgSend(Message)<br/>Called method new java.io.InputStreamReader(InputStream)<br/>At Message_Queue.java:[line 105]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e568');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Logic.Controller.CM should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e568" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class Logic.Controller<br/>Field Logic.Controller.CM<br/>In Controller.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e581');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Logic.Controller.DVMStack should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e581" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class Logic.Controller<br/>Field Logic.Controller.DVMStack<br/>In Controller.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e594');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Logic.Controller.Title_List should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e594" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class Logic.Controller<br/>Field Logic.Controller.Title_List<br/>In Controller.java</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1186');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Logic.Message_Queue.loc should be package protected</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1186" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>Field Logic.Message_Queue.loc<br/>At Message_Queue.java:[line 20]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1199');">
+            <td>
+               <span class="priority-2">MS</span>
+            </td>
+            <td>Logic.Message_Queue.stk should be package protected</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1199" style="display: none;">
+                  <a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+                  <br/>In class Logic.Message_Queue<br/>Field Logic.Message_Queue.stk<br/>At Message_Queue.java:[line 21]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_PERFORMANCE">Performance Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e82');">
+            <td>
+               <span class="priority-2">SBSC</span>
+            </td>
+            <td>Logic.C_Number.randnumber() concatenates strings using + in a loop</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e82" style="display: none;">
+                  <a href="#SBSC_USE_STRINGBUFFER_CONCATENATION">Bug type SBSC_USE_STRINGBUFFER_CONCATENATION (click for details)</a>
+                  <br/>In class Logic.C_Number<br/>In method Logic.C_Number.randnumber()<br/>At C_Number.java:[line 49]</p>
             </td>
          </tr>
       </table>
@@ -216,18 +1139,396 @@
             <th align="left">Code</th>
             <th align="left">Warning</th>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e18');">
+         <tr class="tablerow1" onclick="toggleRow('d1e130');">
             <td>
-               <span class="priority-2">DLS</span>
+               <span class="priority-3">BC</span>
             </td>
-            <td>Dead store to num in Logic.C_NumberManagerTest.popCnumber()</td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.CardPayUI in Logic.Controller.CardPay()</td>
          </tr>
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e18" style="display: none;">
+               <p id="d1e130" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.CardPay()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.CardPayUI<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 315]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e154');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.PayErrUI in Logic.Controller.CardPay()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e154" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.CardPay()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.PayErrUI<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 325]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e179');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.InfoCnumberErrUI in Logic.Controller.InfoCnumberError()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e179" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.InfoCnumberError()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.InfoCnumberErrUI<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 178]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e203');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.InfoNoDVMUI in Logic.Controller.InfoNoUsableDVM()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e203" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.InfoNoUsableDVM()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.InfoNoDVMUI<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 498]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e227');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.InputLine in Logic.Controller.InputCnumber()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e227" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.InputCnumber()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.InputLine<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 141]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e251');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.MainMenu in Logic.Controller.InputSelect()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e251" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.InputSelect()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.MainMenu<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 94]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e275');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.AddItemMenu in Logic.Controller.ManEditItem(int)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e275" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ManEditItem(int)<br/>Actual type javax.swing.JFrame<br/>Expected GUI.AddItemMenu<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 243]<br/>Another occurrence at Controller.java:[line 250]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e301');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.ManItemMenu in Logic.Controller.ManEditItem(int)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e301" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ManEditItem(int)<br/>Actual type javax.swing.JFrame<br/>Expected GUI.ManItemMenu<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 230]<br/>Another occurrence at Controller.java:[line 258]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e327');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.ManTitleMenu in Logic.Controller.ManSelectTitle()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e327" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ManSelectTitle()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.ManTitleMenu<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 197]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e351');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.PrintCnumberUI in Logic.Controller.PrintCnumber(Title, int, int)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e351" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.PrintCnumber(Title, int, int)<br/>Actual type javax.swing.JFrame<br/>Expected GUI.PrintCnumberUI<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 420]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e375');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.FindingDVM in Logic.Controller.ReqFindDVM()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e375" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReqFindDVM()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.FindingDVM<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 456]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e399');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.InfoNoItemUI in Logic.Controller.ReqFindDVM()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e399" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReqFindDVM()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.InfoNoItemUI<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 436]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e423');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.Sleep in Logic.Controller.ReqMainMenu()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e423" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReqMainMenu()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.Sleep<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 73]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e448');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.InfoReturnItemUI in Logic.Controller.ReturnItem(Title, boolean)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e448" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReturnItem(Title, boolean)<br/>Actual type javax.swing.JFrame<br/>Expected GUI.InfoReturnItemUI<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 404]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e472');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.DVMMenu in Logic.Controller.SelectDVM()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e472" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.SelectDVM()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.DVMMenu<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 506]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e496');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.PaymentMenu in Logic.Controller.SelectPayment(int)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e496" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.SelectPayment(int)<br/>Actual type javax.swing.JFrame<br/>Expected GUI.PaymentMenu<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 276]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e520');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.PayErrUI in Logic.Controller.SmartPay()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e520" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.SmartPay()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.PayErrUI<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 368]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e544');">
+            <td>
+               <span class="priority-3">BC</span>
+            </td>
+            <td>Unchecked/unconfirmed cast from javax.swing.JFrame to GUI.SmartPayUI in Logic.Controller.SmartPay()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e544" style="display: none;">
+                  <a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.SmartPay()<br/>Actual type javax.swing.JFrame<br/>Expected GUI.SmartPayUI<br/>Value loaded from field Logic.Controller.k<br/>At Controller.java:[line 358]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1138');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to returnMsg in Logic.Message_Queue.MsgSend(Message)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1138" style="display: none;">
                   <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
-                  <br/>In class Logic.C_NumberManagerTest<br/>In method Logic.C_NumberManagerTest.popCnumber()<br/>Local variable named num<br/>At C_NumberManagerTest.java:[line 16]</p>
+                  <br/>In class Logic.Message_Queue<br/>In method Logic.Message_Queue.MsgSend(Message)<br/>Local variable named returnMsg<br/>At Message_Queue.java:[line 108]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1331');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to $L4 in Logic.Title.UpdateStock(int, boolean)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1331" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class Logic.Title<br/>In method Logic.Title.UpdateStock(int, boolean)<br/>Local variable stored in JVM register 4<br/>At Title.java:[line 23]<br/>Another occurrence at Title.java:[line 35]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e935');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field Logic.Controller.CM from instance method new Logic.Controller()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e935" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method new Logic.Controller()<br/>Field Logic.Controller.CM<br/>At Controller.java:[line 30]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e951');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field Logic.Controller.DVMStack from instance method new Logic.Controller()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e951" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method new Logic.Controller()<br/>Field Logic.Controller.DVMStack<br/>At Controller.java:[line 29]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e967');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field Logic.Controller.Title_List from instance method new Logic.Controller()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e967" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method new Logic.Controller()<br/>Field Logic.Controller.Title_List<br/>At Controller.java:[line 31]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e983');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field Logic.Controller.CM from instance method Logic.Controller.setCM(C_NumberManager)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e983" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.setCM(C_NumberManager)<br/>Field Logic.Controller.CM<br/>At Controller.java:[line 588]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e999');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field Logic.Controller.DVMStack from instance method Logic.Controller.setDVMStack(Stack)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e999" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.setDVMStack(Stack)<br/>Field Logic.Controller.DVMStack<br/>At Controller.java:[line 572]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1015');">
+            <td>
+               <span class="priority-1">ST</span>
+            </td>
+            <td>Write to static field Logic.Controller.Title_List from instance method Logic.Controller.setTitle_List(ArrayList)</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1015" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.setTitle_List(ArrayList)<br/>Field Logic.Controller.Title_List<br/>At Controller.java:[line 548]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e1031');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field Logic.Message_Queue.loc from instance method Logic.Controller.ReqFindDVM()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e1031" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReqFindDVM()<br/>Field Logic.Message_Queue.loc<br/>At Controller.java:[line 459]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e1047');">
+            <td>
+               <span class="priority-2">ST</span>
+            </td>
+            <td>Write to static field Logic.Message_Queue.stk from instance method Logic.Controller.ReqFindDVM()</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e1047" style="display: none;">
+                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+                  <br/>In class Logic.Controller<br/>In method Logic.Controller.ReqFindDVM()<br/>Field Logic.Message_Queue.stk<br/>At Controller.java:[line 458]</p>
             </td>
          </tr>
       </table>
@@ -235,6 +1536,16 @@
          <a name="Details">Details</a>
       </h1>
       <h2>
+         <a name="BC_UNCONFIRMED_CAST">BC_UNCONFIRMED_CAST: Unchecked/unconfirmed cast</a>
+      </h2>
+
+<p>
+This cast is unchecked, and not all instances of the type casted from can be cast to
+the type it is being cast to. Check that your program logic ensures that this
+cast will not fail.
+</p>
+
+    <h2>
          <a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
       </h2>
 
@@ -251,11 +1562,108 @@ there is no easy way to eliminate these false positives.
 </p>
 
     <h2>
-         <a name="ISC_INSTANTIATE_STATIC_CLASS">ISC_INSTANTIATE_STATIC_CLASS: Needless instantiation of class that only supplies static methods</a>
+         <a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
       </h2>
 
-<p> This class allocates an object that is based on a class that only supplies static methods. This object
-does not need to be created, just access the static methods directly using the class name as a qualifier.</p>
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
 
-        </body>
+      <h2>
+         <a name="MS_PKGPROTECT">MS_PKGPROTECT: Field should be package protected</a>
+      </h2>
+
+  <p> A mutable static field could be changed by malicious code or
+   by accident.
+   The field could be made package protected to avoid
+   this vulnerability.</p>
+
+    <h2>
+         <a name="NM_CONFUSING">NM_CONFUSING: Confusing method names</a>
+      </h2>
+
+  <p> The referenced methods have names that differ only by capitalization.</p>
+
+    <h2>
+         <a name="NM_FIELD_NAMING_CONVENTION">NM_FIELD_NAMING_CONVENTION: Field names should start with a lower case letter</a>
+      </h2>
+
+  <p>
+Names of fields that are not final should be in mixed case with a lowercase first letter and the first letters of subsequent words capitalized.
+</p>
+
+    <h2>
+         <a name="NM_METHOD_NAMING_CONVENTION">NM_METHOD_NAMING_CONVENTION: Method names should start with a lower case letter</a>
+      </h2>
+
+  <p>
+Methods should be verbs, in mixed case with the first letter lowercase, with the first letter of each internal word capitalized.
+</p>
+
+    <h2>
+         <a name="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">RV_RETURN_VALUE_IGNORED_BAD_PRACTICE: Method ignores exceptional return value</a>
+      </h2>
+
+   <p> This method returns a value that is not checked. The return value should be checked
+since it can indicate an unusual or unexpected function execution. For
+example, the <code>File.delete()</code> method returns false
+if the file could not be successfully deleted (rather than
+throwing an Exception).
+If you don't check the result, you won't notice if the method invocation
+signals unexpected behavior by returning an atypical return value.
+</p>
+
+    <h2>
+         <a name="SBSC_USE_STRINGBUFFER_CONCATENATION">SBSC_USE_STRINGBUFFER_CONCATENATION: Method concatenates strings using + in a loop</a>
+      </h2>
+
+<p> The method seems to be building a String using concatenation in a loop.
+In each iteration, the String is converted to a StringBuffer/StringBuilder,
+   appended to, and converted back to a String.
+   This can lead to a cost quadratic in the number of iterations,
+   as the growing string is recopied in each iteration. </p>
+
+<p>Better performance can be obtained by using
+a StringBuffer (or StringBuilder in Java 1.5) explicitly.</p>
+
+<p> For example:</p>
+<pre><code>// This is bad
+String s = "";
+for (int i = 0; i &lt; field.length; ++i) {
+    s = s + field[i];
+}
+
+// This is better
+StringBuffer buf = new StringBuffer();
+for (int i = 0; i &lt; field.length; ++i) {
+    buf.append(field[i]);
+}
+String s = buf.toString();
+</code></pre>
+
+    <h2>
+         <a name="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD: Write to static field from instance method</a>
+      </h2>
+
+  <p> This instance method writes to a static field. This is tricky to get
+correct if multiple instances are being manipulated,
+and generally bad practice.
+</p>
+
+    <h2>
+         <a name="SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID: Class is Serializable, but doesn't define serialVersionUID</a>
+      </h2>
+
+  <p> This class implements the <code>Serializable</code> interface, but does
+  not define a <code>serialVersionUID</code> field.&nbsp;
+  A change as simple as adding a reference to a .class object
+    will add synthetic fields to the class,
+   which will unfortunately change the implicit
+   serialVersionUID (e.g., adding a reference to <code>String.class</code>
+   will generate a static field <code>class$java$lang$String</code>).
+   Also, different source code to bytecode compilers may use different
+   naming conventions for synthetic variables generated for
+   references to class objects or inner classes.
+   To ensure interoperability of Serializable across versions,
+   consider adding an explicit serialVersionUID.</p>
+
+    </body>
 </html>
