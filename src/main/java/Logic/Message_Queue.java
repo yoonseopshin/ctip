@@ -115,7 +115,7 @@ public class Message_Queue extends Thread {
                 //객체 정리하는 부분
                 objectOutputStream.close();
                 socket.close();
-                //혹시 메세지가 전송이 제대로 안되면 걸리고 다시 시작함.
+                //서버에서 확인메시지 리시브 및 완료시 브레이크
                 if(returnMsg.equals("1"))
                     break;
             }
