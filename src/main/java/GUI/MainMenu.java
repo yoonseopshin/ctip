@@ -11,7 +11,7 @@ import Logic.*;
 
 public class MainMenu extends JFrame implements ActionListener {
 
-  private Timer timer = new Timer(30000, new ActionListener() {
+  private Timer timer = new Timer(180000, new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
       return_value = -2;
@@ -41,7 +41,7 @@ public class MainMenu extends JFrame implements ActionListener {
 
     menu = new JButton[Title_List.size()];
     for (int i = 0; i < menu.length; i++) {
-      menu[i] = new JButton(Title_List.get(i).Name());
+      menu[i] = new JButton(Title_List.get(i).getName());
       menupanel.add(menu[i]);
       menu[i].addActionListener(this);
     }

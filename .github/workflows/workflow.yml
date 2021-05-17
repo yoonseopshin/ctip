@@ -180,12 +180,12 @@ jobs:
           publish_dir: build/reports/checkstyle
           destination_dir: checkstyle
 
-      - name: Publish Checkstyle Report Summary
-        uses: nikitasavinov/checkstyle-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: 'github-pr-check'
-          tool_name: 'Lint'
+#      - name: Publish Checkstyle Report Summary
+#        uses: nikitasavinov/checkstyle-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          reporter: 'github-pr-check'
+#          tool_name: 'Lint'
 
       - name: Run PMD
         run: ./gradlew pmdMain pmdTest

@@ -51,8 +51,8 @@ public class ManTitleMenu extends JFrame implements ActionListener {
     Title_list = new JButton[tlist.size()];
     for (int i = 0; i < tlist.size(); i++) {
       Title_list[i] = new JButton(
-          "<html><center><strong>" + tlist.get(i).Name() + "</strong><br>재고수량 : " +
-              tlist.get(i).Item_List().size() + "</center></html>");
+          "<html><center><strong>" + tlist.get(i).getName() + "</strong><br>재고수량 : " +
+              tlist.get(i).getItem_List().size() + "</center></html>");
       //Title_list[i].setPreferredSize(new Dimension(600,70));
       Title_list[i].addActionListener(this);
       titlelistpanel.add(Title_list[i]);
