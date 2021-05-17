@@ -79,7 +79,8 @@ public class Message_Queue extends Thread {
             if (socket != null) {
                 try {
                     socket.close();
-                } catch (IOException e) { }
+                } catch (IOException e) {
+                }
 
             }
             if (server_socket != null) {
@@ -114,7 +115,7 @@ public class Message_Queue extends Thread {
                 objectOutputStream.close();
                 socket.close();
                 //서버에서 확인메시지 리시브 및 완료시 브레이크
-                if(returnMsg.equals("1")) break;
+                if (returnMsg.equals("1")) break;
             }
         } catch (IOException e) {
             System.err.println("서버 접속 오류, 오류 DVM :" + message.getMyID());
