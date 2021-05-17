@@ -1,8 +1,6 @@
 package Logic;
 
-import java.io.Serializable;
-
-public class Message implements Serializable {
+public class Message {
     // 타입 1=재고확인요청, 타입2 = 재고응답, 타입3 = 주소 요청, 타입4= 주소 응답, 타입 5=인증번호 전송
     private int myID = -1;
     private int targetID = -1;
