@@ -4,49 +4,49 @@ import java.util.HashMap;
 
 public class C_NumberManager {
 
-<span class="fc" id="L7">    public C_NumberManager() {</span>
-<span class="fc" id="L8">    }</span>
+<span class="fc" id="L7">  public C_NumberManager() {</span>
+<span class="fc" id="L8">  }</span>
 
-    //인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
-<span class="fc" id="L11">    private HashMap&lt;Integer, C_Number&gt; C_List = new HashMap&lt;Integer, C_Number&gt;();</span>
-<span class="fc" id="L12">    private int M_Number = 111111;</span>
+  //인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
+<span class="fc" id="L11">  private HashMap&lt;Integer, C_Number&gt; C_List = new HashMap&lt;Integer, C_Number&gt;();</span>
+<span class="fc" id="L12">  private int M_Number = 111111;</span>
 
-    public int PopCnumber(int C_Number_t) {
-<span class="fc" id="L15">        int r = C_List.get(C_Number_t).getTitle_id();</span>
-<span class="fc" id="L16">        C_List.remove(C_Number_t); // key값 C_Number_t인 값 제거</span>
-<span class="fc" id="L17">        return r;</span>
+  public int PopCnumber(int C_Number_t) {
+<span class="fc" id="L15">    int r = C_List.get(C_Number_t).getTitle_id();</span>
+<span class="fc" id="L16">    C_List.remove(C_Number_t); // key값 C_Number_t인 값 제거</span>
+<span class="fc" id="L17">    return r;</span>
+  }
+
+  public int CheckCnumber(int C_Number_t) {
+<span class="fc bfc" id="L21" title="All 2 branches covered.">    if (M_Number == C_Number_t) {</span>
+<span class="fc" id="L22">      return 0;</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">    } else if (C_List.containsKey(C_Number_t)) { //존재하는 인증번호 true반환</span>
+<span class="fc" id="L24">      return 1;</span>
+    } else {
+<span class="fc" id="L26">      return -1;</span>
     }
 
-    public int CheckCnumber(int C_Number_t) {
-<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (M_Number == C_Number_t) {</span>
-<span class="fc" id="L22">            return 0;</span>
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        } else if (C_List.containsKey(C_Number_t)) { //존재하는 인증번호 true반환</span>
-<span class="fc" id="L24">            return 1;</span>
-        } else {
-<span class="fc" id="L26">            return -1;</span>
-        }
+  }
 
-    }
+  public void AddCnumber(C_Number c_number) {
+<span class="fc" id="L32">    C_List.put(c_number.getC_Number_t(), c_number);</span>
+<span class="fc" id="L33">  }</span>
 
-    public void AddCnumber(C_Number c_number) {
-<span class="fc" id="L32">        C_List.put(c_number.getC_Number_t(), c_number);</span>
-<span class="fc" id="L33">    }</span>
+  public int getM_Number() {
+<span class="nc" id="L36">    return M_Number;</span>
+  }
 
-    public int getM_Number() {
-<span class="nc" id="L36">        return M_Number;</span>
-    }
+  public void setM_Number(int m_Number) {
+<span class="fc" id="L40">    M_Number = m_Number;</span>
+<span class="fc" id="L41">  }</span>
 
-    public void setM_Number(int m_Number) {
-<span class="fc" id="L40">        M_Number = m_Number;</span>
-<span class="fc" id="L41">    }</span>
+  public HashMap&lt;Integer, C_Number&gt; getC_List() {
+<span class="fc" id="L44">    return C_List;</span>
+  }
 
-    public HashMap&lt;Integer, C_Number&gt; getC_List() {
-<span class="fc" id="L44">        return C_List;</span>
-    }
-
-    public void setC_List(HashMap&lt;Integer, C_Number&gt; c_List) {
-<span class="nc" id="L48">        C_List = c_List;</span>
-<span class="nc" id="L49">    }</span>
+  public void setC_List(HashMap&lt;Integer, C_Number&gt; c_List) {
+<span class="nc" id="L48">    C_List = c_List;</span>
+<span class="nc" id="L49">  }</span>
 }
 
 

@@ -4,86 +4,86 @@ import static Logic.DVM.*;
 
 public class Payment {
 
-    private int title_id;
-    private int DVMid;
-    private String Error_log;
+  private int title_id;
+  private int DVMid;
+  private String Error_log;
 
-<span class="fc" id="L11">    Payment(int title_id, int DVMid) {</span>
-<span class="fc" id="L12">        this.title_id = title_id;</span>
-<span class="fc" id="L13">        this.DVMid = DVMid;</span>
-<span class="fc" id="L14">    }</span>
+<span class="fc" id="L11">  Payment(int title_id, int DVMid) {</span>
+<span class="fc" id="L12">    this.title_id = title_id;</span>
+<span class="fc" id="L13">    this.DVMid = DVMid;</span>
+<span class="fc" id="L14">  }</span>
 
-    public int CardPay(boolean Pay_confirm) {
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (DVMid &gt; 0) {//카드결제 성공</span>
-<span class="fc bfc" id="L18" title="All 2 branches covered.">            if (Pay_confirm) { //test용으로 성공이라 가정</span>
-<span class="fc" id="L19">                System.out.println(&quot;카드결제 선결제 성공&quot;);</span>
-<span class="fc" id="L20">                C_Number Cnumber = new C_Number(title_id, DVMid);</span>
-<span class="fc" id="L21">                return Cnumber.CreateCnumber(title_id, CurrentID);</span>
-            } else {
-<span class="fc" id="L23">                this.Error_log = &quot;카드결제 선결제 실패&quot;;</span>
-<span class="fc" id="L24">                return -3;</span>
-            }
-        } else {
-<span class="fc bfc" id="L27" title="All 2 branches covered.">            if (Pay_confirm) {</span>
-<span class="fc" id="L28">                System.out.println(&quot;카드결제 성공&quot;); //test용으로 성공이라 가정</span>
-<span class="fc" id="L29">                return 0;</span>
-            } else {
-<span class="fc" id="L31">                this.Error_log = &quot;카드결제 실패&quot;;</span>
-<span class="fc" id="L32">                return -3;</span>
-            }
-        }
+  public int CardPay(boolean Pay_confirm) {
+<span class="fc bfc" id="L17" title="All 2 branches covered.">    if (DVMid &gt; 0) {//카드결제 성공</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">      if (Pay_confirm) { //test용으로 성공이라 가정</span>
+<span class="fc" id="L19">        System.out.println(&quot;카드결제 선결제 성공&quot;);</span>
+<span class="fc" id="L20">        C_Number Cnumber = new C_Number(title_id, DVMid);</span>
+<span class="fc" id="L21">        return Cnumber.CreateCnumber(title_id, CurrentID);</span>
+      } else {
+<span class="fc" id="L23">        this.Error_log = &quot;카드결제 선결제 실패&quot;;</span>
+<span class="fc" id="L24">        return -3;</span>
+      }
+    } else {
+<span class="fc bfc" id="L27" title="All 2 branches covered.">      if (Pay_confirm) {</span>
+<span class="fc" id="L28">        System.out.println(&quot;카드결제 성공&quot;); //test용으로 성공이라 가정</span>
+<span class="fc" id="L29">        return 0;</span>
+      } else {
+<span class="fc" id="L31">        this.Error_log = &quot;카드결제 실패&quot;;</span>
+<span class="fc" id="L32">        return -3;</span>
+      }
     }
+  }
 
-    public int SmartPay(boolean Pay_confirm) {
-<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (DVMid &gt; 0) {//카드결제 성공</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">            if (Pay_confirm) { //test용으로 성공이라 가정</span>
-<span class="fc" id="L40">                System.out.println(&quot;간편결제 선결제 성공&quot;);</span>
-<span class="fc" id="L41">                C_Number Cnumber = new C_Number(title_id, DVMid);</span>
-<span class="fc" id="L42">                return Cnumber.CreateCnumber(title_id, DVMid);</span>
-            } else {
-<span class="fc" id="L44">                this.Error_log = &quot;간편결제 선결제 실패&quot;;</span>
-<span class="fc" id="L45">                return -3;</span>
-            }
-        } else {
-<span class="fc bfc" id="L48" title="All 2 branches covered.">            if (Pay_confirm) {</span>
-<span class="fc" id="L49">                System.out.println(&quot;간편결제 성공&quot;); //test용으로 성공이라 가정</span>
-<span class="fc" id="L50">                return 0;</span>
-            } else {
-<span class="fc" id="L52">                this.Error_log = &quot;간편결제 실패&quot;;</span>
-<span class="fc" id="L53">                return -3;</span>
-            }
-        }
+  public int SmartPay(boolean Pay_confirm) {
+<span class="fc bfc" id="L38" title="All 2 branches covered.">    if (DVMid &gt; 0) {//카드결제 성공</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">      if (Pay_confirm) { //test용으로 성공이라 가정</span>
+<span class="fc" id="L40">        System.out.println(&quot;간편결제 선결제 성공&quot;);</span>
+<span class="fc" id="L41">        C_Number Cnumber = new C_Number(title_id, DVMid);</span>
+<span class="fc" id="L42">        return Cnumber.CreateCnumber(title_id, DVMid);</span>
+      } else {
+<span class="fc" id="L44">        this.Error_log = &quot;간편결제 선결제 실패&quot;;</span>
+<span class="fc" id="L45">        return -3;</span>
+      }
+    } else {
+<span class="fc bfc" id="L48" title="All 2 branches covered.">      if (Pay_confirm) {</span>
+<span class="fc" id="L49">        System.out.println(&quot;간편결제 성공&quot;); //test용으로 성공이라 가정</span>
+<span class="fc" id="L50">        return 0;</span>
+      } else {
+<span class="fc" id="L52">        this.Error_log = &quot;간편결제 실패&quot;;</span>
+<span class="fc" id="L53">        return -3;</span>
+      }
     }
+  }
 
-    public void init() {
-<span class="fc" id="L59">        this.title_id = -1;</span>
-<span class="fc" id="L60">        this.DVMid = -1;</span>
-<span class="fc" id="L61">        this.Error_log = null;</span>
-<span class="fc" id="L62">    }</span>
+  public void init() {
+<span class="fc" id="L59">    this.title_id = -1;</span>
+<span class="fc" id="L60">    this.DVMid = -1;</span>
+<span class="fc" id="L61">    this.Error_log = null;</span>
+<span class="fc" id="L62">  }</span>
 
-    public int getTitle_id() {
-<span class="fc" id="L65">        return title_id;</span>
-    }
+  public int getTitle_id() {
+<span class="fc" id="L65">    return title_id;</span>
+  }
 
-    public void setTitle_id(int title_id) {
-<span class="nc" id="L69">        this.title_id = title_id;</span>
-<span class="nc" id="L70">    }</span>
+  public void setTitle_id(int title_id) {
+<span class="nc" id="L69">    this.title_id = title_id;</span>
+<span class="nc" id="L70">  }</span>
 
-    public int getDVMid() {
-<span class="fc" id="L73">        return DVMid;</span>
-    }
+  public int getDVMid() {
+<span class="fc" id="L73">    return DVMid;</span>
+  }
 
-    public void setDVMid(int DVMid) {
-<span class="nc" id="L77">        this.DVMid = DVMid;</span>
-<span class="nc" id="L78">    }</span>
+  public void setDVMid(int DVMid) {
+<span class="nc" id="L77">    this.DVMid = DVMid;</span>
+<span class="nc" id="L78">  }</span>
 
-    public String getError_log() {
-<span class="fc" id="L81">        return Error_log;</span>
-    }
+  public String getError_log() {
+<span class="fc" id="L81">    return Error_log;</span>
+  }
 
-    public void setError_log(String error_log) {
-<span class="nc" id="L85">        Error_log = error_log;</span>
-<span class="nc" id="L86">    }</span>
+  public void setError_log(String error_log) {
+<span class="nc" id="L85">    Error_log = error_log;</span>
+<span class="nc" id="L86">  }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

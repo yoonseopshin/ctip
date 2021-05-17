@@ -10,128 +10,128 @@ import javax.swing.*;
 
 public class AddItemMenu extends JFrame implements ActionListener {
 
-<span class="nc" id="L13">    public Timer timer = new Timer(180000, new ActionListener() {</span>
-        @Override
-        public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L16">            return_value = -2;</span>
-<span class="nc" id="L17">            timer.stop();</span>
-<span class="nc" id="L18">        }</span>
-    });
-
-    private JComboBox&lt;String&gt; Yearselect;
-    private JComboBox&lt;String&gt; Monthselect;
-    private JComboBox&lt;String&gt; Dayselect;
-
-    private JButton cancel;
-    private JButton add;
-
-<span class="nc" id="L28">    public int return_value = -1;</span>
-    public int return_date;
-
-<span class="nc" id="L31">    public AddItemMenu() {</span>
-<span class="nc" id="L32">        timer.start();</span>
-
-<span class="nc" id="L34">        this.setPreferredSize(new Dimension(600, 800));</span>
-<span class="nc" id="L35">        this.setTitle(&quot;DVM&quot;);</span>
-
-        //라벨패널
-<span class="nc" id="L38">        JPanel labelpanel = new JPanel();</span>
-<span class="nc" id="L39">        labelpanel.setPreferredSize(new Dimension(600, 300));</span>
-<span class="nc" id="L40">        JLabel label = new JLabel(&quot;추가할 재고의 유통기한을 입력하세요&quot;);</span>
-<span class="nc" id="L41">        label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L42">        labelpanel.add(label);</span>
-
-        //유통기한 입력패널
-<span class="nc" id="L45">        JPanel expdatepanel = new JPanel();</span>
-<span class="nc" id="L46">        JLabel y = new JLabel(&quot;년   &quot;);</span>
-<span class="nc" id="L47">        JLabel m = new JLabel(&quot;월   &quot;);</span>
-<span class="nc" id="L48">        JLabel d = new JLabel(&quot;일&quot;);</span>
-<span class="nc" id="L49">        y.setFont(y.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L50">        m.setFont(m.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L51">        d.setFont(d.getFont().deriveFont(20.0f));</span>
-
-        //선택창
-<span class="nc" id="L54">        Calendar cal = Calendar.getInstance();</span>
-<span class="nc" id="L55">        int year = cal.get(Calendar.YEAR);</span>
-<span class="nc" id="L56">        String[] year_list = new String[50];</span>
-<span class="nc" id="L57">        String[] month_list = new String[12];</span>
-<span class="nc" id="L58">        String[] day_list = new String[31];</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">        for (int i = 0; i &lt; year_list.length; i++) {</span>
-<span class="nc" id="L60">            year_list[i] = Integer.toString(year + i);</span>
-        }
-<span class="nc bnc" id="L62" title="All 2 branches missed.">        for (int i = 0; i &lt; month_list.length; i++) {</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">            if (i + 1 &lt; 10) {</span>
-<span class="nc" id="L64">                month_list[i] = &quot;0&quot;.concat(Integer.toString(i + 1));</span>
-            } else {
-<span class="nc" id="L66">                month_list[i] = Integer.toString(i + 1);</span>
-            }
-        }
-<span class="nc bnc" id="L69" title="All 2 branches missed.">        for (int i = 0; i &lt; day_list.length; i++) {</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">            if (i + 1 &lt; 10) {</span>
-<span class="nc" id="L71">                day_list[i] = &quot;0&quot;.concat(Integer.toString(i + 1));</span>
-            } else {
-<span class="nc" id="L73">                day_list[i] = Integer.toString(i + 1);</span>
-            }
-        }
-<span class="nc" id="L76">        Yearselect = new JComboBox&lt;String&gt;(year_list);</span>
-<span class="nc" id="L77">        Monthselect = new JComboBox&lt;String&gt;(month_list);</span>
-<span class="nc" id="L78">        Dayselect = new JComboBox&lt;String&gt;(day_list);</span>
-<span class="nc" id="L79">        Yearselect.setFont(Yearselect.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L80">        Monthselect.setFont(Monthselect.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L81">        Dayselect.setFont(Dayselect.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L82">        Yearselect.addActionListener(this);</span>
-<span class="nc" id="L83">        Monthselect.addActionListener(this);</span>
-<span class="nc" id="L84">        Dayselect.addActionListener(this);</span>
-<span class="nc" id="L85">        expdatepanel.add(Yearselect);</span>
-<span class="nc" id="L86">        expdatepanel.add(y);</span>
-<span class="nc" id="L87">        expdatepanel.add(Monthselect);</span>
-<span class="nc" id="L88">        expdatepanel.add(m);</span>
-<span class="nc" id="L89">        expdatepanel.add(Dayselect);</span>
-<span class="nc" id="L90">        expdatepanel.add(d);</span>
-        //버튼패널
-<span class="nc" id="L92">        JPanel buttonpanel = new JPanel(new GridLayout(1, 2));</span>
-<span class="nc" id="L93">        buttonpanel.setPreferredSize(new Dimension(600, 70));</span>
-<span class="nc" id="L94">        cancel = new JButton(&quot;취소&quot;);</span>
-<span class="nc" id="L95">        add = new JButton(&quot;추가&quot;);</span>
-<span class="nc" id="L96">        cancel.addActionListener(this);</span>
-<span class="nc" id="L97">        add.addActionListener(this);</span>
-<span class="nc" id="L98">        buttonpanel.add(add);</span>
-<span class="nc" id="L99">        buttonpanel.add(cancel);</span>
-
-<span class="nc" id="L101">        add(labelpanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L102">        add(expdatepanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L103">        add(buttonpanel, BorderLayout.SOUTH);</span>
-
-<span class="nc" id="L105">        pack();</span>
-<span class="nc" id="L106">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L107">        setVisible(true);</span>
-
-
-<span class="nc" id="L110">    }</span>
-
-    /*test
-    public static void main(String[] args) {
-      new AddItemMenu();
-    }
-  */
+<span class="nc" id="L13">  public Timer timer = new Timer(180000, new ActionListener() {</span>
     @Override
     public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L119" title="All 6 branches missed.">        if (e.getSource() == Yearselect || e.getSource() == Monthselect || e.getSource() == Dayselect) {</span>
-<span class="nc" id="L120">            timer.restart();</span>
-        }
-<span class="nc bnc" id="L122" title="All 2 branches missed.">        if (e.getSource() == add) {</span>
-<span class="nc" id="L123">            String y = (String) Yearselect.getSelectedItem();</span>
-<span class="nc" id="L124">            String m = (String) Monthselect.getSelectedItem();</span>
-<span class="nc" id="L125">            String d = (String) Dayselect.getSelectedItem();</span>
-<span class="nc" id="L126">            return_date = Integer.parseInt(y.concat(m).concat(d));</span>
-<span class="nc" id="L127">            timer.stop();</span>
-<span class="nc" id="L128">            return_value = 1;</span>
-        }
-<span class="nc bnc" id="L130" title="All 2 branches missed.">        if (e.getSource() == cancel) {</span>
-<span class="nc" id="L131">            timer.stop();</span>
-<span class="nc" id="L132">            return_value = 0;</span>
-        }
-<span class="nc" id="L134">    }</span>
+<span class="nc" id="L16">      return_value = -2;</span>
+<span class="nc" id="L17">      timer.stop();</span>
+<span class="nc" id="L18">    }</span>
+  });
+
+  private JComboBox&lt;String&gt; Yearselect;
+  private JComboBox&lt;String&gt; Monthselect;
+  private JComboBox&lt;String&gt; Dayselect;
+
+  private JButton cancel;
+  private JButton add;
+
+<span class="nc" id="L28">  public int return_value = -1;</span>
+  public int return_date;
+
+<span class="nc" id="L31">  public AddItemMenu() {</span>
+<span class="nc" id="L32">    timer.start();</span>
+
+<span class="nc" id="L34">    this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L35">    this.setTitle(&quot;DVM&quot;);</span>
+
+    //라벨패널
+<span class="nc" id="L38">    JPanel labelpanel = new JPanel();</span>
+<span class="nc" id="L39">    labelpanel.setPreferredSize(new Dimension(600, 300));</span>
+<span class="nc" id="L40">    JLabel label = new JLabel(&quot;추가할 재고의 유통기한을 입력하세요&quot;);</span>
+<span class="nc" id="L41">    label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L42">    labelpanel.add(label);</span>
+
+    //유통기한 입력패널
+<span class="nc" id="L45">    JPanel expdatepanel = new JPanel();</span>
+<span class="nc" id="L46">    JLabel y = new JLabel(&quot;년   &quot;);</span>
+<span class="nc" id="L47">    JLabel m = new JLabel(&quot;월   &quot;);</span>
+<span class="nc" id="L48">    JLabel d = new JLabel(&quot;일&quot;);</span>
+<span class="nc" id="L49">    y.setFont(y.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L50">    m.setFont(m.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L51">    d.setFont(d.getFont().deriveFont(20.0f));</span>
+
+    //선택창
+<span class="nc" id="L54">    Calendar cal = Calendar.getInstance();</span>
+<span class="nc" id="L55">    int year = cal.get(Calendar.YEAR);</span>
+<span class="nc" id="L56">    String[] year_list = new String[50];</span>
+<span class="nc" id="L57">    String[] month_list = new String[12];</span>
+<span class="nc" id="L58">    String[] day_list = new String[31];</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">    for (int i = 0; i &lt; year_list.length; i++) {</span>
+<span class="nc" id="L60">      year_list[i] = Integer.toString(year + i);</span>
+    }
+<span class="nc bnc" id="L62" title="All 2 branches missed.">    for (int i = 0; i &lt; month_list.length; i++) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">      if (i + 1 &lt; 10) {</span>
+<span class="nc" id="L64">        month_list[i] = &quot;0&quot;.concat(Integer.toString(i + 1));</span>
+      } else {
+<span class="nc" id="L66">        month_list[i] = Integer.toString(i + 1);</span>
+      }
+    }
+<span class="nc bnc" id="L69" title="All 2 branches missed.">    for (int i = 0; i &lt; day_list.length; i++) {</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">      if (i + 1 &lt; 10) {</span>
+<span class="nc" id="L71">        day_list[i] = &quot;0&quot;.concat(Integer.toString(i + 1));</span>
+      } else {
+<span class="nc" id="L73">        day_list[i] = Integer.toString(i + 1);</span>
+      }
+    }
+<span class="nc" id="L76">    Yearselect = new JComboBox&lt;String&gt;(year_list);</span>
+<span class="nc" id="L77">    Monthselect = new JComboBox&lt;String&gt;(month_list);</span>
+<span class="nc" id="L78">    Dayselect = new JComboBox&lt;String&gt;(day_list);</span>
+<span class="nc" id="L79">    Yearselect.setFont(Yearselect.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L80">    Monthselect.setFont(Monthselect.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L81">    Dayselect.setFont(Dayselect.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L82">    Yearselect.addActionListener(this);</span>
+<span class="nc" id="L83">    Monthselect.addActionListener(this);</span>
+<span class="nc" id="L84">    Dayselect.addActionListener(this);</span>
+<span class="nc" id="L85">    expdatepanel.add(Yearselect);</span>
+<span class="nc" id="L86">    expdatepanel.add(y);</span>
+<span class="nc" id="L87">    expdatepanel.add(Monthselect);</span>
+<span class="nc" id="L88">    expdatepanel.add(m);</span>
+<span class="nc" id="L89">    expdatepanel.add(Dayselect);</span>
+<span class="nc" id="L90">    expdatepanel.add(d);</span>
+    //버튼패널
+<span class="nc" id="L92">    JPanel buttonpanel = new JPanel(new GridLayout(1, 2));</span>
+<span class="nc" id="L93">    buttonpanel.setPreferredSize(new Dimension(600, 70));</span>
+<span class="nc" id="L94">    cancel = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L95">    add = new JButton(&quot;추가&quot;);</span>
+<span class="nc" id="L96">    cancel.addActionListener(this);</span>
+<span class="nc" id="L97">    add.addActionListener(this);</span>
+<span class="nc" id="L98">    buttonpanel.add(add);</span>
+<span class="nc" id="L99">    buttonpanel.add(cancel);</span>
+
+<span class="nc" id="L101">    add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L102">    add(expdatepanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L103">    add(buttonpanel, BorderLayout.SOUTH);</span>
+
+<span class="nc" id="L105">    pack();</span>
+<span class="nc" id="L106">    setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L107">    setVisible(true);</span>
+
+
+<span class="nc" id="L110">  }</span>
+
+  /*test
+  public static void main(String[] args) {
+    new AddItemMenu();
+  }
+*/
+  @Override
+  public void actionPerformed(ActionEvent e) {
+<span class="nc bnc" id="L119" title="All 6 branches missed.">    if (e.getSource() == Yearselect || e.getSource() == Monthselect || e.getSource() == Dayselect) {</span>
+<span class="nc" id="L120">      timer.restart();</span>
+    }
+<span class="nc bnc" id="L122" title="All 2 branches missed.">    if (e.getSource() == add) {</span>
+<span class="nc" id="L123">      String y = (String) Yearselect.getSelectedItem();</span>
+<span class="nc" id="L124">      String m = (String) Monthselect.getSelectedItem();</span>
+<span class="nc" id="L125">      String d = (String) Dayselect.getSelectedItem();</span>
+<span class="nc" id="L126">      return_date = Integer.parseInt(y.concat(m).concat(d));</span>
+<span class="nc" id="L127">      timer.stop();</span>
+<span class="nc" id="L128">      return_value = 1;</span>
+    }
+<span class="nc bnc" id="L130" title="All 2 branches missed.">    if (e.getSource() == cancel) {</span>
+<span class="nc" id="L131">      timer.stop();</span>
+<span class="nc" id="L132">      return_value = 0;</span>
+    }
+<span class="nc" id="L134">  }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
