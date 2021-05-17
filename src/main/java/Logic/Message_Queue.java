@@ -53,15 +53,6 @@ public class Message_Queue extends Thread {
             server_socket = new ServerSocket(port); //서버 소캣 생성
         } catch (IOException e) {
             System.out.println(port + "번 포트 사용 불가");
-        } finally {
-            if (server_socket != null) {
-                try {
-                    server_socket.close();
-                } catch (IOException e) {
-                }
-                ;
-            }
-            System.out.print("서버종료함");
         }
         try {
             while (true) {
@@ -90,10 +81,17 @@ public class Message_Queue extends Thread {
             if (socket != null) {
                 try {
                     socket.close();
+                } catch (IOException e) { }
+
+            }
+            if (server_socket != null) {
+                try {
+                    server_socket.close();
                 } catch (IOException e) {
                 }
                 ;
             }
+            System.out.print("서버종료함");
         }
     }
 
