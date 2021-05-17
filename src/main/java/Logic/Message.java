@@ -20,8 +20,8 @@ public class Message implements Serializable {
 
     //type1
 
-    void translate(int myID,int targetID,int Type, double xAdress, double yAdress,int Title, int C_Number, boolean boolData)
-    {
+    void translate(int myID, int targetID, int Type, double xAdress,
+                   double yAdress, int Title, int C_Number, boolean boolData) {
         this.myID = myID;
         this.targetID = targetID;
         this.Type = Type;

@@ -64,7 +64,9 @@ public class Message_Queue extends Thread {
                 String msg = in.readLine();
                 String[] temp = msg.split(",");
                 //메시지객체로 변환
-                message.translate(Integer.parseInt(temp[0]),Integer.parseInt(temp[1]),Integer.parseInt(temp[2]),Double.parseDouble(temp[3]),Double.parseDouble(temp[4]),Integer.parseInt(temp[5]),Integer.parseInt(temp[6]),Boolean.parseBoolean(temp[7]));
+                message.translate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2]),
+                        Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),
+                        Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));
                 msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
                 if (message.getType() == 1) System.out.println("재고요청메시지 수신됨");
                 if (message.getType() == 2) System.out.println("재고응답메시지 수신됨");
@@ -112,7 +114,9 @@ public class Message_Queue extends Thread {
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream())); //서버로부터 메시지를 받기위한 버퍼
                 out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
                 //메시지객체 스트링으로 전환
-                String msg = message.getMyID()+","+message.getTargetID()+","+message.getType()+","+message.getxAdress()+","+message.getyAdress()+","+ message.getTitle()+","+message.getC_Number()+","+message.isBoolData();
+                String msg = message.getMyID() + "," + message.getTargetID() + "," + message.getType() + ","
+                        + message.getxAdress() + "," + message.getyAdress() + "," + message.getTitle() + ","
+                        + message.getC_Number() + "," + message.isBoolData();
                 out.println(msg);                        //서버로 데이터 전송
                 out.flush();                      //서버로 데이터 전송
                 String returnMsg = in.readLine();
@@ -198,6 +202,7 @@ public class Message_Queue extends Thread {
     public static void setLoc(int loc) {
         Message_Queue.loc = loc;
     }
+
     public static int getStk() {
         return stk;
     }
