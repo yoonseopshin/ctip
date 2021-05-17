@@ -1,210 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-17T00:45:23.280">
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_Number.java">
-<violation beginline="27" endline="29" begincolumn="7" endcolumn="27" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="C_Number" method="CreateCnumber" variable="numStr" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'numStr' (lines '27'-'29').
-</violation>
-</file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/Controller.java">
-<violation beginline="28" endline="28" begincolumn="20" endcolumn="23" rule="NullAssignment" ruleset="Error Prone" package="Logic" class="Controller" method="Controller" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
-Assigning an Object to null is a code smell.  Consider refactoring.
-</violation>
-<violation beginline="29" endline="29" begincolumn="5" endcolumn="12" rule="AssignmentToNonFinalStatic" ruleset="Error Prone" package="Logic" class="Controller" method="Controller" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#assignmenttononfinalstatic" priority="3">
-Possible unsafe assignment to a non-final static field in a constructor.
-</violation>
-<violation beginline="30" endline="30" begincolumn="5" endcolumn="6" rule="AssignmentToNonFinalStatic" ruleset="Error Prone" package="Logic" class="Controller" method="Controller" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#assignmenttononfinalstatic" priority="3">
-Possible unsafe assignment to a non-final static field in a constructor.
-</violation>
-<violation beginline="31" endline="31" begincolumn="5" endcolumn="14" rule="AssignmentToNonFinalStatic" ruleset="Error Prone" package="Logic" class="Controller" method="Controller" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#assignmenttononfinalstatic" priority="3">
-Possible unsafe assignment to a non-final static field in a constructor.
-</violation>
-<violation beginline="152" endline="152" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="InputCnumber" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="236" endline="236" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ManEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="249" endline="249" begincolumn="28" endcolumn="28" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ManEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="257" endline="257" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ManEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="285" endline="285" begincolumn="18" endcolumn="18" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="SelectPayment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="289" endline="289" begincolumn="18" endcolumn="18" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="SelectPayment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="333" endline="333" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="CardPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="377" endline="377" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="SmartPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="443" endline="443" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ReqFindDVM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="446" endline="484" begincolumn="11" endcolumn="15" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Controller" method="ReqFindDVM" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'i' (lines '446'-'484').
-</violation>
-<violation beginline="467" endline="484" begincolumn="9" endcolumn="11" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Controller" method="ReqFindDVM" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'i' (lines '467'-'484').
-</violation>
-<violation beginline="469" endline="469" begincolumn="30" endcolumn="30" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Controller" method="ReqFindDVM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="528" endline="528" begincolumn="15" endcolumn="18" rule="NullAssignment" ruleset="Error Prone" package="Logic" class="Controller" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
-Assigning an Object to null is a code smell.  Consider refactoring.
-</violation>
-</file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/Message.java">
-<violation beginline="5" endline="136" begincolumn="8" endcolumn="1" rule="MissingSerialVersionUID" ruleset="Error Prone" package="Logic" class="Message" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingserialversionuid" priority="3">
-Classes implementing Serializable should set a serialVersionUID
-</violation>
-<violation beginline="11" endline="11" begincolumn="18" endcolumn="24" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message" variable="xAdress" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-17T06:02:06.405">
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_NumberManagerTest.java">
+<violation beginline="9" endline="9" begincolumn="29" endcolumn="30" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="CM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
-<violation beginline="12" endline="12" begincolumn="18" endcolumn="24" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message" variable="yAdress" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<violation beginline="10" endline="10" begincolumn="22" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="Cn" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
-<violation beginline="25" endline="25" begincolumn="17" endcolumn="17" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="35" endline="35" begincolumn="17" endcolumn="17" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="45" endline="45" begincolumn="19" endcolumn="19" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="54" endline="54" begincolumn="17" endcolumn="17" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="65" endline="65" begincolumn="17" endcolumn="17" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_NumberTest.java">
+<violation beginline="10" endline="10" begincolumn="22" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberTest" variable="CN" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/Message_Queue.java">
-<violation beginline="29" endline="32" begincolumn="7" endcolumn="40" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="getIP" variable="local" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'local' (lines '29'-'32').
-</violation>
-<violation beginline="30" endline="33" begincolumn="7" endcolumn="33" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="getIP" variable="ip" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'ip' (lines '30'-'33').
-</violation>
-<violation beginline="42" endline="42" begincolumn="12" endcolumn="17" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this Socket object are closed after use
-</violation>
-<violation beginline="42" endline="58" begincolumn="9" endcolumn="39" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'socket' (lines '42'-'58').
-</violation>
-<violation beginline="43" endline="43" begincolumn="18" endcolumn="30" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="server_socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this ServerSocket object are closed after use
-</violation>
-<violation beginline="43" endline="52" begincolumn="7" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="server_socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'server_socket' (lines '43'-'52').
-</violation>
-<violation beginline="44" endline="44" begincolumn="20" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this BufferedReader object are closed after use
-</violation>
-<violation beginline="44" endline="88" begincolumn="20" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'in' (lines '44'-'88').
-</violation>
-<violation beginline="45" endline="45" begincolumn="17" endcolumn="19" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this PrintWriter object are closed after use
-</violation>
-<violation beginline="45" endline="88" begincolumn="17" endcolumn="26" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'out' (lines '45'-'88').
-</violation>
-<violation beginline="47" endline="47" begincolumn="23" endcolumn="39" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="objectInputStream" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this ObjectInputStream object are closed after use
-</violation>
-<violation beginline="48" endline="48" begincolumn="17" endcolumn="27" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="printWriter" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this PrintWriter object are closed after use
-</violation>
-<violation beginline="65" endline="65" begincolumn="36" endcolumn="36" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="68" endline="68" begincolumn="36" endcolumn="36" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="71" endline="71" begincolumn="36" endcolumn="36" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="74" endline="74" begincolumn="36" endcolumn="36" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="77" endline="77" begincolumn="36" endcolumn="36" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="91" endline="91" begincolumn="12" endcolumn="17" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this Socket object are closed after use
-</violation>
-<violation beginline="91" endline="101" begincolumn="9" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'socket' (lines '91'-'101').
-</violation>
-<violation beginline="91" endline="123" begincolumn="12" endcolumn="24" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'socket' (lines '91'-'123').
-</violation>
-<violation beginline="92" endline="92" begincolumn="20" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this BufferedReader object are closed after use
-</violation>
-<violation beginline="92" endline="104" begincolumn="9" endcolumn="59" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'in' (lines '92'-'104').
-</violation>
-<violation beginline="92" endline="123" begincolumn="20" endcolumn="28" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'in' (lines '92'-'123').
-</violation>
-<violation beginline="93" endline="93" begincolumn="17" endcolumn="19" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this PrintWriter object are closed after use
-</violation>
-<violation beginline="93" endline="123" begincolumn="17" endcolumn="26" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'out' (lines '93'-'123').
-</violation>
-<violation beginline="94" endline="100" begincolumn="9" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="ia" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'ia' (lines '94'-'100').
-</violation>
-<violation beginline="94" endline="123" begincolumn="17" endcolumn="25" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="ia" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'ia' (lines '94'-'123').
-</violation>
-<violation beginline="95" endline="123" begincolumn="9" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="port" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'port' (lines '95'-'123').
-</violation>
-<violation beginline="102" endline="102" begincolumn="28" endcolumn="45" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="objectOutputStream" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this ObjectOutputStream object are closed after use
-</violation>
-<violation beginline="108" endline="123" begincolumn="16" endcolumn="40" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="returnMsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'returnMsg' (lines '108'-'123').
-</violation>
-<violation beginline="112" endline="112" begincolumn="9" endcolumn="14" rule="AvoidBranchingStatementAsLastInLoop" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidbranchingstatementaslastinloop" priority="2">
-Avoid using a branching statement as the last in a loop.
-</violation>
-<violation beginline="118" endline="118" begincolumn="32" endcolumn="32" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="128" endline="128" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="Dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="133" endline="133" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="Dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="136" endline="136" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="Dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="141" endline="141" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="Dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="144" endline="144" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="Dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/ControllerTest.java">
+<violation beginline="14" endline="14" begincolumn="24" endcolumn="24" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="ControllerTest" variable="c" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/Payment.java">
-<violation beginline="61" endline="61" begincolumn="22" endcolumn="25" rule="NullAssignment" ruleset="Error Prone" package="Logic" class="Payment" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
-Assigning an Object to null is a code smell.  Consider refactoring.
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/DVMTest.java">
+<violation beginline="9" endline="9" begincolumn="17" endcolumn="19" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="DVMTest" variable="dvm" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="35" endline="38" begincolumn="5" endcolumn="5" rule="DetachedTestCase" ruleset="Error Prone" package="Logic" class="DVMTest" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#detachedtestcase" priority="3">
+Probable detached JUnit test case.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/Title.java">
-<violation beginline="21" endline="21" begincolumn="15" endcolumn="15" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Title" method="UpdateStock" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/ItemTest.java">
+<violation beginline="10" endline="10" begincolumn="10" endcolumn="13" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="ItemTest" variable="item" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/MessageTest.java">
+<violation beginline="9" endline="9" begincolumn="13" endcolumn="15" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="MessageTest" variable="msg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/Message_QueueTest.java">
+<violation beginline="7" endline="7" begincolumn="21" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message_QueueTest" variable="msg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/PaymentTest.java">
+<violation beginline="10" endline="10" begincolumn="13" endcolumn="19" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="PaymentTest" variable="payment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/TitleTest.java">
+<violation beginline="11" endline="11" begincolumn="25" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="TitleTest" variable="t" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
 </pmd>
