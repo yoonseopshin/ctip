@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-17T06:51:05.231">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-17T07:00:28.160">
 <file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_NumberManagerTest.java">
 <violation beginline="9" endline="9" begincolumn="29" endcolumn="30" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="CM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
@@ -39,15 +39,6 @@ Found non-transient, non-static member. Please mark as transient or provide acce
 <file name="/home/runner/work/ctip/ctip/src/test/java/Logic/Message_QueueTest.java">
 <violation beginline="7" endline="7" begincolumn="21" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message_QueueTest" variable="msg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
-</violation>
-<violation beginline="8" endline="8" begincolumn="27" endcolumn="31" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message_QueueTest" variable="queue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
-Found non-transient, non-static member. Please mark as transient or provide accessors.
-</violation>
-<violation beginline="21" endline="21" begincolumn="33" endcolumn="33" rule="EmptyStatementNotInLoop" ruleset="Error Prone" package="Logic" class="Message_QueueTest" method="testMsgSend" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptystatementnotinloop" priority="3">
-An empty statement (semicolon) not part of a loop
-</violation>
-<violation beginline="21" endline="21" begincolumn="31" endcolumn="32" rule="EmptyWhileStmt" ruleset="Error Prone" package="Logic" class="Message_QueueTest" method="testMsgSend" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptywhilestmt" priority="3">
-Avoid empty while statements
 </violation>
 </file>
 <file name="/home/runner/work/ctip/ctip/src/test/java/Logic/PaymentTest.java">
