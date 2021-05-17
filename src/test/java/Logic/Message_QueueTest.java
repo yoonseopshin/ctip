@@ -27,6 +27,6 @@ public class Message_QueueTest {
         msg.setC_Number(971125);
         Message_Queue.msgQueue.offer(msg);
         Message_Queue.Dequeue();
-        Assert.assertEquals(1,c.getCM().CheckCnumber(971125));
+        Assert.assertEquals(1, c.getCM().CheckCnumber(971125));
     }
 }

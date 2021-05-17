@@ -14,7 +14,6 @@ public class C_Number {
     private int C_Number_t;
 
     public C_Number() {
-
     }
 
     public C_Number(int title_id, int id) {

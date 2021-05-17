@@ -33,7 +33,7 @@ public class DVMTest {
     }
 
     public void testGetCurrentID() {
-        dvm.CurrentID=2;
-        Assert.assertEquals(2,dvm.CurrentID);
+        dvm.CurrentID = 2;
+        Assert.assertEquals(2, dvm.CurrentID);
     }
 }
