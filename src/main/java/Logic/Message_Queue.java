@@ -63,6 +63,7 @@ public class Message_Queue extends Thread {
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 String msg = in.readLine();
                 String[] temp = msg.split(",");
+                //메시지객체로 변환
                 message.translate(Integer.parseInt(temp[0]),Integer.parseInt(temp[1]),Integer.parseInt(temp[2]),Double.parseDouble(temp[3]),Double.parseDouble(temp[4]),Integer.parseInt(temp[5]),Integer.parseInt(temp[6]),Boolean.parseBoolean(temp[7]));
                 msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
                 if (message.getType() == 1) System.out.println("재고요청메시지 수신됨");
