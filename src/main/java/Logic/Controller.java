@@ -454,8 +454,8 @@ public class Controller {
                 }
                 del2 = ((FindingDVM) k).return_value;
                 if (del2 == 0) {//시간 초과or취소
-                    stk = 9;
-                    loc = -1;
+                    Message_Queue.setStk(9);
+                    Message_Queue.setLoc(-1);
                     init();
                     return 0;
                 }
@@ -539,11 +539,11 @@ public class Controller {
         this.k = k;
     }
 
-    public ArrayList<Title> getTitle_List() {
+    public static ArrayList<Title> getTitle_List() {
         return Title_List;
     }
 
-    public void setTitle_List(ArrayList<Title> title_List) {
+    public static void setTitle_List(ArrayList<Title> title_List) {
         Title_List = title_List;
     }
 
@@ -563,12 +563,12 @@ public class Controller {
         this.basket = basket;
     }
 
-    public Stack<DVM> getDVMStack() {
+    public static Stack<DVM> getDVMStack() {
         return DVMStack;
     }
 
-    public void setDVMStack(Stack<DVM> dvmStack) {
-        DVMStack = dvmStack;
+    public static void setDVMStack(Stack<DVM> DVMStack) {
+        Controller.DVMStack = DVMStack;
     }
 
     public int getDel() {
@@ -579,12 +579,19 @@ public class Controller {
         this.del = del;
     }
 
-    public C_NumberManager getCM() {
+    public static C_NumberManager getCM() {
         return CM;
     }
 
-    public void setCM(C_NumberManager cm) {
-        CM = cm;
+    public static void setCM(C_NumberManager CM) {
+        Controller.CM = CM;
     }
 
+    public static Message_Queue getMq() {
+        return mq;
+    }
+
+    public static void setMq(Message_Queue mq) {
+        Controller.mq = mq;
+    }
 }
