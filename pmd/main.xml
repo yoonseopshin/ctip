@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-17T10:42:40.300">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-17T14:23:36.265">
 <file name="/home/runner/work/ctip/ctip/src/main/java/GUI/AddItemMenu.java">
 <violation beginline="11" endline="136" begincolumn="8" endcolumn="1" rule="MissingSerialVersionUID" ruleset="Error Prone" package="GUI" class="AddItemMenu" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingserialversionuid" priority="3">
 Classes implementing Serializable should set a serialVersionUID
@@ -432,28 +432,25 @@ Assigning an Object to null is a code smell.  Consider refactoring.
 </violation>
 </file>
 <file name="/home/runner/work/ctip/ctip/src/main/java/Logic/Message.java">
-<violation beginline="5" endline="148" begincolumn="8" endcolumn="1" rule="MissingSerialVersionUID" ruleset="Error Prone" package="Logic" class="Message" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingserialversionuid" priority="3">
-Classes implementing Serializable should set a serialVersionUID
-</violation>
-<violation beginline="10" endline="10" begincolumn="20" endcolumn="26" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message" variable="xAdress" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<violation beginline="8" endline="8" begincolumn="20" endcolumn="26" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message" variable="xAdress" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
-<violation beginline="11" endline="11" begincolumn="20" endcolumn="26" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message" variable="yAdress" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<violation beginline="9" endline="9" begincolumn="20" endcolumn="26" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message" variable="yAdress" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
-<violation beginline="38" endline="38" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="36" endline="36" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="48" endline="48" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="46" endline="46" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="58" endline="58" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="56" endline="56" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="66" endline="66" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="64" endline="64" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="77" endline="77" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="75" endline="75" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message" method="setmsg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
 </file>
