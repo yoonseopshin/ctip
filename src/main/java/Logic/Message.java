@@ -18,7 +18,7 @@ public class Message {
 
     //type1
 
-    void translate(int myID, int targetID, int Type, double xAdress,
+    public void translate(int myID, int targetID, int Type, double xAdress,
                    double yAdress, int Title, int C_Number, boolean boolData) {
         this.myID = myID;
         this.targetID = targetID;

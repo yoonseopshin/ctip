@@ -2,7 +2,7 @@ package Logic;
 
 public class DVM {
 
-    public static int CurrentID = 1;
+    public static int CurrentID = 3;
     public static double CurrentX = 1.0;
     public static double CurrentY = 1.0;
     private int ID; // 메세지 보낼 타겟 아이디
