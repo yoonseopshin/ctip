@@ -60,7 +60,7 @@ public class Controller {
         //start
         mq.start();
         c.ReqMainMenu();
-
+        mq.interrupt();
     }
 
     public void ReqMainMenu() {

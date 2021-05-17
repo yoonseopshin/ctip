@@ -22,6 +22,7 @@ public class Message_Queue extends Thread {
 
     @Override
     public void run() {
+        System.out.print("메시지 수신 시작\n");
         MsgReciv(CurrentID);
     }
 
@@ -60,6 +61,7 @@ public class Message_Queue extends Thread {
                 }
                 ;
             }
+            System.out.print("서버종료함");
         }
         try {
             while (true) {
@@ -78,6 +80,7 @@ public class Message_Queue extends Thread {
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
                 Dequeue();
                 if (Thread.interrupted()) {
+                    System.out.print("메시지 수신 종료");
                     break;
                 }
             }
