@@ -1,5 +1,9 @@
 package GUI;
 
+import Logic.Item;
+import Logic.Title;
+import Logic.DVM;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -13,9 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
-
-import Logic.*;
-import static GUI.Sleep.*;
 
 public class ManItemMenu extends JFrame implements ActionListener {
 
@@ -32,16 +33,16 @@ public class ManItemMenu extends JFrame implements ActionListener {
     private JButton add;
     private JButton delete;
     private ArrayList<Item> temp;
-
-    public int return_value = -1;
-    public ArrayList<Integer> return_itemlist;
-
+    private int return_value = -1;
+    private ArrayList<Integer> return_itemlist;
 
     public ManItemMenu(Title t) {
         timer.start();
-        this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
         temp = t.getItem_List();
+        
+        this.setPreferredSize(new Dimension(600, 800));
+        this.setTitle("DVM " + DVM.getCurrentID());
+        
 
         //라벨 패널
         JPanel labelpanel = new JPanel();
@@ -49,6 +50,7 @@ public class ManItemMenu extends JFrame implements ActionListener {
         JLabel label = new JLabel("음료: " + t.getName() + "     변경할 재고를 선택하세요");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
+       
         //아이템패널
         JPanel itemlistpanel = new JPanel();
         JScrollPane itempanel = new JScrollPane(itemlistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
@@ -86,24 +88,6 @@ public class ManItemMenu extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
-	/*test
-
-	public static void main(String[] args) {
-		Controller c=new Controller();
-    	c.Title_List.get(0).AddItem(new Item(20200101));
-    	c.Title_List.get(0).AddItem(new Item(20200102));
-    	c.Title_List.get(0).AddItem(new Item(20200103));
-    	c.Title_List.get(0).AddItem(new Item(20200104));
-    	c.Title_List.get(0).AddItem(new Item(20200105));
-    	c.Title_List.get(0).AddItem(new Item(20200106));
-    	c.Title_List.get(0).AddItem(new Item(20200107));
-    	c.Title_List.get(0).AddItem(new Item(20200108));
-    	c.Title_List.get(0).AddItem(new Item(20200109));
-    	new ManItemMenu(c.Title_List.get(0));
-
-	}
-	 */
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -130,7 +114,14 @@ public class ManItemMenu extends JFrame implements ActionListener {
             timer.stop();
             return_value = 0;
         }
-
     }
+
+    public int getReturn_value() { return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
+
+    public ArrayList<Integer> getReturn_itemlist() { return return_itemlist; }
+
+    public void setReturn_itemlist(ArrayList<Integer> return_itemlist) { this.return_itemlist = return_itemlist; }
 }
 

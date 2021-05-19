@@ -1,12 +1,7 @@
 package Logic;
 
-import java.util.*;
+import java.util.Random;
 
-import static Logic.DVM.CurrentID;
-
-/**
- *
- */
 public class C_Number {
 
     private int title_id;
@@ -18,27 +13,25 @@ public class C_Number {
         this.DvmID = id;
     }
 
-
-    public int CreateCnumber(int title_id, int DvmID) {
-        String numStr = "";
+    public int CreateCnumber() {
+        String numStr = new String();
         do {
             numStr = randnumber();
         } while (numStr.equals("000000") || numStr.equals("111111"));
         C_Number_t = Integer.parseInt(numStr);
-        Message message = new Message(CurrentID);
+        Message message = new Message(DVM.getCurrentID());
         message.setmsg(this.DvmID, 5, title_id, C_Number_t);
         return C_Number_t;
-
     }
 
     public String randnumber() {
 
         Random rand = new Random();
         int len = 6;
-        String numStr = ""; //난수가 저장될 변수
+        String numStr = new String(); //난수가 저장될 변수
         String ran = Integer.toString(rand.nextInt(9) + 1);  //첫번째 숫자 0이 아님
         numStr += ran;
-        numStr += Integer.toString(CurrentID - 1); // 두번째 자릿수 => DVMID
+        numStr += Integer.toString(DVM.getCurrentID() - 1); // 두번째 자릿수 => DVMID
         for (int i = 2; i < len; i++) {
             //0~9 까지 난수 생성
             ran = Integer.toString(rand.nextInt(10));

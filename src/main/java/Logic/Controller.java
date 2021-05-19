@@ -4,13 +4,7 @@ import GUI.*;
 
 import java.util.ArrayList;
 import java.util.Stack;
-import javax.swing.*;
-
-import static Logic.DVM.*;
-
-/**
- *
- */
+import javax.swing.JFrame;
 
 public class Controller {
 
@@ -18,13 +12,10 @@ public class Controller {
     private Payment Payment;
     private int basket;
     private int del;
-    public static ArrayList<Title> Title_List = new ArrayList<>();
-    public static Stack<DVM> DVMStack = new Stack<>();
-    ;
-    public static C_NumberManager CM = new C_NumberManager();
-    ;
-    public static Message_Queue mq = new Message_Queue();
-    ;
+    private static ArrayList<Title> Title_List = new ArrayList<>();
+    private static Stack<DVM> DVMStack = new Stack<>();
+    private static C_NumberManager CM = new C_NumberManager();
+    private static Message_Queue mq = new Message_Queue();
 
     public Controller() {
         this.basket = -666;
@@ -56,7 +47,7 @@ public class Controller {
         Controller c = new Controller();
         c.setK(new JFrame());
         //start
-        mq.start();
+        Controller.mq.start();
         c.ReqMainMenu();
     }
 
@@ -67,7 +58,7 @@ public class Controller {
             k = new Sleep();
             while (del == -1) {
                 System.out.print("");
-                del = ((Sleep) k).return_value;
+                del = ((Sleep) k).getReturn_value();
             }
             ShowMainMenu();
         }
@@ -88,7 +79,7 @@ public class Controller {
         del = -1;
         while (del == -1) {
             System.out.print("");
-            del = ((MainMenu) k).return_value;
+            del = ((MainMenu) k).getReturn_value();
         }
         if (del == -2) {
             return -2;
@@ -135,7 +126,7 @@ public class Controller {
         del = -1;
         while (del == -1) {
             System.out.print("");
-            del = ((InputLine) k).return_value;
+            del = ((InputLine) k).getReturn_value();
         }
         if (del == -2) {
             return -2;
@@ -172,7 +163,7 @@ public class Controller {
         k = new InfoCnumberErrUI();
         while (del2 == -1) {
             System.out.print("");
-            del2 = ((InfoCnumberErrUI) k).return_value;
+            del2 = ((InfoCnumberErrUI) k).getReturn_value();
         }
     }
 
@@ -191,7 +182,7 @@ public class Controller {
         del = -1;
         while (del == -1) {
             System.out.print("");
-            del = ((ManTitleMenu) k).return_value;
+            del = ((ManTitleMenu) k).getReturn_value();
         }
         if (del == -2) {
             return -2;
@@ -224,7 +215,7 @@ public class Controller {
         del = -1;
         while (del == -1) {
             System.out.print("");
-            del = ((ManItemMenu) k).return_value;
+            del = ((ManItemMenu) k).getReturn_value();
         }
         if (del == -2) {
             return -2;
@@ -237,14 +228,14 @@ public class Controller {
                 int del2 = -1;
                 while (del2 == -1) {
                     System.out.print("");
-                    del2 = ((AddItemMenu) k).return_value;
+                    del2 = ((AddItemMenu) k).getReturn_value();
                 }
                 if (del2 == -2) {
                     return -2;
                 } else if (del2 == 0) {
                     return 1;
                 } else if (del2 == 1) {
-                    Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).return_date));
+                    Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).getReturn_date()));
                     return 1;
                 } else {
                     //error
@@ -252,7 +243,7 @@ public class Controller {
                 }
             }
         } else if (del == 2) {//delete item
-            Title_List.get(TitleID - 1).DeleteItem(((ManItemMenu) k).return_itemlist);
+            Title_List.get(TitleID - 1).DeleteItem(((ManItemMenu) k).getReturn_itemlist());
             return 1;
         } else {
             //error
@@ -270,7 +261,7 @@ public class Controller {
         del = -1;
         while (del == -1) {
             System.out.print("");
-            del = ((PaymentMenu) k).return_value;
+            del = ((PaymentMenu) k).getReturn_value();
         }
         if (del == -2) {
             return -2;
@@ -309,7 +300,7 @@ public class Controller {
         del = -1;
         while (del == -1) {
             System.out.print("");
-            del = ((CardPayUI) k).return_value;
+            del = ((CardPayUI) k).getReturn_value();
         }
 
         if (del == -3) {//결제실패
@@ -319,7 +310,7 @@ public class Controller {
             k = new PayErrUI(Payment.getError_log());
             while (del2 == -1) {
                 System.out.print("");
-                del2 = ((PayErrUI) k).return_value;
+                del2 = ((PayErrUI) k).getReturn_value();
             }
             Payment.init();
             init();
@@ -333,7 +324,7 @@ public class Controller {
                 ReturnItem(Title_List.get(basket - 1), false);
             }
             if (p > 0) {
-                PrintCnumber(Title_List.get(basket - 1), Payment.getDVMid(), p);
+                PrintCnumber(Title_List.get(basket - 1).getName(), Payment.getDVMid(), p);
             }
             return 0;
         } else {
@@ -352,7 +343,7 @@ public class Controller {
         del = -1;
         while (del == -1) {
             System.out.print("");
-            del = ((SmartPayUI) k).return_value;
+            del = ((SmartPayUI) k).getReturn_value();
         }
 
         if (del == -3) {//결제실패
@@ -362,7 +353,7 @@ public class Controller {
             k = new PayErrUI(Payment.getError_log());
             while (del2 == -1) {
                 System.out.print("");
-                del2 = ((PayErrUI) k).return_value;
+                del2 = ((PayErrUI) k).getReturn_value();
             }
             Payment.init();
             init();
@@ -377,7 +368,7 @@ public class Controller {
                 ReturnItem(Title_List.get(basket - 1), false);
             }
             if (p > 0) {
-                PrintCnumber(Title_List.get(basket - 1), Payment.getDVMid(), p);
+                PrintCnumber(Title_List.get(basket - 1).getName(), Payment.getDVMid(), p);
             }
             return 0;
         } else {
@@ -398,7 +389,7 @@ public class Controller {
         k = new InfoReturnItemUI(t.getName());
         while (del2 == -1) {
             System.out.print("");
-            del2 = ((InfoReturnItemUI) k).return_value;
+            del2 = ((InfoReturnItemUI) k).getReturn_value();
         }
         t.UpdateStock(0, IfHold);
         if (!IfHold) {
@@ -408,13 +399,13 @@ public class Controller {
         ReturnMain();
     }
 
-    public void PrintCnumber(Title t, int DVMid, int Cnumber) {
+    public void PrintCnumber(String name, int DVMid, int Cnumber) {
         int del2 = -1;
         k.setVisible(false);
-        k = new PrintCnumberUI(t, DVMid, Cnumber);
+        k = new PrintCnumberUI(name, DVMid, Cnumber);
         while (del2 == -1) {
             System.out.print("");
-            del2 = ((PrintCnumberUI) k).return_value;
+            del2 = ((PrintCnumberUI) k).getReturn_value();
         }
         Payment.init();
         init();
@@ -422,7 +413,7 @@ public class Controller {
 
     public void InfoNoItem() {
         k.setVisible(false);
-        k = new InfoNoItemUI(Title_List.get(basket - 1));
+        k = new InfoNoItemUI(Title_List.get(basket - 1).getName());
         del = ReqFindDVM();
     }
 
@@ -430,7 +421,7 @@ public class Controller {
         del = -1;
         while (del == -1) {
             System.out.print("");
-            del = ((InfoNoItemUI) k).return_value;
+            del = ((InfoNoItemUI) k).getReturn_value();
         }
         if (del == -2) {
             return -2;
@@ -449,15 +440,15 @@ public class Controller {
                     if (DVMStack.get(size - 1).getID() == -1)
                         break;
                 }
-                del2 = ((FindingDVM) k).return_value;
+                del2 = ((FindingDVM) k).getReturn_value();
                 if (del2 == 0) {//시간 초과or취소
                     Message_Queue.setStk(9);
                     Message_Queue.setLoc(-1);
                     init();
                     return 0;
                 }
-                if (i <= 10 && i != CurrentID) {
-                    Message sm = new Message(CurrentID);
+                if (i <= 10 && i != DVM.getCurrentID()) {
+                    Message sm = new Message(DVM.getCurrentID());
                     sm.setmsg(i, 1, basket);
                 }
                 i++;
@@ -491,7 +482,7 @@ public class Controller {
         k = new InfoNoDVMUI(Title_List.get(basket - 1).getName());
         while (del2 == -1) {
             System.out.print("");
-            del2 = ((InfoNoDVMUI) k).return_value;
+            del2 = ((InfoNoDVMUI) k).getReturn_value();
         }
     }
 
@@ -499,7 +490,7 @@ public class Controller {
         del = -1;
         while (del == -1) {
             System.out.print("");
-            del = ((DVMMenu) k).return_value;
+            del = ((DVMMenu) k).getReturn_value();
         }
         if (del == -2) {
             return -2;
@@ -528,67 +519,35 @@ public class Controller {
         init();
     }
 
-    public JFrame getK() {
-        return k;
-    }
+    public JFrame getK() { return k; }
 
-    public void setK(JFrame k) {
-        this.k = k;
-    }
+    public void setK(JFrame k) { this.k = k; }
 
-    public static ArrayList<Title> getTitle_List() {
-        return Title_List;
-    }
+    public Logic.Payment getPayment() { return Payment; }
 
-    public static void setTitle_List(ArrayList<Title> title_List) {
-        Title_List = title_List;
-    }
+    public void setPayment(Logic.Payment payment) { Payment = payment; }
 
-    public Logic.Payment getPayment() {
-        return Payment;
-    }
+    public int getBasket() { return basket; }
 
-    public void setPayment(Logic.Payment payment) {
-        Payment = payment;
-    }
+    public void setBasket(int basket) { this.basket = basket; }
 
-    public int getBasket() {
-        return basket;
-    }
+    public int getDel() { return del; }
 
-    public void setBasket(int basket) {
-        this.basket = basket;
-    }
+    public void setDel(int del) { this.del = del; }
 
-    public static Stack<DVM> getDVMStack() {
-        return DVMStack;
-    }
+    public static ArrayList<Title> getTitle_List() { return Title_List; }
 
-    public static void setDVMStack(Stack<DVM> DVMStack) {
-        Controller.DVMStack = DVMStack;
-    }
+    public static void setTitle_List(ArrayList<Title> title_List) { Title_List = title_List; }
 
-    public int getDel() {
-        return del;
-    }
+    public static Stack<DVM> getDVMStack() { return DVMStack; }
 
-    public void setDel(int del) {
-        this.del = del;
-    }
+    public static void setDVMStack(Stack<DVM> DVMStack) { Controller.DVMStack = DVMStack; }
 
-    public static C_NumberManager getCM() {
-        return CM;
-    }
+    public static C_NumberManager getCM() { return CM; }
 
-    public static void setCM(C_NumberManager CM) {
-        Controller.CM = CM;
-    }
+    public static void setCM(C_NumberManager CM) { Controller.CM = CM; }
 
-    public static Message_Queue getMq() {
-        return mq;
-    }
+    public static Message_Queue getMq() { return mq; }
 
-    public static void setMq(Message_Queue mq) {
-        Controller.mq = mq;
-    }
+    public static void setMq(Message_Queue mq) { Controller.mq = mq; }
 }

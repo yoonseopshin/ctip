@@ -32,8 +32,9 @@ public class DVMTest {
         Assert.assertEquals(ExpectedResult, ActualResult);
     }
 
+    @Test
     public void testGetCurrentID() {
-        dvm.CurrentID = 2;
-        Assert.assertEquals(2, dvm.CurrentID);
+        DVM.setCurrentID(2);
+        Assert.assertEquals(2, DVM.getCurrentID());
     }
 }

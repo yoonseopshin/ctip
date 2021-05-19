@@ -1,7 +1,6 @@
 package Logic;
 
-import java.util.*;
-
+import java.util.ArrayList;
 
 public class Title {
 
@@ -40,11 +39,7 @@ public class Title {
     }
 
     public boolean CheckStock() {
-        if (this.Item_List.size() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return !(this.Item_List.isEmpty());
     }
 
     public void AddItem(Item item) {

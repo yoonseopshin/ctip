@@ -1,8 +1,12 @@
 package GUI;
 
+import Logic.DVM;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,10 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import static GUI.Sleep.*;
-
 
 public class InputLine extends JFrame implements ActionListener {
 
@@ -30,14 +30,14 @@ public class InputLine extends JFrame implements ActionListener {
     private JButton Delete;
     private JButton Enter;
     private JButton Cancel;
-
-    public int return_value = -1;
+    private int return_value = -1;
 
     public InputLine() {
         timer.start();
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
+        this.setTitle("DVM " + DVM.getCurrentID());
+        
         //라벨 패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600, 30));
@@ -69,7 +69,6 @@ public class InputLine extends JFrame implements ActionListener {
         Cancel.setFont(Cancel.getFont().deriveFont(20.0f));
         Enter.addActionListener(this);
         Cancel.addActionListener(this);
-
         for (int i = 0; i < num.length; i++) {
             num[i] = new JButton("" + i);
             num[i].setFont(num[i].getFont().deriveFont(20.0f));
@@ -90,13 +89,6 @@ public class InputLine extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
-/*test
-	public static void main(String[] args) {
-		new InputLine();
-
-	}
-
- */
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -135,4 +127,9 @@ public class InputLine extends JFrame implements ActionListener {
             return_value = 0;
         }
     }
+
+    public int getReturn_value() {return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
+    
 }

@@ -1,17 +1,23 @@
 package GUI;
 
+import Logic.DVM;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-import javax.swing.*;
-import static GUI.Sleep.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class AddItemMenu extends JFrame implements ActionListener {
-
-    public Timer timer = new Timer(180000, new ActionListener() {
+    
+    private Timer timer = new Timer(180000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             return_value = -2;
@@ -22,18 +28,16 @@ public class AddItemMenu extends JFrame implements ActionListener {
     private JComboBox<String> Yearselect;
     private JComboBox<String> Monthselect;
     private JComboBox<String> Dayselect;
-
     private JButton cancel;
     private JButton add;
-
-    public int return_value = -1;
-    public int return_date;
+    private int return_value = -1;
+    private int return_date;
 
     public AddItemMenu() {
         timer.start();
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
+        this.setTitle("DVM " + DVM.getCurrentID());
 
         //라벨패널
         JPanel labelpanel = new JPanel();
@@ -89,6 +93,7 @@ public class AddItemMenu extends JFrame implements ActionListener {
         expdatepanel.add(m);
         expdatepanel.add(Dayselect);
         expdatepanel.add(d);
+        
         //버튼패널
         JPanel buttonpanel = new JPanel(new GridLayout(1, 2));
         buttonpanel.setPreferredSize(new Dimension(600, 70));
@@ -110,11 +115,6 @@ public class AddItemMenu extends JFrame implements ActionListener {
 
     }
 
-    /*test
-    public static void main(String[] args) {
-      new AddItemMenu();
-    }
-  */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == Yearselect || e.getSource() == Monthselect || e.getSource() == Dayselect) {
@@ -134,4 +134,12 @@ public class AddItemMenu extends JFrame implements ActionListener {
         }
     }
 
+    public int getReturn_value() { return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
+
+    public int getReturn_date() { return return_date; }
+
+    public void setReturn_date(int return_date) { this.return_date = return_date; }
+    
 }

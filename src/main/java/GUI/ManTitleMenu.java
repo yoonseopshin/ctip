@@ -1,6 +1,11 @@
 package GUI;
 
-import java.awt.*;
+import Logic.Title;
+import Logic.DVM;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,9 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
-
-import Logic.*;
-import static GUI.Sleep.*;
 
 public class ManTitleMenu extends JFrame implements ActionListener {
 
@@ -27,17 +29,15 @@ public class ManTitleMenu extends JFrame implements ActionListener {
     private JButton[] Title_list;
     private JButton exit;
     private ArrayList<Title> temp;
-
-    public int return_value = -1;
+    private int return_value = -1;
 
     public ManTitleMenu(ArrayList<Title> tlist) {
         timer.start();
-
-        this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
-
         temp = tlist;
 
+        this.setPreferredSize(new Dimension(600, 800));
+        this.setTitle("DVM " + DVM.getCurrentID());
+        
         //라벨 패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600, 30));
@@ -74,15 +74,6 @@ public class ManTitleMenu extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
-/*test
-	public static void main(String[] args) {
-		
-		Controller c= new Controller();
-		new ManTitleMenu(c.Title_List);
-
-	}
-
- */
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -97,8 +88,11 @@ public class ManTitleMenu extends JFrame implements ActionListener {
             return_value = 0;
             this.setVisible(false);
         }
-
     }
+
+    public int getReturn_value() {return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
 
 }
 

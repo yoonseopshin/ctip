@@ -1,13 +1,19 @@
 package GUI;
 
-import java.awt.*;
+import Logic.DVM;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-import static GUI.Sleep.*;
-import static GUI.Sleep.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class FindingDVM extends JFrame implements ActionListener {
+    
     private int s = 32;
     private Timer timer = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -27,15 +33,15 @@ public class FindingDVM extends JFrame implements ActionListener {
     });
 
     private JLabel label;
-    public int return_value = -1;
     private JLabel infolabel;
     private JButton cancel;
+    private int return_value = -1;
 
     public FindingDVM(String name) {
         timer.start();
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
+        this.setTitle("DVM " + DVM.getCurrentID());
 
         //라벨패널
         JPanel labelpanel = new JPanel();
@@ -43,12 +49,14 @@ public class FindingDVM extends JFrame implements ActionListener {
         label = new JLabel("남은시간:20");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
+        
         //안내패널
         JPanel informpanel = new JPanel();
         infolabel = new JLabel("<html><center><strong>" + name + "</strong>"
                 + "<br>해당 음료가 있는 자판기를 검색중입니다.</center></html>");
         infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
         informpanel.add(infolabel);
+        
         //버튼패널
         JPanel buttonpanel = new JPanel();
         cancel = new JButton("취소");
@@ -73,4 +81,7 @@ public class FindingDVM extends JFrame implements ActionListener {
         }
     }
 
+    public int getReturn_value() {return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
 }

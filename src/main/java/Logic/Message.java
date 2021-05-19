@@ -11,12 +11,9 @@ public class Message {
     private int C_Number = -1;
     private boolean boolData = false;
 
-
     Message(int myid) {
         myID = myid;
     }
-
-    //type1
 
     public void translate(int myID, int targetID, int Type, double xAdress,
                           double yAdress, int Title, int C_Number, boolean boolData) {
@@ -30,6 +27,7 @@ public class Message {
         this.boolData = boolData;
     }
 
+    //type1
     void setmsg(int id, int type, int data) {
         targetID = id;
         Type = type;

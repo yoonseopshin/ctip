@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MessageTest {
-    Message msg = new Message(1);
+    Message msg = new Message(DVM.getCurrentID());
 
     @Test
     public void testSetmsg1() {

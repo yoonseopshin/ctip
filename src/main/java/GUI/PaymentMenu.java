@@ -1,5 +1,8 @@
 package GUI;
 
+import Logic.Title;
+import Logic.DVM;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -9,9 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
-import Logic.*;
-import static GUI.Sleep.*;
 
 public class PaymentMenu extends JFrame implements ActionListener {
 
@@ -26,14 +26,13 @@ public class PaymentMenu extends JFrame implements ActionListener {
     private JButton cardpay;
     private JButton smartpay;
     private JButton cancel;
-
-    public int return_value = -1;
+    private int return_value = -1;
 
     public PaymentMenu(Title title) {
         timer.start();
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
+        this.setTitle("DVM " + DVM.getCurrentID());
 
         //라벨 패널
         JPanel labelpanel = new JPanel();
@@ -78,15 +77,6 @@ public class PaymentMenu extends JFrame implements ActionListener {
 
     }
 
-    //테스트용
-	/*
-	public static void main(String[] args) {
-		Title a=new Title("코카콜라",1,(float)1);
-		new PaymentMenu(a);
-		
-
-	}
-	*/
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cardpay) {
@@ -102,5 +92,9 @@ public class PaymentMenu extends JFrame implements ActionListener {
             return_value = 0;
         }
     }
+    
+    public int getReturn_value() {return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
 }
 

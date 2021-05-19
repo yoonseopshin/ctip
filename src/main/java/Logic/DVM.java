@@ -2,10 +2,10 @@ package Logic;
 
 public class DVM {
 
-    public static int CurrentID = 3;
-    public static double CurrentX = 1.0;
-    public static double CurrentY = 1.0;
-    private int ID; // 메세지 보낼 타겟 아이디
+    private static int CurrentID = 1;
+    private static double CurrentX = 1.0;
+    private static double CurrentY = 1.0;
+    private int ID; // 메시지 받은 DVM ID
     private double Address_X; // 실제 주소
     private double Address_Y;
 
@@ -39,12 +39,16 @@ public class DVM {
         Address_Y = address_Y;
     }
 
-    public static int getCurrentID() {
-        return CurrentID;
-    }
+    public static int getCurrentID() { return CurrentID; }
 
-    public static void setCurrentID(int currentID) {
-        CurrentID = currentID;
-    }
+    public static void setCurrentID(int currentID) { CurrentID = currentID; }
+
+    public static double getCurrentX() { return CurrentX; }
+
+    public static void setCurrentX(double currentX) { CurrentX = currentX; }
+
+    public static double getCurrentY() { return CurrentY; }
+
+    public static void setCurrentY(double currentY) { CurrentY = currentY; }
 
 }

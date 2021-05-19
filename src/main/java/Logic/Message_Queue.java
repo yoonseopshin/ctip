@@ -5,25 +5,21 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.Queue;
 import java.util.LinkedList;
-import java.lang.*;
-
-import static Logic.DVM.*;
-import static Logic.Controller.*;
 
 import java.net.Socket;
 
 public class Message_Queue extends Thread {
 
-    public static Queue<Message> msgQueue = new LinkedList<>();
-    public static Queue<Message> StkmsgQueue = new LinkedList<>();
-    public static Queue<Message> LocmsgQueue = new LinkedList<>();
-    public static int loc = -1;
-    public static int stk = 9;
+    private static Queue<Message> msgQueue = new LinkedList<>();
+    private static Queue<Message> StkmsgQueue = new LinkedList<>();
+    private static Queue<Message> LocmsgQueue = new LinkedList<>();
+    private static int loc = -1;
+    private static int stk = 9;
 
     @Override
     public void run() {
         System.out.print("메시지 수신 시작\n");
-        MsgReciv(CurrentID);
+        MsgReciv(DVM.getCurrentID());
         System.out.print("메시지 수신 종료\n");
     }
 
@@ -127,7 +123,7 @@ public class Message_Queue extends Thread {
                     break;
             }
         } catch (IOException e) {
-            System.err.println("서버 접속 오류, 오류 DVM :" + message.getMyID());
+            System.err.println("서버 접속 오류, 오류 DVM :" + message.getTargetID());
             if (message.getType() == 1) {
                 stk--;
                 if (stk == StkmsgQueue.size()) {
@@ -149,22 +145,22 @@ public class Message_Queue extends Thread {
         while (msgQueue.size() > 0) {
             Message rm = msgQueue.poll();
             if (rm.getType() == 1) {
-                Message sm = new Message(CurrentID);
-                sm.setmsg(rm.getMyID(), 2, Title_List.get(rm.getTitle() - 1).CheckStock());
+                Message sm = new Message(DVM.getCurrentID());
+                sm.setmsg(rm.getMyID(), 2, Controller.getTitle_List().get(rm.getTitle() - 1).CheckStock());
                 System.out.println("재고 요청 응답 완료");
             } else if (rm.getType() == 2) {
                 StkmsgQueue.offer(rm);
             } else if (rm.getType() == 3) {
-                Message sm = new Message(CurrentID);
-                sm.setmsg(rm.getMyID(), 4, CurrentX, CurrentY);
+                Message sm = new Message(DVM.getCurrentID());
+                sm.setmsg(rm.getMyID(), 4, DVM.getCurrentX(), DVM.getCurrentY());
                 System.out.println("위치 요청 메시지 응답 완료");
             } else if (rm.getType() == 4) {
                 LocmsgQueue.offer(rm);
             } else if (rm.getType() == 5) {
                 C_Number rc = new C_Number(rm.getTitle(), rm.getMyID());
                 rc.setC_Number_t(rm.getC_Number());
-                CM.AddCnumber(rc);
-                Title_List.get(rm.getTitle() - 1).UpdateStock(1, true);
+                Controller.getCM().AddCnumber(rc);
+                Controller.getTitle_List().get(rm.getTitle() - 1).UpdateStock(1, true);
             } else {
                 System.out.println("메시지 오류");
             }
@@ -174,7 +170,7 @@ public class Message_Queue extends Thread {
             while (StkmsgQueue.size() > 0) {
                 Message stk = StkmsgQueue.poll();
                 if (stk.isBoolData()) {
-                    Message sm = new Message(CurrentID);
+                    Message sm = new Message(DVM.getCurrentID());
                     sm.setmsg(stk.getMyID(), 3);
                     System.out.println("위치 요청 메시지 전송 완료");
                     i++;
@@ -187,28 +183,32 @@ public class Message_Queue extends Thread {
             if (loc != 0) {
                 while (LocmsgQueue.size() > 0) {
                     Message loc = LocmsgQueue.poll();
-                    DVMStack.push(new DVM(loc.getMyID(), loc.getxAdress(), loc.getyAdress()));
+                    Controller.getDVMStack().push(new DVM(loc.getMyID(), loc.getxAdress(), loc.getyAdress()));
                     System.out.println("위치 응답 메시지 수신 완료");
                 }
             }
-            DVMStack.push(new DVM(-1, 0.0, 0.0));
+            Controller.getDVMStack().push(new DVM(-1, 0.0, 0.0));
             loc = -1;
         }
     }
 
-    public static int getLoc() {
-        return loc;
-    }
+    public static int getLoc() { return loc; }
 
-    public static void setLoc(int loc) {
-        Message_Queue.loc = loc;
-    }
+    public static void setLoc(int loc) { Message_Queue.loc = loc; }
 
-    public static int getStk() {
-        return stk;
-    }
+    public static int getStk() { return stk; }
 
-    public static void setStk(int stk) {
-        Message_Queue.stk = stk;
-    }
+    public static void setStk(int stk) { Message_Queue.stk = stk; }
+
+    public static Queue<Message> getMsgQueue() { return msgQueue; }
+
+    public static void setMsgQueue(Queue<Message> msgQueue) { Message_Queue.msgQueue = msgQueue; }
+
+    public static Queue<Message> getStkmsgQueue() { return StkmsgQueue; }
+
+    public static void setStkmsgQueue(Queue<Message> stkmsgQueue) { StkmsgQueue = stkmsgQueue; }
+
+    public static Queue<Message> getLocmsgQueue() { return LocmsgQueue; }
+
+    public static void setLocmsgQueue(Queue<Message> locmsgQueue) { LocmsgQueue = locmsgQueue; }
 }
