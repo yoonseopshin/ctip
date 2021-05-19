@@ -31,7 +31,7 @@ public class MainMenu extends JFrame implements ActionListener {
 
     public MainMenu(ArrayList<Title> Title_List) {
         timer.start();
-        
+
         this.setPreferredSize(new Dimension(600, 800));
         this.setTitle("DVM " + DVM.getCurrentID());
 
@@ -41,7 +41,7 @@ public class MainMenu extends JFrame implements ActionListener {
         JLabel label = new JLabel("음료를 선택하세요");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
-        
+
         //메뉴패널
         JPanel menupanel = new JPanel(new GridLayout(5, 4));
         menupanel.setPreferredSize(new Dimension(600, 700));
@@ -51,7 +51,7 @@ public class MainMenu extends JFrame implements ActionListener {
             menupanel.add(menu[i]);
             menu[i].addActionListener(this);
         }
-        
+
         //추가패널
         JPanel addpanel = new JPanel(new GridLayout(1, 1));
         addpanel.setPreferredSize(new Dimension(600, 70));
@@ -83,8 +83,8 @@ public class MainMenu extends JFrame implements ActionListener {
         }
     }
 
-    public int getReturn_value() {return return_value; }
+    public int getReturn_value() { return return_value; }
 
     public void setReturn_value(int return_value) { this.return_value = return_value; }
-    
+
 }

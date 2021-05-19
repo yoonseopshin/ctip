@@ -92,8 +92,8 @@ public class PaymentMenu extends JFrame implements ActionListener {
             return_value = 0;
         }
     }
-    
-    public int getReturn_value() {return return_value; }
+
+    public int getReturn_value() { return return_value; }
 
     public void setReturn_value(int return_value) { this.return_value = return_value; }
 }

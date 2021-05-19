@@ -22,7 +22,7 @@ public class InfoNoItemUI extends JFrame implements ActionListener {
             timer.stop();
         }
     });
-    
+
     private JButton find;
     private JButton cancel;
     private int return_value = -1;
@@ -39,14 +39,14 @@ public class InfoNoItemUI extends JFrame implements ActionListener {
         JLabel label = new JLabel("선택한 음료: " + name);
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
-        
+
         //안내패널
         JPanel informpanel = new JPanel();
         JLabel infolabel = new JLabel("<html><center>해당 음료의 재고가 없습니다."
                 + "<br>구매 가능한 다른 자판기를 안내받으시겠습니까?</center></html>");
         infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
         informpanel.add(infolabel);
-        
+
         //버튼패널
         JPanel buttonpanel = new JPanel(new GridLayout(2, 1));
         buttonpanel.setPreferredSize(new Dimension(600, 150));
@@ -78,8 +78,8 @@ public class InfoNoItemUI extends JFrame implements ActionListener {
         }
     }
 
-    public int getReturn_value() {return return_value; }
+    public int getReturn_value() { return return_value; }
 
     public void setReturn_value(int return_value) { this.return_value = return_value; }
-    
+
 }

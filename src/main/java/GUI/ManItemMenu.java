@@ -39,10 +39,10 @@ public class ManItemMenu extends JFrame implements ActionListener {
     public ManItemMenu(Title t) {
         timer.start();
         temp = t.getItem_List();
-        
+
         this.setPreferredSize(new Dimension(600, 800));
         this.setTitle("DVM " + DVM.getCurrentID());
-        
+
 
         //라벨 패널
         JPanel labelpanel = new JPanel();
@@ -50,7 +50,7 @@ public class ManItemMenu extends JFrame implements ActionListener {
         JLabel label = new JLabel("음료: " + t.getName() + "     변경할 재고를 선택하세요");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
-       
+
         //아이템패널
         JPanel itemlistpanel = new JPanel();
         JScrollPane itempanel = new JScrollPane(itemlistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,

@@ -37,7 +37,7 @@ public class ManTitleMenu extends JFrame implements ActionListener {
 
         this.setPreferredSize(new Dimension(600, 800));
         this.setTitle("DVM " + DVM.getCurrentID());
-        
+
         //라벨 패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600, 30));
@@ -90,7 +90,7 @@ public class ManTitleMenu extends JFrame implements ActionListener {
         }
     }
 
-    public int getReturn_value() {return return_value; }
+    public int getReturn_value() { return return_value; }
 
     public void setReturn_value(int return_value) { this.return_value = return_value; }
 

@@ -32,7 +32,7 @@ public class Sleep extends JFrame implements MouseListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
@@ -61,9 +61,9 @@ public class Sleep extends JFrame implements MouseListener {
         // TODO Auto-generated method stub
 
     }
-    
-    public int getReturn_value() {return return_value; }
+
+    public int getReturn_value() { return return_value; }
 
     public void setReturn_value(int return_value) { this.return_value = return_value; }
-    
+
 }

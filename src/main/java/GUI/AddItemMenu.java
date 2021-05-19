@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class AddItemMenu extends JFrame implements ActionListener {
-    
+
     private Timer timer = new Timer(180000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -93,7 +93,7 @@ public class AddItemMenu extends JFrame implements ActionListener {
         expdatepanel.add(m);
         expdatepanel.add(Dayselect);
         expdatepanel.add(d);
-        
+
         //버튼패널
         JPanel buttonpanel = new JPanel(new GridLayout(1, 2));
         buttonpanel.setPreferredSize(new Dimension(600, 70));
@@ -141,5 +141,5 @@ public class AddItemMenu extends JFrame implements ActionListener {
     public int getReturn_date() { return return_date; }
 
     public void setReturn_date(int return_date) { this.return_date = return_date; }
-    
+
 }

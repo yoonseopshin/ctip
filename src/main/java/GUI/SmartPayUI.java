@@ -45,10 +45,12 @@ public class SmartPayUI extends JFrame implements ActionListener {
     public SmartPayUI() {
         this.addKeyListener(new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+            }
 
             @Override
-            public void keyPressed(KeyEvent e) {}
+            public void keyPressed(KeyEvent e) {
+            }
 
             @Override
             public void keyReleased(KeyEvent e) {
@@ -59,9 +61,9 @@ public class SmartPayUI extends JFrame implements ActionListener {
                 }
             }
         });
-        
+
         timer.start();
-        
+
         this.setPreferredSize(new Dimension(600, 800));
         this.setTitle("DVM " + DVM.getCurrentID());
 
@@ -71,13 +73,13 @@ public class SmartPayUI extends JFrame implements ActionListener {
         label = new JLabel("남은 시간: 20");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
-        
+
         //안내패널
         JPanel informpanel = new JPanel();
         infolabel = new JLabel("간편결제");
         infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
         informpanel.add(infolabel);
-        
+
         //버튼패널
         buttonpanel = new JPanel();
         cancel = new JButton("취소");
@@ -95,7 +97,7 @@ public class SmartPayUI extends JFrame implements ActionListener {
         setVisible(true);
 
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cancel) {
@@ -103,8 +105,8 @@ public class SmartPayUI extends JFrame implements ActionListener {
             timer.stop();
         }
     }
-    
-    public int getReturn_value() {return return_value; }
+
+    public int getReturn_value() { return return_value; }
 
     public void setReturn_value(int return_value) { this.return_value = return_value; }
 

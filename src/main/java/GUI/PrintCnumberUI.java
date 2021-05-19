@@ -8,10 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
 import Logic.DVM;
 
 public class PrintCnumberUI extends JFrame {
-    
+
     private int s = 4;
     private Timer timer = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -23,7 +24,7 @@ public class PrintCnumberUI extends JFrame {
             s--;
         }
     });
-    
+
     private JLabel label;
     private int return_value = -1;
 
@@ -39,7 +40,7 @@ public class PrintCnumberUI extends JFrame {
         label = new JLabel("5초 후 메인화면으로 돌아갑니다.");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
-       
+
         //안내패널
         JPanel informpanel = new JPanel();
         JLabel infolabel = new JLabel("<html><center>제품: " + name + "   DVM ID: " + DVMid +
@@ -55,7 +56,7 @@ public class PrintCnumberUI extends JFrame {
         setVisible(true);
     }
 
-    public int getReturn_value() {return return_value; }
+    public int getReturn_value() { return return_value; }
 
     public void setReturn_value(int return_value) { this.return_value = return_value; }
 

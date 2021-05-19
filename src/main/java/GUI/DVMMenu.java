@@ -35,14 +35,14 @@ public class DVMMenu extends JFrame implements ActionListener {
 
         this.setPreferredSize(new Dimension(600, 800));
         this.setTitle("DVM " + DVM.getCurrentID());
-        
+
         //라벨패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600, 30));
         JLabel label = new JLabel("선결제할 자판기를 고르세요");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
-        
+
         //자판기패널
         JPanel DVMpanel = new JPanel(new GridLayout(10, 1));
         DVMpanel.setPreferredSize(new Dimension(600, 700));
@@ -70,7 +70,7 @@ public class DVMMenu extends JFrame implements ActionListener {
         setVisible(true);
 
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < stk.size(); i++) {

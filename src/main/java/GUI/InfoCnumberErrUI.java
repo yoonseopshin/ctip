@@ -26,7 +26,7 @@ public class InfoCnumberErrUI extends JFrame implements ActionListener {
             s--;
         }
     });
-    
+
     private JButton confirm;
     private JLabel label;
     private int return_value = -1;
@@ -43,14 +43,14 @@ public class InfoCnumberErrUI extends JFrame implements ActionListener {
         label = new JLabel("3초 후 이전화면으로 돌아갑니다.");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
-        
+
         //안내패널
         JPanel informpanel = new JPanel();
         JLabel infolabel = new JLabel("<html><center>해당 인증번호에 대한 선결제 정보를 확인할 수 없습니다."
                 + "<br>다시 입력하세요</center></html>");
         infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
         informpanel.add(infolabel);
-        
+
         //버튼패널
         JPanel buttonpanel = new JPanel();
         confirm = new JButton("확인");
@@ -74,9 +74,9 @@ public class InfoCnumberErrUI extends JFrame implements ActionListener {
             timer.stop();
         }
     }
-    
-    public int getReturn_value() {return return_value; }
+
+    public int getReturn_value() { return return_value; }
 
     public void setReturn_value(int return_value) { this.return_value = return_value; }
-    
+
 }
