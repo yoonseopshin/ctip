@@ -13,6 +13,8 @@ public class C_Number {
         this.DvmID = id;
     }
 
+
+
     public int CreateCnumber() {
         String numStr = new String();
         do {
@@ -20,7 +22,7 @@ public class C_Number {
         } while (numStr.equals("000000") || numStr.equals("111111"));
         C_Number_t = Integer.parseInt(numStr);
         Message message = new Message(DVM.getCurrentID());
-        message.setmsg(this.DvmID, 5, title_id, C_Number_t);
+        message.setmsg(this.DvmID, 3, title_id, C_Number_t);
         return C_Number_t;
     }
 

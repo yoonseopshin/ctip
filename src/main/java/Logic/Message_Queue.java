@@ -141,6 +141,16 @@ public class Message_Queue extends Thread {
         }
     }
 
+    /*
+    1. 재고 확인 요청 - title
+    2. 재고 확인 응답 - boolean
+    3. 선결제 확인 - boolean
+    4. 주소 요청
+    5. 주소 응답 - title, c_Number
+    6. 음료 판매 확인 - title
+    7. 음료 판매 응답 - boolean
+    */
+
     public static void Dequeue() {
         while (msgQueue.size() > 0) {
             Message rm = msgQueue.poll();
@@ -150,18 +160,18 @@ public class Message_Queue extends Thread {
                 System.out.println("재고 요청 응답 완료");
             } else if (rm.getType() == 2) {
                 StkmsgQueue.offer(rm);
-            } else if (rm.getType() == 3) {
-                Message sm = new Message(DVM.getCurrentID());
-                sm.setmsg(rm.getMyID(), 4, DVM.getCurrentX(), DVM.getCurrentY());
-                System.out.println("위치 요청 메시지 응답 완료");
-            } else if (rm.getType() == 4) {
-                LocmsgQueue.offer(rm);
-            } else if (rm.getType() == 5) {
+            }else if (rm.getType() == 3) {
                 C_Number rc = new C_Number(rm.getTitle(), rm.getMyID());
                 rc.setC_Number_t(rm.getC_Number());
                 Controller.getCM().AddCnumber(rc);
                 Controller.getTitle_List().get(rm.getTitle() - 1).UpdateStock(1, true);
-            } else {
+            } else if (rm.getType() == 4) {
+                Message sm = new Message(DVM.getCurrentID());
+                sm.setmsg(rm.getMyID(), 5, DVM.getCurrentX(), DVM.getCurrentY());
+                System.out.println("위치 요청 메시지 응답 완료");
+            } else if (rm.getType() == 5) {
+                LocmsgQueue.offer(rm);
+            }  else {
                 System.out.println("메시지 오류");
             }
         }
@@ -171,7 +181,7 @@ public class Message_Queue extends Thread {
                 Message stk = StkmsgQueue.poll();
                 if (stk.isBoolData()) {
                     Message sm = new Message(DVM.getCurrentID());
-                    sm.setmsg(stk.getMyID(), 3);
+                    sm.setmsg(stk.getMyID(), 4);
                     System.out.println("위치 요청 메시지 전송 완료");
                     i++;
                 }
