@@ -207,9 +207,7 @@ public class Controller {
             k.setVisible(false);
             k = new ManItemMenu(Title_List.get(TitleID - 1));
             del = ManEditItem(TitleID);
-            if (del == 0 || del == -2) {
-                break;
-            }
+            if (del == 0 || del == -2) { break; }
         }
     }
 
@@ -230,6 +228,22 @@ public class Controller {
                 int del2 = -1;
                 while (del2 == -1) {
                     System.out.print("");
+                    if(((AddItemMenu) k).getReturn_value()==1){
+                        Calendar cal = Calendar.getInstance();
+                        int today = (cal.get(Calendar.YEAR) * 10000) + ((cal.get(Calendar.MONTH) + 1) * 100) + cal.get(Calendar.DATE);
+                        if (today >= ((AddItemMenu) k).getReturn_date()) {
+                            k.setVisible(false);
+                            k = new InfoUI("유통기한이 지난 재고를 추가할 수 없습니다.", "이전");
+                            int del3 = -1;
+                            while (del3 == -1) {
+                                System.out.print("");
+                                del3 = ((InfoUI) k).getReturn_value();
+                            }
+                            k.setVisible(false);
+                            k = new AddItemMenu();
+                            continue;
+                        }
+                    }
                     del2 = ((AddItemMenu) k).getReturn_value();
                 }
                 if (del2 == -2) {
@@ -237,15 +251,8 @@ public class Controller {
                 } else if (del2 == 0) {
                     return 1;
                 } else if (del2 == 1) {
-                    Calendar cal = Calendar.getInstance();
-                    int today = (cal.get(Calendar.YEAR) * 10000) + (cal.get(Calendar.MONTH) * 100) + cal.get(Calendar.DATE);
-                    if (today >= ((AddItemMenu) k).getReturn_date()) {
-                        //  오류메시지 출력
-                        return -1;
-                    } else {
-                        Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).getReturn_date()));
-                        return 1;
-                    }
+                    Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).getReturn_date()));
+                    return 1;
                 } else {
                     //error
                     return -1;
