@@ -2,36 +2,31 @@ package GUI;
 
 import Logic.DVM;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
-public class InfoCnumberErrUI extends JFrame implements ActionListener {
+public class InfoUI extends JFrame implements ActionListener {
 
-    private int s = 2;
-    private Timer timer = new Timer(1000, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            label.setText(s + "초 후 이전화면으로 돌아갑니다.");
-            if (s == 0) {
-                return_value = 0;
-                timer.stop();
-            }
-            s--;
-        }
-    });
-
+    private int s = 9;
+    private Timer timer;
     private JButton confirm;
     private JLabel label;
     private int return_value = -1;
 
-    public InfoCnumberErrUI() {
+    public InfoUI(String str, String str2) {
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                label.setText(s + "초 후 " + str2 + " 화면으로 돌아갑니다.");
+                if (s == 0) {
+                    timer.stop();
+                    return_value = 0;
+                }
+                s--;
+            }
+        });
         timer.start();
 
         this.setPreferredSize(new Dimension(600, 800));
@@ -40,14 +35,13 @@ public class InfoCnumberErrUI extends JFrame implements ActionListener {
         //라벨패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600, 300));
-        label = new JLabel("3초 후 이전화면으로 돌아갑니다.");
+        label = new JLabel("10초 후 " + str2 + " 화면으로 돌아갑니다.");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
 
         //안내패널
         JPanel informpanel = new JPanel();
-        JLabel infolabel = new JLabel("<html><center>해당 인증번호에 대한 선결제 정보를 확인할 수 없습니다."
-                + "<br>다시 입력하세요</center></html>");
+        JLabel infolabel = new JLabel(str);
         infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
         informpanel.add(infolabel);
 
@@ -70,8 +64,8 @@ public class InfoCnumberErrUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == confirm) {
-            return_value = 0;
             timer.stop();
+            return_value = 0;
         }
     }
 

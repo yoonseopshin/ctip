@@ -20,8 +20,8 @@ public class MainMenu extends JFrame implements ActionListener {
     private Timer timer = new Timer(180000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            return_value = -2;
             timer.stop();
+            return_value = -2;
         }
     });
 

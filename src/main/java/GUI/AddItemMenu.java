@@ -21,8 +21,8 @@ public class AddItemMenu extends JFrame implements ActionListener {
     private Timer timer = new Timer(180000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            return_value = -2;
             timer.stop();
+            return_value = -2;
         }
     });
 
@@ -146,36 +146,36 @@ public class AddItemMenu extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        timer.restart();
         if (e.getSource() == Yearselect) {
-            int y = Integer.parseInt((String)(Yearselect.getSelectedItem()));
-            int m = Integer.parseInt((String)(Monthselect.getSelectedItem()));
-            if((y%4==0&&y%100!=0)||y%400==0){
-                if(m==2) {
-                    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( day_list3 );
-                    Dayselect.setModel( model );
+            int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));
+            int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));
+            if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) {
+                if (m == 2) {
+                    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(day_list3);
+                    Dayselect.setModel(model);
                 }
             }
-            timer.restart();
         }
         if (e.getSource() == Monthselect) {
-            int y = Integer.parseInt((String)(Yearselect.getSelectedItem()));
-            int m = Integer.parseInt((String)(Monthselect.getSelectedItem()));
+            timer.restart();
+            int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));
+            int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));
             DefaultComboBoxModel<String> model;
-            if(m==1||m==3||m==5||m==7||m==8||m==10||m==12){
-                model = new DefaultComboBoxModel<>( day_list1 );
+            if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
+                model = new DefaultComboBoxModel<>(day_list1);
             } else {
-                if(m==2){
-                    if((y%4==0&&y%100!=0)||y%400==0){
+                if (m == 2) {
+                    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) {
                         model = new DefaultComboBoxModel<>(day_list3);
                     } else {
                         model = new DefaultComboBoxModel<>(day_list4);
                     }
                 } else {
-                    model = new DefaultComboBoxModel<>( day_list2 );
+                    model = new DefaultComboBoxModel<>(day_list2);
                 }
             }
-            Dayselect.setModel( model );
-            timer.restart();
+            Dayselect.setModel(model);
         }
         if (e.getSource() == Dayselect) {
             timer.restart();

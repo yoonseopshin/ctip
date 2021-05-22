@@ -23,8 +23,8 @@ public class ManItemMenu extends JFrame implements ActionListener {
     private Timer timer = new Timer(180000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            return_value = -2;
             timer.stop();
+            return_value = -2;
         }
     });
 
@@ -55,7 +55,8 @@ public class ManItemMenu extends JFrame implements ActionListener {
         JPanel itemlistpanel = new JPanel();
         JScrollPane itempanel = new JScrollPane(itemlistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        itemlistpanel.setPreferredSize(new Dimension(600, 60 * temp.size()));
+        itempanel.getVerticalScrollBar().setUnitIncrement(8);
+        itemlistpanel.setPreferredSize(new Dimension(600, 56 * temp.size()));
         Item_list = new JCheckBox[30];
         for (int i = 0; i < temp.size(); i++) {
             String expdate = Integer.toString(temp.get(i).getExpiration_Date());

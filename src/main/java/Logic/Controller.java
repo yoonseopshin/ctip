@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Stack;
 import javax.swing.JFrame;
-import java.util.GregorianCalendar;
 
 public class Controller {
 
@@ -162,10 +161,11 @@ public class Controller {
     public void InfoCnumberError() {
         int del2 = -1;
         k.setVisible(false);
-        k = new InfoCnumberErrUI();
+        k = new InfoUI("<html><center>해당 인증번호에 대한 선결제 정보를 확인할 수 없습니다."
+                + "<br>다시 입력하세요</center></html>","이전");
         while (del2 == -1) {
             System.out.print("");
-            del2 = ((InfoCnumberErrUI) k).getReturn_value();
+            del2 = ((InfoUI) k).getReturn_value();
         }
     }
 
@@ -238,14 +238,11 @@ public class Controller {
                     return 1;
                 } else if (del2 == 1) {
                     Calendar cal = Calendar.getInstance();
-                    int today = (cal.get(Calendar.YEAR)*10000)+(cal.get(Calendar.MONTH)*100)+cal.get(Calendar.DATE);
-                    if( today >= ((AddItemMenu) k).getReturn_date())
-                    {
+                    int today = (cal.get(Calendar.YEAR) * 10000) + (cal.get(Calendar.MONTH) * 100) + cal.get(Calendar.DATE);
+                    if (today >= ((AddItemMenu) k).getReturn_date()) {
                         //  오류메시지 출력
                         return -1;
-                    }
-                    else
-                    {
+                    } else {
                         Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).getReturn_date()));
                         return 1;
                     }
@@ -319,10 +316,10 @@ public class Controller {
             int del2 = -1;
             Payment.CardPay(false);
             k.setVisible(false);
-            k = new PayErrUI(Payment.getError_log());
+            k = new InfoUI(Payment.getError_log(),"메인");
             while (del2 == -1) {
                 System.out.print("");
-                del2 = ((PayErrUI) k).getReturn_value();
+                del2 = ((InfoUI) k).getReturn_value();
             }
             Payment.init();
             init();
@@ -362,10 +359,10 @@ public class Controller {
             int del2 = -1;
             Payment.SmartPay(false);
             k.setVisible(false);
-            k = new PayErrUI(Payment.getError_log());
+            k = new InfoUI(Payment.getError_log(),"메인");
             while (del2 == -1) {
                 System.out.print("");
-                del2 = ((PayErrUI) k).getReturn_value();
+                del2 = ((InfoUI) k).getReturn_value();
             }
             Payment.init();
             init();
@@ -398,10 +395,11 @@ public class Controller {
     public void ReturnItem(Title t, boolean IfHold) {
         int del2 = -1;
         k.setVisible(false);
-        k = new InfoReturnItemUI(t.getName());
+        k = new InfoUI("<html><center><strong>" + t.getName()
+                + "</strong><br>음료가 나왔습니다.</center></html>","메인");
         while (del2 == -1) {
             System.out.print("");
-            del2 = ((InfoReturnItemUI) k).getReturn_value();
+            del2 = ((InfoUI) k).getReturn_value();
         }
         t.UpdateStock(0, IfHold);
         if (!IfHold) {
@@ -414,10 +412,11 @@ public class Controller {
     public void PrintCnumber(String name, int DVMid, int Cnumber) {
         int del2 = -1;
         k.setVisible(false);
-        k = new PrintCnumberUI(name, DVMid, Cnumber);
+        k = new InfoUI("<html><center>제품: " + name + "   DVM ID: " + DVMid +
+                "<br>인증번호: " + Cnumber + "</center></html>","메인");
         while (del2 == -1) {
             System.out.print("");
-            del2 = ((PrintCnumberUI) k).getReturn_value();
+            del2 = ((InfoUI) k).getReturn_value();
         }
         Payment.init();
         init();
@@ -491,10 +490,11 @@ public class Controller {
     public void InfoNoUsableDVM() {
         int del2 = -1;
         k.setVisible(false);
-        k = new InfoNoDVMUI(Title_List.get(basket - 1).getName());
+        k = new InfoUI("<html><center><strong>" + Title_List.get(basket - 1).getName()
+                + "</strong><br>해당 음료의 재고가 있는 자판기가 없습니다.</center></html>","메인");
         while (del2 == -1) {
             System.out.print("");
-            del2 = ((InfoNoDVMUI) k).getReturn_value();
+            del2 = ((InfoUI) k).getReturn_value();
         }
     }
 

@@ -21,8 +21,8 @@ public class ManTitleMenu extends JFrame implements ActionListener {
     private Timer timer = new Timer(180000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            return_value = -2;
             timer.stop();
+            return_value = -2;
         }
     });
 
@@ -45,16 +45,17 @@ public class ManTitleMenu extends JFrame implements ActionListener {
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
 
+        //타이틀 패널
         JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(), 1));
         JScrollPane titlepanel = new JScrollPane(titlelistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        titlepanel.getVerticalScrollBar().setUnitIncrement(8);
         titlelistpanel.setPreferredSize(new Dimension(600, 70 * tlist.size()));
         Title_list = new JButton[tlist.size()];
         for (int i = 0; i < tlist.size(); i++) {
             Title_list[i] = new JButton(
                     "<html><center><strong>" + tlist.get(i).getName() + "</strong><br>재고수량 : " +
                             tlist.get(i).getItem_List().size() + "</center></html>");
-            //Title_list[i].setPreferredSize(new Dimension(600,70));
             Title_list[i].addActionListener(this);
             titlelistpanel.add(Title_list[i]);
         }

@@ -14,19 +14,20 @@ import javax.swing.Timer;
 
 public class FindingDVM extends JFrame implements ActionListener {
 
-    private int s = 32;
+    private int s = 39;
     private Timer timer = new Timer(1000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            if (s <= 3) {
+            if (s <= 10) {
+                cancel.setText("확인");
                 label.setText("남은 시간: 0");
                 infolabel.setText("<html><center>자판기를 찾는 것에 실패하였습니다<br>"
                         + s + "초 후 메인화면으로 돌아갑니다.</center></html>");
                 if (s == 0) {
-                    return_value = 0;
                     timer.stop();
+                    return_value = 0;
                 }
             } else {
-                label.setText("남은 시간: " + (s - 3));
+                label.setText("남은 시간: " + (s - 10));
             }
             s--;
         }
@@ -46,7 +47,7 @@ public class FindingDVM extends JFrame implements ActionListener {
         //라벨패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600, 300));
-        label = new JLabel("남은시간:20");
+        label = new JLabel("남은시간: " + 30);
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
 

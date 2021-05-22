@@ -31,7 +31,7 @@ public class Message {
     void setmsg(int id, int type, int data) {
         targetID = id;
         Type = type;
-        if (Type == 1 && id == 0) {
+        if (Type == 1) {
             Title = data;
             Message_Queue.MsgSend(this);
         }
