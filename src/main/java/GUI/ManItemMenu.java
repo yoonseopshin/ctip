@@ -55,7 +55,7 @@ public class ManItemMenu extends JFrame implements ActionListener {
         JPanel itemlistpanel = new JPanel();
         JScrollPane itempanel = new JScrollPane(itemlistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        itemlistpanel.setPreferredSize(new Dimension(600, 50 * temp.size()));
+        itemlistpanel.setPreferredSize(new Dimension(600, 60 * temp.size()));
         Item_list = new JCheckBox[30];
         for (int i = 0; i < temp.size(); i++) {
             String expdate = Integer.toString(temp.get(i).getExpiration_Date());
