@@ -233,7 +233,7 @@ public class Controller {
                         int today = (cal.get(Calendar.YEAR) * 10000) + ((cal.get(Calendar.MONTH) + 1) * 100) + cal.get(Calendar.DATE);
                         if (today >= ((AddItemMenu) k).getReturn_date()) {
                             k.setVisible(false);
-                            k = new InfoUI("유통기한이 지난 재고를 추가할 수 없습니다. ", "이전");
+                            k = new InfoUI("유통기한이 지난 재고를 추가할 수 없습니다.", "이전");
                             int del3 = -1;
                             while (del3 == -1) {
                                 System.out.print("");
