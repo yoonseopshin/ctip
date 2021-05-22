@@ -242,7 +242,7 @@ public class Controller {
                     int month = cal.get(Calendar.MONTH);
                     int date = cal.get(Calendar.DATE);
                     int today = (year*10000)+(month*100)+date;
-                    if( today < ((AddItemMenu) k).getReturn_date())
+                    if( today > ((AddItemMenu) k).getReturn_date())
                     {
                         //  오류메시지 출력
                         return -1;
