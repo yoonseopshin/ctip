@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,6 +31,10 @@ public class AddItemMenu extends JFrame implements ActionListener {
     private JComboBox<String> Dayselect;
     private JButton cancel;
     private JButton add;
+    private String[] day_list1;
+    private String[] day_list2;
+    private String[] day_list3;
+    private String[] day_list4;
     private int return_value = -1;
     private int return_date;
 
@@ -60,7 +65,10 @@ public class AddItemMenu extends JFrame implements ActionListener {
         int year = cal.get(Calendar.YEAR);
         String[] year_list = new String[50];
         String[] month_list = new String[12];
-        String[] day_list = new String[31];
+        day_list1 = new String[31];
+        day_list2 = new String[30];
+        day_list3 = new String[29];
+        day_list4 = new String[28];
         for (int i = 0; i < year_list.length; i++) {
             year_list[i] = Integer.toString(year + i);
         }
@@ -71,16 +79,37 @@ public class AddItemMenu extends JFrame implements ActionListener {
                 month_list[i] = Integer.toString(i + 1);
             }
         }
-        for (int i = 0; i < day_list.length; i++) {
+        for (int i = 0; i < day_list1.length; i++) {
             if (i + 1 < 10) {
-                day_list[i] = "0".concat(Integer.toString(i + 1));
+                day_list1[i] = "0".concat(Integer.toString(i + 1));
             } else {
-                day_list[i] = Integer.toString(i + 1);
+                day_list1[i] = Integer.toString(i + 1);
+            }
+        }
+        for (int i = 0; i < day_list2.length; i++) {
+            if (i + 1 < 10) {
+                day_list2[i] = "0".concat(Integer.toString(i + 1));
+            } else {
+                day_list2[i] = Integer.toString(i + 1);
+            }
+        }
+        for (int i = 0; i < day_list3.length; i++) {
+            if (i + 1 < 10) {
+                day_list3[i] = "0".concat(Integer.toString(i + 1));
+            } else {
+                day_list3[i] = Integer.toString(i + 1);
+            }
+        }
+        for (int i = 0; i < day_list4.length; i++) {
+            if (i + 1 < 10) {
+                day_list4[i] = "0".concat(Integer.toString(i + 1));
+            } else {
+                day_list4[i] = Integer.toString(i + 1);
             }
         }
         Yearselect = new JComboBox<String>(year_list);
         Monthselect = new JComboBox<String>(month_list);
-        Dayselect = new JComboBox<String>(day_list);
+        Dayselect = new JComboBox<String>(day_list1);
         Yearselect.setFont(Yearselect.getFont().deriveFont(20.0f));
         Monthselect.setFont(Monthselect.getFont().deriveFont(20.0f));
         Dayselect.setFont(Dayselect.getFont().deriveFont(20.0f));
@@ -117,7 +146,38 @@ public class AddItemMenu extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == Yearselect || e.getSource() == Monthselect || e.getSource() == Dayselect) {
+        if (e.getSource() == Yearselect) {
+            int y = Integer.parseInt((String)(Yearselect.getSelectedItem()));
+            int m = Integer.parseInt((String)(Monthselect.getSelectedItem()));
+            if((y%4==0&&y%100!=0)||y%400==0){
+                if(m==2) {
+                    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( day_list3 );
+                    Dayselect.setModel( model );
+                }
+            }
+            timer.restart();
+        }
+        if (e.getSource() == Monthselect) {
+            int y = Integer.parseInt((String)(Yearselect.getSelectedItem()));
+            int m = Integer.parseInt((String)(Monthselect.getSelectedItem()));
+            DefaultComboBoxModel<String> model;
+            if(m==1||m==3||m==5||m==7||m==8||m==10||m==12){
+                model = new DefaultComboBoxModel<>( day_list1 );
+            } else {
+                if(m==2){
+                    if((y%4==0&&y%100!=0)||y%400==0){
+                        model = new DefaultComboBoxModel<>(day_list3);
+                    } else {
+                        model = new DefaultComboBoxModel<>(day_list4);
+                    }
+                } else {
+                    model = new DefaultComboBoxModel<>( day_list2 );
+                }
+            }
+            Dayselect.setModel( model );
+            timer.restart();
+        }
+        if (e.getSource() == Dayselect) {
             timer.restart();
         }
         if (e.getSource() == add) {
