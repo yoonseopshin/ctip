@@ -238,11 +238,8 @@ public class Controller {
                     return 1;
                 } else if (del2 == 1) {
                     Calendar cal = Calendar.getInstance();
-                    int year = cal.get(Calendar.YEAR);
-                    int month = cal.get(Calendar.MONTH);
-                    int date = cal.get(Calendar.DATE);
-                    int today = (year*10000)+(month*100)+date;
-                    if( today > ((AddItemMenu) k).getReturn_date())
+                    int today = (cal.get(Calendar.YEAR)*10000)+(cal.get(Calendar.MONTH)*100)+cal.get(Calendar.DATE);
+                    if( today >= ((AddItemMenu) k).getReturn_date())
                     {
                         //  오류메시지 출력
                         return -1;
