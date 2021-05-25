@@ -16,7 +16,7 @@ public class Message_Queue extends Thread {
     private static Queue<Message> CnmsgQueue = new LinkedList<>();
     private static int loc = -1;
     private static int stk = 9;
-    private static int cnum;
+    private static int cnum=-1;
 
     @Override
     public void run() {
@@ -71,6 +71,8 @@ public class Message_Queue extends Thread {
                 if (message.getType() == 3) System.out.println("위치요청메시지 수신됨");
                 if (message.getType() == 4) System.out.println("위치응답메시지 수신됨");
                 if (message.getType() == 5) System.out.println("인증번호메시지 수신됨");
+                if (message.getType() == 6) System.out.println("판매확인요청메시지 수신됨");
+                if (message.getType() == 7) System.out.println("판매확인메시지 수신됨");
                 printWriter.write("1");
                 printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
@@ -169,7 +171,7 @@ public class Message_Queue extends Thread {
                 System.out.println("재고 요청 응답 완료");
             } else if (rm.getType() == 2) {
                 StkmsgQueue.offer(rm);
-            }else if (rm.getType() == 3) {
+            } else if (rm.getType() == 3) {
                 C_Number rc = new C_Number(rm.getTitle(), rm.getMyID());
                 rc.setC_Number_t(rm.getC_Number());
                 Controller.getCM().AddCnumber(rc);
@@ -180,17 +182,17 @@ public class Message_Queue extends Thread {
                 System.out.println("위치 요청 메시지 응답 완료");
             } else if (rm.getType() == 5) {
                 LocmsgQueue.offer(rm);
-            } else if(rm.getType() == 6) {
+            } else if (rm.getType() == 6) {
                 Message sm = new Message(DVM.getCurrentID());
                 int data = Controller.getCM().CheckCnumber(rm.getC_Number());
-                if(data == -1)
-                    sm.setmsg(rm.getMyID(),7,rm.getC_Number(), false);
-            }
-            else if(rm.getType() == 7)
-            {
-
-            }
-            else {
+                if (data == -1) {
+                    sm.setmsg(rm.getMyID(), 7, rm.getC_Number(), false);
+                } else {
+                    sm.setmsg(rm.getMyID(), 7, rm.getC_Number(), true);
+                }
+            } else if (rm.getType() == 7) {
+                CnmsgQueue.offer(rm);
+            } else {
                 System.out.println("메시지 오류");
             }
         }
@@ -218,6 +220,15 @@ public class Message_Queue extends Thread {
             }
             Controller.getDVMStack().push(new DVM(-1, 0.0, 0.0));
             loc = -1;
+        }
+        if (CnmsgQueue.size() == cnum) {
+            while (CnmsgQueue.size() > 0) {
+                Message cn = CnmsgQueue.poll();
+                if(cn.isBoolData()==false){
+                    Controller.getCM().getCh_C_List().remove(cn.getC_Number());
+                }
+            }
+            Controller.getCM().getCh_C_List().put(-1,null);
         }
     }
 

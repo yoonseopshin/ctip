@@ -10,6 +10,7 @@ public class C_NumberManager {
 
     public C_NumberManager() {
         this.C_List = new HashMap<Integer, C_Number>();
+        this.ch_C_List = new HashMap<Integer, C_Number>();
         this.M_Number = 111111;
     }
 
@@ -28,20 +29,9 @@ public class C_NumberManager {
             return -1;
         }
     }
-    public int CheckCnumber2(int C_Number_t){
-        Message msg = new Message(DVM.getCurrentID());
-        msg.setmsg(0,6,C_Number_t);
-        //메세지에서 이미 사용된 번호면 1(사용 o)
-        //아직 사용되지 않은 번호면 0(사용 x)
-        if (C_Number_t == 1){
-            return 1;
-        }else
-            return 0;
-    }
+    public boolean CheckCnumber2(int C_Number_t){ return ch_C_List.containsKey(C_Number_t); }
 
-    public void AddchCnumber(C_Number c_number) {
-        ch_C_List.put(c_number.getC_Number_t(), c_number);
-    }
+    public void AddchCnumber(C_Number c_number) { ch_C_List.put(c_number.getC_Number_t(), c_number); }
 
     public void AddCnumber(C_Number c_number) {
         C_List.put(c_number.getC_Number_t(), c_number);
@@ -62,6 +52,10 @@ public class C_NumberManager {
     public void setC_List(HashMap<Integer, C_Number> c_List) {
         C_List = c_List;
     }
+
+    public HashMap<Integer, C_Number> getCh_C_List() { return ch_C_List; }
+
+    public void setCh_C_List(HashMap<Integer, C_Number> ch_C_List) { this.ch_C_List = ch_C_List; }
 }
 
 
