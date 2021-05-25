@@ -13,8 +13,10 @@ public class Message_Queue extends Thread {
     private static Queue<Message> msgQueue = new LinkedList<>();
     private static Queue<Message> StkmsgQueue = new LinkedList<>();
     private static Queue<Message> LocmsgQueue = new LinkedList<>();
+    private static Queue<Message> CnmsgQueue = new LinkedList<>();
     private static int loc = -1;
     private static int stk = 9;
+    private static int cnum;
 
     @Override
     public void run() {
@@ -130,6 +132,12 @@ public class Message_Queue extends Thread {
                     Dequeue();
                 }
             }
+            if (message.getType() == 6) {
+                cnum--;
+                if (cnum == CnmsgQueue.size()) {
+                    Dequeue();
+                }
+            }
         } finally {
             if (socket != null) {
                 try {
@@ -172,8 +180,7 @@ public class Message_Queue extends Thread {
                 System.out.println("위치 요청 메시지 응답 완료");
             } else if (rm.getType() == 5) {
                 LocmsgQueue.offer(rm);
-            } else if(rm.getType() == 6)
-            {
+            } else if(rm.getType() == 6) {
                 Message sm = new Message(DVM.getCurrentID());
                 int data = Controller.getCM().CheckCnumber(rm.getC_Number());
                 if(data == -1)
@@ -221,6 +228,10 @@ public class Message_Queue extends Thread {
     public static int getStk() { return stk; }
 
     public static void setStk(int stk) { Message_Queue.stk = stk; }
+
+    public static int getCnum() { return cnum; }
+
+    public static void setCnum(int cnum) { Message_Queue.cnum = cnum; }
 
     public static Queue<Message> getMsgQueue() { return msgQueue; }
 
