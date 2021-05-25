@@ -22,10 +22,6 @@ public class C_Number {
         {
             msg.setmsg(Controller.getCM().getC_List().get(i).DvmID,6 ,Controller.getCM().getC_List().get(i).C_Number_t);
         }
-        for(Controller.getCM().getC_List().get() : C_Number_t)
-        {
-
-        }
 
         while (true)
         {
