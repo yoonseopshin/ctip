@@ -1,5 +1,6 @@
 package GUI;
 
+import Logic.Controller;
 import Logic.DVM;
 
 import java.awt.BorderLayout;
@@ -8,11 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
 
 public class SmartPayUI extends JFrame implements ActionListener {
 
@@ -73,16 +70,17 @@ public class SmartPayUI extends JFrame implements ActionListener {
 
         //라벨패널
         JPanel labelpanel = new JPanel();
-        labelpanel.setPreferredSize(new Dimension(600, 300));
+        labelpanel.setPreferredSize(new Dimension(600, 150));
         label = new JLabel("남은 시간: " + 30);
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
 
         //안내패널
         JPanel informpanel = new JPanel();
-        infolabel = new JLabel("간편결제");
-        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
-        informpanel.add(infolabel);
+        informpanel.setPreferredSize(new Dimension(600, 500));
+        ImageIcon img = new ImageIcon("src/main/java/GUI/image/QR.jpg");
+        JLabel imageLabel = new JLabel(img);
+        informpanel.add(imageLabel);
 
         //버튼패널
         buttonpanel = new JPanel();
