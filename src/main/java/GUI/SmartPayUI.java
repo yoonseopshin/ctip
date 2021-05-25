@@ -1,6 +1,5 @@
 package GUI;
 
-import Logic.Controller;
 import Logic.DVM;
 
 import java.awt.BorderLayout;
