@@ -227,16 +227,23 @@ public class Controller {
             if (Title_List.get(TitleID - 1).getItem_List().size() >= 30) {
                 k.setVisible(false);
                 k = new InfoUI("더 이상 재고를 추가할 수 없습니다.", "이전");
-                int count = 0;
-                for(int i =0; i<20;i++) {
-                    if (Title_List.get(i).CheckStock())
-                        count++;
+
+                int del4 = -1;
+                while (del4 == -1) {
+                    System.out.print("");
+                    del4 = ((InfoUI) k).getReturn_value();
                 }
-                if(count>=7)
-                {
-                    //error
-                    return -1;
-                }
+                return 1;
+            }
+            int count = 0;
+            for(int i =0; i<20;i++) {
+                if (Title_List.get(i).CheckStock())
+                    count++;
+            }
+            if(count>=7&&Title_List.get(TitleID - 1).CheckStock()==false){
+                k.setVisible(false);
+                k = new InfoUI("음료를 7종류 이상 추가할 수 없습니다.", "이전");
+
                 int del4 = -1;
                 while (del4 == -1) {
                     System.out.print("");
