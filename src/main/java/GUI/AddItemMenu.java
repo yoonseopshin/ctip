@@ -63,6 +63,8 @@ public class AddItemMenu extends JFrame implements ActionListener {
         //선택창
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int date = cal.get(Calendar.DATE);
         String[] year_list = new String[50];
         String[] month_list = new String[12];
         day_list1 = new String[31];
@@ -116,6 +118,8 @@ public class AddItemMenu extends JFrame implements ActionListener {
         Yearselect.addActionListener(this);
         Monthselect.addActionListener(this);
         Dayselect.addActionListener(this);
+        Monthselect.setSelectedIndex(month);
+        Dayselect.setSelectedIndex(date-1);
         expdatepanel.add(Yearselect);
         expdatepanel.add(y);
         expdatepanel.add(Monthselect);

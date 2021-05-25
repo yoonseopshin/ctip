@@ -2,6 +2,7 @@ package Logic;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Title {
 
@@ -45,6 +46,12 @@ public class Title {
 
     public void AddItem(Item item) {
         this.Item_List.add(item);
+        this.Item_List.sort(new Comparator<Item>() {
+            @Override
+            public int compare(Item o1, Item o2) {
+                return o1.getExpiration_Date()-o2.getExpiration_Date();
+            }
+        });
     }
 
     public void DeleteItem(ArrayList<Integer> ilist) {

@@ -162,7 +162,7 @@ public class Controller {
         int del2 = -1;
         k.setVisible(false);
         k = new InfoUI("<html><center>해당 인증번호에 대한 선결제 정보를 확인할 수 없습니다."
-                + "<br>다시 입력하세요</center></html>","이전");
+                + "<br>다시 입력하세요</center></html>", "이전");
         while (del2 == -1) {
             System.out.print("");
             del2 = ((InfoUI) k).getReturn_value();
@@ -207,7 +207,9 @@ public class Controller {
             k.setVisible(false);
             k = new ManItemMenu(Title_List.get(TitleID - 1));
             del = ManEditItem(TitleID);
-            if (del == 0 || del == -2) { break; }
+            if (del == 0 || del == -2) {
+                break;
+            }
         }
     }
 
@@ -222,47 +224,54 @@ public class Controller {
         } else if (del == 0) {
             return 0;
         } else if (del == 1) { //AddItem
+            if (Title_List.get(TitleID - 1).getItem_List().size() >= 30) {
+                k.setVisible(false);
+                k = new InfoUI("더 이상 재고를 추가할 수 없습니다.", "이전");
+                int del4 = -1;
+                while (del4 == -1) {
+                    System.out.print("");
+                    del4 = ((InfoUI) k).getReturn_value();
+                }
+                return 1;
+            }
             k.setVisible(false);
             k = new AddItemMenu();
-            {
-                int del2 = -1;
-                while (del2 == -1) {
-                    System.out.print("");
-                    if(((AddItemMenu) k).getReturn_value()==1){
-                        Calendar cal = Calendar.getInstance();
-                        int today = (cal.get(Calendar.YEAR) * 10000) + ((cal.get(Calendar.MONTH) + 1) * 100) + cal.get(Calendar.DATE);
-                        if (today >= ((AddItemMenu) k).getReturn_date()) {
-                            k.setVisible(false);
-                            k = new InfoUI("유통기한이 지난 재고를 추가할 수 없습니다.", "이전");
-                            int del3 = -1;
-                            while (del3 == -1) {
-                                System.out.print("");
-                                del3 = ((InfoUI) k).getReturn_value();
-                            }
-                            k.setVisible(false);
-                            k = new AddItemMenu();
-                            continue;
+            int del2 = -1;
+            while (del2 == -1) {
+                System.out.print("");
+                if (((AddItemMenu) k).getReturn_value() == 1) {
+                    Calendar cal = Calendar.getInstance();
+                    int today = (cal.get(Calendar.YEAR) * 10000) + ((cal.get(Calendar.MONTH) + 1) * 100) + cal.get(Calendar.DATE);
+                    if (today > ((AddItemMenu) k).getReturn_date()) {
+                        k.setVisible(false);
+                        k = new InfoUI("유통기한이 지난 재고를 추가할 수 없습니다.", "이전");
+                        int del3 = -1;
+                        while (del3 == -1) {
+                            System.out.print("");
+                            del3 = ((InfoUI) k).getReturn_value();
                         }
+                        k.setVisible(false);
+                        k = new AddItemMenu();
+                        continue;
                     }
-                    del2 = ((AddItemMenu) k).getReturn_value();
                 }
-                if (del2 == -2) {
-                    return -2;
-                } else if (del2 == 0) {
-                    return 1;
-                } else if (del2 == 1) {
-                    Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).getReturn_date()));
-                    return 1;
-                } else {
-                    //error
-                    return -1;
-                }
+                del2 = ((AddItemMenu) k).getReturn_value();
+            }
+            if (del2 == -2) {
+                return -2;
+            } else if (del2 == 0) {
+                return 1;
+            } else if (del2 == 1) {
+                Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).getReturn_date()));
+                return 1;
+            } else {
+                //error
+                return -1;
             }
         } else if (del == 2) {//delete item
             Title_List.get(TitleID - 1).DeleteItem(((ManItemMenu) k).getReturn_itemlist());
             return 1;
-        } else {
-            //error
+        } else {//error
             return -1;
         }
     }
@@ -296,8 +305,7 @@ public class Controller {
             } else {//error
                 return -1;
             }
-        } else {
-            //error
+        } else {//error
             return -1;
         }
     }
@@ -323,7 +331,7 @@ public class Controller {
             int del2 = -1;
             Payment.CardPay(false);
             k.setVisible(false);
-            k = new InfoUI(Payment.getError_log(),"메인");
+            k = new InfoUI(Payment.getError_log(), "메인");
             while (del2 == -1) {
                 System.out.print("");
                 del2 = ((InfoUI) k).getReturn_value();
@@ -366,7 +374,7 @@ public class Controller {
             int del2 = -1;
             Payment.SmartPay(false);
             k.setVisible(false);
-            k = new InfoUI(Payment.getError_log(),"메인");
+            k = new InfoUI(Payment.getError_log(), "메인");
             while (del2 == -1) {
                 System.out.print("");
                 del2 = ((InfoUI) k).getReturn_value();
@@ -403,7 +411,7 @@ public class Controller {
         int del2 = -1;
         k.setVisible(false);
         k = new InfoUI("<html><center><strong>" + t.getName()
-                + "</strong><br>음료가 나왔습니다.</center></html>","메인");
+                + "</strong><br>음료가 나왔습니다.</center></html>", "메인");
         while (del2 == -1) {
             System.out.print("");
             del2 = ((InfoUI) k).getReturn_value();
@@ -420,7 +428,7 @@ public class Controller {
         int del2 = -1;
         k.setVisible(false);
         k = new InfoUI("<html><center>제품: " + name + "   DVM ID: " + DVMid +
-                "<br>인증번호: " + Cnumber + "</center></html>","메인");
+                "<br>인증번호: " + Cnumber + "</center></html>", "메인");
         while (del2 == -1) {
             System.out.print("");
             del2 = ((InfoUI) k).getReturn_value();
@@ -498,7 +506,7 @@ public class Controller {
         int del2 = -1;
         k.setVisible(false);
         k = new InfoUI("<html><center><strong>" + Title_List.get(basket - 1).getName()
-                + "</strong><br>해당 음료의 재고가 있는 자판기가 없습니다.</center></html>","메인");
+                + "</strong><br>해당 음료의 재고가 있는 자판기가 없습니다.</center></html>", "메인");
         while (del2 == -1) {
             System.out.print("");
             del2 = ((InfoUI) k).getReturn_value();
@@ -538,35 +546,67 @@ public class Controller {
         init();
     }
 
-    public JFrame getK() { return k; }
+    public JFrame getK() {
+        return k;
+    }
 
-    public void setK(JFrame k) { this.k = k; }
+    public void setK(JFrame k) {
+        this.k = k;
+    }
 
-    public Logic.Payment getPayment() { return Payment; }
+    public Logic.Payment getPayment() {
+        return Payment;
+    }
 
-    public void setPayment(Logic.Payment payment) { Payment = payment; }
+    public void setPayment(Logic.Payment payment) {
+        Payment = payment;
+    }
 
-    public int getBasket() { return basket; }
+    public int getBasket() {
+        return basket;
+    }
 
-    public void setBasket(int basket) { this.basket = basket; }
+    public void setBasket(int basket) {
+        this.basket = basket;
+    }
 
-    public int getDel() { return del; }
+    public int getDel() {
+        return del;
+    }
 
-    public void setDel(int del) { this.del = del; }
+    public void setDel(int del) {
+        this.del = del;
+    }
 
-    public static ArrayList<Title> getTitle_List() { return Title_List; }
+    public static ArrayList<Title> getTitle_List() {
+        return Title_List;
+    }
 
-    public static void setTitle_List(ArrayList<Title> title_List) { Title_List = title_List; }
+    public static void setTitle_List(ArrayList<Title> title_List) {
+        Title_List = title_List;
+    }
 
-    public static Stack<DVM> getDVMStack() { return DVMStack; }
+    public static Stack<DVM> getDVMStack() {
+        return DVMStack;
+    }
 
-    public static void setDVMStack(Stack<DVM> DVMStack) { Controller.DVMStack = DVMStack; }
+    public static void setDVMStack(Stack<DVM> DVMStack) {
+        Controller.DVMStack = DVMStack;
+    }
 
-    public static C_NumberManager getCM() { return CM; }
+    public static C_NumberManager getCM() {
+        return CM;
+    }
 
-    public static void setCM(C_NumberManager CM) { Controller.CM = CM; }
+    public static void setCM(C_NumberManager CM) {
+        Controller.CM = CM;
+    }
 
-    public static Message_Queue getMq() { return mq; }
+    public static Message_Queue getMq() {
+        return mq;
+    }
 
-    public static void setMq(Message_Queue mq) { Controller.mq = mq; }
+    public static void setMq(Message_Queue mq) {
+        Controller.mq = mq;
+    }
 }
