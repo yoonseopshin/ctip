@@ -262,8 +262,22 @@ public class Controller {
             } else if (del2 == 0) {
                 return 1;
             } else if (del2 == 1) {
-                Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).getReturn_date()));
-                return 1;
+                int count = 0;
+                for(int i =0; i<20;i++) {
+                    if (Title_List.get(i).CheckStock())
+                        count++;
+                    System.out.println(count);
+                }
+                if(count>=7)
+                {
+                    //error
+                    return -1;
+                }
+                else
+                {
+                    Title_List.get(TitleID - 1).AddItem(new Item(((AddItemMenu) k).getReturn_date()));
+                    return 1;
+                }
             } else {
                 //error
                 return -1;
