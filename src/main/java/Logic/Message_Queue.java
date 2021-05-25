@@ -147,11 +147,12 @@ public class Message_Queue extends Thread {
     3. 선결제 확인 - boolean
     4. 주소 요청
     5. 주소 응답 - title, c_Number
-    6. 음료 판매 확인 - title
+    6. 음료 판매 확인 - title, Cnumber
     7. 음료 판매 응답 - boolean
     */
 
     public static void Dequeue() {
+        int result = -1;
         while (msgQueue.size() > 0) {
             Message rm = msgQueue.poll();
             if (rm.getType() == 1) {
@@ -171,7 +172,18 @@ public class Message_Queue extends Thread {
                 System.out.println("위치 요청 메시지 응답 완료");
             } else if (rm.getType() == 5) {
                 LocmsgQueue.offer(rm);
-            }  else {
+            } else if(rm.getType() == 6)
+            {
+                Message sm = new Message(DVM.getCurrentID());
+                int data = Controller.getCM().CheckCnumber(rm.getC_Number());
+                if(data == -1)
+                    sm.setmsg(rm.getMyID(),7,rm.getC_Number(), false);
+            }
+            else if(rm.getType() == 7)
+            {
+
+            }
+            else {
                 System.out.println("메시지 오류");
             }
         }

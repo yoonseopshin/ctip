@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class C_NumberManager {
     //인증번호와 C_number(title과 dvmID를 가지고 있음)를 해쉬맵으로 연결.
     private HashMap<Integer, C_Number> C_List;
+    private HashMap<Integer, C_Number> ch_C_List; //여태까지 보낸 C_넘버를 저장
     private int M_Number;
 
     public C_NumberManager() {
@@ -26,8 +27,20 @@ public class C_NumberManager {
         } else {
             return -1;
         }
+    }
+    public int CheckCnumber2(int C_Number_t){
+        Message msg = new Message(DVM.getCurrentID());
+        msg.setmsg(0,6,C_Number_t);
+        //메세지에서 이미 사용된 번호면 1(사용 o)
+        //아직 사용되지 않은 번호면 0(사용 x)
+        if (C_Number_t == 1){
+            return 1;
+        }else
+            return 0;
+    }
 
-
+    public void AddchCnumber(C_Number c_number) {
+        ch_C_List.put(c_number.getC_Number_t(), c_number);
     }
 
     public void AddCnumber(C_Number c_number) {
