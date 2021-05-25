@@ -59,6 +59,7 @@ public class C_NumberManagerTest {
         Assert.assertEquals(ExpectedResult, ActualResult);
     }
 
+
     @Test
     public void testAddchCnumber() {
         Cn.setC_Number_t(971125);

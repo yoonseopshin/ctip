@@ -49,4 +49,13 @@ public class MessageTest {
         Assert.assertEquals(971125, msg.getC_Number());
 
     }
+    @Test
+    public void testSetmsg6() {
+        msg.setmsg(1, 6, 1, 971125);
+        Assert.assertEquals(1, msg.getTargetID());
+        Assert.assertEquals(6, msg.getType());
+        Assert.assertEquals(1, msg.getTitle());
+        Assert.assertEquals(971125, msg.getC_Number());
+
+    }
 }
