@@ -13,62 +13,58 @@ import javax.swing.JPanel;
 
 public class Sleep extends JFrame implements MouseListener {
 
-<span class="nc" id="L16">    public int return_value = -1;</span>
-<span class="nc" id="L17">    public static DVM thisDVM = new DVM(1,1.0,1.0);</span>
-<span class="nc" id="L18">    public static int CurrentID= thisDVM.getCurrentID();</span>
+<span class="nc" id="L16">    private int return_value = -1;</span>
 
-<span class="nc" id="L20">    public Sleep() {</span>
-<span class="nc" id="L21">        this.setPreferredSize(new Dimension(600, 800));</span>
-<span class="nc" id="L22">        this.setTitle(&quot;DVM &quot;+ CurrentID);</span>
-<span class="nc" id="L23">        this.addMouseListener(this);</span>
-<span class="nc" id="L24">        this.setBackground(new Color((float) 0.0, (float) 0.0, (float) 0.0));</span>
+<span class="nc" id="L18">    public Sleep() {</span>
+<span class="nc" id="L19">        this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L20">        this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
+<span class="nc" id="L21">        this.addMouseListener(this);</span>
+<span class="nc" id="L22">        this.setBackground(new Color((float) 1.0, (float) 1.0, (float) 1.0));</span>
 
         //라벨패널
-<span class="nc" id="L27">        JPanel labelpanel = new JPanel();</span>
-<span class="nc" id="L28">        JLabel label = new JLabel(&quot;사용하려면 화면을 터치하세요&quot;);</span>
-<span class="nc" id="L29">        label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L30">        labelpanel.add(label);</span>
+<span class="nc" id="L25">        JPanel labelpanel = new JPanel();</span>
+<span class="nc" id="L26">        JLabel label = new JLabel(&quot;사용하려면 화면을 터치하세요&quot;);</span>
+<span class="nc" id="L27">        label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L28">        labelpanel.add(label);</span>
 
-<span class="nc" id="L32">        add(labelpanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L33">        pack();</span>
-<span class="nc" id="L34">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L35">        setVisible(true);</span>
-<span class="nc" id="L36">    }</span>
+<span class="nc" id="L30">        add(labelpanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L31">        pack();</span>
+<span class="nc" id="L32">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L33">        setVisible(true);</span>
+<span class="nc" id="L34">    }</span>
 
-    /*
-    public static void main(String[] args) {
-      new Sleep();
-
-    }
-  */
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
 
-<span class="nc" id="L48">    }</span>
+<span class="nc" id="L40">    }</span>
 
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
 
-<span class="nc" id="L54">    }</span>
+<span class="nc" id="L46">    }</span>
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-<span class="nc" id="L59">        return_value = 1;</span>
-<span class="nc" id="L60">    }</span>
+<span class="nc" id="L50">        return_value = 1;</span>
+<span class="nc" id="L51">    }</span>
 
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
 
-<span class="nc" id="L66">    }</span>
+<span class="nc" id="L57">    }</span>
 
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
 
-<span class="nc" id="L72">    }</span>
+<span class="nc" id="L63">    }</span>
+
+<span class="nc" id="L65">    public int getReturn_value() { return return_value; }</span>
+
+<span class="nc" id="L67">    public void setReturn_value(int return_value) { this.return_value = return_value; }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

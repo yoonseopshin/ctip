@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InfoUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JavaCTIP</a> &gt; <a href="index.source.html" class="el_package">GUI</a> &gt; <span class="el_source">InfoUI.java</span></div><h1>InfoUI.java</h1><pre class="source lang-java linenums">package GUI;
+
+import Logic.DVM;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class InfoUI extends JFrame implements ActionListener {
+
+<span class="nc" id="L12">    private int s = 9;</span>
+    private Timer timer;
+    private JButton confirm;
+    private JLabel label;
+<span class="nc" id="L16">    private int return_value = -1;</span>
+
+<span class="nc" id="L18">    public InfoUI(String str, String str2) {</span>
+<span class="nc" id="L19">        timer = new Timer(1000, new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L22">                label.setText(s + &quot;초 후 &quot; + str2 + &quot; 화면으로 돌아갑니다.&quot;);</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">                if (s == 0) {</span>
+<span class="nc" id="L24">                    timer.stop();</span>
+<span class="nc" id="L25">                    return_value = 0;</span>
+                }
+<span class="nc" id="L27">                s--;</span>
+<span class="nc" id="L28">            }</span>
+        });
+<span class="nc" id="L30">        timer.start();</span>
+
+<span class="nc" id="L32">        this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L33">        this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
+
+        //라벨패널
+<span class="nc" id="L36">        JPanel labelpanel = new JPanel();</span>
+<span class="nc" id="L37">        labelpanel.setPreferredSize(new Dimension(600, 300));</span>
+<span class="nc" id="L38">        label = new JLabel(&quot;10초 후 &quot; + str2 + &quot; 화면으로 돌아갑니다.&quot;);</span>
+<span class="nc" id="L39">        label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L40">        labelpanel.add(label);</span>
+
+        //안내패널
+<span class="nc" id="L43">        JPanel informpanel = new JPanel();</span>
+<span class="nc" id="L44">        JLabel infolabel = new JLabel(str);</span>
+<span class="nc" id="L45">        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L46">        informpanel.add(infolabel);</span>
+
+        //버튼패널
+<span class="nc" id="L49">        JPanel buttonpanel = new JPanel();</span>
+<span class="nc" id="L50">        confirm = new JButton(&quot;확인&quot;);</span>
+<span class="nc" id="L51">        confirm.setPreferredSize(new Dimension(300, 70));</span>
+<span class="nc" id="L52">        confirm.addActionListener(this);</span>
+<span class="nc" id="L53">        buttonpanel.add(confirm);</span>
+
+<span class="nc" id="L55">        add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L56">        add(informpanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L57">        add(buttonpanel, BorderLayout.SOUTH);</span>
+
+<span class="nc" id="L59">        pack();</span>
+<span class="nc" id="L60">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L61">        setVisible(true);</span>
+<span class="nc" id="L62">    }</span>
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (e.getSource() == confirm) {</span>
+<span class="nc" id="L67">            timer.stop();</span>
+<span class="nc" id="L68">            return_value = 0;</span>
+        }
+<span class="nc" id="L70">    }</span>
+
+<span class="nc" id="L72">    public int getReturn_value() { return return_value; }</span>
+
+<span class="nc" id="L74">    public void setReturn_value(int return_value) { this.return_value = return_value; }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

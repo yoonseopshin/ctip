@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ManTitleMenu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JavaCTIP</a> &gt; <a href="index.source.html" class="el_package">GUI</a> &gt; <span class="el_source">ManTitleMenu.java</span></div><h1>ManTitleMenu.java</h1><pre class="source lang-java linenums">package GUI;
 
-import java.awt.*;
+import Logic.Title;
+import Logic.DVM;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,32 +16,27 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 
-import Logic.*;
-import static GUI.Sleep.*;
-
 public class ManTitleMenu extends JFrame implements ActionListener {
 
-<span class="nc" id="L19">    private Timer timer = new Timer(180000, new ActionListener() {</span>
+<span class="nc" id="L21">    private Timer timer = new Timer(180000, new ActionListener() {</span>
         @Override
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L22">            return_value = -2;</span>
-<span class="nc" id="L23">            timer.stop();</span>
-<span class="nc" id="L24">        }</span>
+<span class="nc" id="L24">            timer.stop();</span>
+<span class="nc" id="L25">            return_value = -2;</span>
+<span class="nc" id="L26">        }</span>
     });
 
     private JButton[] Title_list;
     private JButton exit;
     private ArrayList&lt;Title&gt; temp;
+<span class="nc" id="L32">    private int return_value = -1;</span>
 
-<span class="nc" id="L31">    public int return_value = -1;</span>
+<span class="nc" id="L34">    public ManTitleMenu(ArrayList&lt;Title&gt; tlist) {</span>
+<span class="nc" id="L35">        timer.start();</span>
+<span class="nc" id="L36">        temp = tlist;</span>
 
-<span class="nc" id="L33">    public ManTitleMenu(ArrayList&lt;Title&gt; tlist) {</span>
-<span class="nc" id="L34">        timer.start();</span>
-
-<span class="nc" id="L36">        this.setPreferredSize(new Dimension(600, 800));</span>
-<span class="nc" id="L37">        this.setTitle(&quot;DVM &quot;+ CurrentID);</span>
-
-<span class="nc" id="L39">        temp = tlist;</span>
+<span class="nc" id="L38">        this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L39">        this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
 
         //라벨 패널
 <span class="nc" id="L42">        JPanel labelpanel = new JPanel();</span>
@@ -45,60 +45,55 @@ public class ManTitleMenu extends JFrame implements ActionListener {
 <span class="nc" id="L45">        label.setFont(label.getFont().deriveFont(15.0f));</span>
 <span class="nc" id="L46">        labelpanel.add(label);</span>
 
-<span class="nc" id="L48">        JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(), 1));</span>
-<span class="nc" id="L49">        JScrollPane titlepanel = new JScrollPane(titlelistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,</span>
+        //타이틀 패널
+<span class="nc" id="L49">        JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(), 1));</span>
+<span class="nc" id="L50">        JScrollPane titlepanel = new JScrollPane(titlelistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,</span>
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-<span class="nc" id="L51">        titlelistpanel.setPreferredSize(new Dimension(600, 70 * tlist.size()));</span>
-<span class="nc" id="L52">        Title_list = new JButton[tlist.size()];</span>
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        for (int i = 0; i &lt; tlist.size(); i++) {</span>
-<span class="nc" id="L54">            Title_list[i] = new JButton(</span>
-<span class="nc" id="L55">                    &quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + tlist.get(i).getName() + &quot;&lt;/strong&gt;&lt;br&gt;재고수량 : &quot; +</span>
-<span class="nc" id="L56">                            tlist.get(i).getItem_List().size() + &quot;&lt;/center&gt;&lt;/html&gt;&quot;);</span>
-            //Title_list[i].setPreferredSize(new Dimension(600,70));
-<span class="nc" id="L58">            Title_list[i].addActionListener(this);</span>
-<span class="nc" id="L59">            titlelistpanel.add(Title_list[i]);</span>
+<span class="nc" id="L52">        titlepanel.getVerticalScrollBar().setUnitIncrement(8);</span>
+<span class="nc" id="L53">        titlelistpanel.setPreferredSize(new Dimension(600, 70 * tlist.size()));</span>
+<span class="nc" id="L54">        Title_list = new JButton[tlist.size()];</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        for (int i = 0; i &lt; tlist.size(); i++) {</span>
+<span class="nc" id="L56">            Title_list[i] = new JButton(</span>
+<span class="nc" id="L57">                    &quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + tlist.get(i).getName() + &quot;&lt;/strong&gt;&lt;br&gt;재고수량 : &quot; +</span>
+<span class="nc" id="L58">                            tlist.get(i).getItem_List().size() + &quot;&lt;/center&gt;&lt;/html&gt;&quot;);</span>
+<span class="nc" id="L59">            Title_list[i].addActionListener(this);</span>
+<span class="nc" id="L60">            titlelistpanel.add(Title_list[i]);</span>
         }
 
         //취소패널
-<span class="nc" id="L63">        JPanel exitpanel = new JPanel();</span>
-<span class="nc" id="L64">        exit = new JButton(&quot;나가기&quot;);</span>
-<span class="nc" id="L65">        exit.setPreferredSize(new Dimension(600, 70));</span>
-<span class="nc" id="L66">        exit.addActionListener(this);</span>
-<span class="nc" id="L67">        exitpanel.add(exit, BorderLayout.SOUTH);</span>
+<span class="nc" id="L64">        JPanel exitpanel = new JPanel();</span>
+<span class="nc" id="L65">        exit = new JButton(&quot;나가기&quot;);</span>
+<span class="nc" id="L66">        exit.setPreferredSize(new Dimension(600, 70));</span>
+<span class="nc" id="L67">        exit.addActionListener(this);</span>
+<span class="nc" id="L68">        exitpanel.add(exit, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L69">        add(labelpanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L70">        add(titlepanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L71">        add(exitpanel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L70">        add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L71">        add(titlepanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L72">        add(exitpanel, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L73">        pack();</span>
-<span class="nc" id="L74">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L75">        setVisible(true);</span>
-<span class="nc" id="L76">    }</span>
-/*test
-	public static void main(String[] args) {
-		
-		Controller c= new Controller();
-		new ManTitleMenu(c.Title_List);
-
-	}
-
- */
+<span class="nc" id="L74">        pack();</span>
+<span class="nc" id="L75">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L76">        setVisible(true);</span>
+<span class="nc" id="L77">    }</span>
 
     @Override
     public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L89" title="All 2 branches missed.">        for (int i = 0; i &lt; temp.size(); i++) {</span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (e.getSource() == Title_list[i]) {</span>
-<span class="nc" id="L91">                timer.stop();</span>
-<span class="nc" id="L92">                return_value = i + 1;</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        for (int i = 0; i &lt; temp.size(); i++) {</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">            if (e.getSource() == Title_list[i]) {</span>
+<span class="nc" id="L83">                timer.stop();</span>
+<span class="nc" id="L84">                return_value = i + 1;</span>
             }
         }
-<span class="nc bnc" id="L95" title="All 2 branches missed.">        if (e.getSource() == exit) {</span>
-<span class="nc" id="L96">            timer.stop();</span>
-<span class="nc" id="L97">            return_value = 0;</span>
-<span class="nc" id="L98">            this.setVisible(false);</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if (e.getSource() == exit) {</span>
+<span class="nc" id="L88">            timer.stop();</span>
+<span class="nc" id="L89">            return_value = 0;</span>
+<span class="nc" id="L90">            this.setVisible(false);</span>
         }
+<span class="nc" id="L92">    }</span>
 
-<span class="nc" id="L101">    }</span>
+<span class="nc" id="L94">    public int getReturn_value() { return return_value; }</span>
+
+<span class="nc" id="L96">    public void setReturn_value(int return_value) { this.return_value = return_value; }</span>
 
 }
 

@@ -2,10 +2,10 @@
 
 public class DVM {
 
-<span class="fc" id="L5">    public static int CurrentID = 3;</span>
-<span class="fc" id="L6">    public static double CurrentX = 1.0;</span>
-<span class="fc" id="L7">    public static double CurrentY = 1.0;</span>
-    private int ID; // 메세지 보낼 타겟 아이디
+<span class="fc" id="L5">    private static int CurrentID = 1;</span>
+<span class="fc" id="L6">    private static double CurrentX = 1.0;</span>
+<span class="fc" id="L7">    private static double CurrentY = 1.0;</span>
+    private int ID; // 메시지 받은 DVM ID
     private double Address_X; // 실제 주소
     private double Address_Y;
 
@@ -39,9 +39,17 @@ public class DVM {
 <span class="fc" id="L39">        Address_Y = address_Y;</span>
 <span class="fc" id="L40">    }</span>
 
-<span class="nc" id="L42">    public static int getCurrentID() { return CurrentID; }</span>
+<span class="fc" id="L42">    public static int getCurrentID() { return CurrentID; }</span>
 
-<span class="nc" id="L44">    public static void setCurrentID(int currentID) { CurrentID = currentID; }</span>
+<span class="fc" id="L44">    public static void setCurrentID(int currentID) { CurrentID = currentID; }</span>
+
+<span class="nc" id="L46">    public static double getCurrentX() { return CurrentX; }</span>
+
+<span class="nc" id="L48">    public static void setCurrentX(double currentX) { CurrentX = currentX; }</span>
+
+<span class="nc" id="L50">    public static double getCurrentY() { return CurrentY; }</span>
+
+<span class="nc" id="L52">    public static void setCurrentY(double currentY) { CurrentY = currentY; }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -11,137 +11,151 @@ public class Message {
 <span class="fc" id="L11">    private int C_Number = -1;</span>
 <span class="fc" id="L12">    private boolean boolData = false;</span>
 
-
-<span class="fc" id="L15">    Message(int myid) {</span>
-<span class="fc" id="L16">        myID = myid;</span>
-<span class="fc" id="L17">    }</span>
-
-    //type1
+<span class="fc" id="L14">    Message(int myid) {</span>
+<span class="fc" id="L15">        myID = myid;</span>
+<span class="fc" id="L16">    }</span>
 
     public void translate(int myID, int targetID, int Type, double xAdress,
-                   double yAdress, int Title, int C_Number, boolean boolData) {
-<span class="nc" id="L23">        this.myID = myID;</span>
-<span class="nc" id="L24">        this.targetID = targetID;</span>
-<span class="nc" id="L25">        this.Type = Type;</span>
-<span class="nc" id="L26">        this.xAdress = xAdress;</span>
-<span class="nc" id="L27">        this.yAdress = yAdress;</span>
-<span class="nc" id="L28">        this.Title = Title;</span>
-<span class="nc" id="L29">        this.C_Number = C_Number;</span>
-<span class="nc" id="L30">        this.boolData = boolData;</span>
-<span class="nc" id="L31">    }</span>
+                          double yAdress, int Title, int C_Number, boolean boolData) {
+<span class="nc" id="L20">        this.myID = myID;</span>
+<span class="nc" id="L21">        this.targetID = targetID;</span>
+<span class="nc" id="L22">        this.Type = Type;</span>
+<span class="nc" id="L23">        this.xAdress = xAdress;</span>
+<span class="nc" id="L24">        this.yAdress = yAdress;</span>
+<span class="nc" id="L25">        this.Title = Title;</span>
+<span class="nc" id="L26">        this.C_Number = C_Number;</span>
+<span class="nc" id="L27">        this.boolData = boolData;</span>
+<span class="nc" id="L28">    }</span>
 
+    //type1, 6
     void setmsg(int id, int type, int data) {
-<span class="fc" id="L34">        targetID = id;</span>
-<span class="fc" id="L35">        Type = type;</span>
-<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if (Type == 1) {</span>
-<span class="fc" id="L37">            Title = data;</span>
-<span class="fc" id="L38">            Message_Queue.MsgSend(this);</span>
+<span class="fc" id="L32">        targetID = id;</span>
+<span class="fc" id="L33">        Type = type;</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (Type == 1) {</span>
+<span class="fc" id="L35">            Title = data;</span>
+<span class="fc" id="L36">            Message_Queue.MsgSend(this);</span>
         }
-<span class="fc" id="L40">    }</span>
+        // 2021.05.21 수정 부분
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        else if (Type == 6) {</span>
+<span class="fc" id="L40">            C_Number = data;</span>
+<span class="fc" id="L41">            Message_Queue.MsgSend(this);</span>
+        }
+<span class="fc" id="L43">    }</span>
 
     //type2
     void setmsg(int id, int type, boolean data) {
-<span class="fc" id="L44">        targetID = id;</span>
-<span class="fc" id="L45">        Type = type;</span>
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if (Type == 2) {</span>
-<span class="fc" id="L47">            boolData = data;</span>
-<span class="fc" id="L48">            Message_Queue.MsgSend(this);</span>
+<span class="fc" id="L47">        targetID = id;</span>
+<span class="fc" id="L48">        Type = type;</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        if (Type == 2) {</span>
+<span class="fc" id="L50">            boolData = data;</span>
+<span class="fc" id="L51">            Message_Queue.MsgSend(this);</span>
         }
-<span class="fc" id="L50">    }</span>
+<span class="fc" id="L53">    }</span>
 
     //type3
-    void setmsg(int id, int type) {
-<span class="fc" id="L54">        targetID = id;</span>
-<span class="fc" id="L55">        Type = type;</span>
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if (type == 3)</span>
-<span class="fc" id="L57">            Message_Queue.MsgSend(this);</span>
-<span class="fc" id="L58">    }</span>
+    void setmsg(int id, int type, int data1, int data2) {
+<span class="fc" id="L57">        targetID = id;</span>
+<span class="fc" id="L58">        Type = type;</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if (Type == 3) {</span>
+<span class="fc" id="L60">            Title = data1;</span>
+<span class="fc" id="L61">            C_Number = data2;</span>
+<span class="fc" id="L62">            Message_Queue.MsgSend(this);</span>
+        }
+<span class="fc" id="L64">    }</span>
 
     //type4
-    void setmsg(int id, int type, double data1, double data2) {
-<span class="fc" id="L62">        targetID = id;</span>
-<span class="fc" id="L63">        Type = type;</span>
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        if (Type == 4) {</span>
-<span class="fc" id="L65">            xAdress = data1;</span>
-<span class="fc" id="L66">            yAdress = data2;</span>
-<span class="fc" id="L67">            Message_Queue.MsgSend(this);</span>
-        }
-<span class="fc" id="L69">    }</span>
+    void setmsg(int id, int type) {
+<span class="fc" id="L68">        targetID = id;</span>
+<span class="fc" id="L69">        Type = type;</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (type == 4)</span>
+<span class="fc" id="L71">            Message_Queue.MsgSend(this);</span>
+<span class="fc" id="L72">    }</span>
 
     //type5
-    void setmsg(int id, int type, int data1, int data2) {
-<span class="fc" id="L73">        targetID = id;</span>
-<span class="fc" id="L74">        Type = type;</span>
-<span class="pc bpc" id="L75" title="1 of 2 branches missed.">        if (Type == 5) {</span>
-<span class="fc" id="L76">            Title = data1;</span>
-<span class="fc" id="L77">            C_Number = data2;</span>
-<span class="fc" id="L78">            Message_Queue.MsgSend(this);</span>
+    void setmsg(int id, int type, double data1, double data2) {
+<span class="fc" id="L76">        targetID = id;</span>
+<span class="fc" id="L77">        Type = type;</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        if (Type == 5) {</span>
+<span class="fc" id="L79">            xAdress = data1;</span>
+<span class="fc" id="L80">            yAdress = data2;</span>
+<span class="fc" id="L81">            Message_Queue.MsgSend(this);</span>
         }
-<span class="fc" id="L80">    }</span>
+<span class="fc" id="L83">    }</span>
+
+    //  type7 2021.05.21 수정 부분
+    void setmsg(int id, int type, int data1, boolean data2) {
+<span class="fc" id="L87">        targetID = id;</span>
+<span class="fc" id="L88">        Type = type;</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        if (Type == 7) {</span>
+<span class="fc" id="L90">            C_Number = data1;</span>
+<span class="fc" id="L91">            boolData = data2;</span>
+<span class="fc" id="L92">            Message_Queue.MsgSend(this);</span>
+        }
+<span class="fc" id="L94">    }</span>
 
     public int getMyID() {
-<span class="fc" id="L83">        return myID;</span>
+<span class="fc" id="L97">        return myID;</span>
     }
 
     public void setMyID(int myID) {
-<span class="nc" id="L87">        this.myID = myID;</span>
-<span class="nc" id="L88">    }</span>
+<span class="nc" id="L101">        this.myID = myID;</span>
+<span class="nc" id="L102">    }</span>
 
     public int getTargetID() {
-<span class="fc" id="L91">        return targetID;</span>
+<span class="fc" id="L105">        return targetID;</span>
     }
 
     public void setTargetID(int targetID) {
-<span class="fc" id="L95">        this.targetID = targetID;</span>
-<span class="fc" id="L96">    }</span>
+<span class="fc" id="L109">        this.targetID = targetID;</span>
+<span class="fc" id="L110">    }</span>
 
     public int getType() {
-<span class="fc" id="L99">        return Type;</span>
+<span class="fc" id="L113">        return Type;</span>
     }
 
     public void setType(int type) {
-<span class="fc" id="L103">        Type = type;</span>
-<span class="fc" id="L104">    }</span>
+<span class="fc" id="L117">        Type = type;</span>
+<span class="fc" id="L118">    }</span>
 
     public double getxAdress() {
-<span class="fc" id="L107">        return xAdress;</span>
+<span class="fc" id="L121">        return xAdress;</span>
     }
 
     public void setxAdress(double xAdress) {
-<span class="nc" id="L111">        this.xAdress = xAdress;</span>
-<span class="nc" id="L112">    }</span>
+<span class="nc" id="L125">        this.xAdress = xAdress;</span>
+<span class="nc" id="L126">    }</span>
 
     public double getyAdress() {
-<span class="fc" id="L115">        return yAdress;</span>
+<span class="fc" id="L129">        return yAdress;</span>
     }
 
     public void setyAdress(double yAdress) {
-<span class="nc" id="L119">        this.yAdress = yAdress;</span>
-<span class="nc" id="L120">    }</span>
+<span class="nc" id="L133">        this.yAdress = yAdress;</span>
+<span class="nc" id="L134">    }</span>
 
     public int getTitle() {
-<span class="fc" id="L123">        return Title;</span>
+<span class="fc" id="L137">        return Title;</span>
     }
 
     public void setTitle(int title) {
-<span class="fc" id="L127">        Title = title;</span>
-<span class="fc" id="L128">    }</span>
+<span class="fc" id="L141">        Title = title;</span>
+<span class="fc" id="L142">    }</span>
 
     public int getC_Number() {
-<span class="fc" id="L131">        return C_Number;</span>
+<span class="fc" id="L145">        return C_Number;</span>
     }
 
     public void setC_Number(int c_Number) {
-<span class="fc" id="L135">        C_Number = c_Number;</span>
-<span class="fc" id="L136">    }</span>
+<span class="fc" id="L149">        C_Number = c_Number;</span>
+<span class="fc" id="L150">    }</span>
 
     public boolean isBoolData() {
-<span class="fc" id="L139">        return boolData;</span>
+<span class="fc" id="L153">        return boolData;</span>
     }
 
     public void setBoolData(boolean boolData) {
-<span class="nc" id="L143">        this.boolData = boolData;</span>
-<span class="nc" id="L144">    }</span>
+<span class="nc" id="L157">        this.boolData = boolData;</span>
+<span class="nc" id="L158">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

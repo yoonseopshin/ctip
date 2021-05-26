@@ -1,87 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InfoNoItemUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JavaCTIP</a> &gt; <a href="index.source.html" class="el_package">GUI</a> &gt; <span class="el_source">InfoNoItemUI.java</span></div><h1>InfoNoItemUI.java</h1><pre class="source lang-java linenums">package GUI;
 
+import Logic.DVM;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-
-import Logic.*;
-import static GUI.Sleep.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class InfoNoItemUI extends JFrame implements ActionListener {
 
-<span class="nc" id="L15">    private Timer timer = new Timer(180000, new ActionListener() {</span>
+<span class="nc" id="L18">    private Timer timer = new Timer(180000, new ActionListener() {</span>
         @Override
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L18">            return_value = -2;</span>
-<span class="nc" id="L19">            timer.stop();</span>
-<span class="nc" id="L20">        }</span>
+<span class="nc" id="L21">            timer.stop();</span>
+<span class="nc" id="L22">            return_value = -2;</span>
+<span class="nc" id="L23">        }</span>
     });
+
     private JButton find;
     private JButton cancel;
+<span class="nc" id="L28">    private int return_value = -1;</span>
 
-<span class="nc" id="L25">    public int return_value = -1;</span>
+<span class="nc" id="L30">    public InfoNoItemUI(String name) {</span>
+<span class="nc" id="L31">        timer.start();</span>
 
-<span class="nc" id="L27">    public InfoNoItemUI(Title t) {</span>
-<span class="nc" id="L28">        timer.start();</span>
-
-<span class="nc" id="L30">        this.setPreferredSize(new Dimension(600, 800));</span>
-<span class="nc" id="L31">        this.setTitle(&quot;DVM &quot;+ CurrentID);</span>
+<span class="nc" id="L33">        this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L34">        this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
 
         //라벨패널
-<span class="nc" id="L34">        JPanel labelpanel = new JPanel();</span>
-<span class="nc" id="L35">        labelpanel.setPreferredSize(new Dimension(600, 300));</span>
-<span class="nc" id="L36">        JLabel label = new JLabel(&quot;선택한 음료: &quot; + t.getName());</span>
-<span class="nc" id="L37">        label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L38">        labelpanel.add(label);</span>
+<span class="nc" id="L37">        JPanel labelpanel = new JPanel();</span>
+<span class="nc" id="L38">        labelpanel.setPreferredSize(new Dimension(600, 300));</span>
+<span class="nc" id="L39">        JLabel label = new JLabel(&quot;선택한 음료: &quot; + name);</span>
+<span class="nc" id="L40">        label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L41">        labelpanel.add(label);</span>
+
         //안내패널
-<span class="nc" id="L40">        JPanel informpanel = new JPanel();</span>
-        //informpanel.setPreferredSize(new Dimension(600,300));
-<span class="nc" id="L42">        JLabel infolabel = new JLabel(&quot;&lt;html&gt;&lt;center&gt;해당 음료의 재고가 없습니다.&quot;</span>
+<span class="nc" id="L44">        JPanel informpanel = new JPanel();</span>
+<span class="nc" id="L45">        JLabel infolabel = new JLabel(&quot;&lt;html&gt;&lt;center&gt;해당 음료의 재고가 없습니다.&quot;</span>
                 + &quot;&lt;br&gt;구매 가능한 다른 자판기를 안내받으시겠습니까?&lt;/center&gt;&lt;/html&gt;&quot;);
-<span class="nc" id="L44">        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L45">        informpanel.add(infolabel);</span>
+<span class="nc" id="L47">        infolabel.setFont(infolabel.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L48">        informpanel.add(infolabel);</span>
+
         //버튼패널
-<span class="nc" id="L47">        JPanel buttonpanel = new JPanel(new GridLayout(2, 1));</span>
-<span class="nc" id="L48">        buttonpanel.setPreferredSize(new Dimension(600, 150));</span>
-<span class="nc" id="L49">        find = new JButton(&quot;구매 가능한 자판기 안내&quot;);</span>
-<span class="nc" id="L50">        cancel = new JButton(&quot;취소&quot;);</span>
-<span class="nc" id="L51">        find.addActionListener(this);</span>
-<span class="nc" id="L52">        cancel.addActionListener(this);</span>
-<span class="nc" id="L53">        buttonpanel.add(find);</span>
-<span class="nc" id="L54">        buttonpanel.add(cancel);</span>
+<span class="nc" id="L51">        JPanel buttonpanel = new JPanel(new GridLayout(2, 1));</span>
+<span class="nc" id="L52">        buttonpanel.setPreferredSize(new Dimension(600, 150));</span>
+<span class="nc" id="L53">        find = new JButton(&quot;구매 가능한 자판기 안내&quot;);</span>
+<span class="nc" id="L54">        cancel = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L55">        find.addActionListener(this);</span>
+<span class="nc" id="L56">        cancel.addActionListener(this);</span>
+<span class="nc" id="L57">        buttonpanel.add(find);</span>
+<span class="nc" id="L58">        buttonpanel.add(cancel);</span>
 
-<span class="nc" id="L56">        add(labelpanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L57">        add(informpanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L58">        add(buttonpanel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L60">        add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L61">        add(informpanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L62">        add(buttonpanel, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L60">        pack();</span>
-<span class="nc" id="L61">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L62">        setVisible(true);</span>
-<span class="nc" id="L63">    }</span>
+<span class="nc" id="L64">        pack();</span>
+<span class="nc" id="L65">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L66">        setVisible(true);</span>
+<span class="nc" id="L67">    }</span>
 
-    /*
-    public static void main(String[] args) {
-      Title t=new Title(&quot;가나다&quot;,1);
-      new InfoNoItemUI(t);
-
-    }
-
-     */
     @Override
     public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (e.getSource() == find) {</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        if (e.getSource() == find) {</span>
+<span class="nc" id="L72">            timer.stop();</span>
+<span class="nc" id="L73">            return_value = 1;</span>
+        }
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (e.getSource() == cancel) {</span>
 <span class="nc" id="L76">            timer.stop();</span>
-<span class="nc" id="L77">            return_value = 1;</span>
+<span class="nc" id="L77">            return_value = 0;</span>
         }
-<span class="nc bnc" id="L79" title="All 2 branches missed.">        if (e.getSource() == cancel) {</span>
-<span class="nc" id="L80">            timer.stop();</span>
-<span class="nc" id="L81">            return_value = 0;</span>
-        }
+<span class="nc" id="L79">    }</span>
 
-<span class="nc" id="L84">    }</span>
+<span class="nc" id="L81">    public int getReturn_value() { return return_value; }</span>
+
+<span class="nc" id="L83">    public void setReturn_value(int return_value) { this.return_value = return_value; }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

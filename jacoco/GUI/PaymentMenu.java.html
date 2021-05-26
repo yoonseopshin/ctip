@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PaymentMenu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JavaCTIP</a> &gt; <a href="index.source.html" class="el_package">GUI</a> &gt; <span class="el_source">PaymentMenu.java</span></div><h1>PaymentMenu.java</h1><pre class="source lang-java linenums">package GUI;
 
+import Logic.Title;
+import Logic.DVM;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -10,98 +13,89 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import Logic.*;
-import static GUI.Sleep.*;
-
 public class PaymentMenu extends JFrame implements ActionListener {
 
 <span class="nc" id="L18">    private Timer timer = new Timer(180000, new ActionListener() {</span>
         @Override
         public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L21">            return_value = -2;</span>
-<span class="nc" id="L22">            timer.stop();</span>
+<span class="nc" id="L21">            timer.stop();</span>
+<span class="nc" id="L22">            return_value = -2;</span>
 <span class="nc" id="L23">        }</span>
     });
 
     private JButton cardpay;
     private JButton smartpay;
     private JButton cancel;
+<span class="nc" id="L29">    private int return_value = -1;</span>
 
-<span class="nc" id="L30">    public int return_value = -1;</span>
+<span class="nc" id="L31">    public PaymentMenu(Title title) {</span>
+<span class="nc" id="L32">        timer.start();</span>
 
-<span class="nc" id="L32">    public PaymentMenu(Title title) {</span>
-<span class="nc" id="L33">        timer.start();</span>
-
-<span class="nc" id="L35">        this.setPreferredSize(new Dimension(600, 800));</span>
-<span class="nc" id="L36">        this.setTitle(&quot;DVM &quot;+ CurrentID);</span>
+<span class="nc" id="L34">        this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L35">        this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
 
         //라벨 패널
-<span class="nc" id="L39">        JPanel labelpanel = new JPanel();</span>
-<span class="nc" id="L40">        labelpanel.setPreferredSize(new Dimension(600, 150));</span>
-<span class="nc" id="L41">        JLabel label = new JLabel(&quot;결제 수단을 선택하세요&quot;);</span>
-<span class="nc" id="L42">        label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L43">        labelpanel.add(label);</span>
+<span class="nc" id="L38">        JPanel labelpanel = new JPanel();</span>
+<span class="nc" id="L39">        labelpanel.setPreferredSize(new Dimension(600, 150));</span>
+<span class="nc" id="L40">        JLabel label = new JLabel(&quot;결제 수단을 선택하세요&quot;);</span>
+<span class="nc" id="L41">        label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L42">        labelpanel.add(label);</span>
 
         //결제수단 패널
-<span class="nc" id="L46">        JPanel paymentpanel = new JPanel();</span>
-<span class="nc" id="L47">        paymentpanel.setPreferredSize(new Dimension(600, 350));</span>
-<span class="nc" id="L48">        JLabel bev = new JLabel(&quot;&lt;html&gt;&lt;center&gt;선택한 음료 : &lt;strong&gt;&quot; + title.getName() +</span>
-<span class="nc" id="L49">                &quot;&lt;/strong&gt;&lt;br&gt;가격 : &lt;strong&gt;&quot; + title.getPrice() + &quot;원&lt;/strong&gt;&lt;/center&gt;&lt;/html&gt;&quot;);</span>
-<span class="nc" id="L50">        bev.setPreferredSize(new Dimension(600, 50));</span>
-<span class="nc" id="L51">        bev.setHorizontalAlignment(JLabel.CENTER);</span>
-<span class="nc" id="L52">        bev.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L53">        cardpay = new JButton(&quot;카드 결제&quot;);</span>
-<span class="nc" id="L54">        smartpay = new JButton(&quot;간편 결제&quot;);</span>
-<span class="nc" id="L55">        cardpay.setPreferredSize(new Dimension(270, 200));</span>
-<span class="nc" id="L56">        smartpay.setPreferredSize(new Dimension(270, 200));</span>
-<span class="nc" id="L57">        cardpay.addActionListener(this);</span>
-<span class="nc" id="L58">        smartpay.addActionListener(this);</span>
-<span class="nc" id="L59">        paymentpanel.add(bev, BorderLayout.NORTH);</span>
-<span class="nc" id="L60">        paymentpanel.add(cardpay, BorderLayout.WEST);</span>
-<span class="nc" id="L61">        paymentpanel.add(smartpay, BorderLayout.EAST);</span>
+<span class="nc" id="L45">        JPanel paymentpanel = new JPanel();</span>
+<span class="nc" id="L46">        paymentpanel.setPreferredSize(new Dimension(600, 350));</span>
+<span class="nc" id="L47">        JLabel bev = new JLabel(&quot;&lt;html&gt;&lt;center&gt;선택한 음료 : &lt;strong&gt;&quot; + title.getName() +</span>
+<span class="nc" id="L48">                &quot;&lt;/strong&gt;&lt;br&gt;가격 : &lt;strong&gt;&quot; + title.getPrice() + &quot;원&lt;/strong&gt;&lt;/center&gt;&lt;/html&gt;&quot;);</span>
+<span class="nc" id="L49">        bev.setPreferredSize(new Dimension(600, 50));</span>
+<span class="nc" id="L50">        bev.setHorizontalAlignment(JLabel.CENTER);</span>
+<span class="nc" id="L51">        bev.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L52">        cardpay = new JButton(&quot;카드 결제&quot;);</span>
+<span class="nc" id="L53">        smartpay = new JButton(&quot;간편 결제&quot;);</span>
+<span class="nc" id="L54">        cardpay.setPreferredSize(new Dimension(270, 200));</span>
+<span class="nc" id="L55">        smartpay.setPreferredSize(new Dimension(270, 200));</span>
+<span class="nc" id="L56">        cardpay.addActionListener(this);</span>
+<span class="nc" id="L57">        smartpay.addActionListener(this);</span>
+<span class="nc" id="L58">        paymentpanel.add(bev, BorderLayout.NORTH);</span>
+<span class="nc" id="L59">        paymentpanel.add(cardpay, BorderLayout.WEST);</span>
+<span class="nc" id="L60">        paymentpanel.add(smartpay, BorderLayout.EAST);</span>
 
         //취소
-<span class="nc" id="L64">        JPanel cancelpanel = new JPanel();</span>
-<span class="nc" id="L65">        cancelpanel.setPreferredSize(new Dimension(600, 200));</span>
-<span class="nc" id="L66">        cancel = new JButton(&quot;취소&quot;);</span>
-<span class="nc" id="L67">        cancel.setPreferredSize(new Dimension(300, 100));</span>
-<span class="nc" id="L68">        cancel.addActionListener(this);</span>
-<span class="nc" id="L69">        cancelpanel.add(cancel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L63">        JPanel cancelpanel = new JPanel();</span>
+<span class="nc" id="L64">        cancelpanel.setPreferredSize(new Dimension(600, 200));</span>
+<span class="nc" id="L65">        cancel = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L66">        cancel.setPreferredSize(new Dimension(300, 100));</span>
+<span class="nc" id="L67">        cancel.addActionListener(this);</span>
+<span class="nc" id="L68">        cancelpanel.add(cancel, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L71">        add(labelpanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L72">        add(paymentpanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L73">        add(cancelpanel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L70">        add(labelpanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L71">        add(paymentpanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L72">        add(cancelpanel, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L75">        pack();</span>
-<span class="nc" id="L76">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L77">        setVisible(true);</span>
+<span class="nc" id="L74">        pack();</span>
+<span class="nc" id="L75">        setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L76">        setVisible(true);</span>
 
-<span class="nc" id="L79">    }</span>
+<span class="nc" id="L78">    }</span>
 
-    //테스트용
-	/*
-	public static void main(String[] args) {
-		Title a=new Title(&quot;코카콜라&quot;,1,(float)1);
-		new PaymentMenu(a);
-		
-
-	}
-	*/
     @Override
     public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L92" title="All 2 branches missed.">        if (e.getSource() == cardpay) {</span>
-<span class="nc" id="L93">            timer.stop();</span>
-<span class="nc" id="L94">            return_value = 1;</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (e.getSource() == cardpay) {</span>
+<span class="nc" id="L83">            timer.stop();</span>
+<span class="nc" id="L84">            return_value = 1;</span>
         }
-<span class="nc bnc" id="L96" title="All 2 branches missed.">        if (e.getSource() == smartpay) {</span>
-<span class="nc" id="L97">            timer.stop();</span>
-<span class="nc" id="L98">            return_value = 2;</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        if (e.getSource() == smartpay) {</span>
+<span class="nc" id="L87">            timer.stop();</span>
+<span class="nc" id="L88">            return_value = 2;</span>
         }
-<span class="nc bnc" id="L100" title="All 2 branches missed.">        if (e.getSource() == cancel) {</span>
-<span class="nc" id="L101">            timer.stop();</span>
-<span class="nc" id="L102">            return_value = 0;</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        if (e.getSource() == cancel) {</span>
+<span class="nc" id="L91">            timer.stop();</span>
+<span class="nc" id="L92">            return_value = 0;</span>
         }
-<span class="nc" id="L104">    }</span>
+<span class="nc" id="L94">    }</span>
+
+<span class="nc" id="L96">    public int getReturn_value() { return return_value; }</span>
+
+<span class="nc" id="L98">    public void setReturn_value(int return_value) { this.return_value = return_value; }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
