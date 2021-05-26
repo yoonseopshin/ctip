@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-26T12:11:25.066">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-26T12:12:36.346">
 <file name="/home/runner/work/ctip/ctip/src/main/java/GUI/AddItemMenu.java">
 <violation beginline="19" endline="207" begincolumn="8" endcolumn="1" rule="MissingSerialVersionUID" ruleset="Error Prone" package="GUI" class="AddItemMenu" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingserialversionuid" priority="3">
 Classes implementing Serializable should set a serialVersionUID
@@ -439,11 +439,35 @@ Ensure that resources like this ObjectInputStream object are closed after use
 <violation beginline="48" endline="48" begincolumn="21" endcolumn="31" rule="CloseResource" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" variable="printWriter" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this PrintWriter object are closed after use
 </violation>
-<violation beginline="89" endline="90" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+<violation beginline="69" endline="69" begincolumn="42" endcolumn="42" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="70" endline="70" begincolumn="42" endcolumn="42" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="71" endline="71" begincolumn="42" endcolumn="42" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="72" endline="72" begincolumn="42" endcolumn="42" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="73" endline="73" begincolumn="42" endcolumn="42" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="74" endline="74" begincolumn="42" endcolumn="42" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="75" endline="75" begincolumn="42" endcolumn="42" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="87" endline="88" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="95" endline="96" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+<violation beginline="94" endline="95" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
 Avoid empty catch blocks
+</violation>
+<violation beginline="96" endline="96" begincolumn="17" endcolumn="17" rule="EmptyStatementNotInLoop" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgReciv" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#emptystatementnotinloop" priority="3">
+An empty statement (semicolon) not part of a loop
 </violation>
 <violation beginline="103" endline="113" begincolumn="17" endcolumn="45" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="Logic" class="Message_Queue" method="MsgSend" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
 Found 'DD'-anomaly for variable 'socket' (lines '103'-'113').
