@@ -12,7 +12,7 @@ import javax.swing.*;
 
 public class SmartPayUI extends JFrame implements ActionListener {
 
-    private int s = 39;
+    private int s = 19;
     private Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -21,6 +21,13 @@ public class SmartPayUI extends JFrame implements ActionListener {
                 label.setText("남은 시간: 0");
                 infolabel.setText("<html><center>입력시간이 초과되어 결제가 취소되었습니다.<br>" +
                         s + "초 후 메인화면으로 돌아갑니다.</center></html>");
+                if(s==10) {
+                    informpanel.remove(imageLabel);
+                    informpanel.updateUI();
+                    labelpanel.setPreferredSize(new Dimension(600, 300));
+                    infolabel.setFont(infolabel.getFont().deriveFont(20.0f));
+                    informpanel.add(infolabel);
+                }
                 if (s == 0) {
                     timer.stop();
                     return_value = 0;
@@ -34,7 +41,11 @@ public class SmartPayUI extends JFrame implements ActionListener {
 
     private JButton cancel;
     private JLabel label;
-    private JLabel infolabel;
+    private JLabel imageLabel;
+    private JLabel infolabel=new JLabel();
+    private ImageIcon img;
+    private JPanel labelpanel;
+    private JPanel informpanel;
     private JPanel buttonpanel;
     private int return_value = -1;
 
@@ -68,17 +79,17 @@ public class SmartPayUI extends JFrame implements ActionListener {
         this.setTitle("DVM " + DVM.getCurrentID());
 
         //라벨패널
-        JPanel labelpanel = new JPanel();
+        labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600, 150));
         label = new JLabel("남은 시간: " + 30);
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
 
         //안내패널
-        JPanel informpanel = new JPanel();
+        informpanel = new JPanel();
         informpanel.setPreferredSize(new Dimension(600, 500));
-        ImageIcon img = new ImageIcon("src/main/java/GUI/image/QR.jpg");
-        JLabel imageLabel = new JLabel(img);
+        img = new ImageIcon("src/main/java/GUI/image/QR.jpg");
+        imageLabel = new JLabel(img);
         informpanel.add(imageLabel);
 
         //버튼패널
