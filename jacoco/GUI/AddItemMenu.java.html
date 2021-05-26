@@ -155,8 +155,8 @@ public class AddItemMenu extends JFrame implements ActionListener {
 <span class="nc" id="L155">            int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));</span>
 <span class="nc" id="L156">            int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));</span>
 <span class="nc bnc" id="L157" title="All 8 branches missed.">            if (((y % 4 == 0 &amp;&amp; y % 100 != 0) || y % 400 == 0) &amp;&amp; (m == 2)) {</span>
-<span class="nc" id="L158">                    DefaultComboBoxModel&lt;String&gt; model = new DefaultComboBoxModel&lt;&gt;(day_list3);</span>
-<span class="nc" id="L159">                    Dayselect.setModel(model);</span>
+<span class="nc" id="L158">                DefaultComboBoxModel&lt;String&gt; model = new DefaultComboBoxModel&lt;&gt;(day_list3);</span>
+<span class="nc" id="L159">                Dayselect.setModel(model);</span>
             }
         }
 <span class="nc bnc" id="L162" title="All 2 branches missed.">        if (e.getSource() == Monthselect) {</span>
