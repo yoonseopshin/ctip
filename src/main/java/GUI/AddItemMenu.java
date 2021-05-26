@@ -154,11 +154,9 @@ public class AddItemMenu extends JFrame implements ActionListener {
         if (e.getSource() == Yearselect) {
             int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));
             int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));
-            if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) {
-                if (m == 2) {
+            if (((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) && (m == 2)) {
                     DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(day_list3);
                     Dayselect.setModel(model);
-                }
             }
         }
         if (e.getSource() == Monthselect) {

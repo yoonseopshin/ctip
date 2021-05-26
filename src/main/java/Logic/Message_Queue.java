@@ -66,13 +66,15 @@ public class Message_Queue extends Thread {
                         Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),
                         Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));
                 msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
-                if (message.getType() == 1) System.out.println("재고요청메시지 수신됨");
-                if (message.getType() == 2) System.out.println("재고응답메시지 수신됨");
-                if (message.getType() == 3) System.out.println("위치요청메시지 수신됨");
-                if (message.getType() == 4) System.out.println("위치응답메시지 수신됨");
-                if (message.getType() == 5) System.out.println("인증번호메시지 수신됨");
-                if (message.getType() == 6) System.out.println("판매확인요청메시지 수신됨");
-                if (message.getType() == 7) System.out.println("판매확인메시지 수신됨");
+                switch (message.getType()) {
+                    case 1: System.out.println("재고요청메시지 수신됨"); break;
+                    case 2: System.out.println("재고응답메시지 수신됨"); break;
+                    case 3: System.out.println("위치요청메시지 수신됨"); break;
+                    case 4: System.out.println("위치응답메시지 수신됨"); break;
+                    case 5: System.out.println("인증번호메시지 수신됨"); break;
+                    case 6: System.out.println("판매확인요청메시지 수신됨"); break;
+                    case 7: System.out.println("판매확인메시지 수신됨"); break;
+                }
                 printWriter.write("1");
                 printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
                 socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
@@ -86,14 +88,12 @@ public class Message_Queue extends Thread {
                     socket.close();
                 } catch (IOException e) {
                 }
-
             }
             if (server_socket != null) {
                 try {
                     server_socket.close();
                 } catch (IOException e) {
                 }
-                ;
             }
             System.out.println("서버 종료");
         }
@@ -232,27 +232,51 @@ public class Message_Queue extends Thread {
         }
     }
 
-    public static int getLoc() { return loc; }
+    public static int getLoc() {
+        return loc;
+    }
 
-    public static void setLoc(int loc) { Message_Queue.loc = loc; }
+    public static void setLoc(int loc) {
+        Message_Queue.loc = loc;
+    }
 
-    public static int getStk() { return stk; }
+    public static int getStk() {
+        return stk;
+    }
 
-    public static void setStk(int stk) { Message_Queue.stk = stk; }
+    public static void setStk(int stk) {
+        Message_Queue.stk = stk;
+    }
 
-    public static int getCnum() { return cnum; }
+    public static int getCnum() {
+        return cnum;
+    }
 
-    public static void setCnum(int cnum) { Message_Queue.cnum = cnum; }
+    public static void setCnum(int cnum) {
+        Message_Queue.cnum = cnum;
+    }
 
-    public static Queue<Message> getMsgQueue() { return msgQueue; }
+    public static Queue<Message> getMsgQueue() {
+        return msgQueue;
+    }
 
-    public static void setMsgQueue(Queue<Message> msgQueue) { Message_Queue.msgQueue = msgQueue; }
+    public static void setMsgQueue(Queue<Message> msgQueue) {
+        Message_Queue.msgQueue = msgQueue;
+    }
 
-    public static Queue<Message> getStkmsgQueue() { return StkmsgQueue; }
+    public static Queue<Message> getStkmsgQueue() {
+        return StkmsgQueue;
+    }
 
-    public static void setStkmsgQueue(Queue<Message> stkmsgQueue) { StkmsgQueue = stkmsgQueue; }
+    public static void setStkmsgQueue(Queue<Message> stkmsgQueue) {
+        StkmsgQueue = stkmsgQueue;
+    }
 
-    public static Queue<Message> getLocmsgQueue() { return LocmsgQueue; }
+    public static Queue<Message> getLocmsgQueue() {
+        return LocmsgQueue;
+    }
 
-    public static void setLocmsgQueue(Queue<Message> locmsgQueue) { LocmsgQueue = locmsgQueue; }
+    public static void setLocmsgQueue(Queue<Message> locmsgQueue) {
+        LocmsgQueue = locmsgQueue;
+    }
 }

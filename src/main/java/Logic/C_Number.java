@@ -28,7 +28,7 @@ public class C_Number {
             }
             Controller.getCM().getCh_C_List().remove(-1);
         }
-        String numStr = new String();
+        String numStr;
         do {
             numStr = randnumber();
         } while (numStr.equals("000000") || numStr.equals(Integer.toString(Controller.getCM().getM_Number())) || Controller.getCM().CheckCnumber2(Integer.parseInt(numStr)));
@@ -46,7 +46,7 @@ public class C_Number {
 
         Random rand = new Random();
         int len = 6;
-        String numStr = new String(); //난수가 저장될 변수
+        String numStr = ""; //난수가 저장될 변수
         String ran = Integer.toString(rand.nextInt(9) + 1);  //첫번째 숫자 0이 아님
         numStr += ran;
         numStr += Integer.toString(DVM.getCurrentID() - 1); // 두번째 자릿수 => DVMID
