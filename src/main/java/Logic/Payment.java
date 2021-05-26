@@ -1,6 +1,6 @@
 package Logic;
 
-public class Payment extends Controller {
+public class Payment {
 
     private int title_id;
     private int DVMid;
