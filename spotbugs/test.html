@@ -73,22 +73,22 @@
       <p>SpotBugs version: 4.2.2</p>
       <p>Code analyzed:</p>
       <ul>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/ControllerTest.class</li>
          <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/TitleTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_NumberTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_NumberManagerTest.class</li>
          <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/DVMTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/ItemTest.class</li>
-         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Message_QueueTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/ControllerTest.class</li>
          <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/PaymentTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/ItemTest.class</li>
          <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/MessageTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_NumberManagerTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/Message_QueueTest.class</li>
+         <li>/home/runner/work/ctip/ctip/build/classes/java/test/Logic/C_NumberTest.class</li>
       </ul>
       <p>
          <br/>
          <br/>
       </p>
       <h2>Metrics</h2>
-      <p>276 lines of code analyzed,
+      <p>304 lines of code analyzed,
 	in 9 classes, 
 	in 1 packages.</p>
       <table width="500" cellpadding="5" cellspacing="2">
@@ -100,17 +100,17 @@
          <tr class="tablerow0">
             <td>High Priority Warnings</td>
             <td align="right">1</td>
-            <td align="right">3.62</td>
+            <td align="right">3.29</td>
          </tr>
          <tr class="tablerow1">
             <td>Medium Priority Warnings</td>
             <td align="right">1</td>
-            <td align="right">3.62</td>
+            <td align="right">3.29</td>
          </tr>
          <tr class="tablerow1">
             <td>Low Priority Warnings</td>
             <td align="right">2</td>
-            <td align="right">7.25</td>
+            <td align="right">6.58</td>
          </tr>
          <tr class="$totalClass">
             <td>
@@ -120,7 +120,7 @@
                <b>4</b>
             </td>
             <td align="right">
-               <b>14.49</b>
+               <b>13.16</b>
             </td>
          </tr>
       </table>
@@ -137,10 +137,10 @@
             <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
          </li>
          <li>
-            <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+            <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
          </li>
          <li>
-            <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
          </li>
          <li>
             <a href="#Details">Details</a>
@@ -160,13 +160,13 @@
          </tr>
          <tr class="tablerow1">
             <td>
-               <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+               <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
             </td>
             <td align="right">1</td>
          </tr>
          <tr class="tablerow0">
             <td>
-               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+               <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
             </td>
             <td align="right">1</td>
          </tr>
@@ -189,7 +189,7 @@
             <th align="left">Code</th>
             <th align="left">Warning</th>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e19');">
+         <tr class="tablerow1" onclick="toggleRow('d1e54');">
             <td>
                <span class="priority-3">Nm</span>
             </td>
@@ -198,12 +198,12 @@
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e19" style="display: none;">
+               <p id="d1e54" style="display: none;">
                   <a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
                   <br/>In class Logic.C_NumberManagerTest<br/>Field Logic.C_NumberManagerTest.Cn<br/>In C_NumberManagerTest.java</p>
             </td>
          </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e48');">
+         <tr class="tablerow0" onclick="toggleRow('d1e67');">
             <td>
                <span class="priority-3">RV</span>
             </td>
@@ -212,9 +212,32 @@
          <tr class="detailrow0">
             <td/>
             <td>
-               <p id="d1e48" style="display: none;">
+               <p id="d1e67" style="display: none;">
                   <a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
-                  <br/>In class Logic.Message_QueueTest<br/>In method Logic.Message_QueueTest.testDequeue()<br/>Called method java.util.Queue.offer(Object)<br/>At Message_QueueTest.java:[line 34]</p>
+                  <br/>In class Logic.Message_QueueTest<br/>In method Logic.Message_QueueTest.testDequeue()<br/>Called method java.util.Queue.offer(Object)<br/>At Message_QueueTest.java:[line 35]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e19');">
+            <td>
+               <span class="priority-1">EC</span>
+            </td>
+            <td>Call to Boolean.equals(Integer) in Logic.C_NumberManagerTest.testCheckCnumber2()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e19" style="display: none;">
+                  <a href="#EC_UNRELATED_TYPES">Bug type EC_UNRELATED_TYPES (click for details)</a>
+                  <br/>In class Logic.C_NumberManagerTest<br/>In method Logic.C_NumberManagerTest.testCheckCnumber2()<br/>Actual type Integer<br/>Expected Boolean<br/>Local variable named ActualResult<br/>Local variable named ExpectedResult<br/>Boolean.equals(Object) used to determine equality<br/>Called method org.junit.Assert.assertEquals(Object, Object)<br/>At C_NumberManagerTest.java:[line 44]<br/>Another occurrence at C_NumberManagerTest.java:[line 47]<br/>Another occurrence at C_NumberManagerTest.java:[line 50]</p>
             </td>
          </tr>
       </table>
@@ -226,7 +249,7 @@
             <th align="left">Code</th>
             <th align="left">Warning</th>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e63');">
+         <tr class="tablerow1" onclick="toggleRow('d1e82');">
             <td>
                <span class="priority-2">UrF</span>
             </td>
@@ -235,32 +258,9 @@
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e63" style="display: none;">
+               <p id="d1e82" style="display: none;">
                   <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
                   <br/>In class Logic.Message_QueueTest<br/>Field Logic.Message_QueueTest.queue<br/>At Message_QueueTest.java:[line 8]</p>
-            </td>
-         </tr>
-      </table>
-      <h2>
-         <a name="Warnings_STYLE">Dodgy code Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e32');">
-            <td>
-               <span class="priority-1">ST</span>
-            </td>
-            <td>Write to static field Logic.DVM.CurrentID from instance method Logic.DVMTest.testGetCurrentID()</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e32" style="display: none;">
-                  <a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
-                  <br/>In class Logic.DVMTest<br/>In method Logic.DVMTest.testGetCurrentID()<br/>Field Logic.DVM.CurrentID<br/>At DVMTest.java:[line 36]</p>
             </td>
          </tr>
       </table>
@@ -268,6 +268,18 @@
          <a name="Details">Details</a>
       </h1>
       <h2>
+         <a name="EC_UNRELATED_TYPES">EC_UNRELATED_TYPES: Call to equals() comparing different types</a>
+      </h2>
+
+<p> This method calls equals(Object) on two references of different
+class types and analysis suggests they will be to objects of different classes
+at runtime. Further, examination of the equals methods that would be invoked suggest that either
+this call will always return false, or else the equals method is not be symmetric (which is
+a property required by the contract
+for equals in class Object).
+</p>
+
+    <h2>
          <a name="NM_FIELD_NAMING_CONVENTION">NM_FIELD_NAMING_CONVENTION: Field names should start with a lower case letter</a>
       </h2>
 
@@ -286,15 +298,6 @@ if the file could not be successfully deleted (rather than
 throwing an Exception).
 If you don't check the result, you won't notice if the method invocation
 signals unexpected behavior by returning an atypical return value.
-</p>
-
-    <h2>
-         <a name="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD: Write to static field from instance method</a>
-      </h2>
-
-  <p> This instance method writes to a static field. This is tricky to get
-correct if multiple instances are being manipulated,
-and generally bad practice.
 </p>
 
     <h2>
