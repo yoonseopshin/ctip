@@ -68,9 +68,9 @@ public class Message_Queue extends Thread {
                 msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
                 if (message.getType() == 1) System.out.println("재고요청메시지 수신됨");
                 if (message.getType() == 2) System.out.println("재고응답메시지 수신됨");
-                if (message.getType() == 3) System.out.println("위치요청메시지 수신됨");
-                if (message.getType() == 4) System.out.println("위치응답메시지 수신됨");
-                if (message.getType() == 5) System.out.println("인증번호메시지 수신됨");
+                if (message.getType() == 3) System.out.println("인증번호메시지 수신됨");
+                if (message.getType() == 4) System.out.println("위치요청메시지 수신됨");
+                if (message.getType() == 5) System.out.println("위치응답메시지 수신됨");
                 if (message.getType() == 6) System.out.println("판매확인요청메시지 수신됨");
                 if (message.getType() == 7) System.out.println("판매확인메시지 수신됨");
                 printWriter.write("1");
@@ -229,6 +229,7 @@ public class Message_Queue extends Thread {
                 }
             }
             Controller.getCM().getCh_C_List().put(-1, null);
+            cnum = -1;
         }
     }
 
