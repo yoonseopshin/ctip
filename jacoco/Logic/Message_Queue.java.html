@@ -68,9 +68,9 @@ import java.net.Socket;
 <span class="nc" id="L68">                msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기</span>
 <span class="nc bnc" id="L69" title="All 2 branches missed.">                if (message.getType() == 1) System.out.println(&quot;재고요청메시지 수신됨&quot;);</span>
 <span class="nc bnc" id="L70" title="All 2 branches missed.">                if (message.getType() == 2) System.out.println(&quot;재고응답메시지 수신됨&quot;);</span>
-<span class="nc bnc" id="L71" title="All 2 branches missed.">                if (message.getType() == 3) System.out.println(&quot;위치요청메시지 수신됨&quot;);</span>
-<span class="nc bnc" id="L72" title="All 2 branches missed.">                if (message.getType() == 4) System.out.println(&quot;위치응답메시지 수신됨&quot;);</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">                if (message.getType() == 5) System.out.println(&quot;인증번호메시지 수신됨&quot;);</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">                if (message.getType() == 3) System.out.println(&quot;인증번호메시지 수신됨&quot;);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">                if (message.getType() == 4) System.out.println(&quot;위치요청메시지 수신됨&quot;);</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">                if (message.getType() == 5) System.out.println(&quot;위치응답메시지 수신됨&quot;);</span>
 <span class="nc bnc" id="L74" title="All 2 branches missed.">                if (message.getType() == 6) System.out.println(&quot;판매확인요청메시지 수신됨&quot;);</span>
 <span class="nc bnc" id="L75" title="All 2 branches missed.">                if (message.getType() == 7) System.out.println(&quot;판매확인메시지 수신됨&quot;);</span>
 <span class="nc" id="L76">                printWriter.write(&quot;1&quot;);</span>
@@ -229,31 +229,32 @@ import java.net.Socket;
                 }
 <span class="nc" id="L230">            }</span>
 <span class="fc" id="L231">            Controller.getCM().getCh_C_List().put(-1, null);</span>
+<span class="fc" id="L232">            cnum = -1;</span>
         }
-<span class="fc" id="L233">    }</span>
+<span class="fc" id="L234">    }</span>
 
-<span class="nc" id="L235">    public static int getLoc() { return loc; }</span>
+<span class="nc" id="L236">    public static int getLoc() { return loc; }</span>
 
-<span class="nc" id="L237">    public static void setLoc(int loc) { Message_Queue.loc = loc; }</span>
+<span class="nc" id="L238">    public static void setLoc(int loc) { Message_Queue.loc = loc; }</span>
 
-<span class="nc" id="L239">    public static int getStk() { return stk; }</span>
+<span class="nc" id="L240">    public static int getStk() { return stk; }</span>
 
-<span class="nc" id="L241">    public static void setStk(int stk) { Message_Queue.stk = stk; }</span>
+<span class="nc" id="L242">    public static void setStk(int stk) { Message_Queue.stk = stk; }</span>
 
-<span class="nc" id="L243">    public static int getCnum() { return cnum; }</span>
+<span class="nc" id="L244">    public static int getCnum() { return cnum; }</span>
 
-<span class="fc" id="L245">    public static void setCnum(int cnum) { Message_Queue.cnum = cnum; }</span>
+<span class="fc" id="L246">    public static void setCnum(int cnum) { Message_Queue.cnum = cnum; }</span>
 
-<span class="fc" id="L247">    public static Queue&lt;Message&gt; getMsgQueue() { return msgQueue; }</span>
+<span class="fc" id="L248">    public static Queue&lt;Message&gt; getMsgQueue() { return msgQueue; }</span>
 
-<span class="nc" id="L249">    public static void setMsgQueue(Queue&lt;Message&gt; msgQueue) { Message_Queue.msgQueue = msgQueue; }</span>
+<span class="nc" id="L250">    public static void setMsgQueue(Queue&lt;Message&gt; msgQueue) { Message_Queue.msgQueue = msgQueue; }</span>
 
-<span class="nc" id="L251">    public static Queue&lt;Message&gt; getStkmsgQueue() { return StkmsgQueue; }</span>
+<span class="nc" id="L252">    public static Queue&lt;Message&gt; getStkmsgQueue() { return StkmsgQueue; }</span>
 
-<span class="nc" id="L253">    public static void setStkmsgQueue(Queue&lt;Message&gt; stkmsgQueue) { StkmsgQueue = stkmsgQueue; }</span>
+<span class="nc" id="L254">    public static void setStkmsgQueue(Queue&lt;Message&gt; stkmsgQueue) { StkmsgQueue = stkmsgQueue; }</span>
 
-<span class="nc" id="L255">    public static Queue&lt;Message&gt; getLocmsgQueue() { return LocmsgQueue; }</span>
+<span class="nc" id="L256">    public static Queue&lt;Message&gt; getLocmsgQueue() { return LocmsgQueue; }</span>
 
-<span class="nc" id="L257">    public static void setLocmsgQueue(Queue&lt;Message&gt; locmsgQueue) { LocmsgQueue = locmsgQueue; }</span>
+<span class="nc" id="L258">    public static void setLocmsgQueue(Queue&lt;Message&gt; locmsgQueue) { LocmsgQueue = locmsgQueue; }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
