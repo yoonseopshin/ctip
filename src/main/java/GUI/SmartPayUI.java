@@ -12,7 +12,7 @@ import javax.swing.*;
 
 public class SmartPayUI extends JFrame implements ActionListener {
 
-    private int s = 19;
+    private int s = 39;
     private Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
