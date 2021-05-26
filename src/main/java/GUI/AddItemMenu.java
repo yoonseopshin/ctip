@@ -1,39 +1,48 @@
 package GUI;
 
+import Logic.DVM;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-import javax.swing.*;
-import static GUI.Sleep.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class AddItemMenu extends JFrame implements ActionListener {
 
-    public Timer timer = new Timer(180000, new ActionListener() {
+    private Timer timer = new Timer(180000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            return_value = -2;
             timer.stop();
+            return_value = -2;
         }
     });
 
     private JComboBox<String> Yearselect;
     private JComboBox<String> Monthselect;
     private JComboBox<String> Dayselect;
-
     private JButton cancel;
     private JButton add;
-
-    public int return_value = -1;
-    public int return_date;
+    private String[] day_list1;
+    private String[] day_list2;
+    private String[] day_list3;
+    private String[] day_list4;
+    private int return_value = -1;
+    private int return_date;
 
     public AddItemMenu() {
         timer.start();
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
+        this.setTitle("DVM " + DVM.getCurrentID());
 
         //라벨패널
         JPanel labelpanel = new JPanel();
@@ -54,9 +63,14 @@ public class AddItemMenu extends JFrame implements ActionListener {
         //선택창
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int date = cal.get(Calendar.DATE);
         String[] year_list = new String[50];
         String[] month_list = new String[12];
-        String[] day_list = new String[31];
+        day_list1 = new String[31];
+        day_list2 = new String[30];
+        day_list3 = new String[29];
+        day_list4 = new String[28];
         for (int i = 0; i < year_list.length; i++) {
             year_list[i] = Integer.toString(year + i);
         }
@@ -67,28 +81,52 @@ public class AddItemMenu extends JFrame implements ActionListener {
                 month_list[i] = Integer.toString(i + 1);
             }
         }
-        for (int i = 0; i < day_list.length; i++) {
+        for (int i = 0; i < day_list1.length; i++) {
             if (i + 1 < 10) {
-                day_list[i] = "0".concat(Integer.toString(i + 1));
+                day_list1[i] = "0".concat(Integer.toString(i + 1));
             } else {
-                day_list[i] = Integer.toString(i + 1);
+                day_list1[i] = Integer.toString(i + 1);
+            }
+        }
+        for (int i = 0; i < day_list2.length; i++) {
+            if (i + 1 < 10) {
+                day_list2[i] = "0".concat(Integer.toString(i + 1));
+            } else {
+                day_list2[i] = Integer.toString(i + 1);
+            }
+        }
+        for (int i = 0; i < day_list3.length; i++) {
+            if (i + 1 < 10) {
+                day_list3[i] = "0".concat(Integer.toString(i + 1));
+            } else {
+                day_list3[i] = Integer.toString(i + 1);
+            }
+        }
+        for (int i = 0; i < day_list4.length; i++) {
+            if (i + 1 < 10) {
+                day_list4[i] = "0".concat(Integer.toString(i + 1));
+            } else {
+                day_list4[i] = Integer.toString(i + 1);
             }
         }
         Yearselect = new JComboBox<String>(year_list);
         Monthselect = new JComboBox<String>(month_list);
-        Dayselect = new JComboBox<String>(day_list);
+        Dayselect = new JComboBox<String>(day_list1);
         Yearselect.setFont(Yearselect.getFont().deriveFont(20.0f));
         Monthselect.setFont(Monthselect.getFont().deriveFont(20.0f));
         Dayselect.setFont(Dayselect.getFont().deriveFont(20.0f));
         Yearselect.addActionListener(this);
         Monthselect.addActionListener(this);
         Dayselect.addActionListener(this);
+        Monthselect.setSelectedIndex(month);
+        Dayselect.setSelectedIndex(date - 1);
         expdatepanel.add(Yearselect);
         expdatepanel.add(y);
         expdatepanel.add(Monthselect);
         expdatepanel.add(m);
         expdatepanel.add(Dayselect);
         expdatepanel.add(d);
+
         //버튼패널
         JPanel buttonpanel = new JPanel(new GridLayout(1, 2));
         buttonpanel.setPreferredSize(new Dimension(600, 70));
@@ -110,14 +148,38 @@ public class AddItemMenu extends JFrame implements ActionListener {
 
     }
 
-    /*test
-    public static void main(String[] args) {
-      new AddItemMenu();
-    }
-  */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == Yearselect || e.getSource() == Monthselect || e.getSource() == Dayselect) {
+        timer.restart();
+        if (e.getSource() == Yearselect) {
+            int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));
+            int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));
+            if (((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) && (m == 2)) {
+                DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(day_list3);
+                Dayselect.setModel(model);
+            }
+        }
+        if (e.getSource() == Monthselect) {
+            timer.restart();
+            int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));
+            int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));
+            DefaultComboBoxModel<String> model;
+            if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
+                model = new DefaultComboBoxModel<>(day_list1);
+            } else {
+                if (m == 2) {
+                    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) {
+                        model = new DefaultComboBoxModel<>(day_list3);
+                    } else {
+                        model = new DefaultComboBoxModel<>(day_list4);
+                    }
+                } else {
+                    model = new DefaultComboBoxModel<>(day_list2);
+                }
+            }
+            Dayselect.setModel(model);
+        }
+        if (e.getSource() == Dayselect) {
             timer.restart();
         }
         if (e.getSource() == add) {
@@ -133,5 +195,13 @@ public class AddItemMenu extends JFrame implements ActionListener {
             return_value = 0;
         }
     }
+
+    public int getReturn_value() { return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
+
+    public int getReturn_date() { return return_date; }
+
+    public void setReturn_date(int return_date) { this.return_date = return_date; }
 
 }

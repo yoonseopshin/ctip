@@ -1,6 +1,11 @@
 package GUI;
 
-import java.awt.*;
+import Logic.Title;
+import Logic.DVM;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,32 +16,27 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 
-import Logic.*;
-import static GUI.Sleep.*;
-
 public class ManTitleMenu extends JFrame implements ActionListener {
 
     private Timer timer = new Timer(180000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            return_value = -2;
             timer.stop();
+            return_value = -2;
         }
     });
 
     private JButton[] Title_list;
     private JButton exit;
     private ArrayList<Title> temp;
-
-    public int return_value = -1;
+    private int return_value = -1;
 
     public ManTitleMenu(ArrayList<Title> tlist) {
         timer.start();
+        temp = tlist;
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
-
-        temp = tlist;
+        this.setTitle("DVM " + DVM.getCurrentID());
 
         //라벨 패널
         JPanel labelpanel = new JPanel();
@@ -45,16 +45,17 @@ public class ManTitleMenu extends JFrame implements ActionListener {
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
 
+        //타이틀 패널
         JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(), 1));
         JScrollPane titlepanel = new JScrollPane(titlelistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        titlepanel.getVerticalScrollBar().setUnitIncrement(8);
         titlelistpanel.setPreferredSize(new Dimension(600, 70 * tlist.size()));
         Title_list = new JButton[tlist.size()];
         for (int i = 0; i < tlist.size(); i++) {
             Title_list[i] = new JButton(
                     "<html><center><strong>" + tlist.get(i).getName() + "</strong><br>재고수량 : " +
                             tlist.get(i).getItem_List().size() + "</center></html>");
-            //Title_list[i].setPreferredSize(new Dimension(600,70));
             Title_list[i].addActionListener(this);
             titlelistpanel.add(Title_list[i]);
         }
@@ -74,15 +75,6 @@ public class ManTitleMenu extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
-/*test
-	public static void main(String[] args) {
-		
-		Controller c= new Controller();
-		new ManTitleMenu(c.Title_List);
-
-	}
-
- */
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -97,8 +89,11 @@ public class ManTitleMenu extends JFrame implements ActionListener {
             return_value = 0;
             this.setVisible(false);
         }
-
     }
+
+    public int getReturn_value() { return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
 
 }
 

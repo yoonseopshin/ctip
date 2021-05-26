@@ -11,15 +11,12 @@ public class Message {
     private int C_Number = -1;
     private boolean boolData = false;
 
-
     Message(int myid) {
         myID = myid;
     }
 
-    //type1
-
     public void translate(int myID, int targetID, int Type, double xAdress,
-                   double yAdress, int Title, int C_Number, boolean boolData) {
+                          double yAdress, int Title, int C_Number, boolean boolData) {
         this.myID = myID;
         this.targetID = targetID;
         this.Type = Type;
@@ -30,11 +27,17 @@ public class Message {
         this.boolData = boolData;
     }
 
+    //type1, 6
     void setmsg(int id, int type, int data) {
         targetID = id;
         Type = type;
         if (Type == 1) {
             Title = data;
+            Message_Queue.MsgSend(this);
+        }
+        // 2021.05.21 수정 부분
+        else if (Type == 6) {
+            C_Number = data;
             Message_Queue.MsgSend(this);
         }
     }
@@ -50,31 +53,42 @@ public class Message {
     }
 
     //type3
-    void setmsg(int id, int type) {
+    void setmsg(int id, int type, int data1, int data2) {
         targetID = id;
         Type = type;
-        if (type == 3)
+        if (Type == 3) {
+            Title = data1;
+            C_Number = data2;
             Message_Queue.MsgSend(this);
+        }
     }
 
     //type4
+    void setmsg(int id, int type) {
+        targetID = id;
+        Type = type;
+        if (type == 4)
+            Message_Queue.MsgSend(this);
+    }
+
+    //type5
     void setmsg(int id, int type, double data1, double data2) {
         targetID = id;
         Type = type;
-        if (Type == 4) {
+        if (Type == 5) {
             xAdress = data1;
             yAdress = data2;
             Message_Queue.MsgSend(this);
         }
     }
 
-    //type5
-    void setmsg(int id, int type, int data1, int data2) {
+    //  type7 2021.05.21 수정 부분
+    void setmsg(int id, int type, int data1, boolean data2) {
         targetID = id;
         Type = type;
-        if (Type == 5) {
-            Title = data1;
-            C_Number = data2;
+        if (Type == 7) {
+            C_Number = data1;
+            boolData = data2;
             Message_Queue.MsgSend(this);
         }
     }

@@ -11,7 +11,7 @@ public class C_NumberTest {
 
     @Test
     public void testCreateCnumber() {
-        int ExpectedResult = CN.CreateCnumber(1, 1);
+        int ExpectedResult = CN.CreateCnumber();
         int ActualResult = CN.getC_Number_t();
         Assert.assertEquals(ExpectedResult, ActualResult);
     }
