@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.Timer;
 
 import Logic.*;
+import static GUI.Sleep.*;
 
 public class ManItemMenu extends JFrame implements ActionListener {
 
@@ -39,7 +40,7 @@ public class ManItemMenu extends JFrame implements ActionListener {
     public ManItemMenu(Title t) {
         timer.start();
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM");
+        this.setTitle("DVM "+ CurrentID);
         temp = t.getItem_List();
 
         //라벨 패널

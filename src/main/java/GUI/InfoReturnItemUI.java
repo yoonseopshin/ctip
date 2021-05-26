@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static GUI.Sleep.*;
 
 public class InfoReturnItemUI extends JFrame {
 
@@ -19,7 +20,7 @@ public class InfoReturnItemUI extends JFrame {
         timer.start();
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM");
+        this.setTitle("DVM "+ CurrentID);
 
         //라벨패널
         JPanel labelpanel = new JPanel();
