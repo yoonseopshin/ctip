@@ -16,7 +16,7 @@ public class Message_Queue extends Thread {
     private static Queue<Message> CnmsgQueue = new LinkedList<>();
     private static int loc = -1;
     private static int stk = 9;
-    private static int cnum=-1;
+    private static int cnum = -1;
 
     @Override
     public void run() {
@@ -224,11 +224,11 @@ public class Message_Queue extends Thread {
         if (CnmsgQueue.size() == cnum) {
             while (CnmsgQueue.size() > 0) {
                 Message cn = CnmsgQueue.poll();
-                if(cn.isBoolData()==false){
+                if (cn.isBoolData() == false) {
                     Controller.getCM().getCh_C_List().remove(cn.getC_Number());
                 }
             }
-            Controller.getCM().getCh_C_List().put(-1,null);
+            Controller.getCM().getCh_C_List().put(-1, null);
         }
     }
 

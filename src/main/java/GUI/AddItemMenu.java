@@ -119,7 +119,7 @@ public class AddItemMenu extends JFrame implements ActionListener {
         Monthselect.addActionListener(this);
         Dayselect.addActionListener(this);
         Monthselect.setSelectedIndex(month);
-        Dayselect.setSelectedIndex(date-1);
+        Dayselect.setSelectedIndex(date - 1);
         expdatepanel.add(Yearselect);
         expdatepanel.add(y);
         expdatepanel.add(Monthselect);

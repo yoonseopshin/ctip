@@ -236,11 +236,11 @@ public class Controller {
                 return 1;
             }
             int count = 0;
-            for(int i =0; i<20;i++) {
+            for (int i = 0; i < 20; i++) {
                 if (Title_List.get(i).CheckStock())
                     count++;
             }
-            if(count>=7&&Title_List.get(TitleID - 1).CheckStock()==false){
+            if (count >= 7 && Title_List.get(TitleID - 1).CheckStock() == false) {
                 k.setVisible(false);
                 k = new InfoUI("음료를 7종류 이상 추가할 수 없습니다.", "이전");
 
@@ -559,71 +559,37 @@ public class Controller {
         Payment = null;
     }
 
-    public void ReturnMain() {
-        init();
-    }
+    public void ReturnMain() { init(); }
 
-    public JFrame getK() {
-        return k;
-    }
+    public JFrame getK() { return k; }
 
-    public void setK(JFrame k) {
-        this.k = k;
-    }
+    public void setK(JFrame k) { this.k = k; }
 
-    public Logic.Payment getPayment() {
-        return Payment;
-    }
+    public Logic.Payment getPayment() { return Payment; }
 
-    public void setPayment(Logic.Payment payment) {
-        Payment = payment;
-    }
+    public void setPayment(Logic.Payment payment) { Payment = payment; }
 
-    public int getBasket() {
-        return basket;
-    }
+    public int getBasket() { return basket; }
 
-    public void setBasket(int basket) {
-        this.basket = basket;
-    }
+    public void setBasket(int basket) { this.basket = basket; }
 
-    public int getDel() {
-        return del;
-    }
+    public int getDel() { return del; }
 
-    public void setDel(int del) {
-        this.del = del;
-    }
+    public void setDel(int del) { this.del = del; }
 
-    public static ArrayList<Title> getTitle_List() {
-        return Title_List;
-    }
+    public static ArrayList<Title> getTitle_List() { return Title_List; }
 
-    public static void setTitle_List(ArrayList<Title> title_List) {
-        Title_List = title_List;
-    }
+    public static void setTitle_List(ArrayList<Title> title_List) { Title_List = title_List; }
 
-    public static Stack<DVM> getDVMStack() {
-        return DVMStack;
-    }
+    public static Stack<DVM> getDVMStack() { return DVMStack; }
 
-    public static void setDVMStack(Stack<DVM> DVMStack) {
-        Controller.DVMStack = DVMStack;
-    }
+    public static void setDVMStack(Stack<DVM> DVMStack) { Controller.DVMStack = DVMStack; }
 
-    public static C_NumberManager getCM() {
-        return CM;
-    }
+    public static C_NumberManager getCM() { return CM; }
 
-    public static void setCM(C_NumberManager CM) {
-        Controller.CM = CM;
-    }
+    public static void setCM(C_NumberManager CM) { Controller.CM = CM; }
 
-    public static Message_Queue getMq() {
-        return mq;
-    }
+    public static Message_Queue getMq() { return mq; }
 
-    public static void setMq(Message_Queue mq) {
-        Controller.mq = mq;
-    }
+    public static void setMq(Message_Queue mq) { Controller.mq = mq; }
 }

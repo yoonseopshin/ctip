@@ -29,7 +29,10 @@ public class C_NumberManager {
             return -1;
         }
     }
-    public boolean CheckCnumber2(int C_Number_t){ return ch_C_List.containsKey(C_Number_t); }
+
+    public boolean CheckCnumber2(int C_Number_t) {
+        return ch_C_List.containsKey(C_Number_t);
+    }
 
     public void AddchCnumber(C_Number c_number) { ch_C_List.put(c_number.getC_Number_t(), c_number); }
 

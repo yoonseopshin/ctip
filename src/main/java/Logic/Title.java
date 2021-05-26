@@ -49,7 +49,7 @@ public class Title {
         this.Item_List.sort(new Comparator<Item>() {
             @Override
             public int compare(Item o1, Item o2) {
-                return o1.getExpiration_Date()-o2.getExpiration_Date();
+                return o1.getExpiration_Date() - o2.getExpiration_Date();
             }
         });
     }
