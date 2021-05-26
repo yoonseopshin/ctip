@@ -154,57 +154,55 @@ public class AddItemMenu extends JFrame implements ActionListener {
 <span class="nc bnc" id="L154" title="All 2 branches missed.">        if (e.getSource() == Yearselect) {</span>
 <span class="nc" id="L155">            int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));</span>
 <span class="nc" id="L156">            int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));</span>
-<span class="nc bnc" id="L157" title="All 6 branches missed.">            if ((y % 4 == 0 &amp;&amp; y % 100 != 0) || y % 400 == 0) {</span>
-<span class="nc bnc" id="L158" title="All 2 branches missed.">                if (m == 2) {</span>
-<span class="nc" id="L159">                    DefaultComboBoxModel&lt;String&gt; model = new DefaultComboBoxModel&lt;&gt;(day_list3);</span>
-<span class="nc" id="L160">                    Dayselect.setModel(model);</span>
-                }
+<span class="nc bnc" id="L157" title="All 8 branches missed.">            if (((y % 4 == 0 &amp;&amp; y % 100 != 0) || y % 400 == 0) &amp;&amp; (m == 2)) {</span>
+<span class="nc" id="L158">                    DefaultComboBoxModel&lt;String&gt; model = new DefaultComboBoxModel&lt;&gt;(day_list3);</span>
+<span class="nc" id="L159">                    Dayselect.setModel(model);</span>
             }
         }
-<span class="nc bnc" id="L164" title="All 2 branches missed.">        if (e.getSource() == Monthselect) {</span>
-<span class="nc" id="L165">            timer.restart();</span>
-<span class="nc" id="L166">            int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));</span>
-<span class="nc" id="L167">            int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">        if (e.getSource() == Monthselect) {</span>
+<span class="nc" id="L163">            timer.restart();</span>
+<span class="nc" id="L164">            int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));</span>
+<span class="nc" id="L165">            int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));</span>
             DefaultComboBoxModel&lt;String&gt; model;
-<span class="nc bnc" id="L169" title="All 14 branches missed.">            if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {</span>
-<span class="nc" id="L170">                model = new DefaultComboBoxModel&lt;&gt;(day_list1);</span>
+<span class="nc bnc" id="L167" title="All 14 branches missed.">            if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {</span>
+<span class="nc" id="L168">                model = new DefaultComboBoxModel&lt;&gt;(day_list1);</span>
             } else {
-<span class="nc bnc" id="L172" title="All 2 branches missed.">                if (m == 2) {</span>
-<span class="nc bnc" id="L173" title="All 6 branches missed.">                    if ((y % 4 == 0 &amp;&amp; y % 100 != 0) || y % 400 == 0) {</span>
-<span class="nc" id="L174">                        model = new DefaultComboBoxModel&lt;&gt;(day_list3);</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">                if (m == 2) {</span>
+<span class="nc bnc" id="L171" title="All 6 branches missed.">                    if ((y % 4 == 0 &amp;&amp; y % 100 != 0) || y % 400 == 0) {</span>
+<span class="nc" id="L172">                        model = new DefaultComboBoxModel&lt;&gt;(day_list3);</span>
                     } else {
-<span class="nc" id="L176">                        model = new DefaultComboBoxModel&lt;&gt;(day_list4);</span>
+<span class="nc" id="L174">                        model = new DefaultComboBoxModel&lt;&gt;(day_list4);</span>
                     }
                 } else {
-<span class="nc" id="L179">                    model = new DefaultComboBoxModel&lt;&gt;(day_list2);</span>
+<span class="nc" id="L177">                    model = new DefaultComboBoxModel&lt;&gt;(day_list2);</span>
                 }
             }
-<span class="nc" id="L182">            Dayselect.setModel(model);</span>
+<span class="nc" id="L180">            Dayselect.setModel(model);</span>
         }
-<span class="nc bnc" id="L184" title="All 2 branches missed.">        if (e.getSource() == Dayselect) {</span>
-<span class="nc" id="L185">            timer.restart();</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">        if (e.getSource() == Dayselect) {</span>
+<span class="nc" id="L183">            timer.restart();</span>
         }
-<span class="nc bnc" id="L187" title="All 2 branches missed.">        if (e.getSource() == add) {</span>
-<span class="nc" id="L188">            String y = (String) Yearselect.getSelectedItem();</span>
-<span class="nc" id="L189">            String m = (String) Monthselect.getSelectedItem();</span>
-<span class="nc" id="L190">            String d = (String) Dayselect.getSelectedItem();</span>
-<span class="nc" id="L191">            return_date = Integer.parseInt(y.concat(m).concat(d));</span>
-<span class="nc" id="L192">            timer.stop();</span>
-<span class="nc" id="L193">            return_value = 1;</span>
+<span class="nc bnc" id="L185" title="All 2 branches missed.">        if (e.getSource() == add) {</span>
+<span class="nc" id="L186">            String y = (String) Yearselect.getSelectedItem();</span>
+<span class="nc" id="L187">            String m = (String) Monthselect.getSelectedItem();</span>
+<span class="nc" id="L188">            String d = (String) Dayselect.getSelectedItem();</span>
+<span class="nc" id="L189">            return_date = Integer.parseInt(y.concat(m).concat(d));</span>
+<span class="nc" id="L190">            timer.stop();</span>
+<span class="nc" id="L191">            return_value = 1;</span>
         }
-<span class="nc bnc" id="L195" title="All 2 branches missed.">        if (e.getSource() == cancel) {</span>
-<span class="nc" id="L196">            timer.stop();</span>
-<span class="nc" id="L197">            return_value = 0;</span>
+<span class="nc bnc" id="L193" title="All 2 branches missed.">        if (e.getSource() == cancel) {</span>
+<span class="nc" id="L194">            timer.stop();</span>
+<span class="nc" id="L195">            return_value = 0;</span>
         }
-<span class="nc" id="L199">    }</span>
+<span class="nc" id="L197">    }</span>
 
-<span class="nc" id="L201">    public int getReturn_value() { return return_value; }</span>
+<span class="nc" id="L199">    public int getReturn_value() { return return_value; }</span>
 
-<span class="nc" id="L203">    public void setReturn_value(int return_value) { this.return_value = return_value; }</span>
+<span class="nc" id="L201">    public void setReturn_value(int return_value) { this.return_value = return_value; }</span>
 
-<span class="nc" id="L205">    public int getReturn_date() { return return_date; }</span>
+<span class="nc" id="L203">    public int getReturn_date() { return return_date; }</span>
 
-<span class="nc" id="L207">    public void setReturn_date(int return_date) { this.return_date = return_date; }</span>
+<span class="nc" id="L205">    public void setReturn_date(int return_date) { this.return_date = return_date; }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

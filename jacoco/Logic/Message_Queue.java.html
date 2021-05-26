@@ -66,34 +66,34 @@ import java.net.Socket;
 <span class="nc" id="L66">                        Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),</span>
 <span class="nc" id="L67">                        Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));</span>
 <span class="nc" id="L68">                msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기</span>
-<span class="nc bnc" id="L69" title="All 2 branches missed.">                if (message.getType() == 1) System.out.println(&quot;재고요청메시지 수신됨&quot;);</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">                if (message.getType() == 2) System.out.println(&quot;재고응답메시지 수신됨&quot;);</span>
-<span class="nc bnc" id="L71" title="All 2 branches missed.">                if (message.getType() == 3) System.out.println(&quot;위치요청메시지 수신됨&quot;);</span>
-<span class="nc bnc" id="L72" title="All 2 branches missed.">                if (message.getType() == 4) System.out.println(&quot;위치응답메시지 수신됨&quot;);</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">                if (message.getType() == 5) System.out.println(&quot;인증번호메시지 수신됨&quot;);</span>
-<span class="nc bnc" id="L74" title="All 2 branches missed.">                if (message.getType() == 6) System.out.println(&quot;판매확인요청메시지 수신됨&quot;);</span>
-<span class="nc bnc" id="L75" title="All 2 branches missed.">                if (message.getType() == 7) System.out.println(&quot;판매확인메시지 수신됨&quot;);</span>
-<span class="nc" id="L76">                printWriter.write(&quot;1&quot;);</span>
-<span class="nc" id="L77">                printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌</span>
-<span class="nc" id="L78">                socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.</span>
-<span class="nc" id="L79">                Dequeue();</span>
-<span class="nc" id="L80">            }</span>
-<span class="nc" id="L81">        } catch (IOException e) {</span>
-<span class="nc" id="L82">            System.out.println(&quot;서버 메세지수신 오류&quot;);</span>
+<span class="nc bnc" id="L69" title="All 8 branches missed.">                switch (message.getType()) {</span>
+<span class="nc" id="L70">                    case 1: System.out.println(&quot;재고요청메시지 수신됨&quot;); break;</span>
+<span class="nc" id="L71">                    case 2: System.out.println(&quot;재고응답메시지 수신됨&quot;); break;</span>
+<span class="nc" id="L72">                    case 3: System.out.println(&quot;위치요청메시지 수신됨&quot;); break;</span>
+<span class="nc" id="L73">                    case 4: System.out.println(&quot;위치응답메시지 수신됨&quot;); break;</span>
+<span class="nc" id="L74">                    case 5: System.out.println(&quot;인증번호메시지 수신됨&quot;); break;</span>
+<span class="nc" id="L75">                    case 6: System.out.println(&quot;판매확인요청메시지 수신됨&quot;); break;</span>
+<span class="nc" id="L76">                    case 7: System.out.println(&quot;판매확인메시지 수신됨&quot;); break;</span>
+                }
+<span class="nc" id="L78">                printWriter.write(&quot;1&quot;);</span>
+<span class="nc" id="L79">                printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌</span>
+<span class="nc" id="L80">                socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.</span>
+<span class="nc" id="L81">                Dequeue();</span>
+<span class="nc" id="L82">            }</span>
+<span class="nc" id="L83">        } catch (IOException e) {</span>
+<span class="nc" id="L84">            System.out.println(&quot;서버 메세지수신 오류&quot;);</span>
         } finally {
-<span class="nc bnc" id="L84" title="All 2 branches missed.">            if (socket != null) {</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">            if (socket != null) {</span>
                 try {
-<span class="nc" id="L86">                    socket.close();</span>
-<span class="nc" id="L87">                } catch (IOException e) {</span>
-<span class="nc" id="L88">                }</span>
-
+<span class="nc" id="L88">                    socket.close();</span>
+<span class="nc" id="L89">                } catch (IOException e) {</span>
+<span class="nc" id="L90">                }</span>
             }
-<span class="nc bnc" id="L91" title="All 2 branches missed.">            if (server_socket != null) {</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">            if (server_socket != null) {</span>
                 try {
-<span class="nc" id="L93">                    server_socket.close();</span>
-<span class="nc" id="L94">                } catch (IOException e) {</span>
-<span class="nc" id="L95">                }</span>
-                ;
+<span class="nc" id="L94">                    server_socket.close();</span>
+<span class="nc" id="L95">                } catch (IOException e) {</span>
+<span class="nc" id="L96">                }</span>
             }
 <span class="nc" id="L98">            System.out.println(&quot;서버 종료&quot;);</span>
         }
@@ -232,28 +232,52 @@ import java.net.Socket;
         }
 <span class="fc" id="L233">    }</span>
 
-<span class="nc" id="L235">    public static int getLoc() { return loc; }</span>
+    public static int getLoc() {
+<span class="nc" id="L236">        return loc;</span>
+    }
 
-<span class="nc" id="L237">    public static void setLoc(int loc) { Message_Queue.loc = loc; }</span>
+    public static void setLoc(int loc) {
+<span class="nc" id="L240">        Message_Queue.loc = loc;</span>
+<span class="nc" id="L241">    }</span>
 
-<span class="nc" id="L239">    public static int getStk() { return stk; }</span>
+    public static int getStk() {
+<span class="nc" id="L244">        return stk;</span>
+    }
 
-<span class="nc" id="L241">    public static void setStk(int stk) { Message_Queue.stk = stk; }</span>
+    public static void setStk(int stk) {
+<span class="nc" id="L248">        Message_Queue.stk = stk;</span>
+<span class="nc" id="L249">    }</span>
 
-<span class="nc" id="L243">    public static int getCnum() { return cnum; }</span>
+    public static int getCnum() {
+<span class="nc" id="L252">        return cnum;</span>
+    }
 
-<span class="fc" id="L245">    public static void setCnum(int cnum) { Message_Queue.cnum = cnum; }</span>
+    public static void setCnum(int cnum) {
+<span class="fc" id="L256">        Message_Queue.cnum = cnum;</span>
+<span class="fc" id="L257">    }</span>
 
-<span class="fc" id="L247">    public static Queue&lt;Message&gt; getMsgQueue() { return msgQueue; }</span>
+    public static Queue&lt;Message&gt; getMsgQueue() {
+<span class="fc" id="L260">        return msgQueue;</span>
+    }
 
-<span class="nc" id="L249">    public static void setMsgQueue(Queue&lt;Message&gt; msgQueue) { Message_Queue.msgQueue = msgQueue; }</span>
+    public static void setMsgQueue(Queue&lt;Message&gt; msgQueue) {
+<span class="nc" id="L264">        Message_Queue.msgQueue = msgQueue;</span>
+<span class="nc" id="L265">    }</span>
 
-<span class="nc" id="L251">    public static Queue&lt;Message&gt; getStkmsgQueue() { return StkmsgQueue; }</span>
+    public static Queue&lt;Message&gt; getStkmsgQueue() {
+<span class="nc" id="L268">        return StkmsgQueue;</span>
+    }
 
-<span class="nc" id="L253">    public static void setStkmsgQueue(Queue&lt;Message&gt; stkmsgQueue) { StkmsgQueue = stkmsgQueue; }</span>
+    public static void setStkmsgQueue(Queue&lt;Message&gt; stkmsgQueue) {
+<span class="nc" id="L272">        StkmsgQueue = stkmsgQueue;</span>
+<span class="nc" id="L273">    }</span>
 
-<span class="nc" id="L255">    public static Queue&lt;Message&gt; getLocmsgQueue() { return LocmsgQueue; }</span>
+    public static Queue&lt;Message&gt; getLocmsgQueue() {
+<span class="nc" id="L276">        return LocmsgQueue;</span>
+    }
 
-<span class="nc" id="L257">    public static void setLocmsgQueue(Queue&lt;Message&gt; locmsgQueue) { LocmsgQueue = locmsgQueue; }</span>
+    public static void setLocmsgQueue(Queue&lt;Message&gt; locmsgQueue) {
+<span class="nc" id="L280">        LocmsgQueue = locmsgQueue;</span>
+<span class="nc" id="L281">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

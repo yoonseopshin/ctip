@@ -28,7 +28,7 @@ public class C_Number {
             }
 <span class="fc" id="L29">            Controller.getCM().getCh_C_List().remove(-1);</span>
         }
-<span class="fc" id="L31">        String numStr = new String();</span>
+        String numStr;
         do {
 <span class="fc" id="L33">            numStr = randnumber();</span>
 <span class="pc bpc" id="L34" title="3 of 6 branches missed.">        } while (numStr.equals(&quot;000000&quot;) || numStr.equals(Integer.toString(Controller.getCM().getM_Number())) || Controller.getCM().CheckCnumber2(Integer.parseInt(numStr)));</span>
@@ -46,7 +46,7 @@ public class C_Number {
 
 <span class="fc" id="L47">        Random rand = new Random();</span>
 <span class="fc" id="L48">        int len = 6;</span>
-<span class="fc" id="L49">        String numStr = new String(); //난수가 저장될 변수</span>
+<span class="fc" id="L49">        String numStr = &quot;&quot;; //난수가 저장될 변수</span>
 <span class="fc" id="L50">        String ran = Integer.toString(rand.nextInt(9) + 1);  //첫번째 숫자 0이 아님</span>
 <span class="fc" id="L51">        numStr += ran;</span>
 <span class="fc" id="L52">        numStr += Integer.toString(DVM.getCurrentID() - 1); // 두번째 자릿수 =&gt; DVMID</span>

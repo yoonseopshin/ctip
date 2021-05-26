@@ -479,118 +479,115 @@ public class Controller {
                 int del2;
 <span class="nc" id="L480">                System.out.print(&quot;&quot;);</span>
 <span class="nc" id="L481">                int size = DVMStack.size();</span>
-<span class="nc bnc" id="L482" title="All 2 branches missed.">                if (size &gt; 0) {</span>
-<span class="nc bnc" id="L483" title="All 2 branches missed.">                    if (DVMStack.get(size - 1).getID() == -1)</span>
-<span class="nc" id="L484">                        break;</span>
+<span class="nc bnc" id="L482" title="All 4 branches missed.">                if ((size &gt; 0)&amp;&amp;(DVMStack.get(size - 1).getID() == -1)) { break; }</span>
+<span class="nc" id="L483">                del2 = ((FindingDVM) k).getReturn_value();</span>
+<span class="nc bnc" id="L484" title="All 2 branches missed.">                if (del2 == 0) {//시간 초과or취소</span>
+<span class="nc" id="L485">                    Message_Queue.setStk(9);</span>
+<span class="nc" id="L486">                    Message_Queue.setLoc(-1);</span>
+<span class="nc" id="L487">                    init();</span>
+<span class="nc" id="L488">                    return 0;</span>
                 }
-<span class="nc" id="L486">                del2 = ((FindingDVM) k).getReturn_value();</span>
-<span class="nc bnc" id="L487" title="All 2 branches missed.">                if (del2 == 0) {//시간 초과or취소</span>
-<span class="nc" id="L488">                    Message_Queue.setStk(9);</span>
-<span class="nc" id="L489">                    Message_Queue.setLoc(-1);</span>
-<span class="nc" id="L490">                    init();</span>
-<span class="nc" id="L491">                    return 0;</span>
+<span class="nc bnc" id="L490" title="All 4 branches missed.">                if (i &lt;= 10 &amp;&amp; i != DVM.getCurrentID()) {</span>
+<span class="nc" id="L491">                    Message sm = new Message(DVM.getCurrentID());</span>
+<span class="nc" id="L492">                    sm.setmsg(i, 1, basket);</span>
                 }
-<span class="nc bnc" id="L493" title="All 4 branches missed.">                if (i &lt;= 10 &amp;&amp; i != DVM.getCurrentID()) {</span>
-<span class="nc" id="L494">                    Message sm = new Message(DVM.getCurrentID());</span>
-<span class="nc" id="L495">                    sm.setmsg(i, 1, basket);</span>
-                }
-<span class="nc" id="L497">                i++;</span>
-<span class="nc" id="L498">            }</span>
-<span class="nc bnc" id="L499" title="All 2 branches missed.">            if (DVMStack.size() == 1) {</span>
-<span class="nc" id="L500">                InfoNoUsableDVM();</span>
-<span class="nc" id="L501">                init();</span>
-<span class="nc" id="L502">                return 0;</span>
+<span class="nc" id="L494">                i++;</span>
+<span class="nc" id="L495">            }</span>
+<span class="nc bnc" id="L496" title="All 2 branches missed.">            if (DVMStack.size() == 1) {</span>
+<span class="nc" id="L497">                InfoNoUsableDVM();</span>
+<span class="nc" id="L498">                init();</span>
+<span class="nc" id="L499">                return 0;</span>
             }
-<span class="nc" id="L504">            DVMStack.pop();</span>
-<span class="nc" id="L505">            ShowUsableDVM();</span>
-<span class="nc bnc" id="L506" title="All 2 branches missed.">            if (del == -2) {</span>
-<span class="nc" id="L507">                return -2;</span>
+<span class="nc" id="L501">            DVMStack.pop();</span>
+<span class="nc" id="L502">            ShowUsableDVM();</span>
+<span class="nc bnc" id="L503" title="All 2 branches missed.">            if (del == -2) {</span>
+<span class="nc" id="L504">                return -2;</span>
             }
-<span class="nc" id="L509">            return 0;</span>
+<span class="nc" id="L506">            return 0;</span>
         } else {
             //error
-<span class="nc" id="L512">            return -1;</span>
+<span class="nc" id="L509">            return -1;</span>
         }
     }
 
     public void ShowUsableDVM() {
-<span class="nc" id="L517">        k.setVisible(false);</span>
-<span class="nc" id="L518">        k = new DVMMenu(DVMStack);</span>
-<span class="nc" id="L519">        del = SelectDVM();</span>
-<span class="nc" id="L520">    }</span>
+<span class="nc" id="L514">        k.setVisible(false);</span>
+<span class="nc" id="L515">        k = new DVMMenu(DVMStack);</span>
+<span class="nc" id="L516">        del = SelectDVM();</span>
+<span class="nc" id="L517">    }</span>
 
     public void InfoNoUsableDVM() {
-<span class="nc" id="L523">        int del2 = -1;</span>
-<span class="nc" id="L524">        k.setVisible(false);</span>
-<span class="nc" id="L525">        k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + Title_List.get(basket - 1).getName()</span>
+<span class="nc" id="L520">        int del2 = -1;</span>
+<span class="nc" id="L521">        k.setVisible(false);</span>
+<span class="nc" id="L522">        k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + Title_List.get(basket - 1).getName()</span>
                 + &quot;&lt;/strong&gt;&lt;br&gt;해당 음료의 재고가 있는 자판기가 없습니다.&lt;/center&gt;&lt;/html&gt;&quot;, &quot;메인&quot;);
-<span class="nc bnc" id="L527" title="All 2 branches missed.">        while (del2 == -1) {</span>
-<span class="nc" id="L528">            System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L529">            del2 = ((InfoUI) k).getReturn_value();</span>
+<span class="nc bnc" id="L524" title="All 2 branches missed.">        while (del2 == -1) {</span>
+<span class="nc" id="L525">            System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L526">            del2 = ((InfoUI) k).getReturn_value();</span>
         }
-<span class="nc" id="L531">    }</span>
+<span class="nc" id="L528">    }</span>
 
     public int SelectDVM() {
-<span class="nc" id="L534">        del = -1;</span>
-<span class="nc bnc" id="L535" title="All 2 branches missed.">        while (del == -1) {</span>
-<span class="nc" id="L536">            System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L537">            del = ((DVMMenu) k).getReturn_value();</span>
+<span class="nc" id="L531">        del = -1;</span>
+<span class="nc bnc" id="L532" title="All 2 branches missed.">        while (del == -1) {</span>
+<span class="nc" id="L533">            System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L534">            del = ((DVMMenu) k).getReturn_value();</span>
         }
-<span class="nc bnc" id="L539" title="All 2 branches missed.">        if (del == -2) {</span>
-<span class="nc" id="L540">            return -2;</span>
-<span class="nc bnc" id="L541" title="All 2 branches missed.">        } else if (del == 0) {</span>
-<span class="nc" id="L542">            ReturnMain();</span>
-<span class="nc" id="L543">            return 0;</span>
-<span class="nc bnc" id="L544" title="All 2 branches missed.">        } else if (del &gt; 0) {</span>
-<span class="nc" id="L545">            PrintSelectPay(del);</span>
-<span class="nc bnc" id="L546" title="All 2 branches missed.">            if (del == -2) {</span>
-<span class="nc" id="L547">                return -2;</span>
+<span class="nc bnc" id="L536" title="All 2 branches missed.">        if (del == -2) {</span>
+<span class="nc" id="L537">            return -2;</span>
+<span class="nc bnc" id="L538" title="All 2 branches missed.">        } else if (del == 0) {</span>
+<span class="nc" id="L539">            ReturnMain();</span>
+<span class="nc" id="L540">            return 0;</span>
+<span class="nc bnc" id="L541" title="All 2 branches missed.">        } else if (del &gt; 0) {</span>
+<span class="nc" id="L542">            PrintSelectPay(del);</span>
+<span class="nc bnc" id="L543" title="All 2 branches missed.">            if (del == -2) {</span>
+<span class="nc" id="L544">                return -2;</span>
             }
-<span class="nc" id="L549">            return 0;</span>
+<span class="nc" id="L546">            return 0;</span>
         } else {
             //error
-<span class="nc" id="L552">            return -1;</span>
+<span class="nc" id="L549">            return -1;</span>
         }
     }
 
     public void init() {
-<span class="fc" id="L557">        basket = -666;</span>
-<span class="fc" id="L558">        DVMStack.clear();</span>
-<span class="fc" id="L559">        Payment = null;</span>
-<span class="fc" id="L560">    }</span>
+<span class="fc" id="L554">        basket = -666;</span>
+<span class="fc" id="L555">        DVMStack.clear();</span>
+<span class="fc" id="L556">        Payment = null;</span>
+<span class="fc" id="L557">    }</span>
 
-<span class="nc" id="L562">    public void ReturnMain() { init(); }</span>
+<span class="nc" id="L559">    public void ReturnMain() { init(); }</span>
 
-<span class="nc" id="L564">    public JFrame getK() { return k; }</span>
+<span class="nc" id="L561">    public JFrame getK() { return k; }</span>
 
-<span class="nc" id="L566">    public void setK(JFrame k) { this.k = k; }</span>
+<span class="nc" id="L563">    public void setK(JFrame k) { this.k = k; }</span>
 
-<span class="fc" id="L568">    public Logic.Payment getPayment() { return Payment; }</span>
+<span class="fc" id="L565">    public Logic.Payment getPayment() { return Payment; }</span>
 
-<span class="fc" id="L570">    public void setPayment(Logic.Payment payment) { Payment = payment; }</span>
+<span class="fc" id="L567">    public void setPayment(Logic.Payment payment) { Payment = payment; }</span>
 
-<span class="fc" id="L572">    public int getBasket() { return basket; }</span>
+<span class="fc" id="L569">    public int getBasket() { return basket; }</span>
 
-<span class="fc" id="L574">    public void setBasket(int basket) { this.basket = basket; }</span>
+<span class="fc" id="L571">    public void setBasket(int basket) { this.basket = basket; }</span>
 
-<span class="nc" id="L576">    public int getDel() { return del; }</span>
+<span class="nc" id="L573">    public int getDel() { return del; }</span>
 
-<span class="nc" id="L578">    public void setDel(int del) { this.del = del; }</span>
+<span class="nc" id="L575">    public void setDel(int del) { this.del = del; }</span>
 
-<span class="fc" id="L580">    public static ArrayList&lt;Title&gt; getTitle_List() { return Title_List; }</span>
+<span class="fc" id="L577">    public static ArrayList&lt;Title&gt; getTitle_List() { return Title_List; }</span>
 
-<span class="nc" id="L582">    public static void setTitle_List(ArrayList&lt;Title&gt; title_List) { Title_List = title_List; }</span>
+<span class="nc" id="L579">    public static void setTitle_List(ArrayList&lt;Title&gt; title_List) { Title_List = title_List; }</span>
 
-<span class="nc" id="L584">    public static Stack&lt;DVM&gt; getDVMStack() { return DVMStack; }</span>
+<span class="nc" id="L581">    public static Stack&lt;DVM&gt; getDVMStack() { return DVMStack; }</span>
 
-<span class="nc" id="L586">    public static void setDVMStack(Stack&lt;DVM&gt; DVMStack) { Controller.DVMStack = DVMStack; }</span>
+<span class="nc" id="L583">    public static void setDVMStack(Stack&lt;DVM&gt; DVMStack) { Controller.DVMStack = DVMStack; }</span>
 
-<span class="fc" id="L588">    public static C_NumberManager getCM() { return CM; }</span>
+<span class="fc" id="L585">    public static C_NumberManager getCM() { return CM; }</span>
 
-<span class="nc" id="L590">    public static void setCM(C_NumberManager CM) { Controller.CM = CM; }</span>
+<span class="nc" id="L587">    public static void setCM(C_NumberManager CM) { Controller.CM = CM; }</span>
 
-<span class="nc" id="L592">    public static Message_Queue getMq() { return mq; }</span>
+<span class="nc" id="L589">    public static Message_Queue getMq() { return mq; }</span>
 
-<span class="nc" id="L594">    public static void setMq(Message_Queue mq) { Controller.mq = mq; }</span>
+<span class="nc" id="L591">    public static void setMq(Message_Queue mq) { Controller.mq = mq; }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
