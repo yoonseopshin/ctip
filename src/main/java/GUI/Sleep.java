@@ -13,15 +13,13 @@ import javax.swing.JPanel;
 
 public class Sleep extends JFrame implements MouseListener {
 
-    public int return_value = -1;
-    public static DVM thisDVM = new DVM(1,1.0,1.0);
-    public static int CurrentID= thisDVM.getCurrentID();
+    private int return_value = -1;
 
     public Sleep() {
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
+        this.setTitle("DVM " + DVM.getCurrentID());
         this.addMouseListener(this);
-        this.setBackground(new Color((float) 0.0, (float) 0.0, (float) 0.0));
+        this.setBackground(new Color((float) 1.0, (float) 1.0, (float) 1.0));
 
         //라벨패널
         JPanel labelpanel = new JPanel();
@@ -35,12 +33,6 @@ public class Sleep extends JFrame implements MouseListener {
         setVisible(true);
     }
 
-    /*
-    public static void main(String[] args) {
-      new Sleep();
-
-    }
-  */
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
@@ -55,7 +47,6 @@ public class Sleep extends JFrame implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
         return_value = 1;
     }
 
@@ -70,4 +61,9 @@ public class Sleep extends JFrame implements MouseListener {
         // TODO Auto-generated method stub
 
     }
+
+    public int getReturn_value() { return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
+
 }

@@ -1,14 +1,15 @@
 package Logic;
 
-import java.util.*;
-
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Title {
 
     private String Name;
     private int Price;
     private ArrayList<Item> Item_List;
-    private Integer Hold;
+    private int Hold;
 
     public Title(String Name, int Price) {
         this.Name = Name;
@@ -40,15 +41,17 @@ public class Title {
     }
 
     public boolean CheckStock() {
-        if (this.Item_List.size() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return !(this.Item_List.isEmpty());
     }
 
     public void AddItem(Item item) {
         this.Item_List.add(item);
+        this.Item_List.sort(new Comparator<Item>() {
+            @Override
+            public int compare(Item o1, Item o2) {
+                return o1.getExpiration_Date() - o2.getExpiration_Date();
+            }
+        });
     }
 
     public void DeleteItem(ArrayList<Integer> ilist) {

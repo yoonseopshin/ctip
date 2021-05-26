@@ -35,11 +35,31 @@ public class C_NumberManagerTest {
     }
 
     @Test
+    public void testCheckCnumber2() {
+        Cn.setC_Number_t(999999);
+        CM.AddchCnumber(Cn);
+        boolean ActualResult = CM.CheckCnumber2(999999);
+        Assert.assertTrue(ActualResult);
+        ActualResult = CM.CheckCnumber2(888888);
+        Assert.assertFalse(ActualResult);
+    }
+
+    @Test
     public void testAddCnumber() {
         Cn.setC_Number_t(971125);
         CM.AddCnumber(Cn);
         int ExpectedResult = 1;
         int ActualResult = CM.getC_List().size();
+        Assert.assertEquals(ExpectedResult, ActualResult);
+    }
+
+
+    @Test
+    public void testAddchCnumber() {
+        Cn.setC_Number_t(971125);
+        CM.AddchCnumber(Cn);
+        int ExpectedResult = 1;
+        int ActualResult = CM.getCh_C_List().size();
         Assert.assertEquals(ExpectedResult, ActualResult);
     }
 }

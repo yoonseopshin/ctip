@@ -1,54 +1,57 @@
 package GUI;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import Logic.DVM;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Stack;
-
-import Logic.*;
-
-import javax.swing.*;
-import static GUI.Sleep.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class DVMMenu extends JFrame implements ActionListener {
 
     private Timer timer = new Timer(180000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            return_value = -2;
             timer.stop();
+            return_value = -2;
         }
     });
 
-    private JButton[] DVM;
+    private JButton[] DVMlist;
     private JButton cancel;
     private Stack<DVM> stk;
-    public int return_value = -1;
+    private int return_value = -1;
 
     public DVMMenu(Stack<DVM> DVM_stack) {
         timer.start();
         stk = DVM_stack;
 
         this.setPreferredSize(new Dimension(600, 800));
-        this.setTitle("DVM "+ CurrentID);
+        this.setTitle("DVM " + DVM.getCurrentID());
+
         //라벨패널
         JPanel labelpanel = new JPanel();
         labelpanel.setPreferredSize(new Dimension(600, 30));
         JLabel label = new JLabel("선결제할 자판기를 고르세요");
         label.setFont(label.getFont().deriveFont(15.0f));
         labelpanel.add(label);
+
         //자판기패널
         JPanel DVMpanel = new JPanel(new GridLayout(10, 1));
         DVMpanel.setPreferredSize(new Dimension(600, 700));
-
-        DVM = new JButton[10];
+        DVMlist = new JButton[10];
         for (int i = 0; i < stk.size(); i++) {
-            DVM[i] = new JButton("DVM ID : " + stk.get(i).getID() + "      위치 : " +
+            DVMlist[i] = new JButton("DVM ID : " + stk.get(i).getID() + "      위치 : " +
                     DVM_stack.get(i).getAddress_X() + ", " + DVM_stack.get(i).getAddress_Y());
-            DVM[i].addActionListener(this);
-            DVMpanel.add(DVM[i]);
+            DVMlist[i].addActionListener(this);
+            DVMpanel.add(DVMlist[i]);
         }
 
         //취소패널
@@ -68,35 +71,23 @@ public class DVMMenu extends JFrame implements ActionListener {
 
     }
 
-    /*test
-    public static void main(String[] args) {
-      DVM a=new DVM(1,1.0,1.0);
-      DVM b=new DVM(2,2.0,2.0);
-      DVM c=new DVM(3,3.0,3.0);
-      DVM d=new DVM(4,4.0,4.0);
-      Stack<DVM> darr=new Stack<DVM>();
-      darr.push(a);darr.push(b);darr.push(c);darr.push(d);
-
-      new DVMMenu(darr);
-
-
-    }
-     */
     @Override
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < stk.size(); i++) {
-            if (e.getSource() == DVM[i]) {
+            if (e.getSource() == DVMlist[i]) {
                 timer.stop();
                 return_value = stk.get(i).getID();
                 System.out.println(return_value);
-                //this.setVisible(false);
             }
         }
         if (e.getSource() == cancel) {
             timer.stop();
             return_value = 0;
-            //this.setVisible(false);
         }
     }
+
+    public int getReturn_value() { return return_value; }
+
+    public void setReturn_value(int return_value) { this.return_value = return_value; }
 }
 

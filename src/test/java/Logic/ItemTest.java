@@ -8,7 +8,6 @@ import static org.junit.Assert.*;
 public class ItemTest {
 
     Item item = new Item(20201125);
-    ;
 
     @Test
     public void testGetExpiration_Date() {
