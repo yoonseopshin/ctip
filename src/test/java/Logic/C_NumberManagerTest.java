@@ -37,17 +37,11 @@ public class C_NumberManagerTest {
     @Test
     public void testCheckCnumber2() {
         Cn.setC_Number_t(999999);
-        CM.setM_Number(971125);
-        CM.AddCnumber(Cn);
-        boolean ExpectedResult = true;
-        int ActualResult = CM.CheckCnumber(999999);
-        Assert.assertEquals(ExpectedResult, ActualResult);
-        ExpectedResult = true;
-        ActualResult = CM.CheckCnumber(971125);
-        Assert.assertEquals(ExpectedResult, ActualResult);
-        ExpectedResult = false;
-        ActualResult = CM.CheckCnumber(888888);
-        Assert.assertEquals(ExpectedResult, ActualResult);
+        CM.AddchCnumber(Cn);
+        boolean ActualResult = CM.CheckCnumber2(999999);
+        Assert.assertTrue(ActualResult);
+        ActualResult = CM.CheckCnumber2(888888);
+        Assert.assertFalse(ActualResult);
     }
 
     @Test
@@ -63,9 +57,9 @@ public class C_NumberManagerTest {
     @Test
     public void testAddchCnumber() {
         Cn.setC_Number_t(971125);
-        CM.AddCnumber(Cn);
+        CM.AddchCnumber(Cn);
         int ExpectedResult = 1;
-        int ActualResult = CM.getC_List().size();
+        int ActualResult = CM.getCh_C_List().size();
         Assert.assertEquals(ExpectedResult, ActualResult);
     }
 }

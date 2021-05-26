@@ -29,7 +29,7 @@ public class Message_QueueTest {
         Controller c = new Controller();
         c.getTitle_List().get(1).AddItem(new Item(20201125));
         msg.setTargetID(1);
-        msg.setType(5);
+        msg.setType(3);
         msg.setTitle(2);
         msg.setC_Number(971026);
         Message_Queue.getMsgQueue().offer(msg);
