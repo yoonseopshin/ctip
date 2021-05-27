@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-import javax.swing.text.JTextComponent;
 
 public class InputLine extends JFrame implements ActionListener {
 
