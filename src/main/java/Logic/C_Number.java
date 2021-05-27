@@ -10,6 +10,7 @@ public class C_Number {
     private int DvmID;
     private int C_Number_t;
     private Random rand;
+
     {
         try {
             rand = new SecureRandom().getInstanceStrong();

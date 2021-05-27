@@ -62,7 +62,9 @@ public class Controller {
                 del = ((Sleep) k).getReturn_value();
             }
             ShowMainMenu();
-            if(!mq.isAlive()) { break; }
+            if (!mq.isAlive()) {
+                break;
+            }
         }
     }
 
@@ -480,7 +482,9 @@ public class Controller {
                 int del2;
                 System.out.print("");
                 int size = DVMStack.size();
-                if ((size > 0)&&(DVMStack.get(size - 1).getID() == -1)) { break; }
+                if ((size > 0) && (DVMStack.get(size - 1).getID() == -1)) {
+                    break;
+                }
                 del2 = ((FindingDVM) k).getReturn_value();
                 if (del2 == 0) {//시간 초과or취소
                     Message_Queue.setStk(9);
