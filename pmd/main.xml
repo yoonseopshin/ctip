@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-27T02:25:17.908">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-27T02:50:55.592">
 <file name="/home/runner/work/ctip/ctip/src/main/java/GUI/AddItemMenu.java">
-<violation beginline="19" endline="207" begincolumn="8" endcolumn="1" rule="MissingSerialVersionUID" ruleset="Error Prone" package="GUI" class="AddItemMenu" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingserialversionuid" priority="3">
+<violation beginline="19" endline="210" begincolumn="8" endcolumn="1" rule="MissingSerialVersionUID" ruleset="Error Prone" package="GUI" class="AddItemMenu" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingserialversionuid" priority="3">
 Classes implementing Serializable should set a serialVersionUID
 </violation>
 <violation beginline="21" endline="21" begincolumn="19" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="GUI" class="AddItemMenu" variable="timer" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
@@ -49,13 +49,25 @@ Avoid using Literals in Conditional Statements
 <violation beginline="106" endline="106" begincolumn="25" endcolumn="26" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="AddItemMenu" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="164" endline="186" begincolumn="20" endcolumn="60" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" variable="y" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'y' (lines '164'-'186').
+<violation beginline="155" endline="169" begincolumn="17" endcolumn="77" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" variable="y" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'y' (lines '155'-'169').
 </violation>
-<violation beginline="164" endline="197" begincolumn="17" endcolumn="77" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" variable="y" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'y' (lines '164'-'197').
+<violation beginline="155" endline="189" begincolumn="20" endcolumn="60" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" variable="y" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'y' (lines '155'-'189').
 </violation>
-<violation beginline="170" endline="170" begincolumn="26" endcolumn="26" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="155" endline="200" begincolumn="17" endcolumn="77" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" variable="y" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'y' (lines '155'-'200').
+</violation>
+<violation beginline="157" endline="157" begincolumn="22" endcolumn="22" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="169" endline="189" begincolumn="20" endcolumn="60" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" variable="y" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'y' (lines '169'-'189').
+</violation>
+<violation beginline="169" endline="200" begincolumn="17" endcolumn="77" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" variable="y" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'y' (lines '169'-'200').
+</violation>
+<violation beginline="172" endline="172" begincolumn="22" endcolumn="22" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="GUI" class="AddItemMenu" method="actionPerformed" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
 </file>
