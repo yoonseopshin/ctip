@@ -15,7 +15,7 @@ public class C_Number {
         try {
 <span class="fc" id="L16">            rand = new SecureRandom().getInstanceStrong();</span>
 <span class="nc" id="L17">        } catch (NoSuchAlgorithmException e) {</span>
-<span class="nc" id="L18">            e.printStackTrace();</span>
+<span class="nc" id="L18">            throw new RuntimeException(&quot;Failed to instantiate random number generator&quot;, e);</span>
 <span class="fc" id="L19">        }</span>
     }
 
