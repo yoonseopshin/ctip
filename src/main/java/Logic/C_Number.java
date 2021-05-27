@@ -13,7 +13,8 @@ public class C_Number {
 
     {
         try {
-            rand = new SecureRandom().getInstanceStrong();
+            new SecureRandom();
+            rand = SecureRandom.getInstanceStrong();
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Failed to instantiate random number generator", e);
         }
@@ -54,8 +55,6 @@ public class C_Number {
     }
 
     public String randnumber() {
-
-        Random rand = new Random();
         int len = 6;
         String numStr = ""; //난수가 저장될 변수
         String ran = Integer.toString(rand.nextInt(9) + 1);  //첫번째 숫자 0이 아님
