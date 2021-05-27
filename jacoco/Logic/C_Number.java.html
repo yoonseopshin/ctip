@@ -9,7 +9,7 @@ public class C_Number {
     private int title_id;
     private int DvmID;
     private int C_Number_t;
-    private Random rand;;
+    private Random rand;
 
     {
         try {
