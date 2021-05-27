@@ -9,12 +9,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.Timer;
+import javax.swing.*;
 
 public class ManTitleMenu extends JFrame implements ActionListener {
 
@@ -28,7 +23,7 @@ public class ManTitleMenu extends JFrame implements ActionListener {
 
     private JButton[] Title_list;
     private JButton exit;
-    private ArrayList<Title> temp;
+    private transient ArrayList<Title> temp;
     private int return_value = -1;
 
     public ManTitleMenu(ArrayList<Title> tlist) {
@@ -47,8 +42,8 @@ public class ManTitleMenu extends JFrame implements ActionListener {
 
         //타이틀 패널
         JPanel titlelistpanel = new JPanel(new GridLayout(tlist.size(), 1));
-        JScrollPane titlepanel = new JScrollPane(titlelistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        JScrollPane titlepanel = new JScrollPane(titlelistpanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         titlepanel.getVerticalScrollBar().setUnitIncrement(8);
         titlelistpanel.setPreferredSize(new Dimension(600, 70 * tlist.size()));
         Title_list = new JButton[tlist.size()];

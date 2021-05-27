@@ -10,13 +10,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.Timer;
+import javax.swing.*;
 
 public class ManItemMenu extends JFrame implements ActionListener {
 
@@ -32,7 +26,7 @@ public class ManItemMenu extends JFrame implements ActionListener {
     private JButton exit;
     private JButton add;
     private JButton delete;
-    private ArrayList<Item> temp;
+    private transient ArrayList<Item> temp;
     private int return_value = -1;
     private ArrayList<Integer> return_itemlist;
 
@@ -53,8 +47,8 @@ public class ManItemMenu extends JFrame implements ActionListener {
 
         //아이템패널
         JPanel itemlistpanel = new JPanel();
-        JScrollPane itempanel = new JScrollPane(itemlistpanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        JScrollPane itempanel = new JScrollPane(itemlistpanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         itempanel.getVerticalScrollBar().setUnitIncrement(8);
         itemlistpanel.setPreferredSize(new Dimension(600, 56 * temp.size()));
         Item_list = new JCheckBox[30];
