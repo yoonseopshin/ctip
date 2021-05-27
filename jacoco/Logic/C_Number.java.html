@@ -10,77 +10,78 @@ public class C_Number {
     private int DvmID;
     private int C_Number_t;
     private Random rand;
+
     {
         try {
-<span class="fc" id="L15">            rand = new SecureRandom().getInstanceStrong();</span>
-<span class="nc" id="L16">        } catch (NoSuchAlgorithmException e) {</span>
-<span class="nc" id="L17">            e.printStackTrace();</span>
-<span class="fc" id="L18">        }</span>
+<span class="fc" id="L16">            rand = new SecureRandom().getInstanceStrong();</span>
+<span class="nc" id="L17">        } catch (NoSuchAlgorithmException e) {</span>
+<span class="nc" id="L18">            e.printStackTrace();</span>
+<span class="fc" id="L19">        }</span>
     }
 
-<span class="fc" id="L21">    public C_Number(int title_id, int id) {</span>
-<span class="fc" id="L22">        this.title_id = title_id;</span>
-<span class="fc" id="L23">        this.DvmID = id;</span>
-<span class="fc" id="L24">    }</span>
+<span class="fc" id="L22">    public C_Number(int title_id, int id) {</span>
+<span class="fc" id="L23">        this.title_id = title_id;</span>
+<span class="fc" id="L24">        this.DvmID = id;</span>
+<span class="fc" id="L25">    }</span>
 
 
     public int CreateCnumber() {
         //수정
-<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (!(Controller.getCM().getCh_C_List().isEmpty())) {</span>
-<span class="fc" id="L30">            Message_Queue.setCnum(Controller.getCM().getCh_C_List().size());</span>
-<span class="fc bfc" id="L31" title="All 2 branches covered.">            for (Integer key : Controller.getCM().getCh_C_List().keySet()) {</span>
-<span class="fc" id="L32">                Message msg = new Message(DVM.getCurrentID());</span>
-<span class="fc" id="L33">                msg.setmsg(Controller.getCM().getCh_C_List().get(key).getDvmID(), 6, key);</span>
-<span class="fc" id="L34">            }</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (!(Controller.getCM().getCh_C_List().isEmpty())) {</span>
+<span class="fc" id="L31">            Message_Queue.setCnum(Controller.getCM().getCh_C_List().size());</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            for (Integer key : Controller.getCM().getCh_C_List().keySet()) {</span>
+<span class="fc" id="L33">                Message msg = new Message(DVM.getCurrentID());</span>
+<span class="fc" id="L34">                msg.setmsg(Controller.getCM().getCh_C_List().get(key).getDvmID(), 6, key);</span>
+<span class="fc" id="L35">            }</span>
             while (true) {
-<span class="pc bpc" id="L36" title="1 of 2 branches missed.">                if (Controller.getCM().CheckCnumber2(-1))</span>
-<span class="fc" id="L37">                    break;</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">                if (Controller.getCM().CheckCnumber2(-1))</span>
+<span class="fc" id="L38">                    break;</span>
             }
-<span class="fc" id="L39">            Controller.getCM().getCh_C_List().remove(-1);</span>
+<span class="fc" id="L40">            Controller.getCM().getCh_C_List().remove(-1);</span>
         }
         String numStr;
         do {
-<span class="fc" id="L43">            numStr = randnumber();</span>
-<span class="pc bpc" id="L44" title="3 of 6 branches missed.">        } while (numStr.equals(&quot;000000&quot;) || numStr.equals(Integer.toString(Controller.getCM().getM_Number())) || Controller.getCM().CheckCnumber2(Integer.parseInt(numStr)));</span>
-<span class="fc" id="L45">        C_Number_t = Integer.parseInt(numStr);</span>
-<span class="fc" id="L46">        Message message = new Message(DVM.getCurrentID());</span>
-<span class="fc" id="L47">        message.setmsg(this.DvmID, 3, title_id, C_Number_t);</span>
-<span class="fc" id="L48">        C_Number cn = new C_Number(title_id, DvmID);</span>
-<span class="fc" id="L49">        cn.setC_Number_t(C_Number_t);</span>
-<span class="fc" id="L50">        Controller.getCM().AddchCnumber(cn);</span>
+<span class="fc" id="L44">            numStr = randnumber();</span>
+<span class="pc bpc" id="L45" title="3 of 6 branches missed.">        } while (numStr.equals(&quot;000000&quot;) || numStr.equals(Integer.toString(Controller.getCM().getM_Number())) || Controller.getCM().CheckCnumber2(Integer.parseInt(numStr)));</span>
+<span class="fc" id="L46">        C_Number_t = Integer.parseInt(numStr);</span>
+<span class="fc" id="L47">        Message message = new Message(DVM.getCurrentID());</span>
+<span class="fc" id="L48">        message.setmsg(this.DvmID, 3, title_id, C_Number_t);</span>
+<span class="fc" id="L49">        C_Number cn = new C_Number(title_id, DvmID);</span>
+<span class="fc" id="L50">        cn.setC_Number_t(C_Number_t);</span>
+<span class="fc" id="L51">        Controller.getCM().AddchCnumber(cn);</span>
 
-<span class="fc" id="L52">        return C_Number_t;</span>
+<span class="fc" id="L53">        return C_Number_t;</span>
     }
 
     public String randnumber() {
 
-<span class="fc" id="L57">        Random rand = new Random();</span>
-<span class="fc" id="L58">        int len = 6;</span>
-<span class="fc" id="L59">        String numStr = &quot;&quot;; //난수가 저장될 변수</span>
-<span class="fc" id="L60">        String ran = Integer.toString(rand.nextInt(9) + 1);  //첫번째 숫자 0이 아님</span>
-<span class="fc" id="L61">        numStr += ran;</span>
-<span class="fc" id="L62">        numStr += Integer.toString(DVM.getCurrentID() - 1); // 두번째 자릿수 =&gt; DVMID</span>
-<span class="fc" id="L63">        numStr += Integer.toString(this.DvmID - 1);</span>
-<span class="fc bfc" id="L64" title="All 2 branches covered.">        for (int i = 3; i &lt; len; i++) {</span>
+<span class="fc" id="L58">        Random rand = new Random();</span>
+<span class="fc" id="L59">        int len = 6;</span>
+<span class="fc" id="L60">        String numStr = &quot;&quot;; //난수가 저장될 변수</span>
+<span class="fc" id="L61">        String ran = Integer.toString(rand.nextInt(9) + 1);  //첫번째 숫자 0이 아님</span>
+<span class="fc" id="L62">        numStr += ran;</span>
+<span class="fc" id="L63">        numStr += Integer.toString(DVM.getCurrentID() - 1); // 두번째 자릿수 =&gt; DVMID</span>
+<span class="fc" id="L64">        numStr += Integer.toString(this.DvmID - 1);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        for (int i = 3; i &lt; len; i++) {</span>
             //0~9 까지 난수 생성
-<span class="fc" id="L66">            ran = Integer.toString(this.rand.nextInt(10));</span>
-<span class="fc" id="L67">            numStr += ran;</span>
+<span class="fc" id="L67">            ran = Integer.toString(this.rand.nextInt(10));</span>
+<span class="fc" id="L68">            numStr += ran;</span>
         }
 
-<span class="fc" id="L70">        return numStr;</span>
+<span class="fc" id="L71">        return numStr;</span>
     }
 
-<span class="fc" id="L73">    public int getTitle_id() { return title_id; }</span>
+<span class="fc" id="L74">    public int getTitle_id() { return title_id; }</span>
 
-<span class="nc" id="L75">    public void setTitle_id(int title_id) { this.title_id = title_id; }</span>
+<span class="nc" id="L76">    public void setTitle_id(int title_id) { this.title_id = title_id; }</span>
 
-<span class="fc" id="L77">    public int getDvmID() { return DvmID; }</span>
+<span class="fc" id="L78">    public int getDvmID() { return DvmID; }</span>
 
-<span class="nc" id="L79">    public void setDvmID(int dvmID) { DvmID = dvmID; }</span>
+<span class="nc" id="L80">    public void setDvmID(int dvmID) { DvmID = dvmID; }</span>
 
-<span class="fc" id="L81">    public int getC_Number_t() { return C_Number_t; }</span>
+<span class="fc" id="L82">    public int getC_Number_t() { return C_Number_t; }</span>
 
-<span class="fc" id="L83">    public void setC_Number_t(int c_Number_t) { C_Number_t = c_Number_t; }</span>
+<span class="fc" id="L84">    public void setC_Number_t(int c_Number_t) { C_Number_t = c_Number_t; }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
