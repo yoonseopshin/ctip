@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import javax.swing.text.JTextComponent;
 
 public class InputLine extends JFrame implements ActionListener {
 
@@ -49,7 +50,7 @@ public class InputLine extends JFrame implements ActionListener {
         JPanel inputpanel = new JPanel();
         inputpanel.setPreferredSize(new Dimension(600, 100));
         txt = new JTextField("", SwingConstants.CENTER);
-        txt.setHorizontalAlignment(JTextField.CENTER);
+        txt.setHorizontalAlignment(SwingConstants.CENTER);
         txt.setPreferredSize(new Dimension(400, 100));
         txt.setFont(txt.getFont().deriveFont(40.0f));
         Delete = new JButton("지우기");

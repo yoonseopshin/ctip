@@ -26,7 +26,7 @@ public class DVMMenu extends JFrame implements ActionListener {
 
     private JButton[] DVMlist;
     private JButton cancel;
-    private Stack<DVM> stk;
+    private transient Stack<DVM> stk;
     private int return_value = -1;
 
     public DVMMenu(Stack<DVM> DVM_stack) {

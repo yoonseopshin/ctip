@@ -62,6 +62,7 @@ public class Controller {
                 del = ((Sleep) k).getReturn_value();
             }
             ShowMainMenu();
+            if(!mq.isAlive()) { break; }
         }
     }
 

@@ -1,5 +1,7 @@
 package Logic;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class C_Number {
@@ -7,6 +9,14 @@ public class C_Number {
     private int title_id;
     private int DvmID;
     private int C_Number_t;
+    private Random rand;
+    {
+        try {
+            rand = new SecureRandom().getInstanceStrong();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
 
     public C_Number(int title_id, int id) {
         this.title_id = title_id;
@@ -53,7 +63,7 @@ public class C_Number {
         numStr += Integer.toString(this.DvmID - 1);
         for (int i = 3; i < len; i++) {
             //0~9 까지 난수 생성
-            ran = Integer.toString(rand.nextInt(10));
+            ran = Integer.toString(this.rand.nextInt(10));
             numStr += ran;
         }
 

@@ -46,10 +46,12 @@ public class CardPayUI extends JFrame implements ActionListener {
         this.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+                // Do nothing because no need to
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
+                // Do nothing because no need to
             }
 
             @Override
