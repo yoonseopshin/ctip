@@ -154,8 +154,13 @@ public class AddItemMenu extends JFrame implements ActionListener {
         if (e.getSource() == Yearselect) {
             int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));
             int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));
-            if (((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) && (m == 2)) {
-                DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(day_list3);
+            if (m == 2) {
+                DefaultComboBoxModel<String> model;
+                if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) {
+                    model = new DefaultComboBoxModel<>(day_list3);
+                } else {
+                    model = new DefaultComboBoxModel<>(day_list4);
+                }
                 Dayselect.setModel(model);
             }
         }
@@ -164,18 +169,16 @@ public class AddItemMenu extends JFrame implements ActionListener {
             int y = Integer.parseInt((String) (Yearselect.getSelectedItem()));
             int m = Integer.parseInt((String) (Monthselect.getSelectedItem()));
             DefaultComboBoxModel<String> model;
-            if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
+            if (m == 2) {
+                if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) {
+                    model = new DefaultComboBoxModel<>(day_list3);
+                } else {
+                    model = new DefaultComboBoxModel<>(day_list4);
+                }
+            } else if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
                 model = new DefaultComboBoxModel<>(day_list1);
             } else {
-                if (m == 2) {
-                    if ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) {
-                        model = new DefaultComboBoxModel<>(day_list3);
-                    } else {
-                        model = new DefaultComboBoxModel<>(day_list4);
-                    }
-                } else {
-                    model = new DefaultComboBoxModel<>(day_list2);
-                }
+                model = new DefaultComboBoxModel<>(day_list2);
             }
             Dayselect.setModel(model);
         }
