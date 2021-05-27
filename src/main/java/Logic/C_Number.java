@@ -15,7 +15,7 @@ public class C_Number {
         try {
             rand = new SecureRandom().getInstanceStrong();
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to instantiate random number generator", e);
         }
     }
 
