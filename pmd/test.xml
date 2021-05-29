@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-27T03:31:52.458">
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_NumberManagerTest.java">
-<violation beginline="9" endline="9" begincolumn="29" endcolumn="30" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="CM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-29T08:33:26.653">
+<file name="/home/runner/work/ctip/ctip/src/test/java/logic/C_NumberManagerTest.java">
+<violation beginline="7" endline="7" begincolumn="28" endcolumn="29" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="C_NumberManagerTest" variable="CM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
-<violation beginline="10" endline="10" begincolumn="22" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberManagerTest" variable="Cn" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
-Found non-transient, non-static member. Please mark as transient or provide accessors.
-</violation>
-</file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/C_NumberTest.java">
-<violation beginline="10" endline="10" begincolumn="22" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="C_NumberTest" variable="CN" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<violation beginline="8" endline="8" begincolumn="21" endcolumn="22" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="C_NumberManagerTest" variable="Cn" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/ControllerTest.java">
-<violation beginline="14" endline="14" begincolumn="24" endcolumn="24" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="ControllerTest" variable="c" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<file name="/home/runner/work/ctip/ctip/src/test/java/logic/C_NumberTest.java">
+<violation beginline="8" endline="8" begincolumn="21" endcolumn="22" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="C_NumberTest" variable="CN" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/DVMTest.java">
-<violation beginline="9" endline="9" begincolumn="17" endcolumn="19" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="DVMTest" variable="dvm" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<file name="/home/runner/work/ctip/ctip/src/test/java/logic/ControllerTest.java">
+<violation beginline="7" endline="7" begincolumn="24" endcolumn="24" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="ControllerTest" variable="c" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/ItemTest.java">
-<violation beginline="10" endline="10" begincolumn="10" endcolumn="13" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="ItemTest" variable="item" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<file name="/home/runner/work/ctip/ctip/src/test/java/logic/DVMTest.java">
+<violation beginline="7" endline="7" begincolumn="17" endcolumn="19" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="DVMTest" variable="dvm" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/MessageTest.java">
-<violation beginline="9" endline="9" begincolumn="13" endcolumn="15" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="MessageTest" variable="msg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<file name="/home/runner/work/ctip/ctip/src/test/java/logic/ItemTest.java">
+<violation beginline="8" endline="8" begincolumn="10" endcolumn="13" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="ItemTest" variable="item" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/Message_QueueTest.java">
-<violation beginline="7" endline="7" begincolumn="21" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="Message_QueueTest" variable="msg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<file name="/home/runner/work/ctip/ctip/src/test/java/logic/MessageTest.java">
+<violation beginline="7" endline="7" begincolumn="13" endcolumn="15" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="MessageTest" variable="msg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/PaymentTest.java">
-<violation beginline="10" endline="10" begincolumn="13" endcolumn="19" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="PaymentTest" variable="payment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<file name="/home/runner/work/ctip/ctip/src/test/java/logic/Message_QueueTest.java">
+<violation beginline="7" endline="7" begincolumn="21" endcolumn="23" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="Message_QueueTest" variable="msg" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/test/java/Logic/TitleTest.java">
-<violation beginline="11" endline="11" begincolumn="25" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="Logic" class="TitleTest" variable="t" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+<file name="/home/runner/work/ctip/ctip/src/test/java/logic/PaymentTest.java">
+<violation beginline="10" endline="10" begincolumn="13" endcolumn="19" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="PaymentTest" variable="payment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="/home/runner/work/ctip/ctip/src/test/java/logic/TitleTest.java">
+<violation beginline="11" endline="11" begincolumn="25" endcolumn="25" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="TitleTest" variable="t" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
 Found non-transient, non-static member. Please mark as transient or provide accessors.
 </violation>
 </file>
