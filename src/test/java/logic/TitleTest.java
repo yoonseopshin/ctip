@@ -41,7 +41,7 @@ public class TitleTest {
   }
 
   @Test
-  public void testItem_List() {
+  public void testItemList() {
     t.addItem(new Item(20201025));
     t.addItem(new Item(20201125));
     t.addItem(new Item(20201125));

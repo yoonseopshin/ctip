@@ -8,7 +8,7 @@ public class MessageTest {
   Message msg = new Message(DVM.getCurrentID());
 
   @Test
-  public void testSetmsg1() {
+  public void testSetMsg1() {
     msg.setMsg(1, 1, 1);
     Assert.assertEquals(1, msg.getTargetId());
     Assert.assertEquals(1, msg.getType());
@@ -16,7 +16,7 @@ public class MessageTest {
   }
 
   @Test
-  public void testSetmsg2() {
+  public void testSetMsg2() {
     msg.setMsg(1, 2, true);
     Assert.assertEquals(1, msg.getTargetId());
     Assert.assertEquals(2, msg.getType());
@@ -24,7 +24,7 @@ public class MessageTest {
   }
 
   @Test
-  public void testSetmsg3() {
+  public void testSetMsg3() {
     msg.setMsg(1, 3, 1, 971125);
     Assert.assertEquals(1, msg.getTargetId());
     Assert.assertEquals(3, msg.getType());
@@ -33,14 +33,14 @@ public class MessageTest {
   }
 
   @Test
-  public void testSetmsg4() {
+  public void testSetMsg4() {
     msg.setMsg(1, 4);
     Assert.assertEquals(1, msg.getTargetId());
     Assert.assertEquals(4, msg.getType());
   }
 
   @Test
-  public void testSetmsg5() {
+  public void testSetMsg5() {
     msg.setMsg(1, 5, 1.0, 1.0);
     Assert.assertEquals(1, msg.getTargetId());
     Assert.assertEquals(5, msg.getType());
@@ -49,7 +49,7 @@ public class MessageTest {
   }
 
   @Test
-  public void testSetmsg6() {
+  public void testSetMsg6() {
     msg.setMsg(1, 6, 971125);
     Assert.assertEquals(1, msg.getTargetId());
     Assert.assertEquals(6, msg.getType());
@@ -57,7 +57,7 @@ public class MessageTest {
   }
 
   @Test
-  public void testSetmsg7() {
+  public void testSetMsg7() {
     msg.setMsg(1, 7, 971125, true);
     Assert.assertEquals(1, msg.getTargetId());
     Assert.assertEquals(7, msg.getType());

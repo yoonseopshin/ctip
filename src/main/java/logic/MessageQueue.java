@@ -41,7 +41,7 @@ public class MessageQueue extends Thread {
   public void msgReceive(int myId) {
     Socket socket = null;                //Client와 통신하기 위한 Socket
     ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket
-    BufferedReader in = null;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
+    BufferedReader in;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
     PrintWriter out = null;                //Client로 데이터를 내보내기 위한 출력 스트림
     int port = myId + 50000;
     ObjectInputStream objectInputStream; // 직렬화된 객체를 읽어올때 사용
@@ -53,10 +53,8 @@ public class MessageQueue extends Thread {
       System.out.println(port + "번 포트 사용 불가");
     }
     try {
-      while (true) {
-        if (this.isInterrupted()) {
-          break;
-        }
+      while (!this.isInterrupted()) {
+        assert server_socket != null;
         socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.
         printWriter = new PrintWriter(
             new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
@@ -120,9 +118,9 @@ public class MessageQueue extends Thread {
 
   public static void msgSend(Message message) {
     Socket socket = null;            //Server와 통신하기 위한 Socket
-    BufferedReader in = null;        //Server로부터 데이터를 읽어들이기 위한 입력스트림
-    PrintWriter out = null;            //서버로 내보내기 위한 출력 스트림
-    InetAddress ia = null;
+    BufferedReader in;        //Server로부터 데이터를 읽어들이기 위한 입력스트림
+    PrintWriter out;            //서버로 내보내기 위한 출력 스트림
+    InetAddress ia;
     int port = message.getTargetId() + 50000;
     try { //서버로 접속하고 인풋스티림을 지정하는 부분
       while (true) {
@@ -164,8 +162,8 @@ public class MessageQueue extends Thread {
         try {
           socket.close();
         } catch (IOException e) {
+          e.printStackTrace();
         }
-        ;
       }
     }
   }
@@ -204,11 +202,7 @@ public class MessageQueue extends Thread {
       } else if (rm.getType() == 6) {
         Message sm = new Message(DVM.getCurrentID());
         int data = Controller.getCm().checkCNumber(rm.getCNumber());
-        if (data == -1) {
-          sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), false);
-        } else {
-          sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), true);
-        }
+        sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), data != -1);
       } else if (rm.getType() == 7) {
         cNMsgQueue.offer(rm);
       } else {
@@ -244,7 +238,7 @@ public class MessageQueue extends Thread {
     if (cNMsgQueue.size() == cNum) {
       while (cNMsgQueue.size() > 0) {
         Message cn = cNMsgQueue.poll();
-        if (cn.isBoolData() == false) {
+        if (!cn.isBoolData()) {
           Controller.getCm().getChCList().remove(cn.getCNumber());
         }
       }

@@ -16,7 +16,7 @@ public class DVMTest {
   }
 
   @Test
-  public void testGetAddress_X() {
+  public void testGetAddressX() {
     dvm.setAddressX(1.23456);
     Double ExpectedResult = 1.23456;
     Double ActualResult = dvm.getAddressX();
@@ -24,7 +24,7 @@ public class DVMTest {
   }
 
   @Test
-  public void testGetAddress_Y() {
+  public void testGetAddressY() {
     dvm.setAddressY(2.45678);
     Double ExpectedResult = 2.45678;
     Double ActualResult = dvm.getAddressY();

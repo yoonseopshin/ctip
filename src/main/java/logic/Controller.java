@@ -53,7 +53,7 @@ public class Controller {
   }
 
   public void reqMainMenu() {
-    while (true) {
+    do {
       del = -1;
       k.setVisible(false);
       k = new Sleep();
@@ -62,21 +62,15 @@ public class Controller {
         del = ((Sleep) k).getReturnValue();
       }
       showMainMenu();
-      if (!mq.isAlive()) {
-        break;
-      }
-    }
+    } while (mq.isAlive());
   }
 
   public void showMainMenu() {
-    while (true) {
+    do {
       k.setVisible(false);
       k = new MainMenu(titleList);
       del = inputSelect();
-      if (del == -2) {
-        break;
-      }
-    }
+    } while (del != -2);
   }
 
   public int inputSelect() {
@@ -114,14 +108,11 @@ public class Controller {
   }
 
   public void showInputLine() {
-    while (true) {
+    do {
       k.setVisible(false);
       k = new InputLine();
       del = inputCNumber();
-      if (del == 0 || del == -2) {
-        break;
-      }
-    }
+    } while (del != 0 && del != -2);
   }
 
   public int inputCNumber() {
@@ -169,14 +160,11 @@ public class Controller {
   }
 
   public void manShowTitle() {
-    while (true) {
+    do {
       k.setVisible(false);
       k = new ManTitleMenu(titleList);
       del = manSelectTitle();
-      if (del == 0 || del == -2) {
-        break;
-      }
-    }
+    } while (del != 0 && del != -2);
   }
 
   public int manSelectTitle() {
@@ -201,14 +189,11 @@ public class Controller {
   }
 
   public void manShowItem(int titleId) {
-    while (true) {
+    do {
       k.setVisible(false);
       k = new ManItemMenu(titleList.get(titleId - 1));
       del = manEditItem(titleId);
-      if (del == 0 || del == -2) {
-        break;
-      }
-    }
+    } while (del != 0 && del != -2);
   }
 
   public int manEditItem(int titleId) {
