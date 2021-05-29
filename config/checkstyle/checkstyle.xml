@@ -327,11 +327,6 @@
       <property name="allowedAnnotations" value="Override, Test"/>
       <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF"/>
     </module>
-    <module name="MissingJavadocMethod">
-      <property name="scope" value="ignore"/>
-      <property name="minLineCount" value="ignore"/>
-      <property name="allowedAnnotations" value="ignore"/>
-      <property name="tokens" value="ignore"/>
     </module>
     <module name="MissingJavadocType">
       <property name="scope" value="protected"/>
