@@ -3,7 +3,7 @@ package logic;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class C_NumberTest {
+public class CNumberTest {
 
     private CNumber CN = new CNumber(1, 1);
 

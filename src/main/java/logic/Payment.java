@@ -12,7 +12,7 @@ public class Payment {
   }
 
   public int cardPay(boolean payConfirm) {
-    if (DVMId > 0) {//카드결제 성공
+    if (DVMId > 0) { //카드결제 성공
       if (payConfirm) { //test용으로 성공이라 가정
         System.out.println("카드결제 선결제 성공");
         CNumber Cnumber = new CNumber(titleId, DVMId);
@@ -33,7 +33,7 @@ public class Payment {
   }
 
   public int smartPay(boolean payConfirm) {
-    if (DVMId > 0) {//카드결제 성공
+    if (DVMId > 0) { //카드결제 성공
       if (payConfirm) { //test용으로 성공이라 가정
         System.out.println("간편결제 선결제 성공");
         CNumber cNumber = new CNumber(titleId, DVMId);

@@ -103,6 +103,7 @@ public class MessageQueue extends Thread {
         try {
           socket.close();
         } catch (IOException e) {
+          e.printStackTrace();
         }
 
       }
@@ -110,8 +111,8 @@ public class MessageQueue extends Thread {
         try {
           server_socket.close();
         } catch (IOException e) {
+          e.printStackTrace();
         }
-        ;
       }
       System.out.println("서버 종료");
     }

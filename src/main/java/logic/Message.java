@@ -35,9 +35,7 @@ public class Message {
     if (this.type == 1) {
       title = data;
       MessageQueue.msgSend(this);
-    }
-    // 2021.05.21 수정 부분
-    else if (this.type == 6) {
+    } else if (this.type == 6) { // 2021.05.21 수정 부분
       cNumber = data;
       MessageQueue.msgSend(this);
     }

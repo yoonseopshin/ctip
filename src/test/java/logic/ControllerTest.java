@@ -4,7 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class ControllerTest {
-    private Controller c = new Controller();
+
+  private Controller c = new Controller();
 
     /*   
     @Before
@@ -178,14 +179,14 @@ public class ControllerTest {
     }
     */
 
-    @Test
-    public void testInit() {
-        c.setBasket(10);
-        c.setPayment(new Payment(c.getBasket(), 1));
-        c.init();
-        int ExpectedResult = -666;
-        int ActualResult = c.getBasket();
-        Assert.assertEquals(ExpectedResult, ActualResult);
-        Assert.assertNull(c.getPayment());
-    }
+  @Test
+  public void testInit() {
+    c.setBasket(10);
+    c.setPayment(new Payment(c.getBasket(), 1));
+    c.init();
+    int ExpectedResult = -666;
+    int ActualResult = c.getBasket();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+    Assert.assertNull(c.getPayment());
+  }
 }

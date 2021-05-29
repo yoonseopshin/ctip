@@ -96,8 +96,7 @@ public class Controller {
     } else if (del > 0) {
       if (del <= titleList.size()) {
         basket = del;
-      } else {
-        //error
+      } else { //error
         return -1;
       }
       if (titleList.get(basket - 1).checkStock()) {
@@ -109,8 +108,7 @@ public class Controller {
         return -2;
       }
       return 0;
-    } else {
-      //	error
+    } else { //	error
       return -1;
     }
   }
@@ -151,12 +149,10 @@ public class Controller {
           return -2;
         }
         return 0;
-      } else {
-        //error
+      } else { //error
         return -1;
       }
-    } else {
-      //error
+    } else { //error
       return -1;
     }
   }
@@ -199,8 +195,7 @@ public class Controller {
         return -2;
       }
       return 1;
-    } else {
-      //error
+    } else { //error
       return -1;
     }
   }
@@ -286,14 +281,13 @@ public class Controller {
       } else if (del2 == 1) {
         titleList.get(titleId - 1).addItem(new Item(((AddItemMenu) k).getReturnDate()));
         return 1;
-      } else {
-        //error
+      } else { //error
         return -1;
       }
-    } else if (del == 2) {//delete item
+    } else if (del == 2) { //delete item
       titleList.get(titleId - 1).deleteItem(((ManItemMenu) k).getReturnItemList());
       return 1;
-    } else {//error
+    } else { //error
       return -1;
     }
   }
@@ -324,10 +318,10 @@ public class Controller {
       if (del == 2) {
         showSmartPay();
         return 0;
-      } else {//error
+      } else { //error
         return -1;
       }
-    } else {//error
+    } else { //error
       return -1;
     }
   }
@@ -349,7 +343,7 @@ public class Controller {
       del = ((CardPayUI) k).getReturnValue();
     }
 
-    if (del == -3) {//결제실패
+    if (del == -3) { //결제실패
       int del2 = -1;
       payment.cardPay(false);
       k.setVisible(false);
@@ -361,10 +355,10 @@ public class Controller {
       payment.init();
       init();
       return 0;
-    } else if (del == 0) {//결제취소
+    } else if (del == 0) { //결제취소
       cancelPay();
       return 0;
-    } else if (del == 1) {//결제성공
+    } else if (del == 1) { //결제성공
       int p = payment.cardPay(true);
       if (p == 0) {
         returnItem(titleList.get(basket - 1), false);
@@ -373,8 +367,7 @@ public class Controller {
         printCNumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);
       }
       return 0;
-    } else {
-      //error
+    } else { //error
       return -1;
     }
   }
@@ -392,7 +385,7 @@ public class Controller {
       del = ((SmartPayUI) k).getReturnValue();
     }
 
-    if (del == -3) {//결제실패
+    if (del == -3) { //결제실패
       int del2 = -1;
       payment.smartPay(false);
       k.setVisible(false);
@@ -405,10 +398,10 @@ public class Controller {
       init();
 
       return 0;
-    } else if (del == 0) {//결제취소
+    } else if (del == 0) { //결제취소
       cancelPay();
       return 0;
-    } else if (del == 1) {//결제성공
+    } else if (del == 1) { //결제성공
       int p = payment.smartPay(true);
       if (p == 0) {
         returnItem(titleList.get(basket - 1), false);
@@ -417,8 +410,7 @@ public class Controller {
         printCNumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);
       }
       return 0;
-    } else {
-      //error
+    } else { //error
       return -1;
     }
   }
@@ -476,7 +468,7 @@ public class Controller {
     } else if (del == 0) {
       init();
       return 0;
-    } else if (del == 1) {//finding DVM....
+    } else if (del == 1) { //finding DVM....
       k.setVisible(false);
       k = new FindingDVM(titleList.get(basket - 1).getName());
       int i = 1;
@@ -488,7 +480,7 @@ public class Controller {
           break;
         }
         del2 = ((FindingDVM) k).getReturnValue();
-        if (del2 == 0) {//시간 초과or취소
+        if (del2 == 0) { //시간 초과or취소
           MessageQueue.setStk(9);
           MessageQueue.setLoc(-1);
           init();
@@ -511,8 +503,7 @@ public class Controller {
         return -2;
       }
       return 0;
-    } else {
-      //error
+    } else { //error
       return -1;
     }
   }
@@ -551,8 +542,7 @@ public class Controller {
         return -2;
       }
       return 0;
-    } else {
-      //error
+    } else { //error
       return -1;
     }
   }
