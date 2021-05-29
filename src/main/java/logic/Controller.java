@@ -49,10 +49,10 @@ public class Controller {
     c.setK(new JFrame());
     //start
     Controller.mq.start();
-    c.ReqMainMenu();
+    c.reqMainMenu();
   }
 
-  public void ReqMainMenu() {
+  public void reqMainMenu() {
     while (true) {
       del = -1;
       k.setVisible(false);
@@ -61,25 +61,25 @@ public class Controller {
         System.out.print("");
         del = ((Sleep) k).getReturnValue();
       }
-      ShowMainMenu();
+      showMainMenu();
       if (!mq.isAlive()) {
         break;
       }
     }
   }
 
-  public void ShowMainMenu() {
+  public void showMainMenu() {
     while (true) {
       k.setVisible(false);
       k = new MainMenu(titleList);
-      del = InputSelect();
+      del = inputSelect();
       if (del == -2) {
         break;
       }
     }
   }
 
-  public int InputSelect() {
+  public int inputSelect() {
     del = -1;
     while (del == -1) {
       System.out.print("");
@@ -88,7 +88,7 @@ public class Controller {
     if (del == -2) {
       return -2;
     } else if (del == 0) {
-      ShowInputLine();
+      showInputLine();
       if (del == -2) {
         return -2;
       }
@@ -100,10 +100,10 @@ public class Controller {
         //error
         return -1;
       }
-      if (titleList.get(basket - 1).CheckStock()) {
-        PrintSelectPay(0);
+      if (titleList.get(basket - 1).checkStock()) {
+        printSelectPay(0);
       } else {
-        InfoNoItem();
+        infoNoItem();
       }
       if (del == -2) {
         return -2;
@@ -115,18 +115,18 @@ public class Controller {
     }
   }
 
-  public void ShowInputLine() {
+  public void showInputLine() {
     while (true) {
       k.setVisible(false);
       k = new InputLine();
-      del = InputCnumber();
+      del = inputCNumber();
       if (del == 0 || del == -2) {
         break;
       }
     }
   }
 
-  public int InputCnumber() {
+  public int inputCNumber() {
     del = -1;
     while (del == -1) {
       System.out.print("");
@@ -137,13 +137,13 @@ public class Controller {
     } else if (del == 0) {
       return 0;
     } else if (del > 0) {
-      int check = cm.CheckCnumber(del);
+      int check = cm.checkCNumber(del);
       if (check == -1) {
-        InfoCnumberError();
+        infoCNumberError();
         return 1;
       } else if (check == 1) {
-        int t = cm.PopCnumber(del);
-        ReturnItem(titleList.get(t - 1), true);
+        int t = cm.popCNumber(del);
+        returnItem(titleList.get(t - 1), true);
         return 0;
       } else if (check == 0) {
         ManShowTitle();
@@ -161,7 +161,7 @@ public class Controller {
     }
   }
 
-  public void InfoCnumberError() {
+  public void infoCNumberError() {
     int del2 = -1;
     k.setVisible(false);
     k = new InfoUI("<html><center>해당 인증번호에 대한 선결제 정보를 확인할 수 없습니다."
@@ -176,14 +176,14 @@ public class Controller {
     while (true) {
       k.setVisible(false);
       k = new ManTitleMenu(titleList);
-      del = ManSelectTitle();
+      del = manSelectTitle();
       if (del == 0 || del == -2) {
         break;
       }
     }
   }
 
-  public int ManSelectTitle() {
+  public int manSelectTitle() {
     del = -1;
     while (del == -1) {
       System.out.print("");
@@ -194,7 +194,7 @@ public class Controller {
     } else if (del == 0) {
       return 0;
     } else if (del > 0) {
-      ManShowItem(del);
+      manShowItem(del);
       if (del == -2) {
         return -2;
       }
@@ -205,18 +205,18 @@ public class Controller {
     }
   }
 
-  public void ManShowItem(int titleId) {
+  public void manShowItem(int titleId) {
     while (true) {
       k.setVisible(false);
       k = new ManItemMenu(titleList.get(titleId - 1));
-      del = ManEditItem(titleId);
+      del = manEditItem(titleId);
       if (del == 0 || del == -2) {
         break;
       }
     }
   }
 
-  public int ManEditItem(int titleId) {
+  public int manEditItem(int titleId) {
     del = -1;
     while (del == -1) {
       System.out.print("");
@@ -240,11 +240,11 @@ public class Controller {
       }
       int count = 0;
       for (int i = 0; i < 20; i++) {
-        if (titleList.get(i).CheckStock()) {
+        if (titleList.get(i).checkStock()) {
           count++;
         }
       }
-      if (count >= 7 && titleList.get(titleId - 1).CheckStock() == false) {
+      if (count >= 7 && titleList.get(titleId - 1).checkStock() == false) {
         k.setVisible(false);
         k = new InfoUI("음료를 7종류 이상 추가할 수 없습니다.", "이전");
 
@@ -260,11 +260,11 @@ public class Controller {
       int del2 = -1;
       while (del2 == -1) {
         System.out.print("");
-        if (((AddItemMenu) k).getReturn_value() == 1) {
+        if (((AddItemMenu) k).getReturnValue() == 1) {
           Calendar cal = Calendar.getInstance();
           int today = (cal.get(Calendar.YEAR) * 10000) + ((cal.get(Calendar.MONTH) + 1) * 100) + cal
               .get(Calendar.DATE);
-          if (today > ((AddItemMenu) k).getReturn_date()) {
+          if (today > ((AddItemMenu) k).getReturnDate()) {
             k.setVisible(false);
             k = new InfoUI("유통기한이 지난 재고를 추가할 수 없습니다.", "이전");
             int del3 = -1;
@@ -277,34 +277,34 @@ public class Controller {
             continue;
           }
         }
-        del2 = ((AddItemMenu) k).getReturn_value();
+        del2 = ((AddItemMenu) k).getReturnValue();
       }
       if (del2 == -2) {
         return -2;
       } else if (del2 == 0) {
         return 1;
       } else if (del2 == 1) {
-        titleList.get(titleId - 1).AddItem(new Item(((AddItemMenu) k).getReturn_date()));
+        titleList.get(titleId - 1).addItem(new Item(((AddItemMenu) k).getReturnDate()));
         return 1;
       } else {
         //error
         return -1;
       }
     } else if (del == 2) {//delete item
-      titleList.get(titleId - 1).DeleteItem(((ManItemMenu) k).getReturnItemList());
+      titleList.get(titleId - 1).deleteItem(((ManItemMenu) k).getReturnItemList());
       return 1;
     } else {//error
       return -1;
     }
   }
 
-  public void PrintSelectPay(int DVMid) {
+  public void printSelectPay(int DVMid) {
     k.setVisible(false);
     k = new PaymentMenu(titleList.get(basket - 1));
-    del = SelectPayment(DVMid);
+    del = selectPayment(DVMid);
   }
 
-  public int SelectPayment(int DVMid) {
+  public int selectPayment(int DVMid) {
     del = -1;
     while (del == -1) {
       System.out.print("");
@@ -313,16 +313,16 @@ public class Controller {
     if (del == -2) {
       return -2;
     } else if (del == 0) {
-      CancelItem();
+      cancelItem();
       return 0;
     } else if (del > 0) {
       payment = new Payment(basket, DVMid);
       if (del == 1) {
-        ShowCardPay();
+        showCardPay();
         return 0;
       }
       if (del == 2) {
-        ShowSmartPay();
+        showSmartPay();
         return 0;
       } else {//error
         return -1;
@@ -332,17 +332,17 @@ public class Controller {
     }
   }
 
-  public void CancelItem() {
-    ReturnMain();
+  public void cancelItem() {
+    returnMain();
   }
 
-  public void ShowCardPay() {
+  public void showCardPay() {
     k.setVisible(false);
     k = new CardPayUI();
-    del = CardPay();
+    del = cardPay();
   }
 
-  public int CardPay() {
+  public int cardPay() {
     del = -1;
     while (del == -1) {
       System.out.print("");
@@ -351,7 +351,7 @@ public class Controller {
 
     if (del == -3) {//결제실패
       int del2 = -1;
-      payment.CardPay(false);
+      payment.cardPay(false);
       k.setVisible(false);
       k = new InfoUI(payment.getErrorLog(), "메인");
       while (del2 == -1) {
@@ -362,15 +362,15 @@ public class Controller {
       init();
       return 0;
     } else if (del == 0) {//결제취소
-      CancelPay();
+      cancelPay();
       return 0;
     } else if (del == 1) {//결제성공
-      int p = payment.CardPay(true);
+      int p = payment.cardPay(true);
       if (p == 0) {
-        ReturnItem(titleList.get(basket - 1), false);
+        returnItem(titleList.get(basket - 1), false);
       }
       if (p > 0) {
-        PrintCnumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);
+        printCNumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);
       }
       return 0;
     } else {
@@ -379,13 +379,13 @@ public class Controller {
     }
   }
 
-  public void ShowSmartPay() {
+  public void showSmartPay() {
     k.setVisible(false);
     k = new SmartPayUI();
-    del = SmartPay();
+    del = smartPay();
   }
 
-  public int SmartPay() {
+  public int smartPay() {
     del = -1;
     while (del == -1) {
       System.out.print("");
@@ -394,7 +394,7 @@ public class Controller {
 
     if (del == -3) {//결제실패
       int del2 = -1;
-      payment.SmartPay(false);
+      payment.smartPay(false);
       k.setVisible(false);
       k = new InfoUI(payment.getErrorLog(), "메인");
       while (del2 == -1) {
@@ -406,15 +406,15 @@ public class Controller {
 
       return 0;
     } else if (del == 0) {//결제취소
-      CancelPay();
+      cancelPay();
       return 0;
     } else if (del == 1) {//결제성공
-      int p = payment.SmartPay(true);
+      int p = payment.smartPay(true);
       if (p == 0) {
-        ReturnItem(titleList.get(basket - 1), false);
+        returnItem(titleList.get(basket - 1), false);
       }
       if (p > 0) {
-        PrintCnumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);
+        printCNumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);
       }
       return 0;
     } else {
@@ -423,13 +423,13 @@ public class Controller {
     }
   }
 
-  private void CancelPay() {
+  private void cancelPay() {
     payment.init();
     init();
-    ReturnMain();
+    returnMain();
   }
 
-  public void ReturnItem(Title t, boolean ifHold) {
+  public void returnItem(Title t, boolean ifHold) {
     int del2 = -1;
     k.setVisible(false);
     k = new InfoUI("<html><center><strong>" + t.getName()
@@ -438,19 +438,19 @@ public class Controller {
       System.out.print("");
       del2 = ((InfoUI) k).getReturnValue();
     }
-    t.UpdateStock(0, ifHold);
+    t.updateStock(0, ifHold);
     if (!ifHold) {
       payment.init();
     }
     init();
-    ReturnMain();
+    returnMain();
   }
 
-  public void PrintCnumber(String name, int DVMid, int Cnumber) {
+  public void printCNumber(String name, int DVMId, int cNumber) {
     int del2 = -1;
     k.setVisible(false);
-    k = new InfoUI("<html><center>제품: " + name + "   DVM ID: " + DVMid +
-        "<br>인증번호: " + Cnumber + "</center></html>", "메인");
+    k = new InfoUI("<html><center>제품: " + name + "   DVM ID: " + DVMId +
+        "<br>인증번호: " + cNumber + "</center></html>", "메인");
     while (del2 == -1) {
       System.out.print("");
       del2 = ((InfoUI) k).getReturnValue();
@@ -459,13 +459,13 @@ public class Controller {
     init();
   }
 
-  public void InfoNoItem() {
+  public void infoNoItem() {
     k.setVisible(false);
     k = new InfoNoItemUI(titleList.get(basket - 1).getName());
-    del = ReqFindDVM();
+    del = reqFindDVM();
   }
 
-  public int ReqFindDVM() {
+  public int reqFindDVM() {
     del = -1;
     while (del == -1) {
       System.out.print("");
@@ -496,17 +496,17 @@ public class Controller {
         }
         if (i <= 10 && i != DVM.getCurrentID()) {
           Message sm = new Message(DVM.getCurrentID());
-          sm.setmsg(i, 1, basket);
+          sm.setMsg(i, 1, basket);
         }
         i++;
       }
       if (DVMStack.size() == 1) {
-        InfoNoUsableDVM();
+        infoNoUsableDVM();
         init();
         return 0;
       }
       DVMStack.pop();
-      ShowUsableDVM();
+      showUsableDVM();
       if (del == -2) {
         return -2;
       }
@@ -517,13 +517,13 @@ public class Controller {
     }
   }
 
-  public void ShowUsableDVM() {
+  public void showUsableDVM() {
     k.setVisible(false);
     k = new DVMMenu(DVMStack);
-    del = SelectDVM();
+    del = selectDVM();
   }
 
-  public void InfoNoUsableDVM() {
+  public void infoNoUsableDVM() {
     int del2 = -1;
     k.setVisible(false);
     k = new InfoUI("<html><center><strong>" + titleList.get(basket - 1).getName()
@@ -534,7 +534,7 @@ public class Controller {
     }
   }
 
-  public int SelectDVM() {
+  public int selectDVM() {
     del = -1;
     while (del == -1) {
       System.out.print("");
@@ -543,10 +543,10 @@ public class Controller {
     if (del == -2) {
       return -2;
     } else if (del == 0) {
-      ReturnMain();
+      returnMain();
       return 0;
     } else if (del > 0) {
-      PrintSelectPay(del);
+      printSelectPay(del);
       if (del == -2) {
         return -2;
       }
@@ -563,7 +563,7 @@ public class Controller {
     payment = null;
   }
 
-  public void ReturnMain() {
+  public void returnMain() {
     init();
   }
 

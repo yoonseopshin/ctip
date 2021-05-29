@@ -9,8 +9,8 @@ public class C_NumberTest {
 
     @Test
     public void testCreateCnumber() {
-        int ExpectedResult = CN.CreateCnumber();
-        int ActualResult = CN.getC_Number_t();
+        int ExpectedResult = CN.createCNumber();
+        int ActualResult = CN.getCNumberT();
         Assert.assertEquals(ExpectedResult, ActualResult);
     }
 }

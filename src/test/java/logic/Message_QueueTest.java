@@ -27,13 +27,13 @@ public class Message_QueueTest {
     @Test
     public void testDequeue() {
         Controller c = new Controller();
-        c.getTitleList().get(1).AddItem(new Item(20201125));
+        c.getTitleList().get(1).addItem(new Item(20201125));
         msg.setTargetId(1);
         msg.setType(3);
         msg.setTitle(2);
-        msg.setcNumber(971026);
+        msg.setCNumber(971026);
         MessageQueue.getMsgQueue().offer(msg);
-        MessageQueue.Dequeue();
-        Assert.assertEquals(1, c.getCm().CheckCnumber(971026));
+        MessageQueue.dequeue();
+        Assert.assertEquals(1, c.getCm().checkCNumber(971026));
     }
 }

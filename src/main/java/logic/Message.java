@@ -29,69 +29,69 @@ public class Message {
   }
 
   //type1, 6
-  void setmsg(int id, int type, int data) {
+  void setMsg(int id, int type, int data) {
     targetId = id;
     this.type = type;
     if (this.type == 1) {
       title = data;
-      MessageQueue.MsgSend(this);
+      MessageQueue.msgSend(this);
     }
     // 2021.05.21 수정 부분
     else if (this.type == 6) {
       cNumber = data;
-      MessageQueue.MsgSend(this);
+      MessageQueue.msgSend(this);
     }
   }
 
   //type2
-  void setmsg(int id, int type, boolean data) {
+  void setMsg(int id, int type, boolean data) {
     targetId = id;
     this.type = type;
     if (this.type == 2) {
       boolData = data;
-      MessageQueue.MsgSend(this);
+      MessageQueue.msgSend(this);
     }
   }
 
   //type3
-  void setmsg(int id, int type, int data1, int data2) {
+  void setMsg(int id, int type, int data1, int data2) {
     targetId = id;
     this.type = type;
     if (this.type == 3) {
       title = data1;
       cNumber = data2;
-      MessageQueue.MsgSend(this);
+      MessageQueue.msgSend(this);
     }
   }
 
   //type4
-  void setmsg(int id, int type) {
+  void setMsg(int id, int type) {
     targetId = id;
     this.type = type;
     if (type == 4) {
-      MessageQueue.MsgSend(this);
+      MessageQueue.msgSend(this);
     }
   }
 
   //type5
-  void setmsg(int id, int type, double data1, double data2) {
+  void setMsg(int id, int type, double data1, double data2) {
     targetId = id;
     this.type = type;
     if (this.type == 5) {
       xAddress = data1;
       yAddress = data2;
-      MessageQueue.MsgSend(this);
+      MessageQueue.msgSend(this);
     }
   }
 
   //  type7 2021.05.21 수정 부분
-  void setmsg(int id, int type, int data1, boolean data2) {
+  void setMsg(int id, int type, int data1, boolean data2) {
     targetId = id;
     this.type = type;
     if (this.type == 7) {
       cNumber = data1;
       boolData = data2;
-      MessageQueue.MsgSend(this);
+      MessageQueue.msgSend(this);
     }
   }
 
@@ -119,19 +119,19 @@ public class Message {
     this.type = type;
   }
 
-  public double getxAddress() {
+  public double getXAddress() {
     return xAddress;
   }
 
-  public void setxAddress(double xAddress) {
+  public void setXAddress(double xAddress) {
     this.xAddress = xAddress;
   }
 
-  public double getyAddress() {
+  public double getYAddress() {
     return yAddress;
   }
 
-  public void setyAddress(double yAddress) {
+  public void setYAddress(double yAddress) {
     this.yAddress = yAddress;
   }
 
@@ -143,11 +143,11 @@ public class Message {
     this.title = title;
   }
 
-  public int getcNumber() {
+  public int getCNumber() {
     return cNumber;
   }
 
-  public void setcNumber(int cNumber) {
+  public void setCNumber(int cNumber) {
     this.cNumber = cNumber;
   }
 

@@ -45,14 +45,14 @@ public class AddItemMenu extends JFrame implements ActionListener {
     this.setTitle("DVM " + DVM.getCurrentID());
 
     //라벨패널
-    JPanel labelpanel = new JPanel();
-    labelpanel.setPreferredSize(new Dimension(600, 300));
+    JPanel labelPanel = new JPanel();
+    labelPanel.setPreferredSize(new Dimension(600, 300));
     JLabel label = new JLabel("추가할 재고의 유통기한을 입력하세요");
     label.setFont(label.getFont().deriveFont(15.0f));
-    labelpanel.add(label);
+    labelPanel.add(label);
 
     //유통기한 입력패널
-    JPanel expdatepanel = new JPanel();
+    JPanel expDatePanel = new JPanel();
     JLabel y = new JLabel("년   ");
     JLabel m = new JLabel("월   ");
     JLabel d = new JLabel("일");
@@ -120,26 +120,26 @@ public class AddItemMenu extends JFrame implements ActionListener {
     daySelect.addActionListener(this);
     monthSelect.setSelectedIndex(month);
     daySelect.setSelectedIndex(date - 1);
-    expdatepanel.add(yearSelect);
-    expdatepanel.add(y);
-    expdatepanel.add(monthSelect);
-    expdatepanel.add(m);
-    expdatepanel.add(daySelect);
-    expdatepanel.add(d);
+    expDatePanel.add(yearSelect);
+    expDatePanel.add(y);
+    expDatePanel.add(monthSelect);
+    expDatePanel.add(m);
+    expDatePanel.add(daySelect);
+    expDatePanel.add(d);
 
     //버튼패널
-    JPanel buttonpanel = new JPanel(new GridLayout(1, 2));
-    buttonpanel.setPreferredSize(new Dimension(600, 70));
+    JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
+    buttonPanel.setPreferredSize(new Dimension(600, 70));
     cancel = new JButton("취소");
     add = new JButton("추가");
     cancel.addActionListener(this);
     add.addActionListener(this);
-    buttonpanel.add(add);
-    buttonpanel.add(cancel);
+    buttonPanel.add(add);
+    buttonPanel.add(cancel);
 
-    add(labelpanel, BorderLayout.NORTH);
-    add(expdatepanel, BorderLayout.CENTER);
-    add(buttonpanel, BorderLayout.SOUTH);
+    add(labelPanel, BorderLayout.NORTH);
+    add(expDatePanel, BorderLayout.CENTER);
+    add(buttonPanel, BorderLayout.SOUTH);
 
     pack();
     setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -199,19 +199,19 @@ public class AddItemMenu extends JFrame implements ActionListener {
     }
   }
 
-  public int getReturn_value() {
+  public int getReturnValue() {
     return return_value;
   }
 
-  public void setReturn_value(int returnValue) {
+  public void setReturnValue(int returnValue) {
     this.return_value = returnValue;
   }
 
-  public int getReturn_date() {
+  public int getReturnDate() {
     return return_date;
   }
 
-  public void setReturn_date(int returnDate) {
+  public void setReturnDate(int returnDate) {
     this.return_date = returnDate;
   }
 

@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class CNumber {
 
-  private int title_id;
+  private int titleId;
   private int DvmID;
-  private int C_Number_t;
+  private int cNumberT;
   private Random rand;
 
   {
@@ -20,44 +20,44 @@ public class CNumber {
     }
   }
 
-  public CNumber(int title_id, int id) {
-    this.title_id = title_id;
+  public CNumber(int titleId, int id) {
+    this.titleId = titleId;
     this.DvmID = id;
   }
 
 
-  public int CreateCnumber() {
+  public int createCNumber() {
     //수정
-    if (!(Controller.getCm().getCh_C_List().isEmpty())) {
-      MessageQueue.setcNum(Controller.getCm().getCh_C_List().size());
-      for (Integer key : Controller.getCm().getCh_C_List().keySet()) {
+    if (!(Controller.getCm().getChCList().isEmpty())) {
+      MessageQueue.setCNum(Controller.getCm().getChCList().size());
+      for (Integer key : Controller.getCm().getChCList().keySet()) {
         Message msg = new Message(DVM.getCurrentID());
-        msg.setmsg(Controller.getCm().getCh_C_List().get(key).getDvmID(), 6, key);
+        msg.setMsg(Controller.getCm().getChCList().get(key).getDvmID(), 6, key);
       }
       while (true) {
-        if (Controller.getCm().CheckCnumber2(-1)) {
+        if (Controller.getCm().checkCNumber2(-1)) {
           break;
         }
       }
-      Controller.getCm().getCh_C_List().remove(-1);
+      Controller.getCm().getChCList().remove(-1);
     }
     String numStr;
     do {
-      numStr = randnumber();
+      numStr = randNumber();
     } while (numStr.equals("000000") || numStr
-        .equals(Integer.toString(Controller.getCm().getM_Number())) || Controller.getCm()
-        .CheckCnumber2(Integer.parseInt(numStr)));
-    C_Number_t = Integer.parseInt(numStr);
+        .equals(Integer.toString(Controller.getCm().getMNumber())) || Controller.getCm()
+        .checkCNumber2(Integer.parseInt(numStr)));
+    cNumberT = Integer.parseInt(numStr);
     Message message = new Message(DVM.getCurrentID());
-    message.setmsg(this.DvmID, 3, title_id, C_Number_t);
-    CNumber cn = new CNumber(title_id, DvmID);
-    cn.setC_Number_t(C_Number_t);
-    Controller.getCm().AddchCnumber(cn);
+    message.setMsg(this.DvmID, 3, titleId, cNumberT);
+    CNumber cn = new CNumber(titleId, DvmID);
+    cn.setCNumberT(cNumberT);
+    Controller.getCm().addChCNumber(cn);
 
-    return C_Number_t;
+    return cNumberT;
   }
 
-  public String randnumber() {
+  public String randNumber() {
     int len = 6;
     String numStr = ""; //난수가 저장될 변수
     String ran = Integer.toString(rand.nextInt(9) + 1);  //첫번째 숫자 0이 아님
@@ -73,12 +73,12 @@ public class CNumber {
     return numStr;
   }
 
-  public int getTitle_id() {
-    return title_id;
+  public int getTitleId() {
+    return titleId;
   }
 
-  public void setTitle_id(int title_id) {
-    this.title_id = title_id;
+  public void setTitleId(int titleId) {
+    this.titleId = titleId;
   }
 
   public int getDvmID() {
@@ -89,12 +89,12 @@ public class CNumber {
     DvmID = dvmID;
   }
 
-  public int getC_Number_t() {
-    return C_Number_t;
+  public int getCNumberT() {
+    return cNumberT;
   }
 
-  public void setC_Number_t(int c_Number_t) {
-    C_Number_t = c_Number_t;
+  public void setCNumberT(int cNumberT) {
+    this.cNumberT = cNumberT;
   }
 
 }

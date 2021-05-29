@@ -11,12 +11,12 @@ public class Payment {
     this.DVMId = DVMId;
   }
 
-  public int CardPay(boolean payConfirm) {
+  public int cardPay(boolean payConfirm) {
     if (DVMId > 0) {//카드결제 성공
       if (payConfirm) { //test용으로 성공이라 가정
         System.out.println("카드결제 선결제 성공");
         CNumber Cnumber = new CNumber(titleId, DVMId);
-        return Cnumber.CreateCnumber();
+        return Cnumber.createCNumber();
       } else {
         this.errorLog = "카드결제 선결제 실패";
         return -3;
@@ -32,12 +32,12 @@ public class Payment {
     }
   }
 
-  public int SmartPay(boolean payConfirm) {
+  public int smartPay(boolean payConfirm) {
     if (DVMId > 0) {//카드결제 성공
       if (payConfirm) { //test용으로 성공이라 가정
         System.out.println("간편결제 선결제 성공");
         CNumber cNumber = new CNumber(titleId, DVMId);
-        return cNumber.CreateCnumber();
+        return cNumber.createCNumber();
       } else {
         this.errorLog = "간편결제 선결제 실패";
         return -3;

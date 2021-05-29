@@ -21,7 +21,7 @@ public class MessageQueue extends Thread {
   @Override
   public void run() {
     System.out.print("메시지 수신 시작\n");
-    MsgReciv(DVM.getCurrentID());
+    msgReceive(DVM.getCurrentID());
     System.out.print("메시지 수신 종료\n");
   }
 
@@ -38,7 +38,7 @@ public class MessageQueue extends Thread {
     }
   }
 
-  public void MsgReciv(int myId) {
+  public void msgReceive(int myId) {
     Socket socket = null;                //Client와 통신하기 위한 Socket
     ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket
     BufferedReader in = null;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
@@ -94,7 +94,7 @@ public class MessageQueue extends Thread {
         printWriter.write("1");
         printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
         socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
-        Dequeue();
+        dequeue();
       }
     } catch (IOException e) {
       System.out.println("서버 메세지수신 오류");
@@ -117,7 +117,7 @@ public class MessageQueue extends Thread {
     }
   }
 
-  public static void MsgSend(Message message) {
+  public static void msgSend(Message message) {
     Socket socket = null;            //Server와 통신하기 위한 Socket
     BufferedReader in = null;        //Server로부터 데이터를 읽어들이기 위한 입력스트림
     PrintWriter out = null;            //서버로 내보내기 위한 출력 스트림
@@ -134,8 +134,8 @@ public class MessageQueue extends Thread {
         out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
         //메시지객체 스트링으로 전환
         String msg = message.getMyId() + "," + message.getTargetId() + "," + message.getType() + ","
-            + message.getxAddress() + "," + message.getyAddress() + "," + message.getTitle() + ","
-            + message.getcNumber() + "," + message.isBoolData();
+            + message.getXAddress() + "," + message.getYAddress() + "," + message.getTitle() + ","
+            + message.getCNumber() + "," + message.isBoolData();
         out.println(msg);                        //서버로 데이터 전송
         out.flush();                      //서버로 데이터 전송
         String returnMsg = in.readLine();
@@ -151,13 +151,13 @@ public class MessageQueue extends Thread {
       if (message.getType() == 1) {
         stk--;
         if (stk == stkMsgQueue.size()) {
-          Dequeue();
+          dequeue();
         }
       }
       if (message.getType() == 6) {
         cNum--;
         if (cNum == cNMsgQueue.size()) {
-          Dequeue();
+          dequeue();
         }
       }
     } finally {
@@ -181,34 +181,34 @@ public class MessageQueue extends Thread {
     7. 음료 판매 응답 - boolean
     */
 
-  public static void Dequeue() {
+  public static void dequeue() {
     int result = -1;
     while (msgQueue.size() > 0) {
       Message rm = msgQueue.poll();
       if (rm.getType() == 1) {
         Message sm = new Message(DVM.getCurrentID());
-        sm.setmsg(rm.getMyId(), 2, Controller.getTitleList().get(rm.getTitle() - 1).CheckStock());
+        sm.setMsg(rm.getMyId(), 2, Controller.getTitleList().get(rm.getTitle() - 1).checkStock());
         System.out.println("재고 요청 응답 완료");
       } else if (rm.getType() == 2) {
         stkMsgQueue.offer(rm);
       } else if (rm.getType() == 3) {
         CNumber rc = new CNumber(rm.getTitle(), rm.getMyId());
-        rc.setC_Number_t(rm.getcNumber());
-        Controller.getCm().AddCnumber(rc);
-        Controller.getTitleList().get(rm.getTitle() - 1).UpdateStock(1, true);
+        rc.setCNumberT(rm.getCNumber());
+        Controller.getCm().addCNumber(rc);
+        Controller.getTitleList().get(rm.getTitle() - 1).updateStock(1, true);
       } else if (rm.getType() == 4) {
         Message sm = new Message(DVM.getCurrentID());
-        sm.setmsg(rm.getMyId(), 5, DVM.getCurrentX(), DVM.getCurrentY());
+        sm.setMsg(rm.getMyId(), 5, DVM.getCurrentX(), DVM.getCurrentY());
         System.out.println("위치 요청 메시지 응답 완료");
       } else if (rm.getType() == 5) {
         locMsgQueue.offer(rm);
       } else if (rm.getType() == 6) {
         Message sm = new Message(DVM.getCurrentID());
-        int data = Controller.getCm().CheckCnumber(rm.getcNumber());
+        int data = Controller.getCm().checkCNumber(rm.getCNumber());
         if (data == -1) {
-          sm.setmsg(rm.getMyId(), 7, rm.getcNumber(), false);
+          sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), false);
         } else {
-          sm.setmsg(rm.getMyId(), 7, rm.getcNumber(), true);
+          sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), true);
         }
       } else if (rm.getType() == 7) {
         cNMsgQueue.offer(rm);
@@ -222,7 +222,7 @@ public class MessageQueue extends Thread {
         Message stk = stkMsgQueue.poll();
         if (stk.isBoolData()) {
           Message sm = new Message(DVM.getCurrentID());
-          sm.setmsg(stk.getMyId(), 4);
+          sm.setMsg(stk.getMyId(), 4);
           System.out.println("위치 요청 메시지 전송 완료");
           i++;
         }
@@ -235,7 +235,7 @@ public class MessageQueue extends Thread {
         while (locMsgQueue.size() > 0) {
           Message loc = locMsgQueue.poll();
           Controller.getDVMStack()
-              .push(new DVM(loc.getMyId(), loc.getxAddress(), loc.getyAddress()));
+              .push(new DVM(loc.getMyId(), loc.getXAddress(), loc.getYAddress()));
           System.out.println("위치 응답 메시지 수신 완료");
         }
       }
@@ -246,10 +246,10 @@ public class MessageQueue extends Thread {
       while (cNMsgQueue.size() > 0) {
         Message cn = cNMsgQueue.poll();
         if (cn.isBoolData() == false) {
-          Controller.getCm().getCh_C_List().remove(cn.getcNumber());
+          Controller.getCm().getChCList().remove(cn.getCNumber());
         }
       }
-      Controller.getCm().getCh_C_List().put(-1, null);
+      Controller.getCm().getChCList().put(-1, null);
       cNum = -1;
     }
   }
@@ -270,11 +270,11 @@ public class MessageQueue extends Thread {
     MessageQueue.stk = stk;
   }
 
-  public static int getcNum() {
+  public static int getCNum() {
     return cNum;
   }
 
-  public static void setcNum(int cNum) {
+  public static void setCNum(int cNum) {
     MessageQueue.cNum = cNum;
   }
 

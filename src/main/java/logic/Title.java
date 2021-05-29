@@ -17,7 +17,7 @@ public class Title {
     this.itemList = new ArrayList<>();
   }
 
-  public void UpdateStock(int id, boolean ifHold) {
+  public void updateStock(int id, boolean ifHold) {
     if (id == 1) {
       if (ifHold) {
         this.hold++;
@@ -39,11 +39,11 @@ public class Title {
     }
   }
 
-  public boolean CheckStock() {
+  public boolean checkStock() {
     return !(this.itemList.isEmpty());
   }
 
-  public void AddItem(Item item) {
+  public void addItem(Item item) {
     this.itemList.add(item);
     this.itemList.sort(new Comparator<Item>() {
       @Override
@@ -53,7 +53,7 @@ public class Title {
     });
   }
 
-  public void DeleteItem(ArrayList<Integer> items) {
+  public void deleteItem(ArrayList<Integer> items) {
     ArrayList<Item> rm = new ArrayList<Item>();
     for (int i = 0; i < items.size(); i++) {
       rm.add(itemList.get(items.get(i)));
