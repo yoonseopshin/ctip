@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 import java.net.Socket;
 
-<span class="fc" id="L11">public class MessageQueue extends Thread {</span>
+<span class="pc bpc" id="L11" title="1 of 2 branches missed.">public class MessageQueue extends Thread {</span>
 
 <span class="fc" id="L13">  private static Queue&lt;Message&gt; msgQueue = new LinkedList&lt;&gt;();</span>
 <span class="fc" id="L14">  private static Queue&lt;Message&gt; stkMsgQueue = new LinkedList&lt;&gt;();</span>
@@ -41,7 +41,7 @@ import java.net.Socket;
   public void msgReceive(int myId) {
 <span class="nc" id="L42">    Socket socket = null;                //Client와 통신하기 위한 Socket</span>
 <span class="nc" id="L43">    ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket</span>
-<span class="nc" id="L44">    BufferedReader in = null;            //Client로부터 데이터를 읽어들이기 위한 입력스트림</span>
+    BufferedReader in;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
 <span class="nc" id="L45">    PrintWriter out = null;                //Client로 데이터를 내보내기 위한 출력 스트림</span>
 <span class="nc" id="L46">    int port = myId + 50000;</span>
     ObjectInputStream objectInputStream; // 직렬화된 객체를 읽어올때 사용
@@ -53,122 +53,120 @@ import java.net.Socket;
 <span class="nc" id="L53">      System.out.println(port + &quot;번 포트 사용 불가&quot;);</span>
 <span class="nc" id="L54">    }</span>
     try {
-      while (true) {
-<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (this.isInterrupted()) {</span>
-<span class="nc" id="L58">          break;</span>
-        }
-<span class="nc" id="L60">        socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.</span>
-<span class="nc" id="L61">        printWriter = new PrintWriter(</span>
-<span class="nc" id="L62">            new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));</span>
-<span class="nc" id="L63">        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));</span>
-<span class="nc" id="L64">        String msg = in.readLine();</span>
-<span class="nc" id="L65">        String[] temp = msg.split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">      while (!this.isInterrupted()) {</span>
+<span class="nc bnc" id="L57" title="All 4 branches missed.">        assert server_socket != null;</span>
+<span class="nc" id="L58">        socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.</span>
+<span class="nc" id="L59">        printWriter = new PrintWriter(</span>
+<span class="nc" id="L60">            new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));</span>
+<span class="nc" id="L61">        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));</span>
+<span class="nc" id="L62">        String msg = in.readLine();</span>
+<span class="nc" id="L63">        String[] temp = msg.split(&quot;,&quot;);</span>
         //메시지객체로 변환
-<span class="nc" id="L67">        Message message = new Message(-1);</span>
-<span class="nc" id="L68">        message.translate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]),</span>
-<span class="nc" id="L69">            Integer.parseInt(temp[2]),</span>
-<span class="nc" id="L70">            Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),</span>
-<span class="nc" id="L71">            Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));</span>
-<span class="nc" id="L72">        msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (message.getType() == 1) {</span>
-<span class="nc" id="L74">          System.out.println(&quot;재고요청메시지 수신됨&quot;);</span>
+<span class="nc" id="L65">        Message message = new Message(-1);</span>
+<span class="nc" id="L66">        message.translate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]),</span>
+<span class="nc" id="L67">            Integer.parseInt(temp[2]),</span>
+<span class="nc" id="L68">            Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),</span>
+<span class="nc" id="L69">            Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));</span>
+<span class="nc" id="L70">        msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        if (message.getType() == 1) {</span>
+<span class="nc" id="L72">          System.out.println(&quot;재고요청메시지 수신됨&quot;);</span>
         }
-<span class="nc bnc" id="L76" title="All 2 branches missed.">        if (message.getType() == 2) {</span>
-<span class="nc" id="L77">          System.out.println(&quot;재고응답메시지 수신됨&quot;);</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        if (message.getType() == 2) {</span>
+<span class="nc" id="L75">          System.out.println(&quot;재고응답메시지 수신됨&quot;);</span>
         }
-<span class="nc bnc" id="L79" title="All 2 branches missed.">        if (message.getType() == 3) {</span>
-<span class="nc" id="L80">          System.out.println(&quot;인증번호메시지 수신됨&quot;);</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        if (message.getType() == 3) {</span>
+<span class="nc" id="L78">          System.out.println(&quot;인증번호메시지 수신됨&quot;);</span>
         }
-<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (message.getType() == 4) {</span>
-<span class="nc" id="L83">          System.out.println(&quot;위치요청메시지 수신됨&quot;);</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if (message.getType() == 4) {</span>
+<span class="nc" id="L81">          System.out.println(&quot;위치요청메시지 수신됨&quot;);</span>
         }
-<span class="nc bnc" id="L85" title="All 2 branches missed.">        if (message.getType() == 5) {</span>
-<span class="nc" id="L86">          System.out.println(&quot;위치응답메시지 수신됨&quot;);</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if (message.getType() == 5) {</span>
+<span class="nc" id="L84">          System.out.println(&quot;위치응답메시지 수신됨&quot;);</span>
         }
-<span class="nc bnc" id="L88" title="All 2 branches missed.">        if (message.getType() == 6) {</span>
-<span class="nc" id="L89">          System.out.println(&quot;판매확인요청메시지 수신됨&quot;);</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        if (message.getType() == 6) {</span>
+<span class="nc" id="L87">          System.out.println(&quot;판매확인요청메시지 수신됨&quot;);</span>
         }
-<span class="nc bnc" id="L91" title="All 2 branches missed.">        if (message.getType() == 7) {</span>
-<span class="nc" id="L92">          System.out.println(&quot;판매확인메시지 수신됨&quot;);</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        if (message.getType() == 7) {</span>
+<span class="nc" id="L90">          System.out.println(&quot;판매확인메시지 수신됨&quot;);</span>
         }
-<span class="nc" id="L94">        printWriter.write(&quot;1&quot;);</span>
-<span class="nc" id="L95">        printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌</span>
-<span class="nc" id="L96">        socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.</span>
-<span class="nc" id="L97">        dequeue();</span>
-<span class="nc" id="L98">      }</span>
-<span class="nc" id="L99">    } catch (IOException e) {</span>
-<span class="nc" id="L100">      System.out.println(&quot;서버 메세지수신 오류&quot;);</span>
+<span class="nc" id="L92">        printWriter.write(&quot;1&quot;);</span>
+<span class="nc" id="L93">        printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌</span>
+<span class="nc" id="L94">        socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.</span>
+<span class="nc" id="L95">        dequeue();</span>
+<span class="nc" id="L96">      }</span>
+<span class="nc" id="L97">    } catch (IOException e) {</span>
+<span class="nc" id="L98">      System.out.println(&quot;서버 메세지수신 오류&quot;);</span>
     } finally {
-<span class="nc bnc" id="L102" title="All 2 branches missed.">      if (socket != null) {</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">      if (socket != null) {</span>
         try {
-<span class="nc" id="L104">          socket.close();</span>
-<span class="nc" id="L105">        } catch (IOException e) {</span>
-<span class="nc" id="L106">          e.printStackTrace();</span>
-<span class="nc" id="L107">        }</span>
+<span class="nc" id="L102">          socket.close();</span>
+<span class="nc" id="L103">        } catch (IOException e) {</span>
+<span class="nc" id="L104">          e.printStackTrace();</span>
+<span class="nc" id="L105">        }</span>
 
       }
-<span class="nc bnc" id="L110" title="All 2 branches missed.">      if (server_socket != null) {</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">      if (server_socket != null) {</span>
         try {
-<span class="nc" id="L112">          server_socket.close();</span>
-<span class="nc" id="L113">        } catch (IOException e) {</span>
-<span class="nc" id="L114">          e.printStackTrace();</span>
-<span class="nc" id="L115">        }</span>
+<span class="nc" id="L110">          server_socket.close();</span>
+<span class="nc" id="L111">        } catch (IOException e) {</span>
+<span class="nc" id="L112">          e.printStackTrace();</span>
+<span class="nc" id="L113">        }</span>
       }
-<span class="nc" id="L117">      System.out.println(&quot;서버 종료&quot;);</span>
+<span class="nc" id="L115">      System.out.println(&quot;서버 종료&quot;);</span>
     }
-<span class="nc" id="L119">  }</span>
+<span class="nc" id="L117">  }</span>
 
   public static void msgSend(Message message) {
-<span class="fc" id="L122">    Socket socket = null;            //Server와 통신하기 위한 Socket</span>
-<span class="fc" id="L123">    BufferedReader in = null;        //Server로부터 데이터를 읽어들이기 위한 입력스트림</span>
-<span class="fc" id="L124">    PrintWriter out = null;            //서버로 내보내기 위한 출력 스트림</span>
-<span class="fc" id="L125">    InetAddress ia = null;</span>
-<span class="fc" id="L126">    int port = message.getTargetId() + 50000;</span>
+<span class="fc" id="L120">    Socket socket = null;            //Server와 통신하기 위한 Socket</span>
+    BufferedReader in;        //Server로부터 데이터를 읽어들이기 위한 입력스트림
+    PrintWriter out;            //서버로 내보내기 위한 출력 스트림
+    InetAddress ia;
+<span class="fc" id="L124">    int port = message.getTargetId() + 50000;</span>
     try { //서버로 접속하고 인풋스티림을 지정하는 부분
       while (true) {
-<span class="fc" id="L129">        ia = InetAddress.getByName(getIP());    //서버로 접속</span>
-<span class="nc" id="L130">        socket = new Socket(ia, port);</span>
-<span class="nc" id="L131">        in = new BufferedReader(</span>
-<span class="nc" id="L132">            new InputStreamReader(socket.getInputStream())); //서버로부터 메시지를 받기위한 버퍼</span>
-<span class="nc" id="L133">        out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));</span>
+<span class="fc" id="L127">        ia = InetAddress.getByName(getIP());    //서버로 접속</span>
+<span class="nc" id="L128">        socket = new Socket(ia, port);</span>
+<span class="nc" id="L129">        in = new BufferedReader(</span>
+<span class="nc" id="L130">            new InputStreamReader(socket.getInputStream())); //서버로부터 메시지를 받기위한 버퍼</span>
+<span class="nc" id="L131">        out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));</span>
         //메시지객체 스트링으로 전환
-<span class="nc" id="L135">        String msg = message.getMyId() + &quot;,&quot; + message.getTargetId() + &quot;,&quot; + message.getType() + &quot;,&quot;</span>
-<span class="nc" id="L136">            + message.getXAddress() + &quot;,&quot; + message.getYAddress() + &quot;,&quot; + message.getTitle() + &quot;,&quot;</span>
-<span class="nc" id="L137">            + message.getCNumber() + &quot;,&quot; + message.isBoolData();</span>
-<span class="nc" id="L138">        out.println(msg);                        //서버로 데이터 전송</span>
-<span class="nc" id="L139">        out.flush();                      //서버로 데이터 전송</span>
-<span class="nc" id="L140">        String returnMsg = in.readLine();</span>
+<span class="nc" id="L133">        String msg = message.getMyId() + &quot;,&quot; + message.getTargetId() + &quot;,&quot; + message.getType() + &quot;,&quot;</span>
+<span class="nc" id="L134">            + message.getXAddress() + &quot;,&quot; + message.getYAddress() + &quot;,&quot; + message.getTitle() + &quot;,&quot;</span>
+<span class="nc" id="L135">            + message.getCNumber() + &quot;,&quot; + message.isBoolData();</span>
+<span class="nc" id="L136">        out.println(msg);                        //서버로 데이터 전송</span>
+<span class="nc" id="L137">        out.flush();                      //서버로 데이터 전송</span>
+<span class="nc" id="L138">        String returnMsg = in.readLine();</span>
         //객체 정리하는 부분
-<span class="nc" id="L142">        socket.close();</span>
+<span class="nc" id="L140">        socket.close();</span>
         //서버에서 확인메시지 리시브 및 완료시 브레이크
-<span class="nc bnc" id="L144" title="All 2 branches missed.">        if (returnMsg.equals(&quot;1&quot;)) {</span>
-<span class="nc" id="L145">          break;</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">        if (returnMsg.equals(&quot;1&quot;)) {</span>
+<span class="nc" id="L143">          break;</span>
         }
-<span class="nc" id="L147">      }</span>
-<span class="fc" id="L148">    } catch (IOException e) {</span>
-<span class="fc" id="L149">      System.err.println(&quot;서버 접속 오류, 오류 DVM :&quot; + message.getTargetId());</span>
-<span class="fc bfc" id="L150" title="All 2 branches covered.">      if (message.getType() == 1) {</span>
-<span class="fc" id="L151">        stk--;</span>
-<span class="pc bpc" id="L152" title="1 of 2 branches missed.">        if (stk == stkMsgQueue.size()) {</span>
-<span class="nc" id="L153">          dequeue();</span>
+<span class="nc" id="L145">      }</span>
+<span class="fc" id="L146">    } catch (IOException e) {</span>
+<span class="fc" id="L147">      System.err.println(&quot;서버 접속 오류, 오류 DVM :&quot; + message.getTargetId());</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">      if (message.getType() == 1) {</span>
+<span class="fc" id="L149">        stk--;</span>
+<span class="pc bpc" id="L150" title="1 of 2 branches missed.">        if (stk == stkMsgQueue.size()) {</span>
+<span class="nc" id="L151">          dequeue();</span>
         }
       }
-<span class="fc bfc" id="L156" title="All 2 branches covered.">      if (message.getType() == 6) {</span>
-<span class="fc" id="L157">        cNum--;</span>
-<span class="fc bfc" id="L158" title="All 2 branches covered.">        if (cNum == cNMsgQueue.size()) {</span>
-<span class="fc" id="L159">          dequeue();</span>
+<span class="fc bfc" id="L154" title="All 2 branches covered.">      if (message.getType() == 6) {</span>
+<span class="fc" id="L155">        cNum--;</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">        if (cNum == cNMsgQueue.size()) {</span>
+<span class="fc" id="L157">          dequeue();</span>
         }
       }
     } finally {
-<span class="pc bpc" id="L163" title="1 of 2 branches missed.">      if (socket != null) {</span>
+<span class="pc bpc" id="L161" title="1 of 2 branches missed.">      if (socket != null) {</span>
         try {
-<span class="nc" id="L165">          socket.close();</span>
-<span class="nc" id="L166">        } catch (IOException e) {</span>
-<span class="nc" id="L167">        }</span>
-        ;
+<span class="nc" id="L163">          socket.close();</span>
+<span class="nc" id="L164">        } catch (IOException e) {</span>
+<span class="nc" id="L165">          e.printStackTrace();</span>
+<span class="nc" id="L166">        }</span>
       }
     }
-<span class="fc" id="L171">  }</span>
+<span class="fc" id="L169">  }</span>
 
     /*
     1. 재고 확인 요청 - title
@@ -181,124 +179,120 @@ import java.net.Socket;
     */
 
   public static void dequeue() {
-<span class="fc" id="L184">    int result = -1;</span>
-<span class="fc bfc" id="L185" title="All 2 branches covered.">    while (msgQueue.size() &gt; 0) {</span>
-<span class="fc" id="L186">      Message rm = msgQueue.poll();</span>
-<span class="pc bpc" id="L187" title="1 of 2 branches missed.">      if (rm.getType() == 1) {</span>
-<span class="nc" id="L188">        Message sm = new Message(DVM.getCurrentID());</span>
-<span class="nc" id="L189">        sm.setMsg(rm.getMyId(), 2, Controller.getTitleList().get(rm.getTitle() - 1).checkStock());</span>
-<span class="nc" id="L190">        System.out.println(&quot;재고 요청 응답 완료&quot;);</span>
-<span class="pc bpc" id="L191" title="1 of 2 branches missed.">      } else if (rm.getType() == 2) {</span>
-<span class="nc" id="L192">        stkMsgQueue.offer(rm);</span>
-<span class="pc bpc" id="L193" title="1 of 2 branches missed.">      } else if (rm.getType() == 3) {</span>
-<span class="fc" id="L194">        CNumber rc = new CNumber(rm.getTitle(), rm.getMyId());</span>
-<span class="fc" id="L195">        rc.setCNumberT(rm.getCNumber());</span>
-<span class="fc" id="L196">        Controller.getCm().addCNumber(rc);</span>
-<span class="fc" id="L197">        Controller.getTitleList().get(rm.getTitle() - 1).updateStock(1, true);</span>
-<span class="pc bnc" id="L198" title="All 2 branches missed.">      } else if (rm.getType() == 4) {</span>
-<span class="nc" id="L199">        Message sm = new Message(DVM.getCurrentID());</span>
-<span class="nc" id="L200">        sm.setMsg(rm.getMyId(), 5, DVM.getCurrentX(), DVM.getCurrentY());</span>
-<span class="nc" id="L201">        System.out.println(&quot;위치 요청 메시지 응답 완료&quot;);</span>
-<span class="nc bnc" id="L202" title="All 2 branches missed.">      } else if (rm.getType() == 5) {</span>
-<span class="nc" id="L203">        locMsgQueue.offer(rm);</span>
-<span class="nc bnc" id="L204" title="All 2 branches missed.">      } else if (rm.getType() == 6) {</span>
-<span class="nc" id="L205">        Message sm = new Message(DVM.getCurrentID());</span>
-<span class="nc" id="L206">        int data = Controller.getCm().checkCNumber(rm.getCNumber());</span>
-<span class="nc bnc" id="L207" title="All 2 branches missed.">        if (data == -1) {</span>
-<span class="nc" id="L208">          sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), false);</span>
-        } else {
-<span class="nc" id="L210">          sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), true);</span>
-        }
-<span class="nc bnc" id="L212" title="All 2 branches missed.">      } else if (rm.getType() == 7) {</span>
-<span class="nc" id="L213">        cNMsgQueue.offer(rm);</span>
+<span class="fc" id="L182">    int result = -1;</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">    while (msgQueue.size() &gt; 0) {</span>
+<span class="fc" id="L184">      Message rm = msgQueue.poll();</span>
+<span class="pc bpc" id="L185" title="1 of 2 branches missed.">      if (rm.getType() == 1) {</span>
+<span class="nc" id="L186">        Message sm = new Message(DVM.getCurrentID());</span>
+<span class="nc" id="L187">        sm.setMsg(rm.getMyId(), 2, Controller.getTitleList().get(rm.getTitle() - 1).checkStock());</span>
+<span class="nc" id="L188">        System.out.println(&quot;재고 요청 응답 완료&quot;);</span>
+<span class="pc bpc" id="L189" title="1 of 2 branches missed.">      } else if (rm.getType() == 2) {</span>
+<span class="nc" id="L190">        stkMsgQueue.offer(rm);</span>
+<span class="pc bpc" id="L191" title="1 of 2 branches missed.">      } else if (rm.getType() == 3) {</span>
+<span class="fc" id="L192">        CNumber rc = new CNumber(rm.getTitle(), rm.getMyId());</span>
+<span class="fc" id="L193">        rc.setCNumberT(rm.getCNumber());</span>
+<span class="fc" id="L194">        Controller.getCm().addCNumber(rc);</span>
+<span class="fc" id="L195">        Controller.getTitleList().get(rm.getTitle() - 1).updateStock(1, true);</span>
+<span class="pc bnc" id="L196" title="All 2 branches missed.">      } else if (rm.getType() == 4) {</span>
+<span class="nc" id="L197">        Message sm = new Message(DVM.getCurrentID());</span>
+<span class="nc" id="L198">        sm.setMsg(rm.getMyId(), 5, DVM.getCurrentX(), DVM.getCurrentY());</span>
+<span class="nc" id="L199">        System.out.println(&quot;위치 요청 메시지 응답 완료&quot;);</span>
+<span class="nc bnc" id="L200" title="All 2 branches missed.">      } else if (rm.getType() == 5) {</span>
+<span class="nc" id="L201">        locMsgQueue.offer(rm);</span>
+<span class="nc bnc" id="L202" title="All 2 branches missed.">      } else if (rm.getType() == 6) {</span>
+<span class="nc" id="L203">        Message sm = new Message(DVM.getCurrentID());</span>
+<span class="nc" id="L204">        int data = Controller.getCm().checkCNumber(rm.getCNumber());</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">        sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), data != -1);</span>
+<span class="nc bnc" id="L206" title="All 2 branches missed.">      } else if (rm.getType() == 7) {</span>
+<span class="nc" id="L207">        cNMsgQueue.offer(rm);</span>
       } else {
-<span class="nc" id="L215">        System.out.println(&quot;메시지 오류&quot;);</span>
+<span class="nc" id="L209">        System.out.println(&quot;메시지 오류&quot;);</span>
       }
-<span class="fc" id="L217">    }</span>
-<span class="pc bpc" id="L218" title="1 of 2 branches missed.">    if (stkMsgQueue.size() == stk) {</span>
-<span class="nc" id="L219">      int i = 0;</span>
-<span class="nc bnc" id="L220" title="All 2 branches missed.">      while (stkMsgQueue.size() &gt; 0) {</span>
-<span class="nc" id="L221">        Message stk = stkMsgQueue.poll();</span>
-<span class="nc bnc" id="L222" title="All 2 branches missed.">        if (stk.isBoolData()) {</span>
-<span class="nc" id="L223">          Message sm = new Message(DVM.getCurrentID());</span>
-<span class="nc" id="L224">          sm.setMsg(stk.getMyId(), 4);</span>
-<span class="nc" id="L225">          System.out.println(&quot;위치 요청 메시지 전송 완료&quot;);</span>
-<span class="nc" id="L226">          i++;</span>
+<span class="fc" id="L211">    }</span>
+<span class="pc bpc" id="L212" title="1 of 2 branches missed.">    if (stkMsgQueue.size() == stk) {</span>
+<span class="nc" id="L213">      int i = 0;</span>
+<span class="nc bnc" id="L214" title="All 2 branches missed.">      while (stkMsgQueue.size() &gt; 0) {</span>
+<span class="nc" id="L215">        Message stk = stkMsgQueue.poll();</span>
+<span class="nc bnc" id="L216" title="All 2 branches missed.">        if (stk.isBoolData()) {</span>
+<span class="nc" id="L217">          Message sm = new Message(DVM.getCurrentID());</span>
+<span class="nc" id="L218">          sm.setMsg(stk.getMyId(), 4);</span>
+<span class="nc" id="L219">          System.out.println(&quot;위치 요청 메시지 전송 완료&quot;);</span>
+<span class="nc" id="L220">          i++;</span>
         }
-<span class="nc" id="L228">      }</span>
-<span class="nc" id="L229">      loc = i;</span>
-<span class="nc" id="L230">      stk = 9;</span>
+<span class="nc" id="L222">      }</span>
+<span class="nc" id="L223">      loc = i;</span>
+<span class="nc" id="L224">      stk = 9;</span>
     }
-<span class="pc bpc" id="L232" title="1 of 2 branches missed.">    if (locMsgQueue.size() == loc) {</span>
-<span class="nc bnc" id="L233" title="All 2 branches missed.">      if (loc != 0) {</span>
-<span class="nc bnc" id="L234" title="All 2 branches missed.">        while (locMsgQueue.size() &gt; 0) {</span>
-<span class="nc" id="L235">          Message loc = locMsgQueue.poll();</span>
-<span class="nc" id="L236">          Controller.getDvmStack()</span>
-<span class="nc" id="L237">              .push(new DVM(loc.getMyId(), loc.getXAddress(), loc.getYAddress()));</span>
-<span class="nc" id="L238">          System.out.println(&quot;위치 응답 메시지 수신 완료&quot;);</span>
-<span class="nc" id="L239">        }</span>
+<span class="pc bpc" id="L226" title="1 of 2 branches missed.">    if (locMsgQueue.size() == loc) {</span>
+<span class="nc bnc" id="L227" title="All 2 branches missed.">      if (loc != 0) {</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">        while (locMsgQueue.size() &gt; 0) {</span>
+<span class="nc" id="L229">          Message loc = locMsgQueue.poll();</span>
+<span class="nc" id="L230">          Controller.getDvmStack()</span>
+<span class="nc" id="L231">              .push(new DVM(loc.getMyId(), loc.getXAddress(), loc.getYAddress()));</span>
+<span class="nc" id="L232">          System.out.println(&quot;위치 응답 메시지 수신 완료&quot;);</span>
+<span class="nc" id="L233">        }</span>
       }
-<span class="nc" id="L241">      Controller.getDvmStack().push(new DVM(-1, 0.0, 0.0));</span>
-<span class="nc" id="L242">      loc = -1;</span>
+<span class="nc" id="L235">      Controller.getDvmStack().push(new DVM(-1, 0.0, 0.0));</span>
+<span class="nc" id="L236">      loc = -1;</span>
     }
-<span class="fc bfc" id="L244" title="All 2 branches covered.">    if (cNMsgQueue.size() == cNum) {</span>
-<span class="pc bpc" id="L245" title="1 of 2 branches missed.">      while (cNMsgQueue.size() &gt; 0) {</span>
-<span class="nc" id="L246">        Message cn = cNMsgQueue.poll();</span>
-<span class="nc bnc" id="L247" title="All 2 branches missed.">        if (cn.isBoolData() == false) {</span>
-<span class="nc" id="L248">          Controller.getCm().getChCList().remove(cn.getCNumber());</span>
+<span class="fc bfc" id="L238" title="All 2 branches covered.">    if (cNMsgQueue.size() == cNum) {</span>
+<span class="pc bpc" id="L239" title="1 of 2 branches missed.">      while (cNMsgQueue.size() &gt; 0) {</span>
+<span class="nc" id="L240">        Message cn = cNMsgQueue.poll();</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">        if (!cn.isBoolData()) {</span>
+<span class="nc" id="L242">          Controller.getCm().getChCList().remove(cn.getCNumber());</span>
         }
-<span class="nc" id="L250">      }</span>
-<span class="fc" id="L251">      Controller.getCm().getChCList().put(-1, null);</span>
-<span class="fc" id="L252">      cNum = -1;</span>
+<span class="nc" id="L244">      }</span>
+<span class="fc" id="L245">      Controller.getCm().getChCList().put(-1, null);</span>
+<span class="fc" id="L246">      cNum = -1;</span>
     }
-<span class="fc" id="L254">  }</span>
+<span class="fc" id="L248">  }</span>
 
   public static int getLoc() {
-<span class="nc" id="L257">    return loc;</span>
+<span class="nc" id="L251">    return loc;</span>
   }
 
   public static void setLoc(int loc) {
-<span class="nc" id="L261">    MessageQueue.loc = loc;</span>
-<span class="nc" id="L262">  }</span>
+<span class="nc" id="L255">    MessageQueue.loc = loc;</span>
+<span class="nc" id="L256">  }</span>
 
   public static int getStk() {
-<span class="nc" id="L265">    return stk;</span>
+<span class="nc" id="L259">    return stk;</span>
   }
 
   public static void setStk(int stk) {
-<span class="nc" id="L269">    MessageQueue.stk = stk;</span>
-<span class="nc" id="L270">  }</span>
+<span class="nc" id="L263">    MessageQueue.stk = stk;</span>
+<span class="nc" id="L264">  }</span>
 
   public static int getCNum() {
-<span class="nc" id="L273">    return cNum;</span>
+<span class="nc" id="L267">    return cNum;</span>
   }
 
   public static void setCNum(int cNum) {
-<span class="fc" id="L277">    MessageQueue.cNum = cNum;</span>
-<span class="fc" id="L278">  }</span>
+<span class="fc" id="L271">    MessageQueue.cNum = cNum;</span>
+<span class="fc" id="L272">  }</span>
 
   public static Queue&lt;Message&gt; getMsgQueue() {
-<span class="fc" id="L281">    return msgQueue;</span>
+<span class="fc" id="L275">    return msgQueue;</span>
   }
 
   public static void setMsgQueue(Queue&lt;Message&gt; msgQueue) {
-<span class="nc" id="L285">    MessageQueue.msgQueue = msgQueue;</span>
-<span class="nc" id="L286">  }</span>
+<span class="nc" id="L279">    MessageQueue.msgQueue = msgQueue;</span>
+<span class="nc" id="L280">  }</span>
 
   public static Queue&lt;Message&gt; getStkMsgQueue() {
-<span class="nc" id="L289">    return stkMsgQueue;</span>
+<span class="nc" id="L283">    return stkMsgQueue;</span>
   }
 
   public static void setStkMsgQueue(Queue&lt;Message&gt; stkMsgQueue) {
-<span class="nc" id="L293">    MessageQueue.stkMsgQueue = stkMsgQueue;</span>
-<span class="nc" id="L294">  }</span>
+<span class="nc" id="L287">    MessageQueue.stkMsgQueue = stkMsgQueue;</span>
+<span class="nc" id="L288">  }</span>
 
   public static Queue&lt;Message&gt; getLocMsgQueue() {
-<span class="nc" id="L297">    return locMsgQueue;</span>
+<span class="nc" id="L291">    return locMsgQueue;</span>
   }
 
   public static void setLocMsgQueue(Queue&lt;Message&gt; locMsgQueue) {
-<span class="nc" id="L301">    MessageQueue.locMsgQueue = locMsgQueue;</span>
-<span class="nc" id="L302">  }</span>
+<span class="nc" id="L295">    MessageQueue.locMsgQueue = locMsgQueue;</span>
+<span class="nc" id="L296">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
