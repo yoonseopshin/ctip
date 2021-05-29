@@ -14,7 +14,7 @@ public class Controller {
   private int basket;
   private int del;
 <span class="fc" id="L16">  private static ArrayList&lt;Title&gt; titleList = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L17">  private static Stack&lt;DVM&gt; DVMStack = new Stack&lt;&gt;();</span>
+<span class="fc" id="L17">  private static Stack&lt;DVM&gt; dvmStack = new Stack&lt;&gt;();</span>
 <span class="fc" id="L18">  private static CNumberManager cm = new CNumberManager();</span>
 <span class="fc" id="L19">  private static MessageQueue mq = new MessageQueue();</span>
 
@@ -146,7 +146,7 @@ public class Controller {
 <span class="nc" id="L146">        returnItem(titleList.get(t - 1), true);</span>
 <span class="nc" id="L147">        return 0;</span>
 <span class="nc bnc" id="L148" title="All 2 branches missed.">      } else if (check == 0) {</span>
-<span class="nc" id="L149">        ManShowTitle();</span>
+<span class="nc" id="L149">        manShowTitle();</span>
 <span class="nc bnc" id="L150" title="All 2 branches missed.">        if (del == -2) {</span>
 <span class="nc" id="L151">          return -2;</span>
         }
@@ -172,7 +172,7 @@ public class Controller {
     }
 <span class="nc" id="L173">  }</span>
 
-  public void ManShowTitle() {
+  public void manShowTitle() {
     while (true) {
 <span class="nc" id="L177">      k.setVisible(false);</span>
 <span class="nc" id="L178">      k = new ManTitleMenu(titleList);</span>
@@ -483,8 +483,8 @@ public class Controller {
       while (true) {
         int del2;
 <span class="nc" id="L485">        System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L486">        int size = DVMStack.size();</span>
-<span class="nc bnc" id="L487" title="All 4 branches missed.">        if ((size &gt; 0) &amp;&amp; (DVMStack.get(size - 1).getId() == -1)) {</span>
+<span class="nc" id="L486">        int size = dvmStack.size();</span>
+<span class="nc bnc" id="L487" title="All 4 branches missed.">        if ((size &gt; 0) &amp;&amp; (dvmStack.get(size - 1).getId() == -1)) {</span>
 <span class="nc" id="L488">          break;</span>
         }
 <span class="nc" id="L490">        del2 = ((FindingDVM) k).getReturnValue();</span>
@@ -500,12 +500,12 @@ public class Controller {
         }
 <span class="nc" id="L501">        i++;</span>
 <span class="nc" id="L502">      }</span>
-<span class="nc bnc" id="L503" title="All 2 branches missed.">      if (DVMStack.size() == 1) {</span>
+<span class="nc bnc" id="L503" title="All 2 branches missed.">      if (dvmStack.size() == 1) {</span>
 <span class="nc" id="L504">        infoNoUsableDVM();</span>
 <span class="nc" id="L505">        init();</span>
 <span class="nc" id="L506">        return 0;</span>
       }
-<span class="nc" id="L508">      DVMStack.pop();</span>
+<span class="nc" id="L508">      dvmStack.pop();</span>
 <span class="nc" id="L509">      showUsableDVM();</span>
 <span class="nc bnc" id="L510" title="All 2 branches missed.">      if (del == -2) {</span>
 <span class="nc" id="L511">        return -2;</span>
@@ -519,7 +519,7 @@ public class Controller {
 
   public void showUsableDVM() {
 <span class="nc" id="L521">    k.setVisible(false);</span>
-<span class="nc" id="L522">    k = new DVMMenu(DVMStack);</span>
+<span class="nc" id="L522">    k = new DVMMenu(dvmStack);</span>
 <span class="nc" id="L523">    del = selectDVM();</span>
 <span class="nc" id="L524">  }</span>
 
@@ -559,7 +559,7 @@ public class Controller {
 
   public void init() {
 <span class="fc" id="L561">    basket = -666;</span>
-<span class="fc" id="L562">    DVMStack.clear();</span>
+<span class="fc" id="L562">    dvmStack.clear();</span>
 <span class="fc" id="L563">    payment = null;</span>
 <span class="fc" id="L564">  }</span>
 
@@ -607,12 +607,12 @@ public class Controller {
 <span class="nc" id="L607">    Controller.titleList = titleList;</span>
 <span class="nc" id="L608">  }</span>
 
-  public static Stack&lt;DVM&gt; getDVMStack() {
-<span class="nc" id="L611">    return DVMStack;</span>
+  public static Stack&lt;DVM&gt; getDvmStack() {
+<span class="nc" id="L611">    return dvmStack;</span>
   }
 
-  public static void setDVMStack(Stack&lt;DVM&gt; DVMStack) {
-<span class="nc" id="L615">    Controller.DVMStack = DVMStack;</span>
+  public static void setDvmStack(Stack&lt;DVM&gt; dvmStack) {
+<span class="nc" id="L615">    Controller.dvmStack = dvmStack;</span>
 <span class="nc" id="L616">  }</span>
 
   public static CNumberManager getCm() {
