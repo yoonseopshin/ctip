@@ -121,24 +121,10 @@ jobs:
           report_paths: '**/build/test-results/test/TEST-*.xml'
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy Test Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/tests/test
-          destination_dir: junit
-
       - name: Test Code Coverage
         id: code_coverage
         run: ./gradlew jacocoTestReport jacocoTestCoverageVerification
 
-      - name: Deploy Code Coverage Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/jacoco/test/html
-          destination_dir: jacoco
-      
       - name: Notify slack code coverage report done
         if: ${{ always()}}
         env:
@@ -149,6 +135,19 @@ jobs:
           status: CODE COVERAGE REPORT DONE commit:${{ steps.s_sha.outputs.sha8 }}
           color: good
 
+      - name: Deploy Test Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/tests/test
+          destination_dir: junit
+
+      - name: Deploy Code Coverage Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/jacoco/test/html
+          destination_dir: jacoco
 
   Analysis:
     name: Static Analysis
@@ -173,39 +172,11 @@ jobs:
       - name: Run Checkstyle
         run: ./gradlew checkstyleMain checkstyleTest --stacktrace
 
-      - name: Deploy Checkstyle Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/checkstyle
-          destination_dir: checkstyle
-
-#      - name: Publish Checkstyle Report Summary
-#        uses: nikitasavinov/checkstyle-action@master
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          reporter: 'github-pr-check'
-#          tool_name: 'Lint'
-
       - name: Run PMD
         run: ./gradlew pmdMain pmdTest
 
-      - name: Deploy PMD Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/pmd
-          destination_dir: pmd
-
       - name: Run Spotbugs
         run: ./gradlew spotbugsMain spotbugsTest --stacktrace
-
-      - name: Deploy Spotbugs Report
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports/spotbugs
-          destination_dir: spotbugs
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
@@ -226,7 +197,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonarqube --info
-        
+
       - name: Notify slack static analysis done
         if: success()
         env:
@@ -236,3 +207,24 @@ jobs:
           channel: 깃허브
           status: STATIC ANALYSIS DONE commit:${{ steps.s_sha_static.outputs.sha8 }}
           color: good
+
+      - name: Deploy Checkstyle Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/checkstyle
+          destination_dir: checkstyle
+
+      - name: Deploy PMD Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/pmd
+          destination_dir: pmd
+
+      - name: Deploy Spotbugs Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/spotbugs
+          destination_dir: spotbugs
