@@ -101,7 +101,7 @@ public class MessageQueue extends Thread {
         try {
           socket.close();
         } catch (IOException e) {
-          e.printStackTrace();
+          System.err.println(e.getMessage());
         }
 
       }
@@ -109,7 +109,7 @@ public class MessageQueue extends Thread {
         try {
           server_socket.close();
         } catch (IOException e) {
-          e.printStackTrace();
+          System.err.println(e.getMessage());
         }
       }
       System.out.println("서버 종료");
@@ -162,7 +162,7 @@ public class MessageQueue extends Thread {
         try {
           socket.close();
         } catch (IOException e) {
-          e.printStackTrace();
+          System.err.println(e.getMessage());
         }
       }
     }
