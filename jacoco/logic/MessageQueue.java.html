@@ -101,7 +101,7 @@ import java.net.Socket;
         try {
 <span class="nc" id="L102">          socket.close();</span>
 <span class="nc" id="L103">        } catch (IOException e) {</span>
-<span class="nc" id="L104">          e.printStackTrace();</span>
+<span class="nc" id="L104">          System.err.println(e.getMessage());</span>
 <span class="nc" id="L105">        }</span>
 
       }
@@ -109,7 +109,7 @@ import java.net.Socket;
         try {
 <span class="nc" id="L110">          server_socket.close();</span>
 <span class="nc" id="L111">        } catch (IOException e) {</span>
-<span class="nc" id="L112">          e.printStackTrace();</span>
+<span class="nc" id="L112">          System.err.println(e.getMessage());</span>
 <span class="nc" id="L113">        }</span>
       }
 <span class="nc" id="L115">      System.out.println(&quot;서버 종료&quot;);</span>
@@ -162,7 +162,7 @@ import java.net.Socket;
         try {
 <span class="nc" id="L163">          socket.close();</span>
 <span class="nc" id="L164">        } catch (IOException e) {</span>
-<span class="nc" id="L165">          e.printStackTrace();</span>
+<span class="nc" id="L165">          System.err.println(e.getMessage());</span>
 <span class="nc" id="L166">        }</span>
       }
     }
