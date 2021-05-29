@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Payment.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JavaCTIP</a> &gt; <a href="index.source.html" class="el_package">logic</a> &gt; <span class="el_source">Payment.java</span></div><h1>Payment.java</h1><pre class="source lang-java linenums">package logic;
+
+public class Payment {
+
+  private int titleId;
+  private int DVMId;
+  private String errorLog;
+
+<span class="fc" id="L9">  Payment(int titleId, int DVMId) {</span>
+<span class="fc" id="L10">    this.titleId = titleId;</span>
+<span class="fc" id="L11">    this.DVMId = DVMId;</span>
+<span class="fc" id="L12">  }</span>
+
+  public int CardPay(boolean payConfirm) {
+<span class="fc bfc" id="L15" title="All 2 branches covered.">    if (DVMId &gt; 0) {//카드결제 성공</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">      if (payConfirm) { //test용으로 성공이라 가정</span>
+<span class="fc" id="L17">        System.out.println(&quot;카드결제 선결제 성공&quot;);</span>
+<span class="fc" id="L18">        CNumber Cnumber = new CNumber(titleId, DVMId);</span>
+<span class="fc" id="L19">        return Cnumber.CreateCnumber();</span>
+      } else {
+<span class="fc" id="L21">        this.errorLog = &quot;카드결제 선결제 실패&quot;;</span>
+<span class="fc" id="L22">        return -3;</span>
+      }
+    } else {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">      if (payConfirm) {</span>
+<span class="fc" id="L26">        System.out.println(&quot;카드결제 성공&quot;); //test용으로 성공이라 가정</span>
+<span class="fc" id="L27">        return 0;</span>
+      } else {
+<span class="fc" id="L29">        this.errorLog = &quot;카드결제 실패&quot;;</span>
+<span class="fc" id="L30">        return -3;</span>
+      }
+    }
+  }
+
+  public int SmartPay(boolean payConfirm) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">    if (DVMId &gt; 0) {//카드결제 성공</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">      if (payConfirm) { //test용으로 성공이라 가정</span>
+<span class="fc" id="L38">        System.out.println(&quot;간편결제 선결제 성공&quot;);</span>
+<span class="fc" id="L39">        CNumber cNumber = new CNumber(titleId, DVMId);</span>
+<span class="fc" id="L40">        return cNumber.CreateCnumber();</span>
+      } else {
+<span class="fc" id="L42">        this.errorLog = &quot;간편결제 선결제 실패&quot;;</span>
+<span class="fc" id="L43">        return -3;</span>
+      }
+    } else {
+<span class="fc bfc" id="L46" title="All 2 branches covered.">      if (payConfirm) {</span>
+<span class="fc" id="L47">        System.out.println(&quot;간편결제 성공&quot;); //test용으로 성공이라 가정</span>
+<span class="fc" id="L48">        return 0;</span>
+      } else {
+<span class="fc" id="L50">        this.errorLog = &quot;간편결제 실패&quot;;</span>
+<span class="fc" id="L51">        return -3;</span>
+      }
+    }
+  }
+
+  public void init() {
+<span class="fc" id="L57">    this.titleId = -1;</span>
+<span class="fc" id="L58">    this.DVMId = -1;</span>
+<span class="fc" id="L59">    this.errorLog = null;</span>
+<span class="fc" id="L60">  }</span>
+
+  public int getTitleId() {
+<span class="fc" id="L63">    return titleId;</span>
+  }
+
+  public void setTitleId(int titleId) {
+<span class="nc" id="L67">    this.titleId = titleId;</span>
+<span class="nc" id="L68">  }</span>
+
+  public int getDVMId() {
+<span class="fc" id="L71">    return DVMId;</span>
+  }
+
+  public void setDVMId(int DVMId) {
+<span class="nc" id="L75">    this.DVMId = DVMId;</span>
+<span class="nc" id="L76">  }</span>
+
+  public String getErrorLog() {
+<span class="fc" id="L79">    return errorLog;</span>
+  }
+
+  public void setErrorLog(String errorLog) {
+<span class="nc" id="L83">    this.errorLog = errorLog;</span>
+<span class="nc" id="L84">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

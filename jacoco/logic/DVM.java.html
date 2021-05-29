@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DVM.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JavaCTIP</a> &gt; <a href="index.source.html" class="el_package">logic</a> &gt; <span class="el_source">DVM.java</span></div><h1>DVM.java</h1><pre class="source lang-java linenums">package logic;
+
+public class DVM {
+
+<span class="fc" id="L5">  private static int currentID = 3;</span>
+<span class="fc" id="L6">  private static double currentX = 1.0;</span>
+<span class="fc" id="L7">  private static double currentY = 1.0;</span>
+  private int id; // 메시지 받은 DVM ID
+  private double addressX; // 실제 주소
+  private double addressY;
+
+<span class="fc" id="L12">  public DVM(int id, double x, double y) {</span>
+<span class="fc" id="L13">    this.id = id;</span>
+<span class="fc" id="L14">    this.addressX = x;</span>
+<span class="fc" id="L15">    this.addressY = y;</span>
+<span class="fc" id="L16">  }</span>
+
+  public int getId() {
+<span class="fc" id="L19">    return id;</span>
+  }
+
+  public void setId(int id) {
+<span class="fc" id="L23">    this.id = id;</span>
+<span class="fc" id="L24">  }</span>
+
+  public double getAddressX() {
+<span class="fc" id="L27">    return addressX;</span>
+  }
+
+  public void setAddressX(double addressX) {
+<span class="fc" id="L31">    this.addressX = addressX;</span>
+<span class="fc" id="L32">  }</span>
+
+  public double getAddressY() {
+<span class="fc" id="L35">    return addressY;</span>
+  }
+
+  public void setAddressY(double addressY) {
+<span class="fc" id="L39">    this.addressY = addressY;</span>
+<span class="fc" id="L40">  }</span>
+
+  public static int getCurrentID() {
+<span class="fc" id="L43">    return currentID;</span>
+  }
+
+  public static void setCurrentID(int currentID) {
+<span class="fc" id="L47">    DVM.currentID = currentID;</span>
+<span class="fc" id="L48">  }</span>
+
+  public static double getCurrentX() {
+<span class="nc" id="L51">    return currentX;</span>
+  }
+
+  public static void setCurrentX(double currentX) {
+<span class="nc" id="L55">    DVM.currentX = currentX;</span>
+<span class="nc" id="L56">  }</span>
+
+  public static double getCurrentY() {
+<span class="nc" id="L59">    return currentY;</span>
+  }
+
+  public static void setCurrentY(double currentY) {
+<span class="nc" id="L63">    DVM.currentY = currentY;</span>
+<span class="nc" id="L64">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
