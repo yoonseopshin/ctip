@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class CNumber {
 
-  private int title_id;
+  private int titleId;
   private int DvmID;
-  private int C_Number_t;
+  private int cNumberT;
   private Random rand;
 
   {
@@ -20,44 +20,44 @@ public class CNumber {
 <span class="fc" id="L20">    }</span>
   }
 
-<span class="fc" id="L23">  public CNumber(int title_id, int id) {</span>
-<span class="fc" id="L24">    this.title_id = title_id;</span>
+<span class="fc" id="L23">  public CNumber(int titleId, int id) {</span>
+<span class="fc" id="L24">    this.titleId = titleId;</span>
 <span class="fc" id="L25">    this.DvmID = id;</span>
 <span class="fc" id="L26">  }</span>
 
 
-  public int CreateCnumber() {
+  public int createCNumber() {
     //수정
-<span class="fc bfc" id="L31" title="All 2 branches covered.">    if (!(Controller.getCm().getCh_C_List().isEmpty())) {</span>
-<span class="fc" id="L32">      MessageQueue.setcNum(Controller.getCm().getCh_C_List().size());</span>
-<span class="fc bfc" id="L33" title="All 2 branches covered.">      for (Integer key : Controller.getCm().getCh_C_List().keySet()) {</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">    if (!(Controller.getCm().getChCList().isEmpty())) {</span>
+<span class="fc" id="L32">      MessageQueue.setCNum(Controller.getCm().getChCList().size());</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">      for (Integer key : Controller.getCm().getChCList().keySet()) {</span>
 <span class="fc" id="L34">        Message msg = new Message(DVM.getCurrentID());</span>
-<span class="fc" id="L35">        msg.setmsg(Controller.getCm().getCh_C_List().get(key).getDvmID(), 6, key);</span>
+<span class="fc" id="L35">        msg.setMsg(Controller.getCm().getChCList().get(key).getDvmID(), 6, key);</span>
 <span class="fc" id="L36">      }</span>
       while (true) {
-<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if (Controller.getCm().CheckCnumber2(-1)) {</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if (Controller.getCm().checkCNumber2(-1)) {</span>
 <span class="fc" id="L39">          break;</span>
         }
       }
-<span class="fc" id="L42">      Controller.getCm().getCh_C_List().remove(-1);</span>
+<span class="fc" id="L42">      Controller.getCm().getChCList().remove(-1);</span>
     }
     String numStr;
     do {
-<span class="fc" id="L46">      numStr = randnumber();</span>
+<span class="fc" id="L46">      numStr = randNumber();</span>
 <span class="pc bpc" id="L47" title="1 of 2 branches missed.">    } while (numStr.equals(&quot;000000&quot;) || numStr</span>
-<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        .equals(Integer.toString(Controller.getCm().getM_Number())) || Controller.getCm()</span>
-<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        .CheckCnumber2(Integer.parseInt(numStr)));</span>
-<span class="fc" id="L50">    C_Number_t = Integer.parseInt(numStr);</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        .equals(Integer.toString(Controller.getCm().getMNumber())) || Controller.getCm()</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        .checkCNumber2(Integer.parseInt(numStr)));</span>
+<span class="fc" id="L50">    cNumberT = Integer.parseInt(numStr);</span>
 <span class="fc" id="L51">    Message message = new Message(DVM.getCurrentID());</span>
-<span class="fc" id="L52">    message.setmsg(this.DvmID, 3, title_id, C_Number_t);</span>
-<span class="fc" id="L53">    CNumber cn = new CNumber(title_id, DvmID);</span>
-<span class="fc" id="L54">    cn.setC_Number_t(C_Number_t);</span>
-<span class="fc" id="L55">    Controller.getCm().AddchCnumber(cn);</span>
+<span class="fc" id="L52">    message.setMsg(this.DvmID, 3, titleId, cNumberT);</span>
+<span class="fc" id="L53">    CNumber cn = new CNumber(titleId, DvmID);</span>
+<span class="fc" id="L54">    cn.setCNumberT(cNumberT);</span>
+<span class="fc" id="L55">    Controller.getCm().addChCNumber(cn);</span>
 
-<span class="fc" id="L57">    return C_Number_t;</span>
+<span class="fc" id="L57">    return cNumberT;</span>
   }
 
-  public String randnumber() {
+  public String randNumber() {
 <span class="fc" id="L61">    int len = 6;</span>
 <span class="fc" id="L62">    String numStr = &quot;&quot;; //난수가 저장될 변수</span>
 <span class="fc" id="L63">    String ran = Integer.toString(rand.nextInt(9) + 1);  //첫번째 숫자 0이 아님</span>
@@ -73,12 +73,12 @@ public class CNumber {
 <span class="fc" id="L73">    return numStr;</span>
   }
 
-  public int getTitle_id() {
-<span class="fc" id="L77">    return title_id;</span>
+  public int getTitleId() {
+<span class="fc" id="L77">    return titleId;</span>
   }
 
-  public void setTitle_id(int title_id) {
-<span class="nc" id="L81">    this.title_id = title_id;</span>
+  public void setTitleId(int titleId) {
+<span class="nc" id="L81">    this.titleId = titleId;</span>
 <span class="nc" id="L82">  }</span>
 
   public int getDvmID() {
@@ -89,12 +89,12 @@ public class CNumber {
 <span class="nc" id="L89">    DvmID = dvmID;</span>
 <span class="nc" id="L90">  }</span>
 
-  public int getC_Number_t() {
-<span class="fc" id="L93">    return C_Number_t;</span>
+  public int getCNumberT() {
+<span class="fc" id="L93">    return cNumberT;</span>
   }
 
-  public void setC_Number_t(int c_Number_t) {
-<span class="fc" id="L97">    C_Number_t = c_Number_t;</span>
+  public void setCNumberT(int cNumberT) {
+<span class="fc" id="L97">    this.cNumberT = cNumberT;</span>
 <span class="fc" id="L98">  }</span>
 
 }

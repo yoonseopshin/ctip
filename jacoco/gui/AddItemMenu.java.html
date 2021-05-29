@@ -45,14 +45,14 @@ public class AddItemMenu extends JFrame implements ActionListener {
 <span class="nc" id="L45">    this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
 
     //라벨패널
-<span class="nc" id="L48">    JPanel labelpanel = new JPanel();</span>
-<span class="nc" id="L49">    labelpanel.setPreferredSize(new Dimension(600, 300));</span>
+<span class="nc" id="L48">    JPanel labelPanel = new JPanel();</span>
+<span class="nc" id="L49">    labelPanel.setPreferredSize(new Dimension(600, 300));</span>
 <span class="nc" id="L50">    JLabel label = new JLabel(&quot;추가할 재고의 유통기한을 입력하세요&quot;);</span>
 <span class="nc" id="L51">    label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L52">    labelpanel.add(label);</span>
+<span class="nc" id="L52">    labelPanel.add(label);</span>
 
     //유통기한 입력패널
-<span class="nc" id="L55">    JPanel expdatepanel = new JPanel();</span>
+<span class="nc" id="L55">    JPanel expDatePanel = new JPanel();</span>
 <span class="nc" id="L56">    JLabel y = new JLabel(&quot;년   &quot;);</span>
 <span class="nc" id="L57">    JLabel m = new JLabel(&quot;월   &quot;);</span>
 <span class="nc" id="L58">    JLabel d = new JLabel(&quot;일&quot;);</span>
@@ -120,26 +120,26 @@ public class AddItemMenu extends JFrame implements ActionListener {
 <span class="nc" id="L120">    daySelect.addActionListener(this);</span>
 <span class="nc" id="L121">    monthSelect.setSelectedIndex(month);</span>
 <span class="nc" id="L122">    daySelect.setSelectedIndex(date - 1);</span>
-<span class="nc" id="L123">    expdatepanel.add(yearSelect);</span>
-<span class="nc" id="L124">    expdatepanel.add(y);</span>
-<span class="nc" id="L125">    expdatepanel.add(monthSelect);</span>
-<span class="nc" id="L126">    expdatepanel.add(m);</span>
-<span class="nc" id="L127">    expdatepanel.add(daySelect);</span>
-<span class="nc" id="L128">    expdatepanel.add(d);</span>
+<span class="nc" id="L123">    expDatePanel.add(yearSelect);</span>
+<span class="nc" id="L124">    expDatePanel.add(y);</span>
+<span class="nc" id="L125">    expDatePanel.add(monthSelect);</span>
+<span class="nc" id="L126">    expDatePanel.add(m);</span>
+<span class="nc" id="L127">    expDatePanel.add(daySelect);</span>
+<span class="nc" id="L128">    expDatePanel.add(d);</span>
 
     //버튼패널
-<span class="nc" id="L131">    JPanel buttonpanel = new JPanel(new GridLayout(1, 2));</span>
-<span class="nc" id="L132">    buttonpanel.setPreferredSize(new Dimension(600, 70));</span>
+<span class="nc" id="L131">    JPanel buttonPanel = new JPanel(new GridLayout(1, 2));</span>
+<span class="nc" id="L132">    buttonPanel.setPreferredSize(new Dimension(600, 70));</span>
 <span class="nc" id="L133">    cancel = new JButton(&quot;취소&quot;);</span>
 <span class="nc" id="L134">    add = new JButton(&quot;추가&quot;);</span>
 <span class="nc" id="L135">    cancel.addActionListener(this);</span>
 <span class="nc" id="L136">    add.addActionListener(this);</span>
-<span class="nc" id="L137">    buttonpanel.add(add);</span>
-<span class="nc" id="L138">    buttonpanel.add(cancel);</span>
+<span class="nc" id="L137">    buttonPanel.add(add);</span>
+<span class="nc" id="L138">    buttonPanel.add(cancel);</span>
 
-<span class="nc" id="L140">    add(labelpanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L141">    add(expdatepanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L142">    add(buttonpanel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L140">    add(labelPanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L141">    add(expDatePanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L142">    add(buttonPanel, BorderLayout.SOUTH);</span>
 
 <span class="nc" id="L144">    pack();</span>
 <span class="nc" id="L145">    setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
@@ -199,19 +199,19 @@ public class AddItemMenu extends JFrame implements ActionListener {
     }
 <span class="nc" id="L200">  }</span>
 
-  public int getReturn_value() {
+  public int getReturnValue() {
 <span class="nc" id="L203">    return return_value;</span>
   }
 
-  public void setReturn_value(int returnValue) {
+  public void setReturnValue(int returnValue) {
 <span class="nc" id="L207">    this.return_value = returnValue;</span>
 <span class="nc" id="L208">  }</span>
 
-  public int getReturn_date() {
+  public int getReturnDate() {
 <span class="nc" id="L211">    return return_date;</span>
   }
 
-  public void setReturn_date(int returnDate) {
+  public void setReturnDate(int returnDate) {
 <span class="nc" id="L215">    this.return_date = returnDate;</span>
 <span class="nc" id="L216">  }</span>
 

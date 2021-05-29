@@ -11,12 +11,12 @@ public class Payment {
 <span class="fc" id="L11">    this.DVMId = DVMId;</span>
 <span class="fc" id="L12">  }</span>
 
-  public int CardPay(boolean payConfirm) {
+  public int cardPay(boolean payConfirm) {
 <span class="fc bfc" id="L15" title="All 2 branches covered.">    if (DVMId &gt; 0) {//카드결제 성공</span>
 <span class="fc bfc" id="L16" title="All 2 branches covered.">      if (payConfirm) { //test용으로 성공이라 가정</span>
 <span class="fc" id="L17">        System.out.println(&quot;카드결제 선결제 성공&quot;);</span>
 <span class="fc" id="L18">        CNumber Cnumber = new CNumber(titleId, DVMId);</span>
-<span class="fc" id="L19">        return Cnumber.CreateCnumber();</span>
+<span class="fc" id="L19">        return Cnumber.createCNumber();</span>
       } else {
 <span class="fc" id="L21">        this.errorLog = &quot;카드결제 선결제 실패&quot;;</span>
 <span class="fc" id="L22">        return -3;</span>
@@ -32,12 +32,12 @@ public class Payment {
     }
   }
 
-  public int SmartPay(boolean payConfirm) {
+  public int smartPay(boolean payConfirm) {
 <span class="fc bfc" id="L36" title="All 2 branches covered.">    if (DVMId &gt; 0) {//카드결제 성공</span>
 <span class="fc bfc" id="L37" title="All 2 branches covered.">      if (payConfirm) { //test용으로 성공이라 가정</span>
 <span class="fc" id="L38">        System.out.println(&quot;간편결제 선결제 성공&quot;);</span>
 <span class="fc" id="L39">        CNumber cNumber = new CNumber(titleId, DVMId);</span>
-<span class="fc" id="L40">        return cNumber.CreateCnumber();</span>
+<span class="fc" id="L40">        return cNumber.createCNumber();</span>
       } else {
 <span class="fc" id="L42">        this.errorLog = &quot;간편결제 선결제 실패&quot;;</span>
 <span class="fc" id="L43">        return -3;</span>
