@@ -16,7 +16,7 @@
     Authors: Max Vetrenko, Ruslan Diachenko, Roman Ivanov.
  -->
 
-<module name = "Checker">
+<module name="Checker">
   <property name="charset" value="UTF-8"/>
 
   <property name="severity" value="warning"/>
@@ -30,7 +30,7 @@
   <!-- https://checkstyle.org/config_filters.html#SuppressionFilter -->
   <module name="SuppressionFilter">
     <property name="file" value="${org.checkstyle.google.suppressionfilter.config}"
-      default="checkstyle-suppressions.xml" />
+      default="checkstyle-suppressions.xml"/>
     <property name="optional" value="true"/>
   </module>
 
@@ -43,7 +43,8 @@
   <module name="LineLength">
     <property name="fileExtensions" value="java"/>
     <property name="max" value="100"/>
-    <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+    <property name="ignorePattern"
+      value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
   </module>
 
   <module name="TreeWalker">
@@ -327,11 +328,10 @@
       <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF"/>
     </module>
     <module name="MissingJavadocMethod">
-      <property name="scope" value="public"/>
-      <property name="minLineCount" value="2"/>
-      <property name="allowedAnnotations" value="Override, Test"/>
-      <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF,
-                                   COMPACT_CTOR_DEF"/>
+      <property name="scope" value="ignore"/>
+      <property name="minLineCount" value="ignore"/>
+      <property name="allowedAnnotations" value="ignore"/>
+      <property name="tokens" value="ignore"/>
     </module>
     <module name="MissingJavadocType">
       <property name="scope" value="protected"/>
@@ -357,7 +357,7 @@
     <!-- https://checkstyle.org/config_filters.html#SuppressionXpathFilter -->
     <module name="SuppressionXpathFilter">
       <property name="file" value="${org.checkstyle.google.suppressionxpathfilter.config}"
-        default="checkstyle-xpath-suppressions.xml" />
+        default="checkstyle-xpath-suppressions.xml"/>
       <property name="optional" value="true"/>
     </module>
   </module>

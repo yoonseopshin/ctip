@@ -123,9 +123,7 @@ public class MessageQueue extends Thread {
     PrintWriter out = null;            //서버로 내보내기 위한 출력 스트림
     InetAddress ia = null;
     int port = message.getTargetId() + 50000;
-    try
-    //서버로 접속하고 인풋스티림을 지정하는 부분
-    {
+    try { //서버로 접속하고 인풋스티림을 지정하는 부분
       while (true) {
         ia = InetAddress.getByName(getIP());    //서버로 접속
         socket = new Socket(ia, port);
@@ -234,12 +232,12 @@ public class MessageQueue extends Thread {
       if (loc != 0) {
         while (locMsgQueue.size() > 0) {
           Message loc = locMsgQueue.poll();
-          Controller.getDVMStack()
+          Controller.getDvmStack()
               .push(new DVM(loc.getMyId(), loc.getXAddress(), loc.getYAddress()));
           System.out.println("위치 응답 메시지 수신 완료");
         }
       }
-      Controller.getDVMStack().push(new DVM(-1, 0.0, 0.0));
+      Controller.getDvmStack().push(new DVM(-1, 0.0, 0.0));
       loc = -1;
     }
     if (cNMsgQueue.size() == cNum) {

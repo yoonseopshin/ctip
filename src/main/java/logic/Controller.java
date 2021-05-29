@@ -14,7 +14,7 @@ public class Controller {
   private int basket;
   private int del;
   private static ArrayList<Title> titleList = new ArrayList<>();
-  private static Stack<DVM> DVMStack = new Stack<>();
+  private static Stack<DVM> dvmStack = new Stack<>();
   private static CNumberManager cm = new CNumberManager();
   private static MessageQueue mq = new MessageQueue();
 
@@ -146,7 +146,7 @@ public class Controller {
         returnItem(titleList.get(t - 1), true);
         return 0;
       } else if (check == 0) {
-        ManShowTitle();
+        manShowTitle();
         if (del == -2) {
           return -2;
         }
@@ -172,7 +172,7 @@ public class Controller {
     }
   }
 
-  public void ManShowTitle() {
+  public void manShowTitle() {
     while (true) {
       k.setVisible(false);
       k = new ManTitleMenu(titleList);
@@ -483,8 +483,8 @@ public class Controller {
       while (true) {
         int del2;
         System.out.print("");
-        int size = DVMStack.size();
-        if ((size > 0) && (DVMStack.get(size - 1).getId() == -1)) {
+        int size = dvmStack.size();
+        if ((size > 0) && (dvmStack.get(size - 1).getId() == -1)) {
           break;
         }
         del2 = ((FindingDVM) k).getReturnValue();
@@ -500,12 +500,12 @@ public class Controller {
         }
         i++;
       }
-      if (DVMStack.size() == 1) {
+      if (dvmStack.size() == 1) {
         infoNoUsableDVM();
         init();
         return 0;
       }
-      DVMStack.pop();
+      dvmStack.pop();
       showUsableDVM();
       if (del == -2) {
         return -2;
@@ -519,7 +519,7 @@ public class Controller {
 
   public void showUsableDVM() {
     k.setVisible(false);
-    k = new DVMMenu(DVMStack);
+    k = new DVMMenu(dvmStack);
     del = selectDVM();
   }
 
@@ -559,7 +559,7 @@ public class Controller {
 
   public void init() {
     basket = -666;
-    DVMStack.clear();
+    dvmStack.clear();
     payment = null;
   }
 
@@ -607,12 +607,12 @@ public class Controller {
     Controller.titleList = titleList;
   }
 
-  public static Stack<DVM> getDVMStack() {
-    return DVMStack;
+  public static Stack<DVM> getDvmStack() {
+    return dvmStack;
   }
 
-  public static void setDVMStack(Stack<DVM> DVMStack) {
-    Controller.DVMStack = DVMStack;
+  public static void setDvmStack(Stack<DVM> dvmStack) {
+    Controller.dvmStack = dvmStack;
   }
 
   public static CNumberManager getCm() {
