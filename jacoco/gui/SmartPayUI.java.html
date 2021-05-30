@@ -1,132 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SmartPayUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JavaCTIP</a> &gt; <a href="index.source.html" class="el_package">gui</a> &gt; <span class="el_source">SmartPayUI.java</span></div><h1>SmartPayUI.java</h1><pre class="source lang-java linenums">package gui;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 import logic.DVM;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.*;
 
 public class SmartPayUI extends JFrame implements ActionListener {
 
-<span class="nc" id="L15">  private int s = 39;</span>
-<span class="nc" id="L16">  private Timer timer = new Timer(1000, new ActionListener() {</span>
+<span class="nc" id="L19">  private int s = 39;</span>
+<span class="nc" id="L20">  private Timer timer = new Timer(1000, new ActionListener() {</span>
     @Override
     public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L19" title="All 2 branches missed.">      if (s &lt;= 10) {</span>
-<span class="nc" id="L20">        cancel.setText(&quot;확인&quot;);</span>
-<span class="nc" id="L21">        label.setText(&quot;남은 시간: 0&quot;);</span>
-<span class="nc" id="L22">        infoLabel.setText(&quot;&lt;html&gt;&lt;center&gt;입력시간이 초과되어 결제가 취소되었습니다.&lt;br&gt;&quot; +</span>
-<span class="nc" id="L23">            s + &quot;초 후 메인화면으로 돌아갑니다.&lt;/center&gt;&lt;/html&gt;&quot;);</span>
-<span class="nc bnc" id="L24" title="All 2 branches missed.">        if (s == 10) {</span>
-<span class="nc" id="L25">          informPanel.remove(imageLabel);</span>
-<span class="nc" id="L26">          informPanel.updateUI();</span>
-<span class="nc" id="L27">          labelPanel.setPreferredSize(new Dimension(600, 300));</span>
-<span class="nc" id="L28">          infoLabel.setFont(infoLabel.getFont().deriveFont(20.0f));</span>
-<span class="nc" id="L29">          informPanel.add(infoLabel);</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">      if (s &lt;= 10) {</span>
+<span class="nc" id="L24">        cancel.setText(&quot;확인&quot;);</span>
+<span class="nc" id="L25">        label.setText(&quot;남은 시간: 0&quot;);</span>
+<span class="nc" id="L26">        infoLabel.setText(&quot;&lt;html&gt;&lt;center&gt;입력시간이 초과되어 결제가 취소되었습니다.&lt;br&gt;&quot; +</span>
+<span class="nc" id="L27">            s + &quot;초 후 메인화면으로 돌아갑니다.&lt;/center&gt;&lt;/html&gt;&quot;);</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if (s == 10) {</span>
+<span class="nc" id="L29">          informPanel.remove(imageLabel);</span>
+<span class="nc" id="L30">          informPanel.updateUI();</span>
+<span class="nc" id="L31">          labelPanel.setPreferredSize(new Dimension(600, 300));</span>
+<span class="nc" id="L32">          infoLabel.setFont(infoLabel.getFont().deriveFont(20.0f));</span>
+<span class="nc" id="L33">          informPanel.add(infoLabel);</span>
         }
-<span class="nc bnc" id="L31" title="All 2 branches missed.">        if (s == 0) {</span>
-<span class="nc" id="L32">          timer.stop();</span>
-<span class="nc" id="L33">          returnValue = 0;</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (s == 0) {</span>
+<span class="nc" id="L36">          timer.stop();</span>
+<span class="nc" id="L37">          returnValue = 0;</span>
         }
       } else {
-<span class="nc" id="L36">        label.setText(&quot;남은 시간: &quot; + (s - 10));</span>
+<span class="nc" id="L40">        label.setText(&quot;남은 시간: &quot; + (s - 10));</span>
       }
-<span class="nc" id="L38">      s--;</span>
-<span class="nc" id="L39">    }</span>
+<span class="nc" id="L42">      s--;</span>
+<span class="nc" id="L43">    }</span>
   });
 
   private JButton cancel;
   private JLabel label;
   private JLabel imageLabel;
-<span class="nc" id="L45">  private JLabel infoLabel = new JLabel();</span>
+<span class="nc" id="L49">  private JLabel infoLabel = new JLabel();</span>
   private ImageIcon img;
   private JPanel labelPanel;
   private JPanel informPanel;
   private JPanel buttonPanel;
-<span class="nc" id="L50">  private int returnValue = -1;</span>
+<span class="nc" id="L54">  private int returnValue = -1;</span>
 
-<span class="nc" id="L52">  public SmartPayUI() {</span>
-<span class="nc" id="L53">    this.addKeyListener(new KeyListener() {</span>
+<span class="nc" id="L56">  public SmartPayUI() {</span>
+<span class="nc" id="L57">    this.addKeyListener(new KeyListener() {</span>
       @Override
       public void keyTyped(KeyEvent e) {
         // Do nothing because no need to
-<span class="nc" id="L57">      }</span>
+<span class="nc" id="L61">      }</span>
 
       @Override
       public void keyPressed(KeyEvent e) {
         // Do nothing because no need to
-<span class="nc" id="L62">      }</span>
+<span class="nc" id="L66">      }</span>
 
       @Override
       public void keyReleased(KeyEvent e) {
-<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (s &gt; 10) {</span>
-<span class="nc bnc" id="L67" title="All 2 branches missed.">          if (e.getKeyChar() == 's') {</span>
-<span class="nc" id="L68">            timer.stop();</span>
-<span class="nc" id="L69">            returnValue = 1;</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">          } else if (e.getKeyChar() == 'f') {</span>
-<span class="nc" id="L71">            timer.stop();</span>
-<span class="nc" id="L72">            returnValue = -3;</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (s &gt; 10) {</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">          if (e.getKeyChar() == 's') {</span>
+<span class="nc" id="L72">            timer.stop();</span>
+<span class="nc" id="L73">            returnValue = 1;</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">          } else if (e.getKeyChar() == 'f') {</span>
+<span class="nc" id="L75">            timer.stop();</span>
+<span class="nc" id="L76">            returnValue = -3;</span>
           }
         }
-<span class="nc" id="L75">      }</span>
+<span class="nc" id="L79">      }</span>
     });
 
-<span class="nc" id="L78">    timer.start();</span>
+<span class="nc" id="L82">    timer.start();</span>
 
-<span class="nc" id="L80">    this.setPreferredSize(new Dimension(600, 800));</span>
-<span class="nc" id="L81">    this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
+<span class="nc" id="L84">    this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L85">    this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
 
     //라벨패널
-<span class="nc" id="L84">    labelPanel = new JPanel();</span>
-<span class="nc" id="L85">    labelPanel.setPreferredSize(new Dimension(600, 150));</span>
-<span class="nc" id="L86">    label = new JLabel(&quot;남은 시간: &quot; + 30);</span>
-<span class="nc" id="L87">    label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L88">    labelPanel.add(label);</span>
+<span class="nc" id="L88">    labelPanel = new JPanel();</span>
+<span class="nc" id="L89">    labelPanel.setPreferredSize(new Dimension(600, 150));</span>
+<span class="nc" id="L90">    label = new JLabel(&quot;남은 시간: &quot; + 30);</span>
+<span class="nc" id="L91">    label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L92">    labelPanel.add(label);</span>
 
     //안내패널
-<span class="nc" id="L91">    informPanel = new JPanel();</span>
-<span class="nc" id="L92">    informPanel.setPreferredSize(new Dimension(600, 500));</span>
-<span class="nc" id="L93">    img = new ImageIcon(&quot;src/main/java/GUI/image/QR.jpg&quot;);</span>
-<span class="nc" id="L94">    imageLabel = new JLabel(img);</span>
-<span class="nc" id="L95">    informPanel.add(imageLabel);</span>
+<span class="nc" id="L95">    informPanel = new JPanel();</span>
+<span class="nc" id="L96">    informPanel.setPreferredSize(new Dimension(600, 500));</span>
+<span class="nc" id="L97">    img = new ImageIcon(&quot;src/main/java/GUI/image/QR.jpg&quot;);</span>
+<span class="nc" id="L98">    imageLabel = new JLabel(img);</span>
+<span class="nc" id="L99">    informPanel.add(imageLabel);</span>
 
     //버튼패널
-<span class="nc" id="L98">    buttonPanel = new JPanel();</span>
-<span class="nc" id="L99">    cancel = new JButton(&quot;취소&quot;);</span>
-<span class="nc" id="L100">    cancel.setPreferredSize(new Dimension(300, 70));</span>
-<span class="nc" id="L101">    cancel.addActionListener(this);</span>
-<span class="nc" id="L102">    cancel.setFocusable(false);</span>
-<span class="nc" id="L103">    buttonPanel.add(cancel);</span>
+<span class="nc" id="L102">    buttonPanel = new JPanel();</span>
+<span class="nc" id="L103">    cancel = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L104">    cancel.setPreferredSize(new Dimension(300, 70));</span>
+<span class="nc" id="L105">    cancel.addActionListener(this);</span>
+<span class="nc" id="L106">    cancel.setFocusable(false);</span>
+<span class="nc" id="L107">    buttonPanel.add(cancel);</span>
 
-<span class="nc" id="L105">    add(labelPanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L106">    add(informPanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L107">    add(buttonPanel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L109">    add(labelPanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L110">    add(informPanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L111">    add(buttonPanel, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L109">    pack();</span>
-<span class="nc" id="L110">    setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L111">    setVisible(true);</span>
+<span class="nc" id="L113">    pack();</span>
+<span class="nc" id="L114">    setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L115">    setVisible(true);</span>
 
-<span class="nc" id="L113">  }</span>
+<span class="nc" id="L117">  }</span>
 
   @Override
   public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L117" title="All 2 branches missed.">    if (e.getSource() == cancel) {</span>
-<span class="nc" id="L118">      timer.stop();</span>
-<span class="nc" id="L119">      returnValue = 0;</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">    if (e.getSource() == cancel) {</span>
+<span class="nc" id="L122">      timer.stop();</span>
+<span class="nc" id="L123">      returnValue = 0;</span>
     }
-<span class="nc" id="L121">  }</span>
+<span class="nc" id="L125">  }</span>
 
   public int getReturnValue() {
-<span class="nc" id="L124">    return returnValue;</span>
+<span class="nc" id="L128">    return returnValue;</span>
   }
 
   public void setReturnValue(int returnValue) {
-<span class="nc" id="L128">    this.returnValue = returnValue;</span>
-<span class="nc" id="L129">  }</span>
+<span class="nc" id="L132">    this.returnValue = returnValue;</span>
+<span class="nc" id="L133">  }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

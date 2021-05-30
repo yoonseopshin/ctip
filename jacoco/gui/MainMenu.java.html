@@ -2,7 +2,6 @@
 
 import logic.Title;
 import logic.DVM;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -17,79 +16,79 @@ import javax.swing.Timer;
 
 public class MainMenu extends JFrame implements ActionListener {
 
-<span class="nc" id="L20">  private Timer timer = new Timer(180000, new ActionListener() {</span>
+<span class="nc" id="L19">  private Timer timer = new Timer(180000, new ActionListener() {</span>
     @Override
     public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L23">      timer.stop();</span>
-<span class="nc" id="L24">      returnValue = -2;</span>
-<span class="nc" id="L25">    }</span>
+<span class="nc" id="L22">      timer.stop();</span>
+<span class="nc" id="L23">      returnValue = -2;</span>
+<span class="nc" id="L24">    }</span>
   });
 
   private JButton[] menu;
   private JButton cNumberInput;
-<span class="nc" id="L30">  private int returnValue = -1;</span>
+<span class="nc" id="L29">  private int returnValue = -1;</span>
 
-<span class="nc" id="L32">  public MainMenu(ArrayList&lt;Title&gt; Title_List) {</span>
-<span class="nc" id="L33">    timer.start();</span>
+<span class="nc" id="L31">  public MainMenu(ArrayList&lt;Title&gt; Title_List) {</span>
+<span class="nc" id="L32">    timer.start();</span>
 
-<span class="nc" id="L35">    this.setPreferredSize(new Dimension(600, 800));</span>
-<span class="nc" id="L36">    this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
+<span class="nc" id="L34">    this.setPreferredSize(new Dimension(600, 800));</span>
+<span class="nc" id="L35">    this.setTitle(&quot;DVM &quot; + DVM.getCurrentID());</span>
 
     //라벨 패널
-<span class="nc" id="L39">    JPanel labelPanel = new JPanel();</span>
-<span class="nc" id="L40">    labelPanel.setPreferredSize(new Dimension(600, 30));</span>
-<span class="nc" id="L41">    JLabel label = new JLabel(&quot;음료를 선택하세요&quot;);</span>
-<span class="nc" id="L42">    label.setFont(label.getFont().deriveFont(15.0f));</span>
-<span class="nc" id="L43">    labelPanel.add(label);</span>
+<span class="nc" id="L38">    JPanel labelPanel = new JPanel();</span>
+<span class="nc" id="L39">    labelPanel.setPreferredSize(new Dimension(600, 30));</span>
+<span class="nc" id="L40">    JLabel label = new JLabel(&quot;음료를 선택하세요&quot;);</span>
+<span class="nc" id="L41">    label.setFont(label.getFont().deriveFont(15.0f));</span>
+<span class="nc" id="L42">    labelPanel.add(label);</span>
 
     //메뉴패널
-<span class="nc" id="L46">    JPanel menuPanel = new JPanel(new GridLayout(5, 4));</span>
-<span class="nc" id="L47">    menuPanel.setPreferredSize(new Dimension(600, 700));</span>
-<span class="nc" id="L48">    menu = new JButton[Title_List.size()];</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">    for (int i = 0; i &lt; menu.length; i++) {</span>
-<span class="nc" id="L50">      menu[i] = new JButton(Title_List.get(i).getName());</span>
-<span class="nc" id="L51">      menuPanel.add(menu[i]);</span>
-<span class="nc" id="L52">      menu[i].addActionListener(this);</span>
+<span class="nc" id="L45">    JPanel menuPanel = new JPanel(new GridLayout(5, 4));</span>
+<span class="nc" id="L46">    menuPanel.setPreferredSize(new Dimension(600, 700));</span>
+<span class="nc" id="L47">    menu = new JButton[Title_List.size()];</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">    for (int i = 0; i &lt; menu.length; i++) {</span>
+<span class="nc" id="L49">      menu[i] = new JButton(Title_List.get(i).getName());</span>
+<span class="nc" id="L50">      menuPanel.add(menu[i]);</span>
+<span class="nc" id="L51">      menu[i].addActionListener(this);</span>
     }
 
     //추가패널
-<span class="nc" id="L56">    JPanel addPanel = new JPanel(new GridLayout(1, 1));</span>
-<span class="nc" id="L57">    addPanel.setPreferredSize(new Dimension(600, 70));</span>
-<span class="nc" id="L58">    cNumberInput = new JButton(&quot;선결제 인증번호 입력&quot;);</span>
-<span class="nc" id="L59">    cNumberInput.addActionListener(this);</span>
-<span class="nc" id="L60">    addPanel.add(cNumberInput);</span>
+<span class="nc" id="L55">    JPanel addPanel = new JPanel(new GridLayout(1, 1));</span>
+<span class="nc" id="L56">    addPanel.setPreferredSize(new Dimension(600, 70));</span>
+<span class="nc" id="L57">    cNumberInput = new JButton(&quot;선결제 인증번호 입력&quot;);</span>
+<span class="nc" id="L58">    cNumberInput.addActionListener(this);</span>
+<span class="nc" id="L59">    addPanel.add(cNumberInput);</span>
 
-<span class="nc" id="L62">    add(labelPanel, BorderLayout.NORTH);</span>
-<span class="nc" id="L63">    add(menuPanel, BorderLayout.CENTER);</span>
-<span class="nc" id="L64">    add(addPanel, BorderLayout.SOUTH);</span>
+<span class="nc" id="L61">    add(labelPanel, BorderLayout.NORTH);</span>
+<span class="nc" id="L62">    add(menuPanel, BorderLayout.CENTER);</span>
+<span class="nc" id="L63">    add(addPanel, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L66">    pack();</span>
-<span class="nc" id="L67">    setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
-<span class="nc" id="L68">    setVisible(true);</span>
-<span class="nc" id="L69">  }</span>
+<span class="nc" id="L65">    pack();</span>
+<span class="nc" id="L66">    setDefaultCloseOperation(EXIT_ON_CLOSE);</span>
+<span class="nc" id="L67">    setVisible(true);</span>
+<span class="nc" id="L68">  }</span>
 
   @Override
   public void actionPerformed(ActionEvent e) {
-<span class="nc bnc" id="L73" title="All 2 branches missed.">    for (int i = 0; i &lt; menu.length; i++) {</span>
-<span class="nc bnc" id="L74" title="All 2 branches missed.">      if (e.getSource() == menu[i]) {</span>
-<span class="nc" id="L75">        timer.stop();</span>
-<span class="nc" id="L76">        returnValue = i + 1;</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">    for (int i = 0; i &lt; menu.length; i++) {</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">      if (e.getSource() == menu[i]) {</span>
+<span class="nc" id="L74">        timer.stop();</span>
+<span class="nc" id="L75">        returnValue = i + 1;</span>
 
       }
     }
-<span class="nc bnc" id="L80" title="All 2 branches missed.">    if (e.getSource() == cNumberInput) {</span>
-<span class="nc" id="L81">      timer.stop();</span>
-<span class="nc" id="L82">      returnValue = 0;</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">    if (e.getSource() == cNumberInput) {</span>
+<span class="nc" id="L80">      timer.stop();</span>
+<span class="nc" id="L81">      returnValue = 0;</span>
     }
-<span class="nc" id="L84">  }</span>
+<span class="nc" id="L83">  }</span>
 
   public int getReturnValue() {
-<span class="nc" id="L87">    return returnValue;</span>
+<span class="nc" id="L86">    return returnValue;</span>
   }
 
   public void setReturnValue(int returnValue) {
-<span class="nc" id="L91">    this.returnValue = returnValue;</span>
-<span class="nc" id="L92">  }</span>
+<span class="nc" id="L90">    this.returnValue = returnValue;</span>
+<span class="nc" id="L91">  }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
