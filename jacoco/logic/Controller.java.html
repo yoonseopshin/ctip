@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Controller.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JavaCTIP</a> &gt; <a href="index.source.html" class="el_package">logic</a> &gt; <span class="el_source">Controller.java</span></div><h1>Controller.java</h1><pre class="source lang-java linenums">package logic;
 
-import gui.*;
-import javax.swing.*;
+import gui.AddItemMenu;
+import gui.CardPayUI;
+import gui.DVMMenu;
+import gui.FindingDVM;
+import gui.InfoNoItemUI;
+import gui.InfoUI;
+import gui.InputLine;
+import gui.MainMenu;
+import gui.ManItemMenu;
+import gui.ManTitleMenu;
+import gui.PaymentMenu;
+import gui.Sleep;
+import gui.SmartPayUI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Stack;
+import javax.swing.JFrame;
 
 public class Controller {
 
@@ -12,597 +24,597 @@ public class Controller {
   private Payment payment;
   private int basket;
   private int del;
-<span class="fc" id="L15">  private static ArrayList&lt;Title&gt; titleList = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L16">  private static Stack&lt;DVM&gt; dvmStack = new Stack&lt;&gt;();</span>
-<span class="fc" id="L17">  private static CNumberManager cm = new CNumberManager();</span>
-<span class="fc" id="L18">  private static MessageQueue mq = new MessageQueue();</span>
+<span class="fc" id="L27">  private static ArrayList&lt;Title&gt; titleList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L28">  private static Stack&lt;DVM&gt; dvmStack = new Stack&lt;&gt;();</span>
+<span class="fc" id="L29">  private static CNumberManager cm = new CNumberManager();</span>
+<span class="fc" id="L30">  private static MessageQueue mq = new MessageQueue();</span>
 
-<span class="fc" id="L20">  public Controller() {</span>
-<span class="fc" id="L21">    this.basket = -666;</span>
-<span class="fc" id="L22">    this.payment = null;</span>
-<span class="fc" id="L23">    titleList.add(new Title(&quot;코카콜라&quot;, 700));</span>
-<span class="fc" id="L24">    titleList.add(new Title(&quot;나랑드사이다&quot;, 700));</span>
-<span class="fc" id="L25">    titleList.add(new Title(&quot;솔의눈&quot;, 700));</span>
-<span class="fc" id="L26">    titleList.add(new Title(&quot;게토레이&quot;, 700));</span>
-<span class="fc" id="L27">    titleList.add(new Title(&quot;스프라이트&quot;, 700));</span>
-<span class="fc" id="L28">    titleList.add(new Title(&quot;포카리 스웨트&quot;, 700));</span>
-<span class="fc" id="L29">    titleList.add(new Title(&quot;닥터페퍼&quot;, 700));</span>
-<span class="fc" id="L30">    titleList.add(new Title(&quot;맥콜&quot;, 700));</span>
-<span class="fc" id="L31">    titleList.add(new Title(&quot;제티&quot;, 700));</span>
-<span class="fc" id="L32">    titleList.add(new Title(&quot;제주삼다수&quot;, 700));</span>
-<span class="fc" id="L33">    titleList.add(new Title(&quot;데자와&quot;, 700));</span>
-<span class="fc" id="L34">    titleList.add(new Title(&quot;아침햇살&quot;, 700));</span>
-<span class="fc" id="L35">    titleList.add(new Title(&quot;밀키스&quot;, 700));</span>
-<span class="fc" id="L36">    titleList.add(new Title(&quot;레쓰비&quot;, 700));</span>
-<span class="fc" id="L37">    titleList.add(new Title(&quot;조지아&quot;, 700));</span>
-<span class="fc" id="L38">    titleList.add(new Title(&quot;칠성사이다&quot;, 700));</span>
-<span class="fc" id="L39">    titleList.add(new Title(&quot;티오피&quot;, 700));</span>
-<span class="fc" id="L40">    titleList.add(new Title(&quot;몬스터&quot;, 700));</span>
-<span class="fc" id="L41">    titleList.add(new Title(&quot;핫식스&quot;, 700));</span>
-<span class="fc" id="L42">    titleList.add(new Title(&quot;레드불&quot;, 700));</span>
-<span class="fc" id="L43">  }</span>
+<span class="fc" id="L32">  public Controller() {</span>
+<span class="fc" id="L33">    this.basket = -666;</span>
+<span class="fc" id="L34">    this.payment = null;</span>
+<span class="fc" id="L35">    titleList.add(new Title(&quot;코카콜라&quot;, 700));</span>
+<span class="fc" id="L36">    titleList.add(new Title(&quot;나랑드사이다&quot;, 700));</span>
+<span class="fc" id="L37">    titleList.add(new Title(&quot;솔의눈&quot;, 700));</span>
+<span class="fc" id="L38">    titleList.add(new Title(&quot;게토레이&quot;, 700));</span>
+<span class="fc" id="L39">    titleList.add(new Title(&quot;스프라이트&quot;, 700));</span>
+<span class="fc" id="L40">    titleList.add(new Title(&quot;포카리 스웨트&quot;, 700));</span>
+<span class="fc" id="L41">    titleList.add(new Title(&quot;닥터페퍼&quot;, 700));</span>
+<span class="fc" id="L42">    titleList.add(new Title(&quot;맥콜&quot;, 700));</span>
+<span class="fc" id="L43">    titleList.add(new Title(&quot;제티&quot;, 700));</span>
+<span class="fc" id="L44">    titleList.add(new Title(&quot;제주삼다수&quot;, 700));</span>
+<span class="fc" id="L45">    titleList.add(new Title(&quot;데자와&quot;, 700));</span>
+<span class="fc" id="L46">    titleList.add(new Title(&quot;아침햇살&quot;, 700));</span>
+<span class="fc" id="L47">    titleList.add(new Title(&quot;밀키스&quot;, 700));</span>
+<span class="fc" id="L48">    titleList.add(new Title(&quot;레쓰비&quot;, 700));</span>
+<span class="fc" id="L49">    titleList.add(new Title(&quot;조지아&quot;, 700));</span>
+<span class="fc" id="L50">    titleList.add(new Title(&quot;칠성사이다&quot;, 700));</span>
+<span class="fc" id="L51">    titleList.add(new Title(&quot;티오피&quot;, 700));</span>
+<span class="fc" id="L52">    titleList.add(new Title(&quot;몬스터&quot;, 700));</span>
+<span class="fc" id="L53">    titleList.add(new Title(&quot;핫식스&quot;, 700));</span>
+<span class="fc" id="L54">    titleList.add(new Title(&quot;레드불&quot;, 700));</span>
+<span class="fc" id="L55">  }</span>
 
   public static void main(String[] args) {
     //선언
-<span class="nc" id="L47">    Controller c = new Controller();</span>
-<span class="nc" id="L48">    c.setK(new JFrame());</span>
+<span class="nc" id="L59">    Controller c = new Controller();</span>
+<span class="nc" id="L60">    c.setK(new JFrame());</span>
     //start
-<span class="nc" id="L50">    Controller.mq.start();</span>
-<span class="nc" id="L51">    c.reqMainMenu();</span>
-<span class="nc" id="L52">  }</span>
+<span class="nc" id="L62">    Controller.mq.start();</span>
+<span class="nc" id="L63">    c.reqMainMenu();</span>
+<span class="nc" id="L64">  }</span>
 
   public void reqMainMenu() {
     do {
-<span class="nc" id="L56">      del = -1;</span>
-<span class="nc" id="L57">      k.setVisible(false);</span>
-<span class="nc" id="L58">      k = new Sleep();</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">      while (del == -1) {</span>
-<span class="nc" id="L60">        System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L61">        del = ((Sleep) k).getReturnValue();</span>
+<span class="nc" id="L68">      del = -1;</span>
+<span class="nc" id="L69">      k.setVisible(false);</span>
+<span class="nc" id="L70">      k = new Sleep();</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">      while (del == -1) {</span>
+<span class="nc" id="L72">        System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L73">        del = ((Sleep) k).getReturnValue();</span>
       }
-<span class="nc" id="L63">      showMainMenu();</span>
-<span class="nc bnc" id="L64" title="All 2 branches missed.">    } while (mq.isAlive());</span>
-<span class="nc" id="L65">  }</span>
+<span class="nc" id="L75">      showMainMenu();</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">    } while (mq.isAlive());</span>
+<span class="nc" id="L77">  }</span>
 
   public void showMainMenu() {
     do {
-<span class="nc" id="L69">      k.setVisible(false);</span>
-<span class="nc" id="L70">      k = new MainMenu(titleList);</span>
-<span class="nc" id="L71">      del = inputSelect();</span>
-<span class="nc bnc" id="L72" title="All 2 branches missed.">    } while (del != -2);</span>
-<span class="nc" id="L73">  }</span>
+<span class="nc" id="L81">      k.setVisible(false);</span>
+<span class="nc" id="L82">      k = new MainMenu(titleList);</span>
+<span class="nc" id="L83">      del = inputSelect();</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">    } while (del != -2);</span>
+<span class="nc" id="L85">  }</span>
 
   public int inputSelect() {
-<span class="nc" id="L76">    del = -1;</span>
-<span class="nc bnc" id="L77" title="All 2 branches missed.">    while (del == -1) {</span>
-<span class="nc" id="L78">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L79">      del = ((MainMenu) k).getReturnValue();</span>
+<span class="nc" id="L88">    del = -1;</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">    while (del == -1) {</span>
+<span class="nc" id="L90">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L91">      del = ((MainMenu) k).getReturnValue();</span>
     }
-<span class="nc bnc" id="L81" title="All 2 branches missed.">    if (del == -2) {</span>
-<span class="nc" id="L82">      return -2;</span>
-<span class="nc bnc" id="L83" title="All 2 branches missed.">    } else if (del == 0) {</span>
-<span class="nc" id="L84">      showInputLine();</span>
-<span class="nc bnc" id="L85" title="All 2 branches missed.">      if (del == -2) {</span>
-<span class="nc" id="L86">        return -2;</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">    if (del == -2) {</span>
+<span class="nc" id="L94">      return -2;</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">    } else if (del == 0) {</span>
+<span class="nc" id="L96">      showInputLine();</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">      if (del == -2) {</span>
+<span class="nc" id="L98">        return -2;</span>
       }
-<span class="nc" id="L88">      return 0;</span>
-<span class="nc bnc" id="L89" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">      if (del &lt;= titleList.size()) {</span>
-<span class="nc" id="L91">        basket = del;</span>
+<span class="nc" id="L100">      return 0;</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">      if (del &lt;= titleList.size()) {</span>
+<span class="nc" id="L103">        basket = del;</span>
       } else { //error
-<span class="nc" id="L93">        return -1;</span>
+<span class="nc" id="L105">        return -1;</span>
       }
-<span class="nc bnc" id="L95" title="All 2 branches missed.">      if (titleList.get(basket - 1).checkStock()) {</span>
-<span class="nc" id="L96">        printSelectPay(0);</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">      if (titleList.get(basket - 1).checkStock()) {</span>
+<span class="nc" id="L108">        printSelectPay(0);</span>
       } else {
-<span class="nc" id="L98">        infoNoItem();</span>
+<span class="nc" id="L110">        infoNoItem();</span>
       }
-<span class="nc bnc" id="L100" title="All 2 branches missed.">      if (del == -2) {</span>
-<span class="nc" id="L101">        return -2;</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">      if (del == -2) {</span>
+<span class="nc" id="L113">        return -2;</span>
       }
-<span class="nc" id="L103">      return 0;</span>
+<span class="nc" id="L115">      return 0;</span>
     } else { //	error
-<span class="nc" id="L105">      return -1;</span>
+<span class="nc" id="L117">      return -1;</span>
     }
   }
 
   public void showInputLine() {
     do {
-<span class="nc" id="L111">      k.setVisible(false);</span>
-<span class="nc" id="L112">      k = new InputLine();</span>
-<span class="nc" id="L113">      del = inputCNumber();</span>
-<span class="nc bnc" id="L114" title="All 4 branches missed.">    } while (del != 0 &amp;&amp; del != -2);</span>
-<span class="nc" id="L115">  }</span>
+<span class="nc" id="L123">      k.setVisible(false);</span>
+<span class="nc" id="L124">      k = new InputLine();</span>
+<span class="nc" id="L125">      del = inputCNumber();</span>
+<span class="nc bnc" id="L126" title="All 4 branches missed.">    } while (del != 0 &amp;&amp; del != -2);</span>
+<span class="nc" id="L127">  }</span>
 
   public int inputCNumber() {
-<span class="nc" id="L118">    del = -1;</span>
-<span class="nc bnc" id="L119" title="All 2 branches missed.">    while (del == -1) {</span>
-<span class="nc" id="L120">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L121">      del = ((InputLine) k).getReturnValue();</span>
+<span class="nc" id="L130">    del = -1;</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">    while (del == -1) {</span>
+<span class="nc" id="L132">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L133">      del = ((InputLine) k).getReturnValue();</span>
     }
-<span class="nc bnc" id="L123" title="All 2 branches missed.">    if (del == -2) {</span>
-<span class="nc" id="L124">      return -2;</span>
-<span class="nc bnc" id="L125" title="All 2 branches missed.">    } else if (del == 0) {</span>
-<span class="nc" id="L126">      return 0;</span>
-<span class="nc bnc" id="L127" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
-<span class="nc" id="L128">      int check = cm.checkCNumber(del);</span>
-<span class="nc bnc" id="L129" title="All 2 branches missed.">      if (check == -1) {</span>
-<span class="nc" id="L130">        infoCNumberError();</span>
-<span class="nc" id="L131">        return 1;</span>
-<span class="nc bnc" id="L132" title="All 2 branches missed.">      } else if (check == 1) {</span>
-<span class="nc" id="L133">        int t = cm.popCNumber(del);</span>
-<span class="nc" id="L134">        returnItem(titleList.get(t - 1), true);</span>
-<span class="nc" id="L135">        return 0;</span>
-<span class="nc bnc" id="L136" title="All 2 branches missed.">      } else if (check == 0) {</span>
-<span class="nc" id="L137">        manShowTitle();</span>
-<span class="nc bnc" id="L138" title="All 2 branches missed.">        if (del == -2) {</span>
-<span class="nc" id="L139">          return -2;</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">    if (del == -2) {</span>
+<span class="nc" id="L136">      return -2;</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">    } else if (del == 0) {</span>
+<span class="nc" id="L138">      return 0;</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
+<span class="nc" id="L140">      int check = cm.checkCNumber(del);</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">      if (check == -1) {</span>
+<span class="nc" id="L142">        infoCNumberError();</span>
+<span class="nc" id="L143">        return 1;</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">      } else if (check == 1) {</span>
+<span class="nc" id="L145">        int t = cm.popCNumber(del);</span>
+<span class="nc" id="L146">        returnItem(titleList.get(t - 1), true);</span>
+<span class="nc" id="L147">        return 0;</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">      } else if (check == 0) {</span>
+<span class="nc" id="L149">        manShowTitle();</span>
+<span class="nc bnc" id="L150" title="All 2 branches missed.">        if (del == -2) {</span>
+<span class="nc" id="L151">          return -2;</span>
         }
-<span class="nc" id="L141">        return 0;</span>
+<span class="nc" id="L153">        return 0;</span>
       } else { //error
-<span class="nc" id="L143">        return -1;</span>
+<span class="nc" id="L155">        return -1;</span>
       }
     } else { //error
-<span class="nc" id="L146">      return -1;</span>
+<span class="nc" id="L158">      return -1;</span>
     }
   }
 
   public void infoCNumberError() {
-<span class="nc" id="L151">    int del2 = -1;</span>
-<span class="nc" id="L152">    k.setVisible(false);</span>
-<span class="nc" id="L153">    k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;해당 인증번호에 대한 선결제 정보를 확인할 수 없습니다.&quot;</span>
+<span class="nc" id="L163">    int del2 = -1;</span>
+<span class="nc" id="L164">    k.setVisible(false);</span>
+<span class="nc" id="L165">    k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;해당 인증번호에 대한 선결제 정보를 확인할 수 없습니다.&quot;</span>
         + &quot;&lt;br&gt;다시 입력하세요&lt;/center&gt;&lt;/html&gt;&quot;, &quot;이전&quot;);
-<span class="nc bnc" id="L155" title="All 2 branches missed.">    while (del2 == -1) {</span>
-<span class="nc" id="L156">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L157">      del2 = ((InfoUI) k).getReturnValue();</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">    while (del2 == -1) {</span>
+<span class="nc" id="L168">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L169">      del2 = ((InfoUI) k).getReturnValue();</span>
     }
-<span class="nc" id="L159">  }</span>
+<span class="nc" id="L171">  }</span>
 
   public void manShowTitle() {
     do {
-<span class="nc" id="L163">      k.setVisible(false);</span>
-<span class="nc" id="L164">      k = new ManTitleMenu(titleList);</span>
-<span class="nc" id="L165">      del = manSelectTitle();</span>
-<span class="nc bnc" id="L166" title="All 4 branches missed.">    } while (del != 0 &amp;&amp; del != -2);</span>
-<span class="nc" id="L167">  }</span>
+<span class="nc" id="L175">      k.setVisible(false);</span>
+<span class="nc" id="L176">      k = new ManTitleMenu(titleList);</span>
+<span class="nc" id="L177">      del = manSelectTitle();</span>
+<span class="nc bnc" id="L178" title="All 4 branches missed.">    } while (del != 0 &amp;&amp; del != -2);</span>
+<span class="nc" id="L179">  }</span>
 
   public int manSelectTitle() {
-<span class="nc" id="L170">    del = -1;</span>
-<span class="nc bnc" id="L171" title="All 2 branches missed.">    while (del == -1) {</span>
-<span class="nc" id="L172">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L173">      del = ((ManTitleMenu) k).getReturnValue();</span>
+<span class="nc" id="L182">    del = -1;</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">    while (del == -1) {</span>
+<span class="nc" id="L184">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L185">      del = ((ManTitleMenu) k).getReturnValue();</span>
     }
-<span class="nc bnc" id="L175" title="All 2 branches missed.">    if (del == -2) {</span>
-<span class="nc" id="L176">      return -2;</span>
-<span class="nc bnc" id="L177" title="All 2 branches missed.">    } else if (del == 0) {</span>
-<span class="nc" id="L178">      return 0;</span>
-<span class="nc bnc" id="L179" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
-<span class="nc" id="L180">      manShowItem(del);</span>
-<span class="nc bnc" id="L181" title="All 2 branches missed.">      if (del == -2) {</span>
-<span class="nc" id="L182">        return -2;</span>
+<span class="nc bnc" id="L187" title="All 2 branches missed.">    if (del == -2) {</span>
+<span class="nc" id="L188">      return -2;</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">    } else if (del == 0) {</span>
+<span class="nc" id="L190">      return 0;</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
+<span class="nc" id="L192">      manShowItem(del);</span>
+<span class="nc bnc" id="L193" title="All 2 branches missed.">      if (del == -2) {</span>
+<span class="nc" id="L194">        return -2;</span>
       }
-<span class="nc" id="L184">      return 1;</span>
+<span class="nc" id="L196">      return 1;</span>
     } else { //error
-<span class="nc" id="L186">      return -1;</span>
+<span class="nc" id="L198">      return -1;</span>
     }
   }
 
   public void manShowItem(int titleId) {
     do {
-<span class="nc" id="L192">      k.setVisible(false);</span>
-<span class="nc" id="L193">      k = new ManItemMenu(titleList.get(titleId - 1));</span>
-<span class="nc" id="L194">      del = manEditItem(titleId);</span>
-<span class="nc bnc" id="L195" title="All 4 branches missed.">    } while (del != 0 &amp;&amp; del != -2);</span>
-<span class="nc" id="L196">  }</span>
+<span class="nc" id="L204">      k.setVisible(false);</span>
+<span class="nc" id="L205">      k = new ManItemMenu(titleList.get(titleId - 1));</span>
+<span class="nc" id="L206">      del = manEditItem(titleId);</span>
+<span class="nc bnc" id="L207" title="All 4 branches missed.">    } while (del != 0 &amp;&amp; del != -2);</span>
+<span class="nc" id="L208">  }</span>
 
   public int manEditItem(int titleId) {
-<span class="nc" id="L199">    del = -1;</span>
-<span class="nc bnc" id="L200" title="All 2 branches missed.">    while (del == -1) {</span>
-<span class="nc" id="L201">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L202">      del = ((ManItemMenu) k).getReturnValue();</span>
+<span class="nc" id="L211">    del = -1;</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">    while (del == -1) {</span>
+<span class="nc" id="L213">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L214">      del = ((ManItemMenu) k).getReturnValue();</span>
     }
-<span class="nc bnc" id="L204" title="All 2 branches missed.">    if (del == -2) {</span>
-<span class="nc" id="L205">      return -2;</span>
-<span class="nc bnc" id="L206" title="All 2 branches missed.">    } else if (del == 0) {</span>
-<span class="nc" id="L207">      return 0;</span>
-<span class="nc bnc" id="L208" title="All 2 branches missed.">    } else if (del == 1) { //AddItem</span>
-<span class="nc bnc" id="L209" title="All 2 branches missed.">      if (titleList.get(titleId - 1).getItemList().size() &gt;= 30) {</span>
-<span class="nc" id="L210">        k.setVisible(false);</span>
-<span class="nc" id="L211">        k = new InfoUI(&quot;더 이상 재고를 추가할 수 없습니다.&quot;, &quot;이전&quot;);</span>
+<span class="nc bnc" id="L216" title="All 2 branches missed.">    if (del == -2) {</span>
+<span class="nc" id="L217">      return -2;</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">    } else if (del == 0) {</span>
+<span class="nc" id="L219">      return 0;</span>
+<span class="nc bnc" id="L220" title="All 2 branches missed.">    } else if (del == 1) { //AddItem</span>
+<span class="nc bnc" id="L221" title="All 2 branches missed.">      if (titleList.get(titleId - 1).getItemList().size() &gt;= 30) {</span>
+<span class="nc" id="L222">        k.setVisible(false);</span>
+<span class="nc" id="L223">        k = new InfoUI(&quot;더 이상 재고를 추가할 수 없습니다.&quot;, &quot;이전&quot;);</span>
 
-<span class="nc" id="L213">        int del4 = -1;</span>
-<span class="nc bnc" id="L214" title="All 2 branches missed.">        while (del4 == -1) {</span>
-<span class="nc" id="L215">          System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L216">          del4 = ((InfoUI) k).getReturnValue();</span>
+<span class="nc" id="L225">        int del4 = -1;</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">        while (del4 == -1) {</span>
+<span class="nc" id="L227">          System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L228">          del4 = ((InfoUI) k).getReturnValue();</span>
         }
-<span class="nc" id="L218">        return 1;</span>
+<span class="nc" id="L230">        return 1;</span>
       }
-<span class="nc" id="L220">      int count = 0;</span>
-<span class="nc bnc" id="L221" title="All 2 branches missed.">      for (int i = 0; i &lt; 20; i++) {</span>
-<span class="nc bnc" id="L222" title="All 2 branches missed.">        if (titleList.get(i).checkStock()) {</span>
-<span class="nc" id="L223">          count++;</span>
+<span class="nc" id="L232">      int count = 0;</span>
+<span class="nc bnc" id="L233" title="All 2 branches missed.">      for (int i = 0; i &lt; 20; i++) {</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">        if (titleList.get(i).checkStock()) {</span>
+<span class="nc" id="L235">          count++;</span>
         }
       }
-<span class="nc bnc" id="L226" title="All 4 branches missed.">      if (count &gt;= 7 &amp;&amp; titleList.get(titleId - 1).checkStock() == false) {</span>
-<span class="nc" id="L227">        k.setVisible(false);</span>
-<span class="nc" id="L228">        k = new InfoUI(&quot;음료를 7종류 이상 추가할 수 없습니다.&quot;, &quot;이전&quot;);</span>
+<span class="nc bnc" id="L238" title="All 4 branches missed.">      if (count &gt;= 7 &amp;&amp; titleList.get(titleId - 1).checkStock() == false) {</span>
+<span class="nc" id="L239">        k.setVisible(false);</span>
+<span class="nc" id="L240">        k = new InfoUI(&quot;음료를 7종류 이상 추가할 수 없습니다.&quot;, &quot;이전&quot;);</span>
 
-<span class="nc" id="L230">        int del4 = -1;</span>
-<span class="nc bnc" id="L231" title="All 2 branches missed.">        while (del4 == -1) {</span>
-<span class="nc" id="L232">          System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L233">          del4 = ((InfoUI) k).getReturnValue();</span>
+<span class="nc" id="L242">        int del4 = -1;</span>
+<span class="nc bnc" id="L243" title="All 2 branches missed.">        while (del4 == -1) {</span>
+<span class="nc" id="L244">          System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L245">          del4 = ((InfoUI) k).getReturnValue();</span>
         }
-<span class="nc" id="L235">        return 1;</span>
+<span class="nc" id="L247">        return 1;</span>
       }
-<span class="nc" id="L237">      k.setVisible(false);</span>
-<span class="nc" id="L238">      k = new AddItemMenu();</span>
-<span class="nc" id="L239">      int del2 = -1;</span>
-<span class="nc bnc" id="L240" title="All 2 branches missed.">      while (del2 == -1) {</span>
-<span class="nc" id="L241">        System.out.print(&quot;&quot;);</span>
-<span class="nc bnc" id="L242" title="All 2 branches missed.">        if (((AddItemMenu) k).getReturnValue() == 1) {</span>
-<span class="nc" id="L243">          Calendar cal = Calendar.getInstance();</span>
-<span class="nc" id="L244">          int today = (cal.get(Calendar.YEAR) * 10000) + ((cal.get(Calendar.MONTH) + 1) * 100) + cal</span>
-<span class="nc" id="L245">              .get(Calendar.DATE);</span>
-<span class="nc bnc" id="L246" title="All 2 branches missed.">          if (today &gt; ((AddItemMenu) k).getReturnDate()) {</span>
-<span class="nc" id="L247">            k.setVisible(false);</span>
-<span class="nc" id="L248">            k = new InfoUI(&quot;유통기한이 지난 재고를 추가할 수 없습니다.&quot;, &quot;이전&quot;);</span>
-<span class="nc" id="L249">            int del3 = -1;</span>
-<span class="nc bnc" id="L250" title="All 2 branches missed.">            while (del3 == -1) {</span>
-<span class="nc" id="L251">              System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L252">              del3 = ((InfoUI) k).getReturnValue();</span>
+<span class="nc" id="L249">      k.setVisible(false);</span>
+<span class="nc" id="L250">      k = new AddItemMenu();</span>
+<span class="nc" id="L251">      int del2 = -1;</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">      while (del2 == -1) {</span>
+<span class="nc" id="L253">        System.out.print(&quot;&quot;);</span>
+<span class="nc bnc" id="L254" title="All 2 branches missed.">        if (((AddItemMenu) k).getReturnValue() == 1) {</span>
+<span class="nc" id="L255">          Calendar cal = Calendar.getInstance();</span>
+<span class="nc" id="L256">          int today = (cal.get(Calendar.YEAR) * 10000)</span>
+<span class="nc" id="L257">              + ((cal.get(Calendar.MONTH) + 1) * 100) + cal.get(Calendar.DATE);</span>
+<span class="nc bnc" id="L258" title="All 2 branches missed.">          if (today &gt; ((AddItemMenu) k).getReturnDate()) {</span>
+<span class="nc" id="L259">            k.setVisible(false);</span>
+<span class="nc" id="L260">            k = new InfoUI(&quot;유통기한이 지난 재고를 추가할 수 없습니다.&quot;, &quot;이전&quot;);</span>
+<span class="nc" id="L261">            int del3 = -1;</span>
+<span class="nc bnc" id="L262" title="All 2 branches missed.">            while (del3 == -1) {</span>
+<span class="nc" id="L263">              System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L264">              del3 = ((InfoUI) k).getReturnValue();</span>
             }
-<span class="nc" id="L254">            k.setVisible(false);</span>
-<span class="nc" id="L255">            k = new AddItemMenu();</span>
-<span class="nc" id="L256">            continue;</span>
+<span class="nc" id="L266">            k.setVisible(false);</span>
+<span class="nc" id="L267">            k = new AddItemMenu();</span>
+<span class="nc" id="L268">            continue;</span>
           }
         }
-<span class="nc" id="L259">        del2 = ((AddItemMenu) k).getReturnValue();</span>
+<span class="nc" id="L271">        del2 = ((AddItemMenu) k).getReturnValue();</span>
       }
-<span class="nc bnc" id="L261" title="All 2 branches missed.">      if (del2 == -2) {</span>
-<span class="nc" id="L262">        return -2;</span>
-<span class="nc bnc" id="L263" title="All 2 branches missed.">      } else if (del2 == 0) {</span>
-<span class="nc" id="L264">        return 1;</span>
-<span class="nc bnc" id="L265" title="All 2 branches missed.">      } else if (del2 == 1) {</span>
-<span class="nc" id="L266">        titleList.get(titleId - 1).addItem(new Item(((AddItemMenu) k).getReturnDate()));</span>
-<span class="nc" id="L267">        return 1;</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">      if (del2 == -2) {</span>
+<span class="nc" id="L274">        return -2;</span>
+<span class="nc bnc" id="L275" title="All 2 branches missed.">      } else if (del2 == 0) {</span>
+<span class="nc" id="L276">        return 1;</span>
+<span class="nc bnc" id="L277" title="All 2 branches missed.">      } else if (del2 == 1) {</span>
+<span class="nc" id="L278">        titleList.get(titleId - 1).addItem(new Item(((AddItemMenu) k).getReturnDate()));</span>
+<span class="nc" id="L279">        return 1;</span>
       } else { //error
-<span class="nc" id="L269">        return -1;</span>
+<span class="nc" id="L281">        return -1;</span>
       }
-<span class="nc bnc" id="L271" title="All 2 branches missed.">    } else if (del == 2) { //delete item</span>
-<span class="nc" id="L272">      titleList.get(titleId - 1).deleteItem(((ManItemMenu) k).getReturnItemList());</span>
-<span class="nc" id="L273">      return 1;</span>
+<span class="nc bnc" id="L283" title="All 2 branches missed.">    } else if (del == 2) { //delete item</span>
+<span class="nc" id="L284">      titleList.get(titleId - 1).deleteItem(((ManItemMenu) k).getReturnItemList());</span>
+<span class="nc" id="L285">      return 1;</span>
     } else { //error
-<span class="nc" id="L275">      return -1;</span>
+<span class="nc" id="L287">      return -1;</span>
     }
   }
 
   public void printSelectPay(int DVMid) {
-<span class="nc" id="L280">    k.setVisible(false);</span>
-<span class="nc" id="L281">    k = new PaymentMenu(titleList.get(basket - 1));</span>
-<span class="nc" id="L282">    del = selectPayment(DVMid);</span>
-<span class="nc" id="L283">  }</span>
+<span class="nc" id="L292">    k.setVisible(false);</span>
+<span class="nc" id="L293">    k = new PaymentMenu(titleList.get(basket - 1));</span>
+<span class="nc" id="L294">    del = selectPayment(DVMid);</span>
+<span class="nc" id="L295">  }</span>
 
   public int selectPayment(int DVMid) {
-<span class="nc" id="L286">    del = -1;</span>
-<span class="nc bnc" id="L287" title="All 2 branches missed.">    while (del == -1) {</span>
-<span class="nc" id="L288">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L289">      del = ((PaymentMenu) k).getReturnValue();</span>
+<span class="nc" id="L298">    del = -1;</span>
+<span class="nc bnc" id="L299" title="All 2 branches missed.">    while (del == -1) {</span>
+<span class="nc" id="L300">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L301">      del = ((PaymentMenu) k).getReturnValue();</span>
     }
-<span class="nc bnc" id="L291" title="All 2 branches missed.">    if (del == -2) {</span>
-<span class="nc" id="L292">      return -2;</span>
-<span class="nc bnc" id="L293" title="All 2 branches missed.">    } else if (del == 0) {</span>
-<span class="nc" id="L294">      cancelItem();</span>
-<span class="nc" id="L295">      return 0;</span>
-<span class="nc bnc" id="L296" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
-<span class="nc" id="L297">      payment = new Payment(basket, DVMid);</span>
-<span class="nc bnc" id="L298" title="All 2 branches missed.">      if (del == 1) {</span>
-<span class="nc" id="L299">        showCardPay();</span>
-<span class="nc" id="L300">        return 0;</span>
+<span class="nc bnc" id="L303" title="All 2 branches missed.">    if (del == -2) {</span>
+<span class="nc" id="L304">      return -2;</span>
+<span class="nc bnc" id="L305" title="All 2 branches missed.">    } else if (del == 0) {</span>
+<span class="nc" id="L306">      cancelItem();</span>
+<span class="nc" id="L307">      return 0;</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
+<span class="nc" id="L309">      payment = new Payment(basket, DVMid);</span>
+<span class="nc bnc" id="L310" title="All 2 branches missed.">      if (del == 1) {</span>
+<span class="nc" id="L311">        showCardPay();</span>
+<span class="nc" id="L312">        return 0;</span>
       }
-<span class="nc bnc" id="L302" title="All 2 branches missed.">      if (del == 2) {</span>
-<span class="nc" id="L303">        showSmartPay();</span>
-<span class="nc" id="L304">        return 0;</span>
+<span class="nc bnc" id="L314" title="All 2 branches missed.">      if (del == 2) {</span>
+<span class="nc" id="L315">        showSmartPay();</span>
+<span class="nc" id="L316">        return 0;</span>
       } else { //error
-<span class="nc" id="L306">        return -1;</span>
+<span class="nc" id="L318">        return -1;</span>
       }
     } else { //error
-<span class="nc" id="L309">      return -1;</span>
+<span class="nc" id="L321">      return -1;</span>
     }
   }
 
   public void cancelItem() {
-<span class="nc" id="L314">    returnMain();</span>
-<span class="nc" id="L315">  }</span>
+<span class="nc" id="L326">    returnMain();</span>
+<span class="nc" id="L327">  }</span>
 
   public void showCardPay() {
-<span class="nc" id="L318">    k.setVisible(false);</span>
-<span class="nc" id="L319">    k = new CardPayUI();</span>
-<span class="nc" id="L320">    del = cardPay();</span>
-<span class="nc" id="L321">  }</span>
+<span class="nc" id="L330">    k.setVisible(false);</span>
+<span class="nc" id="L331">    k = new CardPayUI();</span>
+<span class="nc" id="L332">    del = cardPay();</span>
+<span class="nc" id="L333">  }</span>
 
   public int cardPay() {
-<span class="nc" id="L324">    del = -1;</span>
-<span class="nc bnc" id="L325" title="All 2 branches missed.">    while (del == -1) {</span>
-<span class="nc" id="L326">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L327">      del = ((CardPayUI) k).getReturnValue();</span>
+<span class="nc" id="L336">    del = -1;</span>
+<span class="nc bnc" id="L337" title="All 2 branches missed.">    while (del == -1) {</span>
+<span class="nc" id="L338">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L339">      del = ((CardPayUI) k).getReturnValue();</span>
     }
 
-<span class="nc bnc" id="L330" title="All 2 branches missed.">    if (del == -3) { //결제실패</span>
-<span class="nc" id="L331">      int del2 = -1;</span>
-<span class="nc" id="L332">      payment.cardPay(false);</span>
-<span class="nc" id="L333">      k.setVisible(false);</span>
-<span class="nc" id="L334">      k = new InfoUI(payment.getErrorLog(), &quot;메인&quot;);</span>
-<span class="nc bnc" id="L335" title="All 2 branches missed.">      while (del2 == -1) {</span>
-<span class="nc" id="L336">        System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L337">        del2 = ((InfoUI) k).getReturnValue();</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">    if (del == -3) { //결제실패</span>
+<span class="nc" id="L343">      int del2 = -1;</span>
+<span class="nc" id="L344">      payment.cardPay(false);</span>
+<span class="nc" id="L345">      k.setVisible(false);</span>
+<span class="nc" id="L346">      k = new InfoUI(payment.getErrorLog(), &quot;메인&quot;);</span>
+<span class="nc bnc" id="L347" title="All 2 branches missed.">      while (del2 == -1) {</span>
+<span class="nc" id="L348">        System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L349">        del2 = ((InfoUI) k).getReturnValue();</span>
       }
-<span class="nc" id="L339">      payment.init();</span>
-<span class="nc" id="L340">      init();</span>
-<span class="nc" id="L341">      return 0;</span>
-<span class="nc bnc" id="L342" title="All 2 branches missed.">    } else if (del == 0) { //결제취소</span>
-<span class="nc" id="L343">      cancelPay();</span>
-<span class="nc" id="L344">      return 0;</span>
-<span class="nc bnc" id="L345" title="All 2 branches missed.">    } else if (del == 1) { //결제성공</span>
-<span class="nc" id="L346">      int p = payment.cardPay(true);</span>
-<span class="nc bnc" id="L347" title="All 2 branches missed.">      if (p == 0) {</span>
-<span class="nc" id="L348">        returnItem(titleList.get(basket - 1), false);</span>
-      }
-<span class="nc bnc" id="L350" title="All 2 branches missed.">      if (p &gt; 0) {</span>
-<span class="nc" id="L351">        printCNumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);</span>
-      }
+<span class="nc" id="L351">      payment.init();</span>
+<span class="nc" id="L352">      init();</span>
 <span class="nc" id="L353">      return 0;</span>
+<span class="nc bnc" id="L354" title="All 2 branches missed.">    } else if (del == 0) { //결제취소</span>
+<span class="nc" id="L355">      cancelPay();</span>
+<span class="nc" id="L356">      return 0;</span>
+<span class="nc bnc" id="L357" title="All 2 branches missed.">    } else if (del == 1) { //결제성공</span>
+<span class="nc" id="L358">      int p = payment.cardPay(true);</span>
+<span class="nc bnc" id="L359" title="All 2 branches missed.">      if (p == 0) {</span>
+<span class="nc" id="L360">        returnItem(titleList.get(basket - 1), false);</span>
+      }
+<span class="nc bnc" id="L362" title="All 2 branches missed.">      if (p &gt; 0) {</span>
+<span class="nc" id="L363">        printCNumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);</span>
+      }
+<span class="nc" id="L365">      return 0;</span>
     } else { //error
-<span class="nc" id="L355">      return -1;</span>
+<span class="nc" id="L367">      return -1;</span>
     }
   }
 
   public void showSmartPay() {
-<span class="nc" id="L360">    k.setVisible(false);</span>
-<span class="nc" id="L361">    k = new SmartPayUI();</span>
-<span class="nc" id="L362">    del = smartPay();</span>
-<span class="nc" id="L363">  }</span>
+<span class="nc" id="L372">    k.setVisible(false);</span>
+<span class="nc" id="L373">    k = new SmartPayUI();</span>
+<span class="nc" id="L374">    del = smartPay();</span>
+<span class="nc" id="L375">  }</span>
 
   public int smartPay() {
-<span class="nc" id="L366">    del = -1;</span>
-<span class="nc bnc" id="L367" title="All 2 branches missed.">    while (del == -1) {</span>
-<span class="nc" id="L368">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L369">      del = ((SmartPayUI) k).getReturnValue();</span>
+<span class="nc" id="L378">    del = -1;</span>
+<span class="nc bnc" id="L379" title="All 2 branches missed.">    while (del == -1) {</span>
+<span class="nc" id="L380">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L381">      del = ((SmartPayUI) k).getReturnValue();</span>
     }
 
-<span class="nc bnc" id="L372" title="All 2 branches missed.">    if (del == -3) { //결제실패</span>
-<span class="nc" id="L373">      int del2 = -1;</span>
-<span class="nc" id="L374">      payment.smartPay(false);</span>
-<span class="nc" id="L375">      k.setVisible(false);</span>
-<span class="nc" id="L376">      k = new InfoUI(payment.getErrorLog(), &quot;메인&quot;);</span>
-<span class="nc bnc" id="L377" title="All 2 branches missed.">      while (del2 == -1) {</span>
-<span class="nc" id="L378">        System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L379">        del2 = ((InfoUI) k).getReturnValue();</span>
+<span class="nc bnc" id="L384" title="All 2 branches missed.">    if (del == -3) { //결제실패</span>
+<span class="nc" id="L385">      int del2 = -1;</span>
+<span class="nc" id="L386">      payment.smartPay(false);</span>
+<span class="nc" id="L387">      k.setVisible(false);</span>
+<span class="nc" id="L388">      k = new InfoUI(payment.getErrorLog(), &quot;메인&quot;);</span>
+<span class="nc bnc" id="L389" title="All 2 branches missed.">      while (del2 == -1) {</span>
+<span class="nc" id="L390">        System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L391">        del2 = ((InfoUI) k).getReturnValue();</span>
       }
-<span class="nc" id="L381">      payment.init();</span>
-<span class="nc" id="L382">      init();</span>
+<span class="nc" id="L393">      payment.init();</span>
+<span class="nc" id="L394">      init();</span>
 
-<span class="nc" id="L384">      return 0;</span>
-<span class="nc bnc" id="L385" title="All 2 branches missed.">    } else if (del == 0) { //결제취소</span>
-<span class="nc" id="L386">      cancelPay();</span>
-<span class="nc" id="L387">      return 0;</span>
-<span class="nc bnc" id="L388" title="All 2 branches missed.">    } else if (del == 1) { //결제성공</span>
-<span class="nc" id="L389">      int p = payment.smartPay(true);</span>
-<span class="nc bnc" id="L390" title="All 2 branches missed.">      if (p == 0) {</span>
-<span class="nc" id="L391">        returnItem(titleList.get(basket - 1), false);</span>
-      }
-<span class="nc bnc" id="L393" title="All 2 branches missed.">      if (p &gt; 0) {</span>
-<span class="nc" id="L394">        printCNumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);</span>
-      }
 <span class="nc" id="L396">      return 0;</span>
+<span class="nc bnc" id="L397" title="All 2 branches missed.">    } else if (del == 0) { //결제취소</span>
+<span class="nc" id="L398">      cancelPay();</span>
+<span class="nc" id="L399">      return 0;</span>
+<span class="nc bnc" id="L400" title="All 2 branches missed.">    } else if (del == 1) { //결제성공</span>
+<span class="nc" id="L401">      int p = payment.smartPay(true);</span>
+<span class="nc bnc" id="L402" title="All 2 branches missed.">      if (p == 0) {</span>
+<span class="nc" id="L403">        returnItem(titleList.get(basket - 1), false);</span>
+      }
+<span class="nc bnc" id="L405" title="All 2 branches missed.">      if (p &gt; 0) {</span>
+<span class="nc" id="L406">        printCNumber(titleList.get(basket - 1).getName(), payment.getDVMId(), p);</span>
+      }
+<span class="nc" id="L408">      return 0;</span>
     } else { //error
-<span class="nc" id="L398">      return -1;</span>
+<span class="nc" id="L410">      return -1;</span>
     }
   }
 
   private void cancelPay() {
-<span class="nc" id="L403">    payment.init();</span>
-<span class="nc" id="L404">    init();</span>
-<span class="nc" id="L405">    returnMain();</span>
-<span class="nc" id="L406">  }</span>
+<span class="nc" id="L415">    payment.init();</span>
+<span class="nc" id="L416">    init();</span>
+<span class="nc" id="L417">    returnMain();</span>
+<span class="nc" id="L418">  }</span>
 
   public void returnItem(Title t, boolean ifHold) {
-<span class="nc" id="L409">    int del2 = -1;</span>
-<span class="nc" id="L410">    k.setVisible(false);</span>
-<span class="nc" id="L411">    k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + t.getName()</span>
+<span class="nc" id="L421">    int del2 = -1;</span>
+<span class="nc" id="L422">    k.setVisible(false);</span>
+<span class="nc" id="L423">    k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + t.getName()</span>
         + &quot;&lt;/strong&gt;&lt;br&gt;음료가 나왔습니다.&lt;/center&gt;&lt;/html&gt;&quot;, &quot;메인&quot;);
-<span class="nc bnc" id="L413" title="All 2 branches missed.">    while (del2 == -1) {</span>
-<span class="nc" id="L414">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L415">      del2 = ((InfoUI) k).getReturnValue();</span>
+<span class="nc bnc" id="L425" title="All 2 branches missed.">    while (del2 == -1) {</span>
+<span class="nc" id="L426">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L427">      del2 = ((InfoUI) k).getReturnValue();</span>
     }
-<span class="nc" id="L417">    t.updateStock(0, ifHold);</span>
-<span class="nc bnc" id="L418" title="All 2 branches missed.">    if (!ifHold) {</span>
-<span class="nc" id="L419">      payment.init();</span>
+<span class="nc" id="L429">    t.updateStock(0, ifHold);</span>
+<span class="nc bnc" id="L430" title="All 2 branches missed.">    if (!ifHold) {</span>
+<span class="nc" id="L431">      payment.init();</span>
     }
-<span class="nc" id="L421">    init();</span>
-<span class="nc" id="L422">    returnMain();</span>
-<span class="nc" id="L423">  }</span>
+<span class="nc" id="L433">    init();</span>
+<span class="nc" id="L434">    returnMain();</span>
+<span class="nc" id="L435">  }</span>
 
   public void printCNumber(String name, int DVMId, int cNumber) {
-<span class="nc" id="L426">    int del2 = -1;</span>
-<span class="nc" id="L427">    k.setVisible(false);</span>
-<span class="nc" id="L428">    k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;제품: &quot; + name + &quot;   DVM ID: &quot; + DVMId +</span>
+<span class="nc" id="L438">    int del2 = -1;</span>
+<span class="nc" id="L439">    k.setVisible(false);</span>
+<span class="nc" id="L440">    k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;제품: &quot; + name + &quot;   DVM ID: &quot; + DVMId +</span>
         &quot;&lt;br&gt;인증번호: &quot; + cNumber + &quot;&lt;/center&gt;&lt;/html&gt;&quot;, &quot;메인&quot;);
-<span class="nc bnc" id="L430" title="All 2 branches missed.">    while (del2 == -1) {</span>
-<span class="nc" id="L431">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L432">      del2 = ((InfoUI) k).getReturnValue();</span>
+<span class="nc bnc" id="L442" title="All 2 branches missed.">    while (del2 == -1) {</span>
+<span class="nc" id="L443">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L444">      del2 = ((InfoUI) k).getReturnValue();</span>
     }
-<span class="nc" id="L434">    payment.init();</span>
-<span class="nc" id="L435">    init();</span>
-<span class="nc" id="L436">  }</span>
+<span class="nc" id="L446">    payment.init();</span>
+<span class="nc" id="L447">    init();</span>
+<span class="nc" id="L448">  }</span>
 
   public void infoNoItem() {
-<span class="nc" id="L439">    k.setVisible(false);</span>
-<span class="nc" id="L440">    k = new InfoNoItemUI(titleList.get(basket - 1).getName());</span>
-<span class="nc" id="L441">    del = reqFindDVM();</span>
-<span class="nc" id="L442">  }</span>
+<span class="nc" id="L451">    k.setVisible(false);</span>
+<span class="nc" id="L452">    k = new InfoNoItemUI(titleList.get(basket - 1).getName());</span>
+<span class="nc" id="L453">    del = reqFindDVM();</span>
+<span class="nc" id="L454">  }</span>
 
   public int reqFindDVM() {
-<span class="nc" id="L445">    del = -1;</span>
-<span class="nc bnc" id="L446" title="All 2 branches missed.">    while (del == -1) {</span>
-<span class="nc" id="L447">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L448">      del = ((InfoNoItemUI) k).getReturnValue();</span>
+<span class="nc" id="L457">    del = -1;</span>
+<span class="nc bnc" id="L458" title="All 2 branches missed.">    while (del == -1) {</span>
+<span class="nc" id="L459">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L460">      del = ((InfoNoItemUI) k).getReturnValue();</span>
     }
-<span class="nc bnc" id="L450" title="All 2 branches missed.">    if (del == -2) {</span>
-<span class="nc" id="L451">      return -2;</span>
-<span class="nc bnc" id="L452" title="All 2 branches missed.">    } else if (del == 0) {</span>
-<span class="nc" id="L453">      init();</span>
-<span class="nc" id="L454">      return 0;</span>
-<span class="nc bnc" id="L455" title="All 2 branches missed.">    } else if (del == 1) { //finding DVM....</span>
-<span class="nc" id="L456">      k.setVisible(false);</span>
-<span class="nc" id="L457">      k = new FindingDVM(titleList.get(basket - 1).getName());</span>
-<span class="nc" id="L458">      int i = 1;</span>
+<span class="nc bnc" id="L462" title="All 2 branches missed.">    if (del == -2) {</span>
+<span class="nc" id="L463">      return -2;</span>
+<span class="nc bnc" id="L464" title="All 2 branches missed.">    } else if (del == 0) {</span>
+<span class="nc" id="L465">      init();</span>
+<span class="nc" id="L466">      return 0;</span>
+<span class="nc bnc" id="L467" title="All 2 branches missed.">    } else if (del == 1) { //finding DVM....</span>
+<span class="nc" id="L468">      k.setVisible(false);</span>
+<span class="nc" id="L469">      k = new FindingDVM(titleList.get(basket - 1).getName());</span>
+<span class="nc" id="L470">      int i = 1;</span>
       while (true) {
         int del2;
-<span class="nc" id="L461">        System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L462">        int size = dvmStack.size();</span>
-<span class="nc bnc" id="L463" title="All 4 branches missed.">        if ((size &gt; 0) &amp;&amp; (dvmStack.get(size - 1).getId() == -1)) {</span>
-<span class="nc" id="L464">          break;</span>
+<span class="nc" id="L473">        System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L474">        int size = dvmStack.size();</span>
+<span class="nc bnc" id="L475" title="All 4 branches missed.">        if ((size &gt; 0) &amp;&amp; (dvmStack.get(size - 1).getId() == -1)) {</span>
+<span class="nc" id="L476">          break;</span>
         }
-<span class="nc" id="L466">        del2 = ((FindingDVM) k).getReturnValue();</span>
-<span class="nc bnc" id="L467" title="All 2 branches missed.">        if (del2 == 0) { //시간 초과or취소</span>
-<span class="nc" id="L468">          MessageQueue.setStk(9);</span>
-<span class="nc" id="L469">          MessageQueue.setLoc(-1);</span>
-<span class="nc" id="L470">          init();</span>
-<span class="nc" id="L471">          return 0;</span>
+<span class="nc" id="L478">        del2 = ((FindingDVM) k).getReturnValue();</span>
+<span class="nc bnc" id="L479" title="All 2 branches missed.">        if (del2 == 0) { //시간 초과or취소</span>
+<span class="nc" id="L480">          MessageQueue.setStk(9);</span>
+<span class="nc" id="L481">          MessageQueue.setLoc(-1);</span>
+<span class="nc" id="L482">          init();</span>
+<span class="nc" id="L483">          return 0;</span>
         }
-<span class="nc bnc" id="L473" title="All 4 branches missed.">        if (i &lt;= 10 &amp;&amp; i != DVM.getCurrentID()) {</span>
-<span class="nc" id="L474">          Message sm = new Message(DVM.getCurrentID());</span>
-<span class="nc" id="L475">          sm.setMsg(i, 1, basket);</span>
+<span class="nc bnc" id="L485" title="All 4 branches missed.">        if (i &lt;= 10 &amp;&amp; i != DVM.getCurrentID()) {</span>
+<span class="nc" id="L486">          Message sm = new Message(DVM.getCurrentID());</span>
+<span class="nc" id="L487">          sm.setMsg(i, 1, basket);</span>
         }
-<span class="nc" id="L477">        i++;</span>
-<span class="nc" id="L478">      }</span>
-<span class="nc bnc" id="L479" title="All 2 branches missed.">      if (dvmStack.size() == 1) {</span>
-<span class="nc" id="L480">        infoNoUsableDVM();</span>
-<span class="nc" id="L481">        init();</span>
-<span class="nc" id="L482">        return 0;</span>
+<span class="nc" id="L489">        i++;</span>
+<span class="nc" id="L490">      }</span>
+<span class="nc bnc" id="L491" title="All 2 branches missed.">      if (dvmStack.size() == 1) {</span>
+<span class="nc" id="L492">        infoNoUsableDVM();</span>
+<span class="nc" id="L493">        init();</span>
+<span class="nc" id="L494">        return 0;</span>
       }
-<span class="nc" id="L484">      dvmStack.pop();</span>
-<span class="nc" id="L485">      showUsableDVM();</span>
-<span class="nc bnc" id="L486" title="All 2 branches missed.">      if (del == -2) {</span>
-<span class="nc" id="L487">        return -2;</span>
+<span class="nc" id="L496">      dvmStack.pop();</span>
+<span class="nc" id="L497">      showUsableDVM();</span>
+<span class="nc bnc" id="L498" title="All 2 branches missed.">      if (del == -2) {</span>
+<span class="nc" id="L499">        return -2;</span>
       }
-<span class="nc" id="L489">      return 0;</span>
+<span class="nc" id="L501">      return 0;</span>
     } else { //error
-<span class="nc" id="L491">      return -1;</span>
+<span class="nc" id="L503">      return -1;</span>
     }
   }
 
   public void showUsableDVM() {
-<span class="nc" id="L496">    k.setVisible(false);</span>
-<span class="nc" id="L497">    k = new DVMMenu(dvmStack);</span>
-<span class="nc" id="L498">    del = selectDVM();</span>
-<span class="nc" id="L499">  }</span>
+<span class="nc" id="L508">    k.setVisible(false);</span>
+<span class="nc" id="L509">    k = new DVMMenu(dvmStack);</span>
+<span class="nc" id="L510">    del = selectDVM();</span>
+<span class="nc" id="L511">  }</span>
 
   public void infoNoUsableDVM() {
-<span class="nc" id="L502">    int del2 = -1;</span>
-<span class="nc" id="L503">    k.setVisible(false);</span>
-<span class="nc" id="L504">    k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + titleList.get(basket - 1).getName()</span>
+<span class="nc" id="L514">    int del2 = -1;</span>
+<span class="nc" id="L515">    k.setVisible(false);</span>
+<span class="nc" id="L516">    k = new InfoUI(&quot;&lt;html&gt;&lt;center&gt;&lt;strong&gt;&quot; + titleList.get(basket - 1).getName()</span>
         + &quot;&lt;/strong&gt;&lt;br&gt;해당 음료의 재고가 있는 자판기가 없습니다.&lt;/center&gt;&lt;/html&gt;&quot;, &quot;메인&quot;);
-<span class="nc bnc" id="L506" title="All 2 branches missed.">    while (del2 == -1) {</span>
-<span class="nc" id="L507">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L508">      del2 = ((InfoUI) k).getReturnValue();</span>
+<span class="nc bnc" id="L518" title="All 2 branches missed.">    while (del2 == -1) {</span>
+<span class="nc" id="L519">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L520">      del2 = ((InfoUI) k).getReturnValue();</span>
     }
-<span class="nc" id="L510">  }</span>
+<span class="nc" id="L522">  }</span>
 
   public int selectDVM() {
-<span class="nc" id="L513">    del = -1;</span>
-<span class="nc bnc" id="L514" title="All 2 branches missed.">    while (del == -1) {</span>
-<span class="nc" id="L515">      System.out.print(&quot;&quot;);</span>
-<span class="nc" id="L516">      del = ((DVMMenu) k).getReturnValue();</span>
+<span class="nc" id="L525">    del = -1;</span>
+<span class="nc bnc" id="L526" title="All 2 branches missed.">    while (del == -1) {</span>
+<span class="nc" id="L527">      System.out.print(&quot;&quot;);</span>
+<span class="nc" id="L528">      del = ((DVMMenu) k).getReturnValue();</span>
     }
-<span class="nc bnc" id="L518" title="All 2 branches missed.">    if (del == -2) {</span>
-<span class="nc" id="L519">      return -2;</span>
-<span class="nc bnc" id="L520" title="All 2 branches missed.">    } else if (del == 0) {</span>
-<span class="nc" id="L521">      returnMain();</span>
-<span class="nc" id="L522">      return 0;</span>
-<span class="nc bnc" id="L523" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
-<span class="nc" id="L524">      printSelectPay(del);</span>
-<span class="nc bnc" id="L525" title="All 2 branches missed.">      if (del == -2) {</span>
-<span class="nc" id="L526">        return -2;</span>
+<span class="nc bnc" id="L530" title="All 2 branches missed.">    if (del == -2) {</span>
+<span class="nc" id="L531">      return -2;</span>
+<span class="nc bnc" id="L532" title="All 2 branches missed.">    } else if (del == 0) {</span>
+<span class="nc" id="L533">      returnMain();</span>
+<span class="nc" id="L534">      return 0;</span>
+<span class="nc bnc" id="L535" title="All 2 branches missed.">    } else if (del &gt; 0) {</span>
+<span class="nc" id="L536">      printSelectPay(del);</span>
+<span class="nc bnc" id="L537" title="All 2 branches missed.">      if (del == -2) {</span>
+<span class="nc" id="L538">        return -2;</span>
       }
-<span class="nc" id="L528">      return 0;</span>
+<span class="nc" id="L540">      return 0;</span>
     } else { //error
-<span class="nc" id="L530">      return -1;</span>
+<span class="nc" id="L542">      return -1;</span>
     }
   }
 
   public void init() {
-<span class="fc" id="L535">    basket = -666;</span>
-<span class="fc" id="L536">    dvmStack.clear();</span>
-<span class="fc" id="L537">    payment = null;</span>
-<span class="fc" id="L538">  }</span>
+<span class="fc" id="L547">    basket = -666;</span>
+<span class="fc" id="L548">    dvmStack.clear();</span>
+<span class="fc" id="L549">    payment = null;</span>
+<span class="fc" id="L550">  }</span>
 
   public void returnMain() {
-<span class="nc" id="L541">    init();</span>
-<span class="nc" id="L542">  }</span>
+<span class="nc" id="L553">    init();</span>
+<span class="nc" id="L554">  }</span>
 
   public JFrame getK() {
-<span class="nc" id="L545">    return k;</span>
+<span class="nc" id="L557">    return k;</span>
   }
 
   public void setK(JFrame k) {
-<span class="nc" id="L549">    this.k = k;</span>
-<span class="nc" id="L550">  }</span>
+<span class="nc" id="L561">    this.k = k;</span>
+<span class="nc" id="L562">  }</span>
 
   public logic.Payment getPayment() {
-<span class="fc" id="L553">    return payment;</span>
+<span class="fc" id="L565">    return payment;</span>
   }
 
   public void setPayment(logic.Payment payment) {
-<span class="fc" id="L557">    this.payment = payment;</span>
-<span class="fc" id="L558">  }</span>
+<span class="fc" id="L569">    this.payment = payment;</span>
+<span class="fc" id="L570">  }</span>
 
   public int getBasket() {
-<span class="fc" id="L561">    return basket;</span>
+<span class="fc" id="L573">    return basket;</span>
   }
 
   public void setBasket(int basket) {
-<span class="fc" id="L565">    this.basket = basket;</span>
-<span class="fc" id="L566">  }</span>
+<span class="fc" id="L577">    this.basket = basket;</span>
+<span class="fc" id="L578">  }</span>
 
   public int getDel() {
-<span class="nc" id="L569">    return del;</span>
+<span class="nc" id="L581">    return del;</span>
   }
 
   public void setDel(int del) {
-<span class="nc" id="L573">    this.del = del;</span>
-<span class="nc" id="L574">  }</span>
+<span class="nc" id="L585">    this.del = del;</span>
+<span class="nc" id="L586">  }</span>
 
   public static ArrayList&lt;Title&gt; getTitleList() {
-<span class="fc" id="L577">    return titleList;</span>
+<span class="fc" id="L589">    return titleList;</span>
   }
 
   public static void setTitleList(ArrayList&lt;Title&gt; titleList) {
-<span class="nc" id="L581">    Controller.titleList = titleList;</span>
-<span class="nc" id="L582">  }</span>
+<span class="nc" id="L593">    Controller.titleList = titleList;</span>
+<span class="nc" id="L594">  }</span>
 
   public static Stack&lt;DVM&gt; getDvmStack() {
-<span class="nc" id="L585">    return dvmStack;</span>
+<span class="nc" id="L597">    return dvmStack;</span>
   }
 
   public static void setDvmStack(Stack&lt;DVM&gt; dvmStack) {
-<span class="nc" id="L589">    Controller.dvmStack = dvmStack;</span>
-<span class="nc" id="L590">  }</span>
+<span class="nc" id="L601">    Controller.dvmStack = dvmStack;</span>
+<span class="nc" id="L602">  }</span>
 
   public static CNumberManager getCm() {
-<span class="fc" id="L593">    return cm;</span>
+<span class="fc" id="L605">    return cm;</span>
   }
 
   public static void setCm(CNumberManager cm) {
-<span class="nc" id="L597">    Controller.cm = cm;</span>
-<span class="nc" id="L598">  }</span>
+<span class="nc" id="L609">    Controller.cm = cm;</span>
+<span class="nc" id="L610">  }</span>
 
   public static MessageQueue getMq() {
-<span class="nc" id="L601">    return mq;</span>
+<span class="nc" id="L613">    return mq;</span>
   }
 
   public static void setMq(MessageQueue mq) {
-<span class="nc" id="L605">    Controller.mq = mq;</span>
-<span class="nc" id="L606">  }</span>
+<span class="nc" id="L617">    Controller.mq = mq;</span>
+<span class="nc" id="L618">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
