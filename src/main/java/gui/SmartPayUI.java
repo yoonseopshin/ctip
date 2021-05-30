@@ -96,7 +96,7 @@ public class SmartPayUI extends JFrame implements ActionListener {
     informPanel = new JPanel();
     informPanel.setPreferredSize(new Dimension(600, 500));
     URL url = ClassLoader.getSystemResource("QR.jpg");
-    if(url != null) {
+    if (url != null) {
       img = new ImageIcon(url);
       imageLabel = new JLabel(img);
     } else {
