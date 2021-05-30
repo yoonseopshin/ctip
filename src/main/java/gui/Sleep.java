@@ -1,7 +1,6 @@
 package gui;
 
 import logic.DVM;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

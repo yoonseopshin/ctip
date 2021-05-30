@@ -2,7 +2,6 @@ package gui;
 
 import logic.Title;
 import logic.DVM;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

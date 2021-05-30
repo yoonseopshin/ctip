@@ -1,7 +1,6 @@
 package gui;
 
 import logic.DVM;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -65,20 +64,20 @@ public class AddItemMenu extends JFrame implements ActionListener {
     int year = cal.get(Calendar.YEAR);
     int month = cal.get(Calendar.MONTH);
     int date = cal.get(Calendar.DATE);
-    String[] year_list = new String[50];
-    String[] month_list = new String[12];
+    String[] yearList = new String[50];
+    String[] monthList = new String[12];
     dayList1 = new String[31];
     dayList2 = new String[30];
     dayList3 = new String[29];
     dayList4 = new String[28];
-    for (int i = 0; i < year_list.length; i++) {
-      year_list[i] = Integer.toString(year + i);
+    for (int i = 0; i < yearList.length; i++) {
+      yearList[i] = Integer.toString(year + i);
     }
-    for (int i = 0; i < month_list.length; i++) {
+    for (int i = 0; i < monthList.length; i++) {
       if (i + 1 < 10) {
-        month_list[i] = "0".concat(Integer.toString(i + 1));
+        monthList[i] = "0".concat(Integer.toString(i + 1));
       } else {
-        month_list[i] = Integer.toString(i + 1);
+        monthList[i] = Integer.toString(i + 1);
       }
     }
     for (int i = 0; i < dayList1.length; i++) {
@@ -109,8 +108,8 @@ public class AddItemMenu extends JFrame implements ActionListener {
         dayList4[i] = Integer.toString(i + 1);
       }
     }
-    yearSelect = new JComboBox<String>(year_list);
-    monthSelect = new JComboBox<String>(month_list);
+    yearSelect = new JComboBox<String>(yearList);
+    monthSelect = new JComboBox<String>(monthList);
     daySelect = new JComboBox<String>(dayList1);
     yearSelect.setFont(yearSelect.getFont().deriveFont(20.0f));
     monthSelect.setFont(monthSelect.getFont().deriveFont(20.0f));
