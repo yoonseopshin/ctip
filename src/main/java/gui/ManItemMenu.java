@@ -61,8 +61,8 @@ public class ManItemMenu extends JFrame implements ActionListener {
     for (int i = 0; i < temp.size(); i++) {
       String expdate = Integer.toString(temp.get(i).getExpirationDate());
       itemList[i] = new JCheckBox(
-          "ID: " + (i + 1) + "     유통기한: " + expdate.substring(0, 4) + "-" +
-              expdate.substring(4, 6) + "-" + expdate.substring(6, 8));
+          "ID: " + (i + 1) + "     유통기한: " + expdate.substring(0, 4)
+              + "-" + expdate.substring(4, 6) + "-" + expdate.substring(6, 8));
       itemList[i].setPreferredSize(new Dimension(600, 50));
       itemList[i].addActionListener(this);
       itemListPanel.add(itemList[i]);

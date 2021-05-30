@@ -11,7 +11,6 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.util.Queue;
 import java.util.LinkedList;
-
 import java.net.Socket;
 
 public class MessageQueue extends Thread {
@@ -96,8 +95,8 @@ public class MessageQueue extends Thread {
           System.out.println("판매확인메시지 수신됨");
         }
         printWriter.write("1");
-        printWriter.flush();//메시지 정상 전송을 클라이언트에게 알려줌
-        socket.close();// 소캣을 종료시켜 접속된 클라이언트 종료시킴.
+        printWriter.flush(); //메시지 정상 전송을 클라이언트에게 알려줌
+        socket.close(); // 소캣을 종료시켜 접속된 클라이언트 종료시킴.
         dequeue();
       }
     } catch (IOException e) {

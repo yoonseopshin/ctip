@@ -23,8 +23,8 @@ public class SmartPayUI extends JFrame implements ActionListener {
       if (s <= 10) {
         cancel.setText("확인");
         label.setText("남은 시간: 0");
-        infoLabel.setText("<html><center>입력시간이 초과되어 결제가 취소되었습니다.<br>" +
-            s + "초 후 메인화면으로 돌아갑니다.</center></html>");
+        infoLabel.setText("<html><center>입력시간이 초과되어 결제가 취소되었습니다.<br>"
+            + s + "초 후 메인화면으로 돌아갑니다.</center></html>");
         if (s == 10) {
           informPanel.remove(imageLabel);
           informPanel.updateUI();

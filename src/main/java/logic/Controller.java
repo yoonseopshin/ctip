@@ -1,10 +1,22 @@
 package logic;
 
-import gui.*;
-import javax.swing.*;
+import gui.AddItemMenu;
+import gui.CardPayUI;
+import gui.DVMMenu;
+import gui.FindingDVM;
+import gui.InfoNoItemUI;
+import gui.InfoUI;
+import gui.InputLine;
+import gui.MainMenu;
+import gui.ManItemMenu;
+import gui.ManTitleMenu;
+import gui.PaymentMenu;
+import gui.Sleep;
+import gui.SmartPayUI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Stack;
+import javax.swing.JFrame;
 
 public class Controller {
 
@@ -241,8 +253,8 @@ public class Controller {
         System.out.print("");
         if (((AddItemMenu) k).getReturnValue() == 1) {
           Calendar cal = Calendar.getInstance();
-          int today = (cal.get(Calendar.YEAR) * 10000) + ((cal.get(Calendar.MONTH) + 1) * 100) + cal
-              .get(Calendar.DATE);
+          int today = (cal.get(Calendar.YEAR) * 10000)
+              + ((cal.get(Calendar.MONTH) + 1) * 100) + cal.get(Calendar.DATE);
           if (today > ((AddItemMenu) k).getReturnDate()) {
             k.setVisible(false);
             k = new InfoUI("유통기한이 지난 재고를 추가할 수 없습니다.", "이전");

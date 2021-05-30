@@ -1,12 +1,17 @@
 package gui;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import logic.Title;
 import logic.DVM;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
 public class PaymentMenu extends JFrame implements ActionListener {
 
@@ -39,8 +44,9 @@ public class PaymentMenu extends JFrame implements ActionListener {
     //결제수단 패널
     JPanel paymentPanel = new JPanel();
     paymentPanel.setPreferredSize(new Dimension(600, 350));
-    JLabel bev = new JLabel("<html><center>선택한 음료 : <strong>" + title.getName() +
-        "</strong><br>가격 : <strong>" + title.getPrice() + "원</strong></center></html>");
+    JLabel bev = new JLabel("<html><center>선택한 음료 : <strong>"
+        + title.getName() + "</strong><br>가격 : <strong>" + title.getPrice()
+        + "원</strong></center></html>");
     bev.setPreferredSize(new Dimension(600, 50));
     bev.setHorizontalAlignment(SwingConstants.CENTER);
     bev.setFont(label.getFont().deriveFont(15.0f));
