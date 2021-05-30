@@ -2,7 +2,7 @@ package logic;
 
 public class DVM {
 
-  private static int currentID = 3;
+  private static int currentID = 1;
   private static double currentX = 1.0;
   private static double currentY = 1.0;
   private int id; // 메시지 받은 DVM ID

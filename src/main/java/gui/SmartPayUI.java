@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.net.URL;
 
 public class SmartPayUI extends JFrame implements ActionListener {
 
@@ -94,9 +95,17 @@ public class SmartPayUI extends JFrame implements ActionListener {
     //안내패널
     informPanel = new JPanel();
     informPanel.setPreferredSize(new Dimension(600, 500));
-    img = new ImageIcon("src/main/java/GUI/image/QR.jpg");
-    imageLabel = new JLabel(img);
+    URL url = ClassLoader.getSystemResource("QR.jpg");
+    if (url != null) {
+      img = new ImageIcon(url);
+      imageLabel = new JLabel(img);
+    } else {
+      labelPanel.setPreferredSize(new Dimension(600, 300));
+      imageLabel = new JLabel("QR 이미지를 가져올 수 없습니다.");
+      imageLabel.setFont(infoLabel.getFont().deriveFont(20.0f));
+    }
     informPanel.add(imageLabel);
+
 
     //버튼패널
     buttonPanel = new JPanel();
