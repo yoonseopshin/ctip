@@ -58,8 +58,6 @@ public class Controller {
     //선언
     Controller c = new Controller();
     c.setK(new JFrame());
-    //재고
-    titleList.get(0).addItem(new Item(20211125));
     //start
     Controller.mq.start();
     c.reqMainMenu();
