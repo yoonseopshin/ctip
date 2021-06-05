@@ -28,7 +28,7 @@ public class MessageQueueTest {
     queue.start();
     msg.setMsg(1,2,true);
     queue.interrupt();
-    Assert.assertEquals(msg,queue.getStkMsgQueue().poll());
+    Assert.assertEquals(msg.isBoolData(),queue.getStkMsgQueue().poll().isBoolData());
   }
 
   @Test
