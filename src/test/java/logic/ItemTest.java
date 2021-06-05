@@ -14,4 +14,7 @@ public class ItemTest {
     int ActualResult = item.getExpirationDate();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
+
+    public void testSetExpirationDate() {
+    }
 }

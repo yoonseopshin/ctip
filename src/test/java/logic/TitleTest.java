@@ -41,7 +41,7 @@ public class TitleTest {
   }
 
   @Test
-  public void testItemList() {
+  public void testGetItemList() {
     t.addItem(new Item(20201025));
     t.addItem(new Item(20201125));
     t.addItem(new Item(20201125));
@@ -95,5 +95,26 @@ public class TitleTest {
     assertTrue(t.checkStock());
     t.updateStock(0, false);
     assertFalse(t.checkStock());
+  }
+
+  public void testGetName() {
+  }
+
+  public void testSetName() {
+  }
+
+  public void testGetPrice() {
+  }
+
+  public void testSetPrice() {
+  }
+
+  public void testSetItemList() {
+  }
+
+  public void testGetHold() {
+  }
+
+  public void testSetHold() {
   }
 }

@@ -64,4 +64,55 @@ public class MessageTest {
     Assert.assertEquals(971125, msg.getCNumber());
     Assert.assertTrue(msg.isBoolData());
   }
+
+  public void testTranslate() {
+  }
+
+  public void testGetMyId() {
+  }
+
+  public void testSetMyId() {
+  }
+
+  public void testGetTargetId() {
+  }
+
+  public void testSetTargetId() {
+  }
+
+  public void testGetType() {
+  }
+
+  public void testSetType() {
+  }
+
+  public void testGetXAddress() {
+  }
+
+  public void testSetXAddress() {
+  }
+
+  public void testGetYAddress() {
+  }
+
+  public void testSetYAddress() {
+  }
+
+  public void testGetTitle() {
+  }
+
+  public void testSetTitle() {
+  }
+
+  public void testGetCNumber() {
+  }
+
+  public void testSetCNumber() {
+  }
+
+  public void testIsBoolData() {
+  }
+
+  public void testSetBoolData() {
+  }
 }

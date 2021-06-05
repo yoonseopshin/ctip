@@ -53,4 +53,22 @@ public class PaymentTest {
     Assert.assertEquals(ExpectedResult, ActualResult);
     assertNull(payment.getErrorLog());
   }
+
+    public void testGetTitleId() {
+    }
+
+    public void testSetTitleId() {
+    }
+
+    public void testGetDVMId() {
+    }
+
+    public void testSetDVMId() {
+    }
+
+    public void testGetErrorLog() {
+    }
+
+    public void testSetErrorLog() {
+    }
 }

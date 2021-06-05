@@ -13,7 +13,8 @@ public class MessageQueueTest {
 
   public void testRun() {
   }
-@Test
+
+  @Test
   public void testGetIP() {
     try {
       InetAddress local = InetAddress.getLocalHost();
@@ -21,15 +22,28 @@ public class MessageQueueTest {
       Assert.assertEquals(ip, queue.getIP());
     } catch (Exception e) { }
   }
-@Test
+
+  @Test
   public void testMsgReceive() {
-    queue.run();
-    Thread.interrupted();
-    msg.setMsg(2,1,true);
+    queue.start();
+    msg.setMsg(1,2,true);
+    queue.interrupt();
     Assert.assertEquals(msg,queue.getStkMsgQueue().poll());
   }
 
+  @Test
   public void testMsgSend() {
+    Controller c = new Controller();
+    Controller.getTitleList().get(0).addItem(new Item(20201125));
+    queue.start();
+    msg.setTargetId(1);
+    msg.setType(3);
+    msg.setTitle(1);
+    msg.setCNumber(971125);
+    MessageQueue.msgSend(msg);
+    queue.interrupt();
+    while(queue.isAlive()){};
+    Assert.assertEquals(1, Controller.getCm().checkCNumber(971125));
   }
 
   @Test
