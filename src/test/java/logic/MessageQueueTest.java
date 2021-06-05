@@ -2,17 +2,15 @@ package logic;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.net.InetAddress;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class MessageQueueTest {
 
   private Message msg = new Message(DVM.getCurrentID());
   private MessageQueue queue = new MessageQueue();
   private Controller controller = new Controller();
-
-  public void testRun() {
-  }
 
   @Test
   public void testGetIP() {
@@ -25,15 +23,24 @@ public class MessageQueueTest {
 
   @Test
   public void testMsgReceive() {
-    queue.start();
-    msg.setMsg(1,2,true);
-    queue.interrupt();
-    Assert.assertEquals(msg.isBoolData(),queue.getStkMsgQueue().poll().isBoolData());
+    Thread thread = new Thread(() -> queue.msgReceive(1));
+    thread.start();
+    msg.setMsg(1,3, 1, 971125);
+    thread.interrupt();
+    while(queue.isAlive()){}
+    Message rm = queue.getStkMsgQueue().poll();
+    Assert.assertEquals(msg.getTargetId(), rm.getTargetId());
+    Assert.assertEquals(msg.getType(), rm.getType());
+    Assert.assertEquals(msg.isBoolData(), rm.isBoolData());
+    Assert.assertEquals(msg.getCNumber(), rm.getCNumber());
+    Assert.assertEquals(msg.getMyId(), rm.getMyId());
+    Assert.assertEquals(msg.getTitle(), rm.getTitle());
+    Assert.assertEquals(Double.toString(msg.getXAddress()), Double.toString(rm.getXAddress()));
+    Assert.assertEquals(Double.toString(msg.getYAddress()), Double.toString(rm.getYAddress()));
   }
 
   @Test
   public void testMsgSend() {
-    Controller c = new Controller();
     Controller.getTitleList().get(0).addItem(new Item(20201125));
     queue.start();
     msg.setTargetId(1);
@@ -42,8 +49,11 @@ public class MessageQueueTest {
     msg.setCNumber(971125);
     MessageQueue.msgSend(msg);
     queue.interrupt();
-    while(queue.isAlive()){};
-    Assert.assertEquals(1, Controller.getCm().checkCNumber(971125));
+    while(queue.isAlive()){}
+    Assert.assertEquals(1, Controller.getCm().checkCNumber(msg.getCNumber()));
+    Assert.assertEquals(false, Controller.getTitleList().get(msg.getTitle()-1).checkStock());
+    Assert.assertEquals(1, (int)(Controller.getTitleList().get(msg.getTitle()-1).getHold()));
+    Assert.assertEquals(msg.getTitle(), Controller.getCm().popCNumber(msg.getCNumber()));
   }
 
   @Test
@@ -56,42 +66,52 @@ public class MessageQueueTest {
     msg.setCNumber(971026);
     MessageQueue.getMsgQueue().offer(msg);
     MessageQueue.dequeue();
-    Assert.assertEquals(1, c.getCm().checkCNumber(971026));
+    Assert.assertEquals(1, c.getCm().checkCNumber(msg.getCNumber()));
+    Assert.assertEquals(false, Controller.getTitleList().get(msg.getTitle()-1).checkStock());
+    Assert.assertEquals(1, (int)(Controller.getTitleList().get(msg.getTitle()-1).getHold()));
+    Assert.assertEquals(msg.getTitle(), Controller.getCm().popCNumber(msg.getCNumber()));
   }
 
+  @Test
   public void testGetLoc() {
+    MessageQueue.setLoc(5);
+    Assert.assertEquals(5, MessageQueue.getLoc());
   }
 
-  public void testSetLoc() {
-  }
-
+  @Test
   public void testGetStk() {
+    MessageQueue.setStk(5);
+    Assert.assertEquals(5, MessageQueue.getStk());
   }
 
-  public void testSetStk() {
-  }
-
+  @Test
   public void testGetCNum() {
+    MessageQueue.setCNum(5);
+    Assert.assertEquals(5, MessageQueue.getCNum());
   }
 
-  public void testSetCNum() {
-  }
-
+  @Test
   public void testGetMsgQueue() {
+    Queue<Message> msgQueueT = new LinkedList<>();
+    msgQueueT.offer(msg);
+    MessageQueue.setMsgQueue(msgQueueT);
+    Assert.assertEquals(1, MessageQueue.getMsgQueue().size());
   }
 
-  public void testSetMsgQueue() {
-  }
-
+  @Test
   public void testGetStkMsgQueue() {
+    Queue<Message> stkMsgQueueT = new LinkedList<>();
+    stkMsgQueueT.offer(msg);
+    MessageQueue.setStkMsgQueue(stkMsgQueueT);
+    Assert.assertEquals(1, MessageQueue.getStkMsgQueue().size());
   }
 
-  public void testSetStkMsgQueue() {
-  }
-
+  @Test
   public void testGetLocMsgQueue() {
+    Queue<Message> locMsgQueueT = new LinkedList<>();
+    locMsgQueueT.offer(msg);
+    MessageQueue.setLocMsgQueue(locMsgQueueT);
+    Assert.assertEquals(1, MessageQueue.getLocMsgQueue().size());
   }
 
-  public void testSetLocMsgQueue() {
-  }
 }
