@@ -1,17 +1,14 @@
 package logic;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import com.sun.xml.internal.ws.util.StringUtils;
+
+import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.util.Queue;
-import java.util.LinkedList;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class MessageQueue extends Thread {
 
@@ -31,7 +28,7 @@ public class MessageQueue extends Thread {
   }
 
   public static String getIP() {
-    InetAddress local = null;
+    InetAddress local;
     String ip = "-1";
     try {
       local = InetAddress.getLocalHost();
@@ -60,9 +57,11 @@ public class MessageQueue extends Thread {
         assert server_socket != null;
         socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.
         printWriter = new PrintWriter(
-            new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
-        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8)));
+        in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
         String msg = in.readLine();
+        if (msg == null || msg.length() == 0)
+          throw new NullPointerException();
         String[] temp = msg.split(",");
         //메시지객체로 변환
         Message message = new Message(-1);
@@ -70,7 +69,8 @@ public class MessageQueue extends Thread {
             Integer.parseInt(temp[2]),
             Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),
             Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));
-        msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
+        if (!msgQueue.offer(message))
+          throw new NullPointerException();
 
         printWriter.write("1");
         printWriter.flush(); //메시지 정상 전송을 클라이언트에게 알려줌
@@ -112,8 +112,8 @@ public class MessageQueue extends Thread {
         ia = InetAddress.getByName(getIP());    //서버로 접속
         socket = new Socket(ia, port);
         in = new BufferedReader(
-            new InputStreamReader(socket.getInputStream())); //서버로부터 메시지를 받기위한 버퍼
-        out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
+            new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8)); //서버로부터 메시지를 받기위한 버퍼
+        out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8)));
         //메시지객체 스트링으로 전환
         String msg = message.getMyId() + "," + message.getTargetId() + "," + message.getType() + ","
             + message.getXAddress() + "," + message.getYAddress() + "," + message.getTitle() + ","
@@ -121,6 +121,8 @@ public class MessageQueue extends Thread {
         out.println(msg);                        //서버로 데이터 전송
         out.flush();                      //서버로 데이터 전송
         String returnMsg = in.readLine();
+        if (returnMsg == null || returnMsg.length() == 0)
+          throw new NullPointerException();
         //객체 정리하는 부분
         socket.close();
         in.close();
@@ -173,7 +175,8 @@ public class MessageQueue extends Thread {
         sm.setMsg(rm.getMyId(), 2, Controller.getTitleList().get(rm.getTitle() - 1).checkStock());
         //System.out.println("재고 요청 응답 완료");
       } else if (rm.getType() == 2) {
-        stkMsgQueue.offer(rm);
+        if(stkMsgQueue.offer(rm))
+          throw new NullPointerException();
       } else if (rm.getType() == 3) {
         CNumber rc = new CNumber(rm.getTitle(), rm.getMyId());
         rc.setCNumberT(rm.getCNumber());
@@ -184,13 +187,15 @@ public class MessageQueue extends Thread {
         sm.setMsg(rm.getMyId(), 5, DVM.getCurrentX(), DVM.getCurrentY());
         //System.out.println("위치 요청 메시지 응답 완료");
       } else if (rm.getType() == 5) {
-        locMsgQueue.offer(rm);
+        if(!locMsgQueue.offer(rm))
+          throw new NullPointerException();
       } else if (rm.getType() == 6) {
         Message sm = new Message(DVM.getCurrentID());
         int data = Controller.getCm().checkCNumber(rm.getCNumber());
         sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), data != -1);
       } else if (rm.getType() == 7) {
-        cNMsgQueue.offer(rm);
+        if(!cNMsgQueue.offer(rm))
+          throw new NullPointerException();
       } else {
         System.out.println("메시지 오류");
       }
