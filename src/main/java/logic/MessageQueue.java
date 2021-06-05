@@ -47,9 +47,7 @@ public class MessageQueue extends Thread {
     Socket socket = null;                //Client와 통신하기 위한 Socket
     ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket
     BufferedReader in;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
-    PrintWriter out = null;                //Client로 데이터를 내보내기 위한 출력 스트림
     int port = myId + 50000;
-    ObjectInputStream objectInputStream; // 직렬화된 객체를 읽어올때 사용
     PrintWriter printWriter; // 값을 전달할때 사용
 
     try {
@@ -73,29 +71,11 @@ public class MessageQueue extends Thread {
             Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),
             Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));
         msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
-        if (message.getType() == 1) {
-          System.out.println("재고요청메시지 수신됨");
-        }
-        if (message.getType() == 2) {
-          System.out.println("재고응답메시지 수신됨");
-        }
-        if (message.getType() == 3) {
-          System.out.println("인증번호메시지 수신됨");
-        }
-        if (message.getType() == 4) {
-          System.out.println("위치요청메시지 수신됨");
-        }
-        if (message.getType() == 5) {
-          System.out.println("위치응답메시지 수신됨");
-        }
-        if (message.getType() == 6) {
-          System.out.println("판매확인요청메시지 수신됨");
-        }
-        if (message.getType() == 7) {
-          System.out.println("판매확인메시지 수신됨");
-        }
+
         printWriter.write("1");
         printWriter.flush(); //메시지 정상 전송을 클라이언트에게 알려줌
+        in.close();
+        printWriter.close();
         socket.close(); // 소캣을 종료시켜 접속된 클라이언트 종료시킴.
         dequeue();
       }
@@ -143,6 +123,8 @@ public class MessageQueue extends Thread {
         String returnMsg = in.readLine();
         //객체 정리하는 부분
         socket.close();
+        in.close();
+        out.close();
         //서버에서 확인메시지 리시브 및 완료시 브레이크
         if (returnMsg.equals("1")) {
           break;
@@ -184,13 +166,12 @@ public class MessageQueue extends Thread {
     */
 
   public static void dequeue() {
-    int result = -1;
     while (msgQueue.size() > 0) {
       Message rm = msgQueue.poll();
       if (rm.getType() == 1) {
         Message sm = new Message(DVM.getCurrentID());
         sm.setMsg(rm.getMyId(), 2, Controller.getTitleList().get(rm.getTitle() - 1).checkStock());
-        System.out.println("재고 요청 응답 완료");
+        //System.out.println("재고 요청 응답 완료");
       } else if (rm.getType() == 2) {
         stkMsgQueue.offer(rm);
       } else if (rm.getType() == 3) {
@@ -201,7 +182,7 @@ public class MessageQueue extends Thread {
       } else if (rm.getType() == 4) {
         Message sm = new Message(DVM.getCurrentID());
         sm.setMsg(rm.getMyId(), 5, DVM.getCurrentX(), DVM.getCurrentY());
-        System.out.println("위치 요청 메시지 응답 완료");
+        //System.out.println("위치 요청 메시지 응답 완료");
       } else if (rm.getType() == 5) {
         locMsgQueue.offer(rm);
       } else if (rm.getType() == 6) {
@@ -221,7 +202,7 @@ public class MessageQueue extends Thread {
         if (stk.isBoolData()) {
           Message sm = new Message(DVM.getCurrentID());
           sm.setMsg(stk.getMyId(), 4);
-          System.out.println("위치 요청 메시지 전송 완료");
+          //System.out.println("위치 요청 메시지 전송 완료");
           i++;
         }
       }
@@ -234,7 +215,7 @@ public class MessageQueue extends Thread {
           Message loc = locMsgQueue.poll();
           Controller.getDvmStack()
               .push(new DVM(loc.getMyId(), loc.getXAddress(), loc.getYAddress()));
-          System.out.println("위치 응답 메시지 수신 완료");
+          //System.out.println("위치 응답 메시지 수신 완료");
         }
       }
       Controller.getDvmStack().push(new DVM(-1, 0.0, 0.0));
