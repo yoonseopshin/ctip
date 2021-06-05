@@ -51,7 +51,7 @@ public class PaymentTest {
     ExpectedResult = -1;
     ActualResult = payment.getDVMId();
     Assert.assertEquals(ExpectedResult, ActualResult);
-    Assert.assertNull(payment.getErrorLog());
+    Assert.assertEquals("", payment.getErrorLog());
   }
 
   @Test
