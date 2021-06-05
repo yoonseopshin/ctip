@@ -25,5 +25,4 @@ public class ItemTest {
     Assert.assertEquals(ExpectedResult, ActualResult);
     Assert.assertNotNull(ActualResult);
   }
-
 }

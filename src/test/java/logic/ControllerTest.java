@@ -180,6 +180,16 @@ public class ControllerTest {
     */
 
   @Test
+  public void testCancelItem() {
+
+  }
+
+  @Test
+  public void testCancelPay() {
+
+  }
+
+  @Test
   public void testInit() {
     c.setBasket(10);
     c.setPayment(new Payment(c.getBasket(), 1));
@@ -190,51 +200,65 @@ public class ControllerTest {
     Assert.assertNull(c.getPayment());
   }
 
-    public void testGetK() {
-    }
+  @Test
+  public void testReturnMain() {
 
-    public void testSetK() {
-    }
+  }
 
-    public void testGetPayment() {
-    }
+  @Test
+  public void testGetPayment() {
+  }
 
-    public void testSetPayment() {
-    }
+  @Test
+  public void testSetPayment() {
+  }
 
-    public void testGetBasket() {
-    }
+  @Test
+  public void testGetBasket() {
+  }
 
-    public void testSetBasket() {
-    }
+  @Test
+  public void testSetBasket() {
+  }
 
-    public void testGetDel() {
-    }
+  @Test
+  public void testGetDel() {
+  }
 
-    public void testSetDel() {
-    }
+  @Test
+  public void testSetDel() {
+  }
 
-    public void testGetTitleList() {
-    }
+  @Test
+  public void testGetTitleList() {
+  }
 
-    public void testSetTitleList() {
-    }
+  @Test
+  public void testSetTitleList() {
+  }
 
-    public void testGetDvmStack() {
-    }
+  @Test
+  public void testGetDvmStack() {
+  }
 
-    public void testSetDvmStack() {
-    }
+  @Test
+  public void testSetDvmStack() {
+  }
 
-    public void testGetCm() {
-    }
+  @Test
+  public void testGetCm() {
+  }
 
-    public void testSetCm() {
-    }
+  @Test
+  public void testSetCm() {
+  }
 
-    public void testGetMq() {
-    }
+  @Test
+  public void testGetMq() {
+  }
 
-    public void testSetMq() {
-    }
+  @Test
+  public void testSetMq() {
+  }
+
 }

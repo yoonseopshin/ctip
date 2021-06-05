@@ -62,21 +62,6 @@ public class CNumberManagerTest {
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
-  public void testTestPopCNumber() {
-  }
-
-  public void testTestCheckCNumber() {
-  }
-
-  public void testTestCheckCNumber2() {
-  }
-
-  public void testTestAddChCNumber() {
-  }
-
-  public void testTestAddCNumber() {
-  }
-
   public void testGetMNumber() {
   }
 

@@ -92,9 +92,9 @@ public class TitleTest {
   @Test
   public void testCheckStock() {
     t.addItem(new Item(20201025));
-    assertTrue(t.checkStock());
+    Assert.assertTrue(t.checkStock());
     t.updateStock(0, false);
-    assertFalse(t.checkStock());
+    Assert.assertFalse(t.checkStock());
   }
   @Test
   public void testGetName() {

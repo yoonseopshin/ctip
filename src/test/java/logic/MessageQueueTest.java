@@ -24,11 +24,14 @@ public class MessageQueueTest {
   @Test
   public void testMsgReceive() {
     Thread thread = new Thread(() -> queue.msgReceive(1));
+    MessageQueue.getStkMsgQueue().clear();
     thread.start();
-    msg.setMsg(1,3, 1, 971125);
+    msg.setMsg(1,2, true);
     thread.interrupt();
+    queue.start();
+    queue.interrupt();
     while(queue.isAlive()){}
-    Message rm = queue.getStkMsgQueue().poll();
+    Message rm = MessageQueue.getStkMsgQueue().poll();
     Assert.assertEquals(msg.getTargetId(), rm.getTargetId());
     Assert.assertEquals(msg.getType(), rm.getType());
     Assert.assertEquals(msg.isBoolData(), rm.isBoolData());

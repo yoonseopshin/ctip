@@ -153,6 +153,7 @@ public class MessageTest {
     testMsg.setBoolData(true);
     Assert.assertEquals(testMsg.isBoolData(),msg.isBoolData());
   }
+
   @Test
   public void testTranslate() {
     msg.translate(1,1,1,1,1,1,1,true);
