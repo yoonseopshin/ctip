@@ -1,5 +1,6 @@
 package logic;
 
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
 
@@ -8,9 +9,9 @@ public class CNumber {
   private int titleId;
   private int DvmID;
   private int cNumberT;
-  private static Random rand = new SecureRandom();
+  private Random rand;
 
-  /*
+
   {
     try {
       new SecureRandom();
@@ -19,12 +20,12 @@ public class CNumber {
       throw new RuntimeException("Failed to instantiate random number generator", e);
     }
   }
-  */
 
   public CNumber(int titleId, int id) {
     this.titleId = titleId;
     this.DvmID = id;
   }
+
 
   public int createCNumber() {
     //수정
@@ -66,9 +67,10 @@ public class CNumber {
     numStr += Integer.toString(this.DvmID - 1);
     for (int i = 3; i < len; i++) {
       //0~9 까지 난수 생성
-      ran = Integer.toString(rand.nextInt(10));
+      ran = Integer.toString(this.rand.nextInt(10));
       numStr += ran;
     }
+
     return numStr;
   }
 
@@ -88,14 +90,6 @@ public class CNumber {
     DvmID = dvmID;
   }
 
-  public int getCNumberT() {
-    return cNumberT;
-  }
-
-  public void setCNumberT(int cNumberT) {
-    this.cNumberT = cNumberT;
-  }
-
   public int getcNumberT() {
     return cNumberT;
   }
@@ -104,12 +98,12 @@ public class CNumber {
     this.cNumberT = cNumberT;
   }
 
-  public static Random getRand() {
+  public Random getRand() {
     return rand;
   }
 
-  public static void setRand(Random rand) {
-    CNumber.rand = rand;
+  public void setRand(Random rand) {
+    this.rand = rand;
   }
 
 }
