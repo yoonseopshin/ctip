@@ -3,27 +3,34 @@ package logic;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.net.InetAddress;
+
 public class MessageQueueTest {
 
   private Message msg = new Message(DVM.getCurrentID());
   private MessageQueue queue = new MessageQueue();
+  private Controller controller = new Controller();
 
-    /*
-    @Test
-    public void testMsgSend() {
-        Controller c = new Controller();
-        c.getTitle_List().get(0).AddItem(new Item(20201125));
-        queue.start();
-        msg.setTargetID(1);
-        msg.setType(5);
-        msg.setTitle(1);
-        msg.setC_Number(971125);
-        Message_Queue.MsgSend(msg);
-        queue.interrupt();
-        while(queue.isAlive()){};
-        Assert.assertEquals(1, c.getCM().CheckCnumber(971125));
-    }
-    */
+  public void testRun() {
+  }
+@Test
+  public void testGetIP() {
+    try {
+      InetAddress local = InetAddress.getLocalHost();
+      String ip = local.getHostAddress();
+      Assert.assertEquals(ip, queue.getIP());
+    } catch (Exception e) { }
+  }
+@Test
+  public void testMsgReceive() {
+    queue.run();
+    Thread.interrupted();
+    msg.setMsg(2,1,true);
+    Assert.assertEquals(msg,queue.getStkMsgQueue().poll());
+  }
+
+  public void testMsgSend() {
+  }
 
   @Test
   public void testDequeue() {
@@ -36,5 +43,41 @@ public class MessageQueueTest {
     MessageQueue.getMsgQueue().offer(msg);
     MessageQueue.dequeue();
     Assert.assertEquals(1, c.getCm().checkCNumber(971026));
+  }
+
+  public void testGetLoc() {
+  }
+
+  public void testSetLoc() {
+  }
+
+  public void testGetStk() {
+  }
+
+  public void testSetStk() {
+  }
+
+  public void testGetCNum() {
+  }
+
+  public void testSetCNum() {
+  }
+
+  public void testGetMsgQueue() {
+  }
+
+  public void testSetMsgQueue() {
+  }
+
+  public void testGetStkMsgQueue() {
+  }
+
+  public void testSetStkMsgQueue() {
+  }
+
+  public void testGetLocMsgQueue() {
+  }
+
+  public void testSetLocMsgQueue() {
   }
 }

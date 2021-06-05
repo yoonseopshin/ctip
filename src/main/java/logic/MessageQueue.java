@@ -175,7 +175,7 @@ public class MessageQueue extends Thread {
         sm.setMsg(rm.getMyId(), 2, Controller.getTitleList().get(rm.getTitle() - 1).checkStock());
         //System.out.println("재고 요청 응답 완료");
       } else if (rm.getType() == 2) {
-        if(stkMsgQueue.offer(rm))
+        if(!stkMsgQueue.offer(rm))
           throw new NullPointerException();
       } else if (rm.getType() == 3) {
         CNumber rc = new CNumber(rm.getTitle(), rm.getMyId());
