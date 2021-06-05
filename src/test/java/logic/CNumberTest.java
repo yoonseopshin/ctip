@@ -59,18 +59,18 @@ public class CNumberTest {
 
   @Test
   public void testGetcNumberT() {
-    CNumber.setCNumberT(123456);
+    CN.setCNumberT(123456);
     int ExpectedResult = 123456;
-    int ActualResult = CNumber.getCNumberT();
+    int ActualResult = CN.getCNumberT();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
   @Test
   public void testSetcNumberT() {
     int ExpectedResult = 654321;
-    CNumber.setCNumberT(123456);
+    CN.setCNumberT(123456);
     ExpectedResult = 123456;
-    int ActualResult = CNumber.getCNumberT();
+    int ActualResult = CN.getCNumberT();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
