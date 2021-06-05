@@ -13,7 +13,7 @@ public class ItemTest {
     int ExpectedResult = 20211026;
     int ActualResult = item.getExpirationDate();
     Assert.assertEquals(ExpectedResult, ActualResult);
-    Assert.assertnotnull(ActualResult)
+    Assert.assertNotNull(ActualResult);
   }
 
   @Test
@@ -23,7 +23,7 @@ public class ItemTest {
     ExpectedResult = 20210525;
     int ActualResult = item.getExpirationDate();
     Assert.assertEquals(ExpectedResult, ActualResult);
-    Assert.assertnotnull(ActualResult)
+    Assert.assertNotNull(ActualResult);
   }
 
 }
