@@ -15,6 +15,7 @@ public class DVMTest {
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
+
   @Test
   public void testGetAddressX() {
     dvm.setAddressX(1.23456);
