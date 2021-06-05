@@ -11,6 +11,7 @@ public class CNumber {
   private int cNumberT;
   private Random rand;
 
+
   {
     try {
       new SecureRandom();
@@ -95,6 +96,22 @@ public class CNumber {
 
   public void setCNumberT(int cNumberT) {
     this.cNumberT = cNumberT;
+  }
+
+  public int getcNumberT() {
+    return cNumberT;
+  }
+
+  public void setcNumberT(int cNumberT) {
+    this.cNumberT = cNumberT;
+  }
+
+  public Random getRand() {
+    return rand;
+  }
+
+  public void setRand(Random rand) {
+    this.rand = rand;
   }
 
 }
