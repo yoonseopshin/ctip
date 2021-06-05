@@ -51,56 +51,31 @@ public class PaymentTest {
     ExpectedResult = -1;
     ActualResult = payment.getDVMId();
     Assert.assertEquals(ExpectedResult, ActualResult);
-    assertNull(payment.getErrorLog());
+    Assert.assertNull(payment.getErrorLog());
   }
 
   @Test
   public void testGetTitleId() {
-    Payment.setTitleId(4);
+    payment.setTitleId(4);
     int ExpectedResult = 4;
-    int ActualResult = Payment.getTitleId();
-    Assert.assertEquals(ExpectedResult, ActualResult);
-  }
-
-  @Test
-  public void testSetTitleId() {
-    int ExpectedResult = 4;
-    Payment.setTitleId(2);
-    ExpectedResult = 2;
-    int ActualResult = Payment.getTitleId();
+    int ActualResult = payment.getTitleId();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
   @Test
   public void testGetDvmId() {
-    Payment.setDvmId(3);
+    payment.setDVMId(3);
     int ExpectedResult = 3;
-    int ActualResult = Payment.getDvmId();
+    int ActualResult = payment.getDVMId();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
   @Test
-  public void testSetDvmId() {
-    int ExpectedResult = 4;
-    Payment.setDvmId(2);
-    ExpectedResult = 2;
-    int ActualResult = Payment.getDvmId();
+  public void testGetErrorLog() {
+    payment.setErrorLog("hello");
+    String ExpectedResult = "hello";
+    String ActualResult = payment.getErrorLog();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
-    public void testGetErrorLog() {
-      Payment.setErrorLog("hello");
-      String ExpectedResult = "hello";
-      String ActualResult = Payment.getErrorLog();
-      Assert.assertEquals(ExpectedResult, ActualResult);
-    }
-
-    public void testSetErrorLog() {
-      String ExpectedResult= null;
-      Payment.setErrorLog("hello");
-      ExpectedResult = "hello";
-      String ActualResult = Payment.getErrorLog();
-      Assert.assertNotNull(ExpectedResult);
-      Assert.assertEquals(ExpectedResult, ActualResult);
-    }
 }
