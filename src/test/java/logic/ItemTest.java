@@ -16,4 +16,14 @@ public class ItemTest {
     Assert.assertnotnull(ActualResult)
   }
 
+  @Test
+  public void testSetExpirationDate() {
+    int ExpectedResult = 20211026;
+    item.setExpirationDate(20210525);
+    ExpectedResult = 20210525;
+    int ActualResult = item.getExpirationDate();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+    Assert.assertnotnull(ActualResult)
+  }
+
 }
