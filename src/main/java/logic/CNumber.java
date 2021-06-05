@@ -9,9 +9,9 @@ public class CNumber {
   private int titleId;
   private int DvmID;
   private int cNumberT;
-  private Random rand;
+  private static Random rand=new SecureRandom();
 
-
+  /*
   {
     try {
       new SecureRandom();
@@ -20,6 +20,7 @@ public class CNumber {
       throw new RuntimeException("Failed to instantiate random number generator", e);
     }
   }
+  */
 
   public CNumber(int titleId, int id) {
     this.titleId = titleId;
@@ -70,7 +71,6 @@ public class CNumber {
       ran = Integer.toString(this.rand.nextInt(10));
       numStr += ran;
     }
-
     return numStr;
   }
 
