@@ -31,7 +31,6 @@ public class Controller {
 
   public Controller() {
     this.basket = -666;
-    this.payment = null;
     titleList.add(new Title("코카콜라", 700));
     titleList.add(new Title("나랑드사이다", 700));
     titleList.add(new Title("솔의눈", 700));
@@ -546,7 +545,6 @@ public class Controller {
   public void init() {
     basket = -666;
     dvmStack.clear();
-    payment = null;
   }
 
   public void returnMain() {

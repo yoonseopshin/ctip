@@ -56,7 +56,7 @@ public class Payment {
   public void init() {
     this.titleId = -1;
     this.DVMId = -1;
-    this.errorLog = null;
+    this.errorLog = "";
   }
 
   public int getTitleId() {
