@@ -49,7 +49,6 @@ public class MessageQueue extends Thread {
     BufferedReader in;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
     PrintWriter out = null;                //Client로 데이터를 내보내기 위한 출력 스트림
     int port = myId + 50000;
-    ObjectInputStream objectInputStream; // 직렬화된 객체를 읽어올때 사용
     PrintWriter printWriter; // 값을 전달할때 사용
 
     try {
