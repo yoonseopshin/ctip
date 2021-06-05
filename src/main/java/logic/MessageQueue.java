@@ -1,5 +1,7 @@
 package logic;
 
+import com.sun.xml.internal.ws.util.StringUtils;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -58,6 +60,8 @@ public class MessageQueue extends Thread {
             new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8)));
         in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
         String msg = in.readLine();
+        if (msg == null || msg.length() == 0)
+          throw new NullPointerException();
         String[] temp = msg.split(",");
         //메시지객체로 변환
         Message message = new Message(-1);
@@ -117,6 +121,8 @@ public class MessageQueue extends Thread {
         out.println(msg);                        //서버로 데이터 전송
         out.flush();                      //서버로 데이터 전송
         String returnMsg = in.readLine();
+        if (returnMsg == null || returnMsg.length() == 0)
+          throw new NullPointerException();
         //객체 정리하는 부분
         socket.close();
         in.close();

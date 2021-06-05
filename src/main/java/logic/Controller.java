@@ -87,6 +87,7 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
+      if(k instanceof MainMenu)
       del = ((MainMenu) k).getReturnValue();
     }
     if (del == -2) {
