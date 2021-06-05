@@ -64,55 +64,25 @@ public class MessageTest {
     Assert.assertEquals(971125, msg.getCNumber());
     Assert.assertTrue(msg.isBoolData());
   }
-
+  @Test
   public void testTranslate() {
+    Message testMsg = new Message(DVM.getCurrentID());
+    msg.translate(1,1,1,1,1,1,1,true);
+    Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
+    testMsg.setTargetId(1);
+    Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());
+    testMsg.setType(1);
+    Assert.assertEquals(testMsg.getType(),msg.getType());
+    testMsg.setXAddress(1);
+    Assert.assertEquals(testMsg.getXAddress(),msg.getXAddress(),1);
+    testMsg.setYAddress(1);
+    Assert.assertEquals(testMsg.getYAddress(),msg.getYAddress(),1);
+    testMsg.setTitle(1);
+    Assert.assertEquals(testMsg.getTitle(),msg.getTitle());
+    testMsg.setCNumber(1);
+    Assert.assertEquals(testMsg.getCNumber(),msg.getCNumber());
+    testMsg.setBoolData(true);
+    Assert.assertEquals(testMsg.isBoolData(),msg.isBoolData());
   }
 
-  public void testGetMyId() {
-  }
-
-  public void testSetMyId() {
-  }
-
-  public void testGetTargetId() {
-  }
-
-  public void testSetTargetId() {
-  }
-
-  public void testGetType() {
-  }
-
-  public void testSetType() {
-  }
-
-  public void testGetXAddress() {
-  }
-
-  public void testSetXAddress() {
-  }
-
-  public void testGetYAddress() {
-  }
-
-  public void testSetYAddress() {
-  }
-
-  public void testGetTitle() {
-  }
-
-  public void testSetTitle() {
-  }
-
-  public void testGetCNumber() {
-  }
-
-  public void testSetCNumber() {
-  }
-
-  public void testIsBoolData() {
-  }
-
-  public void testSetBoolData() {
-  }
 }
