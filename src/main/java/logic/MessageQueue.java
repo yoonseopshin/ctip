@@ -47,7 +47,6 @@ public class MessageQueue extends Thread {
     Socket socket = null;                //Client와 통신하기 위한 Socket
     ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket
     BufferedReader in;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
-    PrintWriter out = null;                //Client로 데이터를 내보내기 위한 출력 스트림
     int port = myId + 50000;
     PrintWriter printWriter; // 값을 전달할때 사용
 
@@ -167,7 +166,6 @@ public class MessageQueue extends Thread {
     */
 
   public static void dequeue() {
-    int result = -1;
     while (msgQueue.size() > 0) {
       Message rm = msgQueue.poll();
       if (rm.getType() == 1) {
