@@ -189,4 +189,52 @@ public class ControllerTest {
     Assert.assertEquals(ExpectedResult, ActualResult);
     Assert.assertNull(c.getPayment());
   }
+
+    public void testGetK() {
+    }
+
+    public void testSetK() {
+    }
+
+    public void testGetPayment() {
+    }
+
+    public void testSetPayment() {
+    }
+
+    public void testGetBasket() {
+    }
+
+    public void testSetBasket() {
+    }
+
+    public void testGetDel() {
+    }
+
+    public void testSetDel() {
+    }
+
+    public void testGetTitleList() {
+    }
+
+    public void testSetTitleList() {
+    }
+
+    public void testGetDvmStack() {
+    }
+
+    public void testSetDvmStack() {
+    }
+
+    public void testGetCm() {
+    }
+
+    public void testSetCm() {
+    }
+
+    public void testGetMq() {
+    }
+
+    public void testSetMq() {
+    }
 }

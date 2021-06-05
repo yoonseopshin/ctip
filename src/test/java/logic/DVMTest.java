@@ -36,4 +36,40 @@ public class DVMTest {
     DVM.setCurrentID(2);
     Assert.assertEquals(2, DVM.getCurrentID());
   }
+
+    public void testGetId() {
+    }
+
+    public void testSetId() {
+    }
+
+    public void testTestGetAddressX() {
+    }
+
+    public void testSetAddressX() {
+    }
+
+    public void testTestGetAddressY() {
+    }
+
+    public void testSetAddressY() {
+    }
+
+    public void testTestGetCurrentID() {
+    }
+
+    public void testSetCurrentID() {
+    }
+
+    public void testGetCurrentX() {
+    }
+
+    public void testSetCurrentX() {
+    }
+
+    public void testGetCurrentY() {
+    }
+
+    public void testSetCurrentY() {
+    }
 }

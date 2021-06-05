@@ -13,4 +13,37 @@ public class CNumberTest {
     int ActualResult = CN.getCNumberT();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
+
+  public void testRandNumber() {
+  }
+
+  public void testGetTitleId() {
+  }
+
+  public void testSetTitleId() {
+  }
+
+  public void testGetDvmID() {
+  }
+
+  public void testSetDvmID() {
+  }
+
+  public void testGetCNumberT() {
+  }
+
+  public void testSetCNumberT() {
+  }
+
+  public void testGetcNumberT() {
+  }
+
+  public void testSetcNumberT() {
+  }
+
+  public void testGetRand() {
+  }
+
+  public void testSetRand() {
+  }
 }

@@ -61,4 +61,37 @@ public class CNumberManagerTest {
     int ActualResult = CM.getChCList().size();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
+
+  public void testTestPopCNumber() {
+  }
+
+  public void testTestCheckCNumber() {
+  }
+
+  public void testTestCheckCNumber2() {
+  }
+
+  public void testTestAddChCNumber() {
+  }
+
+  public void testTestAddCNumber() {
+  }
+
+  public void testGetMNumber() {
+  }
+
+  public void testSetMNumber() {
+  }
+
+  public void testGetCList() {
+  }
+
+  public void testSetCList() {
+  }
+
+  public void testGetChCList() {
+  }
+
+  public void testSetChCList() {
+  }
 }
