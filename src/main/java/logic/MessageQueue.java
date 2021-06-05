@@ -76,6 +76,7 @@ public class MessageQueue extends Thread {
 
         printWriter.write("1");
         printWriter.flush(); //메시지 정상 전송을 클라이언트에게 알려줌
+        in.close();
         socket.close(); // 소캣을 종료시켜 접속된 클라이언트 종료시킴.
         dequeue();
       }
@@ -123,6 +124,7 @@ public class MessageQueue extends Thread {
         String returnMsg = in.readLine();
         //객체 정리하는 부분
         socket.close();
+        in.close();
         //서버에서 확인메시지 리시브 및 완료시 브레이크
         if (returnMsg.equals("1")) {
           break;
