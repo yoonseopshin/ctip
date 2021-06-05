@@ -54,21 +54,53 @@ public class PaymentTest {
     assertNull(payment.getErrorLog());
   }
 
-    public void testGetTitleId() {
-    }
+  @Test
+  public void testGetTitleId() {
+    Payment.setTitleId(4);
+    int ExpectedResult = 4;
+    int ActualResult = Payment.getTitleId();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+  }
 
-    public void testSetTitleId() {
-    }
+  @Test
+  public void testSetTitleId() {
+    int ExpectedResult = 4;
+    Payment.setTitleId(2);
+    ExpectedResult = 2;
+    int ActualResult = Payment.getTitleId();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+  }
 
-    public void testGetDVMId() {
-    }
+  @Test
+  public void testGetDvmId() {
+    Payment.setDvmId(3);
+    int ExpectedResult = 3;
+    int ActualResult = Payment.getDvmId();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+  }
 
-    public void testSetDVMId() {
-    }
+  @Test
+  public void testSetDvmId() {
+    int ExpectedResult = 4;
+    Payment.setDvmId(2);
+    ExpectedResult = 2;
+    int ActualResult = Payment.getDvmId();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+  }
 
     public void testGetErrorLog() {
+      Payment.setErrorLog("hello");
+      String ExpectedResult = "hello";
+      String ActualResult = Payment.getErrorLog();
+      Assert.assertEquals(ExpectedResult, ActualResult);
     }
 
     public void testSetErrorLog() {
+      String ExpectedResult= null;
+      Payment.setErrorLog("hello");
+      ExpectedResult = "hello";
+      String ActualResult = Payment.getErrorLog();
+      Assert.assertNotNull(ExpectedResult);
+      Assert.assertEquals(ExpectedResult, ActualResult);
     }
 }
