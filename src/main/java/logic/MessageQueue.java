@@ -73,27 +73,7 @@ public class MessageQueue extends Thread {
             Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),
             Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));
         msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
-        /*if (message.getType() == 1) {
-          System.out.println("재고요청메시지 수신됨");
-        }
-        if (message.getType() == 2) {
-          System.out.println("재고응답메시지 수신됨");
-        }
-        if (message.getType() == 3) {
-          System.out.println("인증번호메시지 수신됨");
-        }
-        if (message.getType() == 4) {
-          System.out.println("위치요청메시지 수신됨");
-        }
-        if (message.getType() == 5) {
-          System.out.println("위치응답메시지 수신됨");
-        }
-        if (message.getType() == 6) {
-          System.out.println("판매확인요청메시지 수신됨");
-        }
-        if (message.getType() == 7) {
-          System.out.println("판매확인메시지 수신됨");
-        }*/
+
         printWriter.write("1");
         printWriter.flush(); //메시지 정상 전송을 클라이언트에게 알려줌
         socket.close(); // 소캣을 종료시켜 접속된 클라이언트 종료시킴.
