@@ -9,7 +9,7 @@ public class CNumber {
   private int titleId;
   private int DvmID;
   private int cNumberT;
-  private static Random rand=new SecureRandom();
+  private static Random rand = new SecureRandom();
 
   /*
   {
@@ -68,7 +68,7 @@ public class CNumber {
     numStr += Integer.toString(this.DvmID - 1);
     for (int i = 3; i < len; i++) {
       //0~9 까지 난수 생성
-      ran = Integer.toString(this.rand.nextInt(10));
+      ran = Integer.toString(rand.nextInt(10));
       numStr += ran;
     }
     return numStr;
