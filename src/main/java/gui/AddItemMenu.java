@@ -215,3 +215,4 @@ public class AddItemMenu extends JFrame implements ActionListener {
   }
 
 }
+
