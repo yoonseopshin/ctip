@@ -80,7 +80,7 @@ public class Title {
     this.itemList = itemList;
   }
 
-  public Integer getHold() {
+  public int getHold() {
     return hold;
   }
 
