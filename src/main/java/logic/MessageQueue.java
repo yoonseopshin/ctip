@@ -73,7 +73,7 @@ public class MessageQueue extends Thread {
             Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),
             Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));
         msgQueue.offer(message); // 전송받은 메시지를 큐에 집어넣기
-        if (message.getType() == 1) {
+        /*if (message.getType() == 1) {
           System.out.println("재고요청메시지 수신됨");
         }
         if (message.getType() == 2) {
@@ -93,7 +93,7 @@ public class MessageQueue extends Thread {
         }
         if (message.getType() == 7) {
           System.out.println("판매확인메시지 수신됨");
-        }
+        }*/
         printWriter.write("1");
         printWriter.flush(); //메시지 정상 전송을 클라이언트에게 알려줌
         socket.close(); // 소캣을 종료시켜 접속된 클라이언트 종료시킴.
@@ -190,7 +190,7 @@ public class MessageQueue extends Thread {
       if (rm.getType() == 1) {
         Message sm = new Message(DVM.getCurrentID());
         sm.setMsg(rm.getMyId(), 2, Controller.getTitleList().get(rm.getTitle() - 1).checkStock());
-        System.out.println("재고 요청 응답 완료");
+        //System.out.println("재고 요청 응답 완료");
       } else if (rm.getType() == 2) {
         stkMsgQueue.offer(rm);
       } else if (rm.getType() == 3) {
@@ -201,7 +201,7 @@ public class MessageQueue extends Thread {
       } else if (rm.getType() == 4) {
         Message sm = new Message(DVM.getCurrentID());
         sm.setMsg(rm.getMyId(), 5, DVM.getCurrentX(), DVM.getCurrentY());
-        System.out.println("위치 요청 메시지 응답 완료");
+        //System.out.println("위치 요청 메시지 응답 완료");
       } else if (rm.getType() == 5) {
         locMsgQueue.offer(rm);
       } else if (rm.getType() == 6) {
@@ -221,7 +221,7 @@ public class MessageQueue extends Thread {
         if (stk.isBoolData()) {
           Message sm = new Message(DVM.getCurrentID());
           sm.setMsg(stk.getMyId(), 4);
-          System.out.println("위치 요청 메시지 전송 완료");
+          //System.out.println("위치 요청 메시지 전송 완료");
           i++;
         }
       }
@@ -234,7 +234,7 @@ public class MessageQueue extends Thread {
           Message loc = locMsgQueue.poll();
           Controller.getDvmStack()
               .push(new DVM(loc.getMyId(), loc.getXAddress(), loc.getYAddress()));
-          System.out.println("위치 응답 메시지 수신 완료");
+          //System.out.println("위치 응답 메시지 수신 완료");
         }
       }
       Controller.getDvmStack().push(new DVM(-1, 0.0, 0.0));
