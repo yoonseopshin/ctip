@@ -1,6 +1,5 @@
 package logic;
 
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
 
@@ -26,7 +25,6 @@ public class CNumber {
     this.titleId = titleId;
     this.DvmID = id;
   }
-
 
   public int createCNumber() {
     //수정
@@ -106,12 +104,12 @@ public class CNumber {
     this.cNumberT = cNumberT;
   }
 
-  public Random getRand() {
+  public static Random getRand() {
     return rand;
   }
 
-  public void setRand(Random rand) {
-    this.rand = rand;
+  public static void setRand(Random rand) {
+    CNumber.rand = rand;
   }
 
 }
