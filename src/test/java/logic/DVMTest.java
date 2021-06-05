@@ -34,8 +34,8 @@ public class DVMTest {
 
   @Test
   public void testGetCurrentID() {
-    DVM.setCurrentID(2);
-    Assert.assertEquals(2, DVM.getCurrentID());
+    DVM.setCurrentID(1);
+    Assert.assertEquals(1, DVM.getCurrentID());
   }
   @Test
   public void testGetId() {

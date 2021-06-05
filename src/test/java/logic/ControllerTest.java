@@ -197,7 +197,7 @@ public class ControllerTest {
     int ExpectedResult = -666;
     int ActualResult = c.getBasket();
     Assert.assertEquals(ExpectedResult, ActualResult);
-    Assert.assertNull(c.getPayment());
+    Assert.assertEquals(0,Controller.getDvmStack().size());
   }
 
   @Test

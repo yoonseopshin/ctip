@@ -9,10 +9,10 @@ public class MessageTest {
 
   @Test
   public void testSetMsg1() {
-    msg.setMsg(1, 1, 1);
+    msg.setMsg(2, 1, 1);
     Message testMsg = new Message(DVM.getCurrentID());
     Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
-    testMsg.setTargetId(1);
+    testMsg.setTargetId(2);
     Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());
     testMsg.setType(1);
     Assert.assertEquals(testMsg.getType(),msg.getType());
@@ -30,10 +30,10 @@ public class MessageTest {
 
   @Test
   public void testSetMsg2() {
-    msg.setMsg(1, 2, true);
+    msg.setMsg(2, 2, true);
     Message testMsg = new Message(DVM.getCurrentID());
     Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
-    testMsg.setTargetId(1);
+    testMsg.setTargetId(2);
     Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());
     testMsg.setType(2);
     Assert.assertEquals(testMsg.getType(),msg.getType());
@@ -51,10 +51,10 @@ public class MessageTest {
 
   @Test
   public void testSetMsg3() {
-    msg.setMsg(1, 3, 1, 971125);
+    msg.setMsg(2, 3, 1, 971125);
     Message testMsg = new Message(DVM.getCurrentID());
     Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
-    testMsg.setTargetId(1);
+    testMsg.setTargetId(2);
     Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());
     testMsg.setType(3);
     Assert.assertEquals(testMsg.getType(),msg.getType());
@@ -72,10 +72,10 @@ public class MessageTest {
 
   @Test
   public void testSetMsg4() {
-    msg.setMsg(1, 4);
+    msg.setMsg(2, 4);
     Message testMsg = new Message(DVM.getCurrentID());
     Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
-    testMsg.setTargetId(1);
+    testMsg.setTargetId(2);
     Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());
     testMsg.setType(4);
     Assert.assertEquals(testMsg.getType(),msg.getType());
@@ -93,10 +93,10 @@ public class MessageTest {
 
   @Test
   public void testSetMsg5() {
-    msg.setMsg(1, 5, 1.0, 1.0);
+    msg.setMsg(2, 5, 1.0, 1.0);
     Message testMsg = new Message(DVM.getCurrentID());
     Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
-    testMsg.setTargetId(1);
+    testMsg.setTargetId(2);
     Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());
     testMsg.setType(5);
     Assert.assertEquals(testMsg.getType(),msg.getType());
@@ -114,10 +114,10 @@ public class MessageTest {
 
   @Test
   public void testSetMsg6() {
-    msg.setMsg(1, 6, 971125);
+    msg.setMsg(2, 6, 971125);
     Message testMsg = new Message(DVM.getCurrentID());
     Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
-    testMsg.setTargetId(1);
+    testMsg.setTargetId(2);
     Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());
     testMsg.setType(6);
     Assert.assertEquals(testMsg.getType(),msg.getType());
@@ -135,10 +135,10 @@ public class MessageTest {
 
   @Test
   public void testSetMsg7() {
-    msg.setMsg(1, 7, 971125, true);
+    msg.setMsg(2, 7, 971125, true);
     Message testMsg = new Message(DVM.getCurrentID());
     Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
-    testMsg.setTargetId(1);
+    testMsg.setTargetId(2);
     Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());
     testMsg.setType(7);
     Assert.assertEquals(testMsg.getType(),msg.getType());
@@ -156,10 +156,10 @@ public class MessageTest {
 
   @Test
   public void testTranslate() {
-    msg.translate(1,1,1,1,1,1,1,true);
+    msg.translate(1,2,1,1,1,1,1,true);
     Message testMsg = new Message(DVM.getCurrentID());
     Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
-    testMsg.setTargetId(1);
+    testMsg.setTargetId(2);
     Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());
     testMsg.setType(1);
     Assert.assertEquals(testMsg.getType(),msg.getType());
