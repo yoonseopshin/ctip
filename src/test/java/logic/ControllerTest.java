@@ -184,7 +184,9 @@ public class ControllerTest {
   @Test
   public void testCancelItem() {
     c.setBasket(10);
-    c.setPayment(new Payment(c.getBasket(), 1));
+    Controller.getDvmStack().push(new DVM(1, 1.0, 1.0));
+    Assert.assertEquals(1, Controller.getDvmStack().size());
+    Assert.assertEquals(10, c.getBasket());
     c.cancelItem();
     int ExpectedResult = -666;
     int ActualResult = c.getBasket();
@@ -196,6 +198,11 @@ public class ControllerTest {
   public void testCancelPay() {
     c.setBasket(10);
     c.setPayment(new Payment(c.getBasket(), 1));
+    Controller.getDvmStack().push(new DVM(1, 1.0, 1.0));
+    Assert.assertEquals(1, Controller.getDvmStack().size());
+    Assert.assertEquals(10, c.getBasket());
+    Assert.assertEquals(1, c.getPayment().getDVMId());
+    Assert.assertEquals(10, c.getPayment().getTitleId());
     c.cancelPay();
     int ExpectedResult = -666;
     int ActualResult = c.getBasket();
@@ -209,7 +216,9 @@ public class ControllerTest {
   @Test
   public void testInit() {
     c.setBasket(10);
-    c.setPayment(new Payment(c.getBasket(), 1));
+    Controller.getDvmStack().push(new DVM(1, 1.0, 1.0));
+    Assert.assertEquals(1, Controller.getDvmStack().size());
+    Assert.assertEquals(10, c.getBasket());
     c.init();
     int ExpectedResult = -666;
     int ActualResult = c.getBasket();
@@ -236,30 +245,34 @@ public class ControllerTest {
 
   @Test
   public void testGetTitleList() {
-    ArrayList<Title> t= new ArrayList<>();
-    t.add(new Title("A",700));
+    ArrayList<Title> temp = Controller.getTitleList();
+    ArrayList<Title> t = new ArrayList<>();
+    t.add(new Title("A", 700));
     Controller.setTitleList(t);
-
-  }
-
-  @Test
-  public void testSetTitleList() {
+    Assert.assertEquals(1, Controller.getTitleList().size());
+    Assert.assertEquals("A", Controller.getTitleList().get(0).getName());
+    Assert.assertEquals(700, Controller.getTitleList().get(0).getPrice());
+    Controller.setTitleList(temp);
   }
 
   @Test
   public void testGetCm() {
-  }
-
-  @Test
-  public void testSetCm() {
+    CNumberManager temp = Controller.getCm();
+    CNumberManager cm = new CNumberManager();
+    cm.setMNumber(971125);
+    Controller.setCm(cm);
+    Assert.assertNotNull(Controller.getCm());
+    Assert.assertEquals(971125, Controller.getCm().getMNumber());
+    Assert.assertEquals(cm, Controller.getCm());
+    Controller.setCm(temp);
   }
 
   @Test
   public void testGetMq() {
+    MessageQueue temp = Controller.getMq();
+    MessageQueue mq = new MessageQueue();
+    Controller.setMq(mq);
+    Assert.assertEquals(mq, Controller.getMq());
+    Controller.setMq(temp);
   }
-
-  @Test
-  public void testSetMq() {
-  }
-
 }
