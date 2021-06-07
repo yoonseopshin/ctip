@@ -181,12 +181,24 @@ public class ControllerTest {
 
   @Test
   public void testCancelItem() {
-
+    c.setBasket(10);
+    c.setPayment(new Payment(c.getBasket(), 1));
+    c.cancelItem();
+    int ExpectedResult = -666;
+    int ActualResult = c.getBasket();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+    Assert.assertEquals(0,Controller.getDvmStack().size());
   }
 
   @Test
   public void testCancelPay() {
-
+    c.setBasket(10);
+    c.setPayment(new Payment(c.getBasket(), 1));
+    c.cancelPay();
+    int ExpectedResult = -666;
+    int ActualResult = c.getBasket();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+    Assert.assertEquals(0,Controller.getDvmStack().size());
   }
 
   @Test
@@ -211,14 +223,6 @@ public class ControllerTest {
 
   @Test
   public void testSetPayment() {
-  }
-
-  @Test
-  public void testGetBasket() {
-  }
-
-  @Test
-  public void testSetBasket() {
   }
 
   @Test
