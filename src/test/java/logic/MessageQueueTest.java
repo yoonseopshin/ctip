@@ -29,12 +29,12 @@ public class MessageQueueTest {
         queue.msgReceive(1);
         queue.start();
         queue.interrupt();
-        while (queue.isAlive()){}
       }
     };
     MessageQueue.getStkMsgQueue().clear();
     thread.start();
     msg.setMsg(1,2, true);
+    while(queue.isAlive()){}
     thread.interrupt();
     Message rm = MessageQueue.getStkMsgQueue().poll();
     Assert.assertEquals(msg.getTargetId(), rm.getTargetId());
