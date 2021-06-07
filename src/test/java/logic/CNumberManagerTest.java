@@ -3,6 +3,8 @@ package logic;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 public class CNumberManagerTest {
 
   private CNumberManager CM = new CNumberManager();
@@ -70,6 +72,11 @@ public class CNumberManagerTest {
   }
 
   public void testGetCList() {
+    CNumber cnumber = new CNumber(1, 1);
+    cnumber.setcNumberT(111111);
+    HashMap<Integer, CNumber> cList = new HashMap<>();
+    cList.put(1,cnumber);
+    Assert.assertEquals(cList,CM.getCList());
   }
 
   public void testGetChCList() {
