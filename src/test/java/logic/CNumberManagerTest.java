@@ -63,24 +63,30 @@ public class CNumberManagerTest {
     int ActualResult = CM.getChCList().size();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
-
+  @Test
   public void testGetMNumber() {
     CM.setMNumber(123456);
     int ExpectedResult = 123456;
     int ActualResult = CM.getMNumber();
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
-
+  @Test
   public void testGetCList() {
     CNumber cnumber = new CNumber(1, 1);
     cnumber.setcNumberT(111111);
     HashMap<Integer, CNumber> cList = new HashMap<>();
     cList.put(1,cnumber);
+    CM.setCList(cList);
     Assert.assertEquals(cList,CM.getCList());
   }
 
+  @Test
   public void testGetChCList() {
+    CNumber cnumber = new CNumber(1, 1);
+    cnumber.setcNumberT(111111);
+    HashMap<Integer, CNumber> chList = new HashMap<>();
+    chList.put(1, cnumber);
+    CM.setChCList(chList);
+    Assert.assertEquals(chList, CM.getChCList());
   }
-
-
 }
