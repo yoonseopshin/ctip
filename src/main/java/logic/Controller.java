@@ -449,7 +449,7 @@ public class Controller {
     }
   }
 
-  private void cancelPay() {
+  public void cancelPay() {
     payment.init();
     init();
     returnMain();
