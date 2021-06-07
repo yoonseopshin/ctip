@@ -28,9 +28,7 @@ public class MessageQueueTest {
     thread.start();
     msg.setMsg(1,2, true);
     thread.interrupt();
-    queue.start();
-    queue.interrupt();
-    while(queue.isAlive()){}
+    while(MessageQueue.getStkMsgQueue().isEmpty()){}
     Message rm = MessageQueue.getStkMsgQueue().poll();
     Assert.assertEquals(msg.getTargetId(), rm.getTargetId());
     Assert.assertEquals(msg.getType(), rm.getType());
