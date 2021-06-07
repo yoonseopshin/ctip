@@ -23,6 +23,10 @@ public class MessageQueueTest {
 
   @Test
   public void testMsgReceive() {
+    queue.start();
+    msg.setMsg(1,2, true);
+    queue.interrupt();
+    MessageQueue.getStkMsgQueue().clear();
     Thread thread = new Thread(() -> queue.msgReceive(1));
     MessageQueue.getStkMsgQueue().clear();
     thread.start();
