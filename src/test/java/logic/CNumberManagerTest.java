@@ -63,20 +63,17 @@ public class CNumberManagerTest {
   }
 
   public void testGetMNumber() {
-  }
-
-  public void testSetMNumber() {
+    CM.setMNumber(123456);
+    int ExpectedResult = 123456;
+    int ActualResult = CM.getMNumber();
+    Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
   public void testGetCList() {
   }
 
-  public void testSetCList() {
-  }
-
   public void testGetChCList() {
   }
 
-  public void testSetChCList() {
-  }
+
 }
