@@ -23,14 +23,19 @@ public class MessageQueueTest {
 
   @Test
   public void testMsgReceive() {
-    Thread thread = new Thread(() -> queue.msgReceive(1));
+    Thread thread = new Thread(){
+      @Override
+      public void run() {
+        queue.msgReceive(1);
+        queue.start();
+        queue.interrupt();
+        while (queue.isAlive()){}
+      }
+    };
     MessageQueue.getStkMsgQueue().clear();
     thread.start();
     msg.setMsg(1,2, true);
     thread.interrupt();
-    queue.start();
-    queue.interrupt();
-    while(queue.isAlive()){}
     Message rm = MessageQueue.getStkMsgQueue().poll();
     Assert.assertEquals(msg.getTargetId(), rm.getTargetId());
     Assert.assertEquals(msg.getType(), rm.getType());
