@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-05-30T13:04:36.311">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.26.0" timestamp="2021-06-07T13:05:19.766">
 <file name="/home/runner/work/ctip/ctip/src/main/java/gui/AddItemMenu.java">
 <violation beginline="18" endline="217" begincolumn="8" endcolumn="1" rule="MissingSerialVersionUID" ruleset="Error Prone" package="gui" class="AddItemMenu" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#missingserialversionuid" priority="3">
 Classes implementing Serializable should set a serialVersionUID
@@ -329,68 +329,57 @@ Avoid using Literals in Conditional Statements
 Avoid using Literals in Conditional Statements
 </violation>
 </file>
-<file name="/home/runner/work/ctip/ctip/src/main/java/logic/CNumber.java">
-<violation beginline="12" endline="12" begincolumn="18" endcolumn="21" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="logic" class="CNumber" variable="rand" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
-Found non-transient, non-static member. Please mark as transient or provide accessors.
-</violation>
-<violation beginline="14" endline="21" begincolumn="3" endcolumn="3" rule="NonStaticInitializer" ruleset="Error Prone" package="logic" class="CNumber" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nonstaticinitializer" priority="3">
-Non-static initializers are confusing
-</violation>
-</file>
 <file name="/home/runner/work/ctip/ctip/src/main/java/logic/Controller.java">
-<violation beginline="34" endline="34" begincolumn="20" endcolumn="23" rule="NullAssignment" ruleset="Error Prone" package="logic" class="Controller" method="Controller" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
-Assigning an Object to null is a code smell.  Consider refactoring.
-</violation>
-<violation beginline="144" endline="144" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="inputCNumber" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="149" endline="149" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="inputCNumber" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="220" endline="220" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="231" endline="231" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="221" endline="221" begincolumn="62" endcolumn="63" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="232" endline="232" begincolumn="62" endcolumn="63" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="232" endline="235" begincolumn="11" endcolumn="17" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" variable="count" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'count' (lines '232'-'235').
+<violation beginline="245" endline="248" begincolumn="11" endcolumn="17" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" variable="count" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'count' (lines '245'-'248').
 </violation>
-<violation beginline="235" endline="235" begincolumn="11" endcolumn="17" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" variable="count" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'count' (lines '235'-'235').
+<violation beginline="248" endline="248" begincolumn="11" endcolumn="17" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" variable="count" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'count' (lines '248'-'248').
 </violation>
-<violation beginline="254" endline="254" begincolumn="51" endcolumn="51" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="272" endline="272" begincolumn="21" endcolumn="21" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="277" endline="277" begincolumn="26" endcolumn="26" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="276" endline="278" begincolumn="13" endcolumn="58" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" variable="returnDate" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'returnDate' (lines '276'-'278').
+</violation>
+<violation beginline="301" endline="301" begincolumn="26" endcolumn="26" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="283" endline="283" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="309" endline="309" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="manEditItem" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="310" endline="310" begincolumn="18" endcolumn="18" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="selectPayment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="340" endline="340" begincolumn="18" endcolumn="18" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="selectPayment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="314" endline="314" begincolumn="18" endcolumn="18" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="selectPayment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="344" endline="344" begincolumn="18" endcolumn="18" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="selectPayment" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="357" endline="357" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="cardPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="391" endline="391" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="cardPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="400" endline="400" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="smartPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="438" endline="438" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="smartPay" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="467" endline="467" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="reqFindDVM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="511" endline="511" begincolumn="23" endcolumn="23" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="reqFindDVM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="470" endline="505" begincolumn="11" endcolumn="15" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="Controller" method="reqFindDVM" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'i' (lines '470'-'505').
+<violation beginline="514" endline="551" begincolumn="11" endcolumn="15" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="Controller" method="reqFindDVM" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'i' (lines '514'-'551').
 </violation>
-<violation beginline="489" endline="505" begincolumn="9" endcolumn="11" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="Controller" method="reqFindDVM" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'i' (lines '489'-'505').
+<violation beginline="535" endline="551" begincolumn="9" endcolumn="11" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="Controller" method="reqFindDVM" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'i' (lines '535'-'551').
 </violation>
-<violation beginline="491" endline="491" begincolumn="30" endcolumn="30" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="reqFindDVM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="537" endline="537" begincolumn="30" endcolumn="30" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="Controller" method="reqFindDVM" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="549" endline="549" begincolumn="15" endcolumn="18" rule="NullAssignment" ruleset="Error Prone" package="logic" class="Controller" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
-Assigning an Object to null is a code smell.  Consider refactoring.
 </violation>
 </file>
 <file name="/home/runner/work/ctip/ctip/src/main/java/logic/Message.java">
@@ -417,106 +406,68 @@ Avoid using Literals in Conditional Statements
 </violation>
 </file>
 <file name="/home/runner/work/ctip/ctip/src/main/java/logic/MessageQueue.java">
-<violation beginline="34" endline="37" begincolumn="7" endcolumn="40" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="getIP" variable="local" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'local' (lines '34'-'37').
+<violation beginline="30" endline="33" begincolumn="7" endcolumn="33" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="getIP" variable="ip" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'ip' (lines '30'-'33').
 </violation>
-<violation beginline="35" endline="38" begincolumn="7" endcolumn="33" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="getIP" variable="ip" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'ip' (lines '35'-'38').
+<violation beginline="42" endline="56" begincolumn="9" endcolumn="39" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'socket' (lines '42'-'56').
 </violation>
-<violation beginline="47" endline="63" begincolumn="9" endcolumn="39" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'socket' (lines '47'-'63').
+<violation beginline="43" endline="49" begincolumn="7" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="server_socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'server_socket' (lines '43'-'49').
 </violation>
-<violation beginline="48" endline="56" begincolumn="7" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="server_socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'server_socket' (lines '48'-'56').
-</violation>
-<violation beginline="49" endline="49" begincolumn="20" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+<violation beginline="44" endline="44" begincolumn="20" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this BufferedReader object are closed after use
 </violation>
-<violation beginline="50" endline="50" begincolumn="17" endcolumn="19" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+<violation beginline="46" endline="46" begincolumn="17" endcolumn="27" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="printWriter" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this PrintWriter object are closed after use
 </violation>
-<violation beginline="50" endline="122" begincolumn="17" endcolumn="26" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'out' (lines '50'-'122').
+<violation beginline="57" endline="100" begincolumn="9" endcolumn="105" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="printWriter" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'printWriter' (lines '57'-'100').
 </violation>
-<violation beginline="52" endline="52" begincolumn="23" endcolumn="39" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="objectInputStream" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this ObjectInputStream object are closed after use
+<violation beginline="103" endline="111" begincolumn="9" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'socket' (lines '103'-'111').
 </violation>
-<violation beginline="53" endline="53" begincolumn="17" endcolumn="27" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" variable="printWriter" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
-Ensure that resources like this PrintWriter object are closed after use
-</violation>
-<violation beginline="76" endline="76" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="79" endline="79" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="82" endline="82" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="85" endline="85" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="88" endline="88" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="91" endline="91" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="94" endline="94" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgReceive" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="125" endline="133" begincolumn="9" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'socket' (lines '125'-'133').
-</violation>
-<violation beginline="126" endline="126" begincolumn="20" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+<violation beginline="104" endline="104" begincolumn="20" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this BufferedReader object are closed after use
 </violation>
-<violation beginline="127" endline="127" begincolumn="17" endcolumn="19" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+<violation beginline="105" endline="105" begincolumn="17" endcolumn="19" rule="CloseResource" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this PrintWriter object are closed after use
 </violation>
-<violation beginline="129" endline="174" begincolumn="9" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" variable="port" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'port' (lines '129'-'174').
+<violation beginline="107" endline="156" begincolumn="9" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" variable="port" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'port' (lines '107'-'156').
 </violation>
-<violation beginline="153" endline="153" begincolumn="32" endcolumn="32" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="135" endline="135" begincolumn="32" endcolumn="32" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="159" endline="159" begincolumn="32" endcolumn="32" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="141" endline="141" begincolumn="32" endcolumn="32" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="msgSend" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="187" endline="253" begincolumn="9" endcolumn="19" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" variable="result" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'result' (lines '187'-'253').
+<violation beginline="171" endline="171" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="190" endline="190" begincolumn="27" endcolumn="27" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="175" endline="175" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="178" endline="178" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="183" endline="183" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="187" endline="187" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="190" endline="190" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
 <violation beginline="194" endline="194" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="196" endline="196" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
+<violation beginline="202" endline="209" begincolumn="11" endcolumn="13" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'i' (lines '202'-'209').
 </violation>
-<violation beginline="201" endline="201" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="205" endline="205" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="207" endline="207" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="211" endline="211" begincolumn="34" endcolumn="34" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
-Avoid using Literals in Conditional Statements
-</violation>
-<violation beginline="218" endline="225" begincolumn="11" endcolumn="13" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'i' (lines '218'-'225').
-</violation>
-<violation beginline="225" endline="225" begincolumn="11" endcolumn="13" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'i' (lines '225'-'225').
-</violation>
-</file>
-<file name="/home/runner/work/ctip/ctip/src/main/java/logic/Payment.java">
-<violation beginline="59" endline="59" begincolumn="21" endcolumn="24" rule="NullAssignment" ruleset="Error Prone" package="logic" class="Payment" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#nullassignment" priority="3">
-Assigning an Object to null is a code smell.  Consider refactoring.
+<violation beginline="209" endline="209" begincolumn="11" endcolumn="13" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="logic" class="MessageQueue" method="dequeue" variable="i" externalInfoUrl="https://pmd.github.io/pmd-6.26.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'i' (lines '209'-'209').
 </violation>
 </file>
 <file name="/home/runner/work/ctip/ctip/src/main/java/logic/Title.java">
