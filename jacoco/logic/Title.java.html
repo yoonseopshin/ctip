@@ -45,52 +45,47 @@ public class Title {
 
   public void addItem(Item item) {
 <span class="fc" id="L47">    this.itemList.add(item);</span>
-<span class="fc" id="L48">    this.itemList.sort(new Comparator&lt;Item&gt;() {</span>
-      @Override
-      public int compare(Item o1, Item o2) {
-<span class="fc" id="L51">        return o1.getExpirationDate() - o2.getExpirationDate();</span>
-      }
-    });
-<span class="fc" id="L54">  }</span>
+<span class="fc" id="L48">    this.itemList.sort(Comparator.comparingInt(Item::getExpirationDate));</span>
+<span class="fc" id="L49">  }</span>
 
   public void deleteItem(ArrayList&lt;Integer&gt; items) {
-<span class="fc" id="L57">    ArrayList&lt;Item&gt; rm = new ArrayList&lt;Item&gt;();</span>
-<span class="fc bfc" id="L58" title="All 2 branches covered.">    for (int i = 0; i &lt; items.size(); i++) {</span>
-<span class="fc" id="L59">      rm.add(itemList.get(items.get(i)));</span>
+<span class="fc" id="L52">    ArrayList&lt;Item&gt; rm = new ArrayList&lt;Item&gt;();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">    for (int i = 0; i &lt; items.size(); i++) {</span>
+<span class="fc" id="L54">      rm.add(itemList.get(items.get(i)));</span>
     }
-<span class="fc" id="L61">    itemList.removeAll(rm);</span>
-<span class="fc" id="L62">  }</span>
+<span class="fc" id="L56">    itemList.removeAll(rm);</span>
+<span class="fc" id="L57">  }</span>
 
   public String getName() {
-<span class="nc" id="L65">    return name;</span>
+<span class="fc" id="L60">    return name;</span>
   }
 
   public void setName(String name) {
-<span class="nc" id="L69">    this.name = name;</span>
-<span class="nc" id="L70">  }</span>
+<span class="fc" id="L64">    this.name = name;</span>
+<span class="fc" id="L65">  }</span>
 
   public int getPrice() {
-<span class="nc" id="L73">    return price;</span>
+<span class="fc" id="L68">    return price;</span>
   }
 
   public void setPrice(int price) {
-<span class="nc" id="L77">    this.price = price;</span>
-<span class="nc" id="L78">  }</span>
+<span class="fc" id="L72">    this.price = price;</span>
+<span class="fc" id="L73">  }</span>
 
   public ArrayList&lt;Item&gt; getItemList() {
-<span class="fc" id="L81">    return itemList;</span>
+<span class="fc" id="L76">    return itemList;</span>
   }
 
   public void setItemList(ArrayList&lt;Item&gt; itemList) {
-<span class="nc" id="L85">    this.itemList = itemList;</span>
-<span class="nc" id="L86">  }</span>
+<span class="fc" id="L80">    this.itemList = itemList;</span>
+<span class="fc" id="L81">  }</span>
 
-  public Integer getHold() {
-<span class="fc" id="L89">    return hold;</span>
+  public int getHold() {
+<span class="fc" id="L84">    return hold;</span>
   }
 
   public void setHold(Integer hold) {
-<span class="nc" id="L93">    this.hold = hold;</span>
-<span class="nc" id="L94">  }</span>
+<span class="fc" id="L88">    this.hold = hold;</span>
+<span class="fc" id="L89">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
