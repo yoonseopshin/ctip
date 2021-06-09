@@ -283,4 +283,13 @@ public class MessageQueue extends Thread {
   public static void setLocMsgQueue(Queue<Message> locMsgQueue) {
     MessageQueue.locMsgQueue = locMsgQueue;
   }
+
+  public static Queue<Message> getcNMsgQueue() {
+    return cNMsgQueue;
+  }
+
+  public static void setcNMsgQueue(Queue<Message> cNMsgQueue) {
+    MessageQueue.cNMsgQueue = cNMsgQueue;
+  }
+
 }
