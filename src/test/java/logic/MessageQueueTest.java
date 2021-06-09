@@ -21,7 +21,7 @@ public class MessageQueueTest {
     } catch (Exception e) { }
   }
 
-  @Test
+  /*@Test
   public void testMsgReceive() {
     Thread thread = new Thread(() -> queue.msgReceive(1));
     MessageQueue.getStkMsgQueue().clear();
@@ -57,7 +57,7 @@ public class MessageQueueTest {
     Assert.assertEquals(false, Controller.getTitleList().get(msg.getTitle()-1).checkStock());
     Assert.assertEquals(1, (int)(Controller.getTitleList().get(msg.getTitle()-1).getHold()));
     Assert.assertEquals(msg.getTitle(), Controller.getCm().popCNumber(msg.getCNumber()));
-  }
+  }*/
 
   @Test
   public void testDequeue() {
