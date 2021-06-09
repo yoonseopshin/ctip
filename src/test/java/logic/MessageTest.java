@@ -11,6 +11,7 @@ public class MessageTest {
   public void testSetMsg1() {
     msg.setMsg(2, 1, 1);
     Message testMsg = new Message(DVM.getCurrentID());
+    testMsg.setMyId(msg.getMyId());
     Assert.assertEquals(testMsg.getMyId(),msg.getMyId());
     testMsg.setTargetId(2);
     Assert.assertEquals(testMsg.getTargetId(),msg.getTargetId());

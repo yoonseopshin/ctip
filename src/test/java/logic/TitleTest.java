@@ -77,6 +77,10 @@ public class TitleTest {
     ExpectedResult = 0;
     ActualResult = t.getHold();
     Assert.assertEquals(ExpectedResult, ActualResult);
+    t.updateStock(0, true);
+    ExpectedResult = 0;
+    ActualResult = t.getHold();
+    Assert.assertEquals(ExpectedResult, ActualResult);
     ExpectedResult = 4;
     ActualResult = t.getItemList().size();
     Assert.assertEquals(ExpectedResult, ActualResult);

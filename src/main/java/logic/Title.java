@@ -31,8 +31,9 @@ public class Title {
         if (hold <= 0) {
           //error
           System.out.print("재고오류");
+        } else {
+          this.hold--;
         }
-        this.hold--;
       } else {
         this.itemList.remove(0);
       }
