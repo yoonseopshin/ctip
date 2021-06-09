@@ -88,7 +88,7 @@ jobs:
 
       - name: Unit Test
         id: unit_test
-        run: ./gradlew test -x jacocoTestReport
+        run: ./gradlew test -x jacocoTestReport --stacktrace
 
       - name: Notify slack test success
         if: ${{ always() && steps.unit_test.outcome == 'success' }}

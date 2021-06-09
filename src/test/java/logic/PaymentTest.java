@@ -7,10 +7,11 @@ import static org.junit.Assert.*;
 
 public class PaymentTest {
 
-  Payment payment = new Payment(1, 1);
+  Payment payment = new Payment(1, 2);
 
   @Test
   public void testCardPay() {
+    Controller.getCm().getChCList().clear();
     int ActualResult = payment.cardPay(true);
     Assert.assertTrue(ActualResult > 0);
     int ExpectedResult = -3;
@@ -27,6 +28,7 @@ public class PaymentTest {
 
   @Test
   public void testSmartPay() {
+    Controller.getCm().getChCList().clear();
     int ActualResult = payment.smartPay(true);
     Assert.assertTrue(ActualResult > 0);
     int ExpectedResult = -3;
@@ -51,6 +53,31 @@ public class PaymentTest {
     ExpectedResult = -1;
     ActualResult = payment.getDVMId();
     Assert.assertEquals(ExpectedResult, ActualResult);
-    assertNull(payment.getErrorLog());
+    Assert.assertEquals("", payment.getErrorLog());
   }
+
+  @Test
+  public void testGetTitleId() {
+    payment.setTitleId(4);
+    int ExpectedResult = 4;
+    int ActualResult = payment.getTitleId();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+  }
+
+  @Test
+  public void testGetDvmId() {
+    payment.setDVMId(3);
+    int ExpectedResult = 3;
+    int ActualResult = payment.getDVMId();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+  }
+
+  @Test
+  public void testGetErrorLog() {
+    payment.setErrorLog("hello");
+    String ExpectedResult = "hello";
+    String ActualResult = payment.getErrorLog();
+    Assert.assertEquals(ExpectedResult, ActualResult);
+  }
+
 }

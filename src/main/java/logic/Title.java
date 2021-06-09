@@ -45,12 +45,7 @@ public class Title {
 
   public void addItem(Item item) {
     this.itemList.add(item);
-    this.itemList.sort(new Comparator<Item>() {
-      @Override
-      public int compare(Item o1, Item o2) {
-        return o1.getExpirationDate() - o2.getExpirationDate();
-      }
-    });
+    this.itemList.sort(Comparator.comparingInt(Item::getExpirationDate));
   }
 
   public void deleteItem(ArrayList<Integer> items) {
@@ -85,7 +80,7 @@ public class Title {
     this.itemList = itemList;
   }
 
-  public Integer getHold() {
+  public int getHold() {
     return hold;
   }
 

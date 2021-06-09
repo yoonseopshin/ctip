@@ -15,6 +15,7 @@ public class DVMTest {
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
+
   @Test
   public void testGetAddressX() {
     dvm.setAddressX(1.23456);
@@ -33,7 +34,23 @@ public class DVMTest {
 
   @Test
   public void testGetCurrentID() {
-    DVM.setCurrentID(2);
-    Assert.assertEquals(2, DVM.getCurrentID());
+    DVM.setCurrentID(1);
+    Assert.assertEquals(1, DVM.getCurrentID());
+  }
+  @Test
+  public void testGetId() {
+    DVM.setCurrentID(1);
+    Assert.assertEquals(1,DVM.getCurrentID());
+  }
+  @Test
+  public void testTestGetAddressX() {
+    DVM.setCurrentX(1.0);
+    Assert.assertEquals(Double.toString(1.0),Double.toString(DVM.getCurrentX()));
+  }
+
+  @Test
+  public void testTestGetAddressY() {
+    DVM.setCurrentY(1.0);
+    Assert.assertEquals(Double.toString(1.0),Double.toString(DVM.getCurrentY()));
   }
 }

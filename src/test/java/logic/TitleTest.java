@@ -41,7 +41,7 @@ public class TitleTest {
   }
 
   @Test
-  public void testItemList() {
+  public void testGetItemList() {
     t.addItem(new Item(20201025));
     t.addItem(new Item(20201125));
     t.addItem(new Item(20201125));
@@ -92,8 +92,32 @@ public class TitleTest {
   @Test
   public void testCheckStock() {
     t.addItem(new Item(20201025));
-    assertTrue(t.checkStock());
+    Assert.assertTrue(t.checkStock());
     t.updateStock(0, false);
-    assertFalse(t.checkStock());
+    Assert.assertFalse(t.checkStock());
+  }
+  @Test
+  public void testGetName() {
+    t.setName("코카콜라");
+    Assert.assertEquals("코카콜라",t.getName());
+  }
+
+  @Test
+  public void testGetPrice() {
+    t.setPrice(1000);
+    Assert.assertEquals(1000,t.getPrice());
+  }
+
+  @Test
+  public void testSetItemList() {
+    ArrayList<Item> i = new ArrayList();
+    t.setItemList(i);
+    Assert.assertEquals(i, t.getItemList());
+  }
+
+  @Test
+  public void testGetHold() {
+    t.setHold(1);
+    Assert.assertEquals(1, t.getHold());
   }
 }

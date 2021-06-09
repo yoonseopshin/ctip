@@ -31,7 +31,6 @@ public class Controller {
 
   public Controller() {
     this.basket = -666;
-    this.payment = null;
     titleList.add(new Title("코카콜라", 700));
     titleList.add(new Title("나랑드사이다", 700));
     titleList.add(new Title("솔의눈", 700));
@@ -70,7 +69,9 @@ public class Controller {
       k = new Sleep();
       while (del == -1) {
         System.out.print("");
-        del = ((Sleep) k).getReturnValue();
+        if (k instanceof Sleep) {
+          del = ((Sleep) k).getReturnValue();
+        }
       }
       showMainMenu();
     } while (mq.isAlive());
@@ -88,7 +89,9 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
-      del = ((MainMenu) k).getReturnValue();
+      if (k instanceof MainMenu) {
+        del = ((MainMenu) k).getReturnValue();
+      }
     }
     if (del == -2) {
       return -2;
@@ -130,7 +133,9 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
-      del = ((InputLine) k).getReturnValue();
+      if (k instanceof  InputLine) {
+        del = ((InputLine) k).getReturnValue();
+      }
     }
     if (del == -2) {
       return -2;
@@ -166,7 +171,9 @@ public class Controller {
         + "<br>다시 입력하세요</center></html>", "이전");
     while (del2 == -1) {
       System.out.print("");
-      del2 = ((InfoUI) k).getReturnValue();
+      if (k instanceof InfoUI) {
+        del2 = ((InfoUI) k).getReturnValue();
+      }
     }
   }
 
@@ -182,7 +189,9 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
-      del = ((ManTitleMenu) k).getReturnValue();
+      if (k instanceof ManTitleMenu) {
+        del = ((ManTitleMenu) k).getReturnValue();
+      }
     }
     if (del == -2) {
       return -2;
@@ -211,7 +220,9 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
-      del = ((ManItemMenu) k).getReturnValue();
+      if (k instanceof ManItemMenu) {
+        del = ((ManItemMenu) k).getReturnValue();
+      }
     }
     if (del == -2) {
       return -2;
@@ -225,7 +236,9 @@ public class Controller {
         int del4 = -1;
         while (del4 == -1) {
           System.out.print("");
-          del4 = ((InfoUI) k).getReturnValue();
+          if (k instanceof InfoUI) {
+            del4 = ((InfoUI) k).getReturnValue();
+          }
         }
         return 1;
       }
@@ -242,7 +255,9 @@ public class Controller {
         int del4 = -1;
         while (del4 == -1) {
           System.out.print("");
-          del4 = ((InfoUI) k).getReturnValue();
+          if (k instanceof InfoUI) {
+            del4 = ((InfoUI) k).getReturnValue();
+          }
         }
         return 1;
       }
@@ -251,37 +266,50 @@ public class Controller {
       int del2 = -1;
       while (del2 == -1) {
         System.out.print("");
-        if (((AddItemMenu) k).getReturnValue() == 1) {
+        if (k instanceof AddItemMenu) {
+          del2 = ((AddItemMenu) k).getReturnValue();
+        }
+        if (del2 == 1) {
           Calendar cal = Calendar.getInstance();
           int today = (cal.get(Calendar.YEAR) * 10000)
               + ((cal.get(Calendar.MONTH) + 1) * 100) + cal.get(Calendar.DATE);
-          if (today > ((AddItemMenu) k).getReturnDate()) {
+          int returnDate = -1;
+          if (k instanceof AddItemMenu) {
+            returnDate = ((AddItemMenu) k).getReturnDate();
+          }
+          if (today > returnDate) {
             k.setVisible(false);
             k = new InfoUI("유통기한이 지난 재고를 추가할 수 없습니다.", "이전");
             int del3 = -1;
             while (del3 == -1) {
               System.out.print("");
-              del3 = ((InfoUI) k).getReturnValue();
+              if (k instanceof InfoUI) {
+                del3 = ((InfoUI) k).getReturnValue();
+              }
             }
             k.setVisible(false);
             k = new AddItemMenu();
+            del2= -1;
             continue;
           }
         }
-        del2 = ((AddItemMenu) k).getReturnValue();
       }
       if (del2 == -2) {
         return -2;
       } else if (del2 == 0) {
         return 1;
       } else if (del2 == 1) {
-        titleList.get(titleId - 1).addItem(new Item(((AddItemMenu) k).getReturnDate()));
+        if (k instanceof AddItemMenu) {
+          titleList.get(titleId - 1).addItem(new Item(((AddItemMenu) k).getReturnDate()));
+        }
         return 1;
       } else { //error
         return -1;
       }
     } else if (del == 2) { //delete item
-      titleList.get(titleId - 1).deleteItem(((ManItemMenu) k).getReturnItemList());
+      if (k instanceof ManItemMenu) {
+        titleList.get(titleId - 1).deleteItem(((ManItemMenu) k).getReturnItemList());
+      }
       return 1;
     } else { //error
       return -1;
@@ -298,7 +326,9 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
-      del = ((PaymentMenu) k).getReturnValue();
+      if (k instanceof PaymentMenu) {
+        del = ((PaymentMenu) k).getReturnValue();
+      }
     }
     if (del == -2) {
       return -2;
@@ -336,7 +366,9 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
-      del = ((CardPayUI) k).getReturnValue();
+      if (k instanceof CardPayUI) {
+        del = ((CardPayUI) k).getReturnValue();
+      }
     }
 
     if (del == -3) { //결제실패
@@ -346,7 +378,9 @@ public class Controller {
       k = new InfoUI(payment.getErrorLog(), "메인");
       while (del2 == -1) {
         System.out.print("");
-        del2 = ((InfoUI) k).getReturnValue();
+        if (k instanceof InfoUI) {
+          del2 = ((InfoUI) k).getReturnValue();
+        }
       }
       payment.init();
       init();
@@ -378,7 +412,9 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
-      del = ((SmartPayUI) k).getReturnValue();
+      if (k instanceof SmartPayUI) {
+        del = ((SmartPayUI) k).getReturnValue();
+      }
     }
 
     if (del == -3) { //결제실패
@@ -388,7 +424,9 @@ public class Controller {
       k = new InfoUI(payment.getErrorLog(), "메인");
       while (del2 == -1) {
         System.out.print("");
-        del2 = ((InfoUI) k).getReturnValue();
+        if (k instanceof InfoUI) {
+          del2 = ((InfoUI) k).getReturnValue();
+        }
       }
       payment.init();
       init();
@@ -411,7 +449,7 @@ public class Controller {
     }
   }
 
-  private void cancelPay() {
+  public void cancelPay() {
     payment.init();
     init();
     returnMain();
@@ -424,7 +462,9 @@ public class Controller {
         + "</strong><br>음료가 나왔습니다.</center></html>", "메인");
     while (del2 == -1) {
       System.out.print("");
-      del2 = ((InfoUI) k).getReturnValue();
+      if (k instanceof InfoUI) {
+        del2 = ((InfoUI) k).getReturnValue();
+      }
     }
     t.updateStock(0, ifHold);
     if (!ifHold) {
@@ -441,7 +481,9 @@ public class Controller {
         "<br>인증번호: " + cNumber + "</center></html>", "메인");
     while (del2 == -1) {
       System.out.print("");
-      del2 = ((InfoUI) k).getReturnValue();
+      if (k instanceof InfoUI) {
+        del2 = ((InfoUI) k).getReturnValue();
+      }
     }
     payment.init();
     init();
@@ -457,7 +499,9 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
-      del = ((InfoNoItemUI) k).getReturnValue();
+      if (k instanceof InfoNoItemUI) {
+        del = ((InfoNoItemUI) k).getReturnValue();
+      }
     }
     if (del == -2) {
       return -2;
@@ -475,12 +519,14 @@ public class Controller {
         if ((size > 0) && (dvmStack.get(size - 1).getId() == -1)) {
           break;
         }
-        del2 = ((FindingDVM) k).getReturnValue();
-        if (del2 == 0) { //시간 초과or취소
-          MessageQueue.setStk(9);
-          MessageQueue.setLoc(-1);
-          init();
-          return 0;
+        if (k instanceof FindingDVM) {
+          del2 = ((FindingDVM) k).getReturnValue();
+          if (del2 == 0) { //시간 초과or취소
+            MessageQueue.setStk(9);
+            MessageQueue.setLoc(-1);
+            init();
+            return 0;
+          }
         }
         if (i <= 10 && i != DVM.getCurrentID()) {
           Message sm = new Message(DVM.getCurrentID());
@@ -517,7 +563,9 @@ public class Controller {
         + "</strong><br>해당 음료의 재고가 있는 자판기가 없습니다.</center></html>", "메인");
     while (del2 == -1) {
       System.out.print("");
-      del2 = ((InfoUI) k).getReturnValue();
+      if (k instanceof InfoUI) {
+        del2 = ((InfoUI) k).getReturnValue();
+      }
     }
   }
 
@@ -525,7 +573,9 @@ public class Controller {
     del = -1;
     while (del == -1) {
       System.out.print("");
-      del = ((DVMMenu) k).getReturnValue();
+      if (k instanceof DVMMenu) {
+        del = ((DVMMenu) k).getReturnValue();
+      }
     }
     if (del == -2) {
       return -2;
@@ -546,7 +596,6 @@ public class Controller {
   public void init() {
     basket = -666;
     dvmStack.clear();
-    payment = null;
   }
 
   public void returnMain() {
