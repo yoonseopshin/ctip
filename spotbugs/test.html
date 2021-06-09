@@ -88,7 +88,7 @@
          <br/>
       </p>
       <h2>Metrics</h2>
-      <p>656 lines of code analyzed,
+      <p>682 lines of code analyzed,
 	in 9 classes, 
 	in 1 packages.</p>
       <table width="500" cellpadding="5" cellspacing="2">
@@ -105,22 +105,22 @@
          <tr class="tablerow1">
             <td>Medium Priority Warnings</td>
             <td align="right">1</td>
-            <td align="right">1.52</td>
+            <td align="right">1.47</td>
          </tr>
          <tr class="tablerow1">
             <td>Low Priority Warnings</td>
-            <td align="right">7</td>
-            <td align="right">10.67</td>
+            <td align="right">8</td>
+            <td align="right">11.73</td>
          </tr>
          <tr class="$totalClass">
             <td>
                <b>Total Warnings</b>
             </td>
             <td align="right">
-               <b>8</b>
+               <b>9</b>
             </td>
             <td align="right">
-               <b>12.20</b>
+               <b>13.20</b>
             </td>
          </tr>
       </table>
@@ -153,7 +153,7 @@
             <td>
                <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
             </td>
-            <td align="right">7</td>
+            <td align="right">8</td>
          </tr>
          <tr class="tablerow1">
             <td>
@@ -166,7 +166,7 @@
                <b>Total</b>
             </td>
             <td align="right">
-               <b>8</b>
+               <b>9</b>
             </td>
          </tr>
       </table>
@@ -233,49 +233,63 @@
             <td>
                <p id="d1e69" style="display: none;">
                   <a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
-                  <br/>In class logic.MessageQueueTest<br/>In method logic.MessageQueueTest.testDequeue()<br/>Called method java.util.Queue.offer(Object)<br/>At MessageQueueTest.java:[line 79]</p>
+                  <br/>In class logic.MessageQueueTest<br/>In method logic.MessageQueueTest.testDequeue()<br/>Called method java.util.Queue.offer(Object)<br/>At MessageQueueTest.java:[line 82]<br/>Another occurrence at MessageQueueTest.java:[line 89]<br/>Another occurrence at MessageQueueTest.java:[line 92]<br/>Another occurrence at MessageQueueTest.java:[line 99]</p>
             </td>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e84');">
+         <tr class="tablerow1" onclick="toggleRow('d1e90');">
+            <td>
+               <span class="priority-3">RV</span>
+            </td>
+            <td>Exceptional return value of java.util.Queue.offer(Object) ignored in logic.MessageQueueTest.testGetCnMsgQueue()</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e90" style="display: none;">
+                  <a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
+                  <br/>In class logic.MessageQueueTest<br/>In method logic.MessageQueueTest.testGetCnMsgQueue()<br/>Called method java.util.Queue.offer(Object)<br/>At MessageQueueTest.java:[line 152]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e105');">
             <td>
                <span class="priority-3">RV</span>
             </td>
             <td>Exceptional return value of java.util.Queue.offer(Object) ignored in logic.MessageQueueTest.testGetLocMsgQueue()</td>
          </tr>
-         <tr class="detailrow1">
+         <tr class="detailrow0">
             <td/>
             <td>
-               <p id="d1e84" style="display: none;">
+               <p id="d1e105" style="display: none;">
                   <a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
-                  <br/>In class logic.MessageQueueTest<br/>In method logic.MessageQueueTest.testGetLocMsgQueue()<br/>Called method java.util.Queue.offer(Object)<br/>At MessageQueueTest.java:[line 124]</p>
+                  <br/>In class logic.MessageQueueTest<br/>In method logic.MessageQueueTest.testGetLocMsgQueue()<br/>Called method java.util.Queue.offer(Object)<br/>At MessageQueueTest.java:[line 144]</p>
             </td>
          </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e99');">
+         <tr class="tablerow1" onclick="toggleRow('d1e120');">
             <td>
                <span class="priority-3">RV</span>
             </td>
             <td>Exceptional return value of java.util.Queue.offer(Object) ignored in logic.MessageQueueTest.testGetMsgQueue()</td>
          </tr>
-         <tr class="detailrow0">
+         <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e99" style="display: none;">
+               <p id="d1e120" style="display: none;">
                   <a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
-                  <br/>In class logic.MessageQueueTest<br/>In method logic.MessageQueueTest.testGetMsgQueue()<br/>Called method java.util.Queue.offer(Object)<br/>At MessageQueueTest.java:[line 108]</p>
+                  <br/>In class logic.MessageQueueTest<br/>In method logic.MessageQueueTest.testGetMsgQueue()<br/>Called method java.util.Queue.offer(Object)<br/>At MessageQueueTest.java:[line 128]</p>
             </td>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e114');">
+         <tr class="tablerow0" onclick="toggleRow('d1e135');">
             <td>
                <span class="priority-3">RV</span>
             </td>
             <td>Exceptional return value of java.util.Queue.offer(Object) ignored in logic.MessageQueueTest.testGetStkMsgQueue()</td>
          </tr>
-         <tr class="detailrow1">
+         <tr class="detailrow0">
             <td/>
             <td>
-               <p id="d1e114" style="display: none;">
+               <p id="d1e135" style="display: none;">
                   <a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
-                  <br/>In class logic.MessageQueueTest<br/>In method logic.MessageQueueTest.testGetStkMsgQueue()<br/>Called method java.util.Queue.offer(Object)<br/>At MessageQueueTest.java:[line 116]</p>
+                  <br/>In class logic.MessageQueueTest<br/>In method logic.MessageQueueTest.testGetStkMsgQueue()<br/>Called method java.util.Queue.offer(Object)<br/>At MessageQueueTest.java:[line 136]</p>
             </td>
          </tr>
       </table>
@@ -287,7 +301,7 @@
             <th align="left">Code</th>
             <th align="left">Warning</th>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e129');">
+         <tr class="tablerow1" onclick="toggleRow('d1e150');">
             <td>
                <span class="priority-2">UrF</span>
             </td>
@@ -296,7 +310,7 @@
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e129" style="display: none;">
+               <p id="d1e150" style="display: none;">
                   <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
                   <br/>In class logic.MessageQueueTest<br/>Field logic.MessageQueueTest.controller<br/>At MessageQueueTest.java:[line 14]</p>
             </td>
