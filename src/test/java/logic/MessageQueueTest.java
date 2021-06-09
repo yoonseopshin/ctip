@@ -128,5 +128,4 @@ public class MessageQueueTest {
     MessageQueue.setLocMsgQueue(locMsgQueueT);
     Assert.assertEquals(1, MessageQueue.getLocMsgQueue().size());
   }
-
 }
