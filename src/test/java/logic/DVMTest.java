@@ -37,19 +37,15 @@ public class DVMTest {
     DVM.setCurrentID(1);
     Assert.assertEquals(1, DVM.getCurrentID());
   }
+
   @Test
-  public void testGetId() {
-    DVM.setCurrentID(1);
-    Assert.assertEquals(1,DVM.getCurrentID());
-  }
-  @Test
-  public void testTestGetAddressX() {
+  public void testGetCurrentX() {
     DVM.setCurrentX(1.0);
     Assert.assertEquals(Double.toString(1.0),Double.toString(DVM.getCurrentX()));
   }
 
   @Test
-  public void testTestGetAddressY() {
+  public void testGetCurrentY() {
     DVM.setCurrentY(1.0);
     Assert.assertEquals(Double.toString(1.0),Double.toString(DVM.getCurrentY()));
   }

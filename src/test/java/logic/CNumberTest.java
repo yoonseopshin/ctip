@@ -3,9 +3,13 @@ package logic;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.security.SecureRandom;
+import java.util.Random;
+
 public class CNumberTest {
 
   private CNumber CN = new CNumber(1, 1);
+  private CNumber CN2 = new CNumber(1, 1);
 
   @Test
   public void testCreateCNumber() {
@@ -15,6 +19,10 @@ public class CNumberTest {
     int Expectedlength = 6;
     int Actuallength = (int)(Math.log10(ExpectedResult)+1);
     Assert.assertEquals(Expectedlength, Actuallength);
+    ExpectedResult = CN2.createCNumber();
+    ActualResult = CN2.getCNumberT();
+    Assert.assertEquals(ExpectedResult,ActualResult);
+    Controller.getCm().getChCList().clear();
   }
 
   @Test
@@ -45,6 +53,13 @@ public class CNumberTest {
     int ExpectedResult = 123456;
     int ActualResult = CN.getCNumberT();
     Assert.assertEquals(ExpectedResult, ActualResult);
+  }
+
+  @Test
+  public void testGetRand() {
+    Random r= new SecureRandom();
+    CNumber.setRand(r);
+    Assert.assertEquals(r, CNumber.getRand());
   }
 
 }

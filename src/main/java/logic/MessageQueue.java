@@ -55,7 +55,7 @@ public class MessageQueue extends Thread {
         assert server_socket != null;
         socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.
         printWriter = new PrintWriter(
-            new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8)));
+                new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8)));
         in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
         String msg = in.readLine();
         if (msg == null || msg.length() == 0)
@@ -64,9 +64,9 @@ public class MessageQueue extends Thread {
         //메시지객체로 변환
         Message message = new Message(-1);
         message.translate(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]),
-            Integer.parseInt(temp[2]),
-            Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),
-            Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));
+                Integer.parseInt(temp[2]),
+                Double.parseDouble(temp[3]), Double.parseDouble(temp[4]), Integer.parseInt(temp[5]),
+                Integer.parseInt(temp[6]), Boolean.parseBoolean(temp[7]));
         if (!msgQueue.offer(message))
           throw new NullPointerException();
 
@@ -110,12 +110,12 @@ public class MessageQueue extends Thread {
         ia = InetAddress.getByName(getIP());    //서버로 접속
         socket = new Socket(ia, port);
         in = new BufferedReader(
-            new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8)); //서버로부터 메시지를 받기위한 버퍼
+                new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8)); //서버로부터 메시지를 받기위한 버퍼
         out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8)));
         //메시지객체 스트링으로 전환
         String msg = message.getMyId() + "," + message.getTargetId() + "," + message.getType() + ","
-            + message.getXAddress() + "," + message.getYAddress() + "," + message.getTitle() + ","
-            + message.getCNumber() + "," + message.isBoolData();
+                + message.getXAddress() + "," + message.getYAddress() + "," + message.getTitle() + ","
+                + message.getCNumber() + "," + message.isBoolData();
         out.println(msg);                        //서버로 데이터 전송
         out.flush();                      //서버로 데이터 전송
         String returnMsg = in.readLine();
@@ -173,7 +173,7 @@ public class MessageQueue extends Thread {
         sm.setMsg(rm.getMyId(), 2, Controller.getTitleList().get(rm.getTitle() - 1).checkStock());
         //System.out.println("재고 요청 응답 완료");
       } else if (rm.getType() == 2) {
-        if(!stkMsgQueue.offer(rm))
+        if (!stkMsgQueue.offer(rm))
           throw new NullPointerException();
       } else if (rm.getType() == 3) {
         CNumber rc = new CNumber(rm.getTitle(), rm.getMyId());
@@ -185,14 +185,14 @@ public class MessageQueue extends Thread {
         sm.setMsg(rm.getMyId(), 5, DVM.getCurrentX(), DVM.getCurrentY());
         //System.out.println("위치 요청 메시지 응답 완료");
       } else if (rm.getType() == 5) {
-        if(!locMsgQueue.offer(rm))
+        if (!locMsgQueue.offer(rm))
           throw new NullPointerException();
       } else if (rm.getType() == 6) {
         Message sm = new Message(DVM.getCurrentID());
         int data = Controller.getCm().checkCNumber(rm.getCNumber());
         sm.setMsg(rm.getMyId(), 7, rm.getCNumber(), data != -1);
       } else if (rm.getType() == 7) {
-        if(!cNMsgQueue.offer(rm))
+        if (!cNMsgQueue.offer(rm))
           throw new NullPointerException();
       } else {
         System.out.println("메시지 오류");
@@ -217,7 +217,7 @@ public class MessageQueue extends Thread {
         while (locMsgQueue.size() > 0) {
           Message loc = locMsgQueue.poll();
           Controller.getDvmStack()
-              .push(new DVM(loc.getMyId(), loc.getXAddress(), loc.getYAddress()));
+                  .push(new DVM(loc.getMyId(), loc.getXAddress(), loc.getYAddress()));
           //System.out.println("위치 응답 메시지 수신 완료");
         }
       }
@@ -283,4 +283,13 @@ public class MessageQueue extends Thread {
   public static void setLocMsgQueue(Queue<Message> locMsgQueue) {
     MessageQueue.locMsgQueue = locMsgQueue;
   }
+
+  public static Queue<Message> getcNMsgQueue() {
+    return cNMsgQueue;
+  }
+
+  public static void setcNMsgQueue(Queue<Message> cNMsgQueue) {
+    MessageQueue.cNMsgQueue = cNMsgQueue;
+  }
+
 }

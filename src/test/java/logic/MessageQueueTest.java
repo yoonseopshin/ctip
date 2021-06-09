@@ -73,18 +73,72 @@ public class MessageQueueTest {
 
   @Test
   public void testDequeue() {
-    Controller c = new Controller();
-    c.getTitleList().get(1).addItem(new Item(20201125));
+    msg.setMyId(10);
+    MessageQueue.getStkMsgQueue().clear();
+    MessageQueue.getMsgQueue().clear();
+    MessageQueue.getLocMsgQueue().clear();
+    MessageQueue.getcNMsgQueue().clear();
+    msg.setTargetId(1);
+    msg.setType(1);
+    msg.setTitle(1);
+    MessageQueue.getMsgQueue().offer(msg);
+    MessageQueue.dequeue();
+    Assert.assertEquals(0, MessageQueue.getMsgQueue().size());
+    msg.setTargetId(20);
+    msg.setType(2);
+    msg.setBoolData(true);
+    MessageQueue.getMsgQueue().offer(msg);
+    MessageQueue.dequeue();
+    Assert.assertEquals(1, MessageQueue.getStkMsgQueue().size());
+    MessageQueue.setStk(1);
+    MessageQueue.dequeue();
+    Assert.assertEquals(1, MessageQueue.getLoc());
+
+    Controller.getTitleList().get(1).addItem(new Item(20201125));
     msg.setTargetId(1);
     msg.setType(3);
     msg.setTitle(2);
     msg.setCNumber(971026);
     MessageQueue.getMsgQueue().offer(msg);
     MessageQueue.dequeue();
-    Assert.assertEquals(1, c.getCm().checkCNumber(msg.getCNumber()));
+    Assert.assertEquals(1, Controller.getCm().checkCNumber(msg.getCNumber()));
     Assert.assertEquals(false, Controller.getTitleList().get(msg.getTitle() - 1).checkStock());
     Assert.assertEquals(1, (int) (Controller.getTitleList().get(msg.getTitle() - 1).getHold()));
     Assert.assertEquals(msg.getTitle(), Controller.getCm().popCNumber(msg.getCNumber()));
+    msg.setTargetId(1);
+    msg.setType(4);
+    MessageQueue.getMsgQueue().offer(msg);
+    MessageQueue.dequeue();
+    Assert.assertEquals(0, MessageQueue.getMsgQueue().size());
+    msg.setTargetId(1);
+    msg.setType(5);
+    msg.setXAddress(1.0);
+    msg.setYAddress(1.0);
+    MessageQueue.getMsgQueue().offer(msg);
+    MessageQueue.dequeue();
+    Assert.assertEquals(2, Controller.getDvmStack().size());
+    Controller.getDvmStack().clear();
+    msg.setTargetId(1);
+    msg.setType(6);
+    msg.setCNumber(971125);
+    MessageQueue.getMsgQueue().offer(msg);
+    MessageQueue.dequeue();
+    Assert.assertEquals(0, MessageQueue.getMsgQueue().size());
+    Controller.getCm().getChCList().put(971125, new CNumber(1, 1));
+    msg.setTargetId(1);
+    msg.setType(7);
+    msg.setCNumber(971125);
+    msg.setBoolData(false);
+    MessageQueue.getMsgQueue().offer(msg);
+    MessageQueue.setCNum(1);
+    MessageQueue.dequeue();
+    Assert.assertEquals(1, Controller.getCm().getChCList().size());
+    Assert.assertEquals(true, Controller.getCm().checkCNumber2(-1));
+    Controller.getCm().getChCList().clear();
+    MessageQueue.getStkMsgQueue().clear();
+    MessageQueue.getMsgQueue().clear();
+    MessageQueue.getLocMsgQueue().clear();
+    MessageQueue.getcNMsgQueue().clear();
   }
 
   @Test
@@ -127,5 +181,13 @@ public class MessageQueueTest {
     locMsgQueueT.offer(msg);
     MessageQueue.setLocMsgQueue(locMsgQueueT);
     Assert.assertEquals(1, MessageQueue.getLocMsgQueue().size());
+  }
+
+  @Test
+  public void testGetCnMsgQueue() {
+    Queue<Message> cnMsgQueueT = new LinkedList<>();
+    cnMsgQueueT.offer(msg);
+    MessageQueue.setcNMsgQueue(cnMsgQueueT);
+    Assert.assertEquals(1, MessageQueue.getcNMsgQueue().size());
   }
 }
