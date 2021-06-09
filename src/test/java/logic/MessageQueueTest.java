@@ -21,6 +21,46 @@ public class MessageQueueTest {
     } catch (Exception e) { }
   }
 
+
+/*
+  @Test
+  public void testMsgReceive() {
+    Thread thread = new Thread(() -> queue.msgReceive(1));
+    MessageQueue.getStkMsgQueue().clear();
+    thread.start();
+    msg.setMsg(1,2, true);
+    while(MessageQueue.getStkMsgQueue().isEmpty()){}
+    thread.interrupt();
+    Message rm = MessageQueue.getStkMsgQueue().poll();
+    Assert.assertEquals(msg.getTargetId(), rm.getTargetId());
+    Assert.assertEquals(msg.getType(), rm.getType());
+    Assert.assertEquals(msg.isBoolData(), rm.isBoolData());
+    Assert.assertEquals(msg.getCNumber(), rm.getCNumber());
+    Assert.assertEquals(msg.getMyId(), rm.getMyId());
+    Assert.assertEquals(msg.getTitle(), rm.getTitle());
+    Assert.assertEquals(Double.toString(msg.getXAddress()), Double.toString(rm.getXAddress()));
+    Assert.assertEquals(Double.toString(msg.getYAddress()), Double.toString(rm.getYAddress()));
+  }
+
+  @Test
+  public void testMsgSend() {
+    Controller.getTitleList().get(0).addItem(new Item(20201125));
+    queue.start();
+    msg.setTargetId(1);
+    msg.setType(3);
+    msg.setTitle(1);
+    msg.setCNumber(971125);
+    MessageQueue.msgSend(msg);
+    queue.interrupt();
+    while(queue.isAlive()){}
+    Assert.assertEquals(1, Controller.getCm().checkCNumber(msg.getCNumber()));
+    Assert.assertEquals(false, Controller.getTitleList().get(msg.getTitle()-1).checkStock());
+    Assert.assertEquals(1, (int)(Controller.getTitleList().get(msg.getTitle()-1).getHold()));
+    Assert.assertEquals(msg.getTitle(), Controller.getCm().popCNumber(msg.getCNumber()));
+  }
+  */
+
+
   @Test
   public void testDequeue() {
     Controller c = new Controller();
