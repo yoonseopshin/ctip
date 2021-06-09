@@ -96,14 +96,6 @@ public class CNumber {
     this.cNumberT = cNumberT;
   }
 
-  public int getcNumberT() {
-    return cNumberT;
-  }
-
-  public void setcNumberT(int cNumberT) {
-    this.cNumberT = cNumberT;
-  }
-
   public static Random getRand() {
     return rand;
   }
