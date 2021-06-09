@@ -23,31 +23,32 @@ public class MessageQueueTest {
     }
   }
 
-  @Test
-  public void testMsgReceive() {
-    Thread thread = new Thread(() -> queue.msgReceive(1));
-    MessageQueue.getStkMsgQueue().clear();
-    thread.start();
-    msg.setMsg(1, 2, true);
-    thread.interrupt();
-    queue.start();
-    queue.interrupt();
-    while (queue.isAlive()) {
+  /*
+    @Test
+    public void testMsgReceive() {
+      queue.start();
+      msg.setTargetId(1);
+      msg.setType(2);
+      msg.setBoolData(true);
+      MessageQueue.msgSend(msg);
+      queue.interrupt();
+      while (queue.isAlive()) {
+      }
+      Message rm = MessageQueue.getStkMsgQueue().poll();
+      try {
+        Assert.assertEquals(msg.getTargetId(), rm.getTargetId());
+        Assert.assertEquals(msg.getType(), rm.getType());
+        Assert.assertEquals(msg.isBoolData(), rm.isBoolData());
+        Assert.assertEquals(msg.getCNumber(), rm.getCNumber());
+        Assert.assertEquals(msg.getMyId(), rm.getMyId());
+        Assert.assertEquals(msg.getTitle(), rm.getTitle());
+        Assert.assertEquals(Double.toString(msg.getXAddress()), Double.toString(rm.getXAddress()));
+        Assert.assertEquals(Double.toString(msg.getYAddress()), Double.toString(rm.getYAddress()));
+      } catch (NullPointerException e) {
+        Assert.assertEquals(0, MessageQueue.getStkMsgQueue().size());
+      }
     }
-    Message rm = MessageQueue.getStkMsgQueue().poll();
-    try {
-      Assert.assertEquals(msg.getTargetId(), rm.getTargetId());
-      Assert.assertEquals(msg.getType(), rm.getType());
-      Assert.assertEquals(msg.isBoolData(), rm.isBoolData());
-      Assert.assertEquals(msg.getCNumber(), rm.getCNumber());
-      Assert.assertEquals(msg.getMyId(), rm.getMyId());
-      Assert.assertEquals(msg.getTitle(), rm.getTitle());
-      Assert.assertEquals(Double.toString(msg.getXAddress()), Double.toString(rm.getXAddress()));
-      Assert.assertEquals(Double.toString(msg.getYAddress()), Double.toString(rm.getYAddress()));
-    } catch (NullPointerException e) {
-      Assert.assertEquals(0, MessageQueue.getStkMsgQueue().size());
-    }
-  }
+  */
 
   @Test
   public void testMsgSend() {
@@ -61,14 +62,10 @@ public class MessageQueueTest {
     queue.interrupt();
     while (queue.isAlive()) {
     }
-    if (Controller.getCm().checkCNumber(msg.getCNumber()) != -1) {
-      Assert.assertEquals(1, Controller.getCm().checkCNumber(msg.getCNumber()));
-      Assert.assertEquals(false, Controller.getTitleList().get(msg.getTitle() - 1).checkStock());
-      Assert.assertEquals(1, (int) (Controller.getTitleList().get(msg.getTitle() - 1).getHold()));
-      Assert.assertEquals(msg.getTitle(), Controller.getCm().popCNumber(msg.getCNumber()));
-    } else {
-      Assert.assertEquals(0, Controller.getCm().getCList().size());
-    }
+    Assert.assertEquals(1, Controller.getCm().checkCNumber(msg.getCNumber()));
+    Assert.assertEquals(false, Controller.getTitleList().get(msg.getTitle() - 1).checkStock());
+    Assert.assertEquals(1, (int) (Controller.getTitleList().get(msg.getTitle() - 1).getHold()));
+    Assert.assertEquals(msg.getTitle(), Controller.getCm().popCNumber(msg.getCNumber()));
   }
 
   @Test
