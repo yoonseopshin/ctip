@@ -76,7 +76,7 @@ public class CNumberManagerTest {
   @Test
   public void testGetCList() {
     CNumber cnumber = new CNumber(1, 1);
-    cnumber.setcNumberT(111111);
+    cnumber.setCNumberT(111111);
     HashMap<Integer, CNumber> cList = new HashMap<>();
     cList.put(1,cnumber);
     CM.setCList(cList);
@@ -86,7 +86,7 @@ public class CNumberManagerTest {
   @Test
   public void testGetChCList() {
     CNumber cnumber = new CNumber(1, 1);
-    cnumber.setcNumberT(111111);
+    cnumber.setCNumberT(111111);
     HashMap<Integer, CNumber> chList = new HashMap<>();
     chList.put(1, cnumber);
     CM.setChCList(chList);
