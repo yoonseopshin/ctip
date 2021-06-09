@@ -20,10 +20,10 @@ import java.util.Queue;
 
   @Override
   public void run() {
-<span class="nc" id="L23">    System.out.print(&quot;메시지 수신 시작\n&quot;);</span>
-<span class="nc" id="L24">    msgReceive(DVM.getCurrentID());</span>
-<span class="nc" id="L25">    System.out.print(&quot;메시지 수신 종료\n&quot;);</span>
-<span class="nc" id="L26">  }</span>
+<span class="fc" id="L23">    System.out.print(&quot;메시지 수신 시작\n&quot;);</span>
+<span class="fc" id="L24">    msgReceive(DVM.getCurrentID());</span>
+<span class="fc" id="L25">    System.out.print(&quot;메시지 수신 종료\n&quot;);</span>
+<span class="fc" id="L26">  }</span>
 
   public static String getIP() {
     InetAddress local;
@@ -39,19 +39,19 @@ import java.util.Queue;
   }
 
   public void msgReceive(int myId) {
-<span class="nc" id="L42">    Socket socket = null;                //Client와 통신하기 위한 Socket</span>
-<span class="nc" id="L43">    ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket</span>
+<span class="fc" id="L42">    Socket socket = null;                //Client와 통신하기 위한 Socket</span>
+<span class="fc" id="L43">    ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket</span>
     BufferedReader in;            //Client로부터 데이터를 읽어들이기 위한 입력스트림
-<span class="nc" id="L45">    int port = myId + 50000;</span>
+<span class="fc" id="L45">    int port = myId + 50000;</span>
     PrintWriter printWriter; // 값을 전달할때 사용
 
     try {
-<span class="nc" id="L49">      server_socket = new ServerSocket(port); //서버 소캣 생성</span>
+<span class="fc" id="L49">      server_socket = new ServerSocket(port); //서버 소캣 생성</span>
 <span class="nc" id="L50">    } catch (IOException e) {</span>
 <span class="nc" id="L51">      System.out.println(port + &quot;번 포트 사용 불가&quot;);</span>
-<span class="nc" id="L52">    }</span>
+<span class="fc" id="L52">    }</span>
     try {
-<span class="nc bnc" id="L54" title="All 2 branches missed.">      while (!this.isInterrupted()) {</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">      while (!this.isInterrupted()) {</span>
 <span class="nc bnc" id="L55" title="All 4 branches missed.">        assert server_socket != null;</span>
 <span class="nc" id="L56">        socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.</span>
 <span class="nc" id="L57">        printWriter = new PrintWriter(</span>
@@ -80,7 +80,7 @@ import java.util.Queue;
 <span class="nc" id="L80">    } catch (IOException e) {</span>
 <span class="nc" id="L81">      System.out.println(&quot;서버 메세지수신 오류&quot;);</span>
     } finally {
-<span class="nc bnc" id="L83" title="All 2 branches missed.">      if (socket != null) {</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">      if (socket != null) {</span>
         try {
 <span class="nc" id="L85">          socket.close();</span>
 <span class="nc" id="L86">        } catch (IOException e) {</span>
@@ -88,16 +88,16 @@ import java.util.Queue;
 <span class="nc" id="L88">        }</span>
 
       }
-<span class="nc bnc" id="L91" title="All 2 branches missed.">      if (server_socket != null) {</span>
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">      if (server_socket != null) {</span>
         try {
-<span class="nc" id="L93">          server_socket.close();</span>
+<span class="fc" id="L93">          server_socket.close();</span>
 <span class="nc" id="L94">        } catch (IOException e) {</span>
 <span class="nc" id="L95">          System.err.println(e.getMessage());</span>
-<span class="nc" id="L96">        }</span>
+<span class="fc" id="L96">        }</span>
       }
-<span class="nc" id="L98">      System.out.println(&quot;서버 종료&quot;);</span>
+<span class="fc" id="L98">      System.out.println(&quot;서버 종료&quot;);</span>
     }
-<span class="nc" id="L100">  }</span>
+<span class="fc" id="L100">  }</span>
 
   public static void msgSend(Message message) {
 <span class="fc" id="L103">    Socket socket = null;            //Server와 통신하기 위한 Socket</span>
