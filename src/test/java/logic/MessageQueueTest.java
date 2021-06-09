@@ -59,7 +59,6 @@ public class MessageQueueTest {
     msg.setTitle(1);
     msg.setCNumber(971125);
     MessageQueue.msgSend(msg);
-    queue.interrupt();
     while (queue.isAlive()) {
       if (Controller.getCm().checkCNumber(msg.getCNumber()) != -1)
         queue.interrupt();
