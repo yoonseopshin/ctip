@@ -37,7 +37,6 @@ public class MessageQueue extends Thread {
             return ip;
         }
     }
-
     public void msgReceive(int myId) {
         Socket socket = null;                //Client와 통신하기 위한 Socket
         ServerSocket server_socket = null;  //서버 생성을 위한 ServerSocket
