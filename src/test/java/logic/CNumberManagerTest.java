@@ -54,7 +54,6 @@ public class CNumberManagerTest {
     Assert.assertEquals(ExpectedResult, ActualResult);
   }
 
-
   @Test
   public void testAddChCNumber() {
     Cn.setCNumberT(971125);

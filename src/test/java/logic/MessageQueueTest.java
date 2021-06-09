@@ -22,7 +22,7 @@ public class MessageQueueTest {
   }
 
 
-/*
+
   @Test
   public void testMsgReceive() {
     Thread thread = new Thread(() -> queue.msgReceive(1));
@@ -58,7 +58,7 @@ public class MessageQueueTest {
     Assert.assertEquals(1, (int)(Controller.getTitleList().get(msg.getTitle()-1).getHold()));
     Assert.assertEquals(msg.getTitle(), Controller.getCm().popCNumber(msg.getCNumber()));
   }
-  */
+
 
 
   @Test

@@ -51,7 +51,7 @@ public class MessageQueue extends Thread {
       System.out.println(port + "번 포트 사용 불가");
     }
     try {
-      while (!this.isInterrupted()) {
+       do{
         assert server_socket != null;
         socket = server_socket.accept();  //서버 오픈 ,클라이언트 접속 대기.
         printWriter = new PrintWriter(
@@ -76,7 +76,7 @@ public class MessageQueue extends Thread {
         printWriter.close();
         socket.close(); // 소캣을 종료시켜 접속된 클라이언트 종료시킴.
         dequeue();
-      }
+      }while (!this.isInterrupted());
     } catch (IOException e) {
       System.out.println("서버 메세지수신 오류");
     } finally {
