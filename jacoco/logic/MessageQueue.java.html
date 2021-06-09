@@ -140,8 +140,8 @@ import java.util.Queue;
       }
 <span class="fc bfc" id="L141" title="All 2 branches covered.">      if (message.getType() == 6) {</span>
 <span class="fc" id="L142">        cNum--;</span>
-<span class="pc bpc" id="L143" title="1 of 2 branches missed.">        if (cNum == cNMsgQueue.size()) {</span>
-<span class="nc" id="L144">          dequeue();</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">        if (cNum == cNMsgQueue.size()) {</span>
+<span class="fc" id="L144">          dequeue();</span>
         }
       }
     } finally {
@@ -224,15 +224,15 @@ import java.util.Queue;
 <span class="nc" id="L224">      Controller.getDvmStack().push(new DVM(-1, 0.0, 0.0));</span>
 <span class="nc" id="L225">      loc = -1;</span>
     }
-<span class="pc bpc" id="L227" title="1 of 2 branches missed.">    if (cNMsgQueue.size() == cNum) {</span>
-<span class="nc bnc" id="L228" title="All 2 branches missed.">      while (cNMsgQueue.size() &gt; 0) {</span>
+<span class="fc bfc" id="L227" title="All 2 branches covered.">    if (cNMsgQueue.size() == cNum) {</span>
+<span class="pc bpc" id="L228" title="1 of 2 branches missed.">      while (cNMsgQueue.size() &gt; 0) {</span>
 <span class="nc" id="L229">        Message cn = cNMsgQueue.poll();</span>
 <span class="nc bnc" id="L230" title="All 2 branches missed.">        if (!cn.isBoolData()) {</span>
 <span class="nc" id="L231">          Controller.getCm().getChCList().remove(cn.getCNumber());</span>
         }
 <span class="nc" id="L233">      }</span>
-<span class="nc" id="L234">      Controller.getCm().getChCList().put(-1, null);</span>
-<span class="nc" id="L235">      cNum = -1;</span>
+<span class="fc" id="L234">      Controller.getCm().getChCList().put(-1, null);</span>
+<span class="fc" id="L235">      cNum = -1;</span>
     }
 <span class="fc" id="L237">  }</span>
 

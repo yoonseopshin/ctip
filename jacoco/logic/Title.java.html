@@ -28,64 +28,65 @@ public class Title {
       }
 <span class="pc bpc" id="L29" title="1 of 2 branches missed.">    } else if (id == 0) {</span>
 <span class="fc bfc" id="L30" title="All 2 branches covered.">      if (ifHold) {</span>
-<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if (hold &lt;= 0) {</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (hold &lt;= 0) {</span>
           //error
-<span class="nc" id="L33">          System.out.print(&quot;재고오류&quot;);</span>
+<span class="fc" id="L33">          System.out.print(&quot;재고오류&quot;);</span>
+        } else {
+<span class="fc" id="L35">          this.hold--;</span>
         }
-<span class="fc" id="L35">        this.hold--;</span>
       } else {
-<span class="fc" id="L37">        this.itemList.remove(0);</span>
+<span class="fc" id="L38">        this.itemList.remove(0);</span>
       }
     }
-<span class="fc" id="L40">  }</span>
+<span class="fc" id="L41">  }</span>
 
   public boolean checkStock() {
-<span class="fc bfc" id="L43" title="All 2 branches covered.">    return !(this.itemList.isEmpty());</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">    return !(this.itemList.isEmpty());</span>
   }
 
   public void addItem(Item item) {
-<span class="fc" id="L47">    this.itemList.add(item);</span>
-<span class="fc" id="L48">    this.itemList.sort(Comparator.comparingInt(Item::getExpirationDate));</span>
-<span class="fc" id="L49">  }</span>
+<span class="fc" id="L48">    this.itemList.add(item);</span>
+<span class="fc" id="L49">    this.itemList.sort(Comparator.comparingInt(Item::getExpirationDate));</span>
+<span class="fc" id="L50">  }</span>
 
   public void deleteItem(ArrayList&lt;Integer&gt; items) {
-<span class="fc" id="L52">    ArrayList&lt;Item&gt; rm = new ArrayList&lt;Item&gt;();</span>
-<span class="fc bfc" id="L53" title="All 2 branches covered.">    for (int i = 0; i &lt; items.size(); i++) {</span>
-<span class="fc" id="L54">      rm.add(itemList.get(items.get(i)));</span>
+<span class="fc" id="L53">    ArrayList&lt;Item&gt; rm = new ArrayList&lt;Item&gt;();</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">    for (int i = 0; i &lt; items.size(); i++) {</span>
+<span class="fc" id="L55">      rm.add(itemList.get(items.get(i)));</span>
     }
-<span class="fc" id="L56">    itemList.removeAll(rm);</span>
-<span class="fc" id="L57">  }</span>
+<span class="fc" id="L57">    itemList.removeAll(rm);</span>
+<span class="fc" id="L58">  }</span>
 
   public String getName() {
-<span class="fc" id="L60">    return name;</span>
+<span class="fc" id="L61">    return name;</span>
   }
 
   public void setName(String name) {
-<span class="fc" id="L64">    this.name = name;</span>
-<span class="fc" id="L65">  }</span>
+<span class="fc" id="L65">    this.name = name;</span>
+<span class="fc" id="L66">  }</span>
 
   public int getPrice() {
-<span class="fc" id="L68">    return price;</span>
+<span class="fc" id="L69">    return price;</span>
   }
 
   public void setPrice(int price) {
-<span class="fc" id="L72">    this.price = price;</span>
-<span class="fc" id="L73">  }</span>
+<span class="fc" id="L73">    this.price = price;</span>
+<span class="fc" id="L74">  }</span>
 
   public ArrayList&lt;Item&gt; getItemList() {
-<span class="fc" id="L76">    return itemList;</span>
+<span class="fc" id="L77">    return itemList;</span>
   }
 
   public void setItemList(ArrayList&lt;Item&gt; itemList) {
-<span class="fc" id="L80">    this.itemList = itemList;</span>
-<span class="fc" id="L81">  }</span>
+<span class="fc" id="L81">    this.itemList = itemList;</span>
+<span class="fc" id="L82">  }</span>
 
   public int getHold() {
-<span class="fc" id="L84">    return hold;</span>
+<span class="fc" id="L85">    return hold;</span>
   }
 
   public void setHold(Integer hold) {
-<span class="fc" id="L88">    this.hold = hold;</span>
-<span class="fc" id="L89">  }</span>
+<span class="fc" id="L89">    this.hold = hold;</span>
+<span class="fc" id="L90">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
